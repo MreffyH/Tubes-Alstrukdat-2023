@@ -11,7 +11,7 @@
 #define CAPACITY 100
 
 /* Definisi elemen dan address */
-typedef Word ElType;
+typedef int ElType;
 typedef struct {
 	ElType buffer[CAPACITY]; 
 	int idxHead;
