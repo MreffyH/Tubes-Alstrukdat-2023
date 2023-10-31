@@ -1,21 +1,22 @@
 /* File : listlinier.h */
 /* contoh ADT list berkait dengan representasi fisik pointer  */
 /* Representasi address dengan pointer */
-/* infotypeList adalah integer */
+/* infotype adalah integer */
 
 #ifndef listlinier_H
 #define listlinier_H
 
 #include "boolean.h"
-#include "point.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "stdio.h"
+#include "stdlib.h"
 
-typedef Point infotypeList;
+#define Nil NULL
+
+typedef int infotype;
 typedef struct tElmtlist *address;
 typedef struct tElmtlist
 {
-    infotypeList info;
+    infotype info;
     address next;
 } ElmtList;
 typedef struct
@@ -33,16 +34,16 @@ typedef struct
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmptyList(List L);
+boolean IsEmpty(List L);
 /* Mengirim true jika list kosong */
 
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmptyList(List *L);
+void CreateEmpty(List *L);
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
 
 /****************** Manajemen Memori ******************/
-address Alokasi(infotypeList X);
+address Alokasi(infotype X);
 /* Mengirimkan address hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
 /* menghasilkan P, maka info(P)=X, Next(P)=Nil */
@@ -53,29 +54,29 @@ void Dealokasi(address *P);
 /* Melakukan dealokasi/pengembalian address P */
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search(List L, infotypeList X);
+address Search(List L, infotype X);
 /* Mencari apakah ada elemen list dengan info(P)= X */
 /* Jika ada, mengirimkan address elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
-void InsVFirst(List *L, infotypeList X);
+void InsVFirst(List *L, infotype X);
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
-void InsVLast(List *L, infotypeList X);
+void InsVLast(List *L, infotype X);
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
 /* bernilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 
 /*** PENGHAPUSAN ELEMEN ***/
-void DelVFirst(List *L, infotypeList *X);
+void DelVFirst(List *L, infotype *X);
 /* I.S. List L tidak kosong  */
 /* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dealokasi */
-void DelVLast(List *L, infotypeList *X);
+void DelVLast(List *L, infotype *X);
 /* I.S. list tidak kosong */
 /* F.S. Elemen terakhir list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen terakhir di-dealokasi */
@@ -99,7 +100,7 @@ void DelFirst(List *L, address *P);
 /* F.S. P adalah alamat elemen pertama list sebelum penghapusan */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* First element yg baru adalah suksesor elemen pertama yang lama */
-void DelP(List *L, infotypeList X);
+void DelP(List *L, infotype X);
 /* I.S. Sembarang */
 /* F.S. Jika ada elemen list beraddress P, dengan info(P)=X  */
 /* Maka P dihapus dari list dan di-dealokasi */
@@ -123,8 +124,20 @@ void PrintInfo(List L);
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
-int NumberElmt(List L);
+int NbElmt(List L);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
+
+/*** Prekondisi untuk Max/Min/rata-rata : List tidak kosong ***/
+infotype Max(List L);
+/* Mengirimkan nilai info(P) yang maksimum */
+address AdrMax(List L);
+/* Mengirimkan address P, dengan info(P) yang bernilai maksimum */
+infotype Min(List L);
+/* Mengirimkan nilai info(P) yang minimum */
+address AdrMin(List L);
+/* Mengirimkan address P, dengan info(P) yang bernilai minimum */
+float Average(List L);
+/* Mengirimkan nilai rata-rata info(P) */
 
 /****************** PROSES TERHADAP LIST ******************/
 
