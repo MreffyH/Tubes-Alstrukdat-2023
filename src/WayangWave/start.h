@@ -2,7 +2,6 @@
 #define START_WayangWave_H
 
 #include "../adt/mesinkata.h"
-#include "../adt/stack.h"
 #include "../adt/set.h"
 #include "../adt/map.h"
 #include "../adt/listlinier.h"
