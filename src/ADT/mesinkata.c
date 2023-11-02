@@ -78,3 +78,22 @@ void CopyWord()
 boolean isEndWord() {
     return endWord;
 }
+
+boolean IsKataEqual(Word Kata1, Word Kata2){
+    boolean sama = true;
+    if (Kata1.Length == Kata2.Length){
+        int i = 0;
+        while ((i < Kata1.Length) && (sama)){
+            if (Kata1.TabWord[i] != Kata2.TabWord[i]){
+                sama = false;
+            }
+            else{
+                i++;
+            }
+        }
+    }
+    else{
+        sama = false;
+    }
+    return sama;
+}
