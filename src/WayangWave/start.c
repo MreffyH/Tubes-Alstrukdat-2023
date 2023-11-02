@@ -6,7 +6,6 @@ boolean stateWayangWave;
 FILE *fc;
 
 void start(List *PlaylistLagu, List Penyanyi, Set Lagu) {
-    fc = fopen("config.txt", "r");
     if (!IsEmpty(*PlaylistLagu)) {
         printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
         stateWayangWave = true;
