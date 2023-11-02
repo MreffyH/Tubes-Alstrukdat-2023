@@ -1,6 +1,12 @@
 #include "start.h"
 #include<stdio.h>
 
+
+// Coba2
 int main() {
-    start();
+    STARTWORD();
+    while (!isEndWord()) 
+    {
+        ADVWORD();
+    }
 }

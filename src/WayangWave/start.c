@@ -3,10 +3,9 @@
 #include <stdlib.h>
 
 boolean stateWayangWave;
-FILE *fc;
 
-void start(List *PlaylistLagu, List Penyanyi, Set Lagu) {
-    if (!IsEmpty(*PlaylistLagu)) {
+void start(List Penyanyi, Map Album, Set Lagu) {
+    if (!IsEmpty(Penyanyi)) {
         printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
         stateWayangWave = true;
     } else {
