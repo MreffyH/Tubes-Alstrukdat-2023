@@ -97,3 +97,21 @@ boolean IsKataEqual(Word Kata1, Word Kata2){
     }
     return sama;
 }
+
+
+int strToInteger(Word Kata){
+    int kataToInt = 0;
+    for (int i = 0; i < Kata.Length; i++){
+        kataToInt = kataToInt * 10 + (Kata.TabWord[i] - '0');
+    }
+    return kataToInt;
+}
+
+Word SalinKata(Word Kata){
+    Word HasilCopyK;
+    HasilCopyK.Length = Kata.Length;
+    for (int i = 0; i < Kata.Length; i++){
+        HasilCopyK.TabWord[i] = Kata.TabWord[i];
+    }
+    return HasilCopyK;
+}

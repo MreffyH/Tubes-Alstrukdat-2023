@@ -48,4 +48,10 @@ void CopyWord();
 
 boolean isEndWord();
 
+boolean IsKataEqual (Word Kata1, Word Kata2);
+
+int strToInteger(Word Kata);
+
+Word SalinKata(Word Kata);
+
 #endif
