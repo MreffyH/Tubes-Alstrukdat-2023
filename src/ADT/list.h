@@ -111,4 +111,11 @@ List Concat(List L1, List L2);
 /* Mengirimkan sebuah List yang merupakan gabungan dari L1 dan L2 */
 /* Urutan elemen terisi dari L1, lalu L2 */
 /* Contoh : L1 : [1, 2]; L2 : [3, 4]; Mengembalikan [1, 2, 3, 4] */
+
+void PrintList(List *L);
+/* I.S. L terdefinisi, mungkin kosong. */
+/* F.S. Mencetak isi elemen list L */
+/* Contoh : L (tidak kosong) : [1, 2, 3, ...] */
+/* L (kosong) : [] */
+
 #endif

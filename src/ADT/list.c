@@ -130,3 +130,16 @@ List Concat(List L1, List L2) {
 
     return L3;
 }
+
+void PrintList(List *L) {
+	printf("[");
+	int i = 0;
+	while (i < Length(*L)){
+		printf("%d", (*L).A[i]);
+		i++;
+		if(i != Length(*L)){
+			printf(", ");
+		}
+	}
+	printf("]\n");
+}
