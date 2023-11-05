@@ -9,7 +9,6 @@
 
 /* Kamus Umum */
 #define MaxEl 100
-#define Mark -9999  /* Nilai tak terdefinisi */
 #define InvalidIdx -1  /* Indeks tak terdefinisi */
 
 /* Definisi elemen dan koleksi objek */
@@ -18,6 +17,7 @@
 
 typedef struct {
 	ElType A[MaxEl];  /* Memori tempat penyimpanan elemen (container) */
+	int Count;
 } List;
 
 #define List(i) L.A(i)
@@ -31,7 +31,7 @@ typedef struct {
 
 /* ********** KONSTRUKTOR ********** */
 /* Konstruktor: create list kosong */
-List MakeList();
+void MakeList(List *L);
 /* I.S. sembarang */
 /* F.S. Terbentuk list L kosong dengan kapasitas MaxEl */
 

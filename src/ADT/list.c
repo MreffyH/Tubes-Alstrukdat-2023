@@ -3,25 +3,16 @@
 
 // Konstruktor
 
-List MakeList() {
-	List L;
-	IdxType i;
-	for (i = 0; i < MaxEl; i++) {
-		L.A[i] = Mark;
-	}
-	return L;
+void MakeList(List *L) {
+	(*L).Count = 0;
 }
 
 boolean IsEmpty(List L) {
-	return (L.A[0] == Mark);
+	return (L.Count == 0);
 }
 
 int Length(List L) {
-	int i = 0;
-	while (L.A[i] != Mark) {
-		i += 1;
-	}
-	return i;
+	return (L.Count);
 }
 
 ElType Get(List L, IdxType i) {
@@ -37,15 +28,11 @@ IdxType FirstIdx(List L) {
 }
 
 IdxType LastIdx(List L) {
-	int i = FirstIdx(L);
-	while ((i < MaxEl) && (L.A[i+1] != Mark)) {
-		i += 1;
-	}
-	return i;
+	return (L.Count-1);
 }
 
 boolean IsIdxValid (List L, IdxType i) {
-	return (0 <= i) && (MaxEl >= i);
+	return (0 <= i) && (i < MaxEl);
 }
 
 boolean IsIdxEff (List L, IdxType i) {
@@ -72,6 +59,7 @@ void InsertFirst(List *L, ElType X) {
 		i--;
 	}
 	Set(L, 0, X);
+	(*L).Count++;
 }
 
 void InsertAt(List *L, ElType X, IdxType i) {
@@ -81,6 +69,7 @@ void InsertAt(List *L, ElType X, IdxType i) {
         j--;
 	}
 	Set(L, i, X);
+	(*L).Count++;
 }
 
 void InsertLast(List *L, ElType X) {
@@ -89,6 +78,7 @@ void InsertLast(List *L, ElType X) {
     } else {
         (*L).A[LastIdx(*L) + 1] = X;
     }
+	(*L).Count++;
 }
 
 void DeleteFirst(List *L) {
@@ -97,23 +87,25 @@ void DeleteFirst(List *L) {
 		(*L).A[i] = (*L).A[i+1];
         i++;
 	}
-    (*L).A[i] = Mark;
+    (*L).Count--;
 }
 
 void DeleteAt(List *L, IdxType i) {
 	int j = LastIdx(*L);
-	while (i <= j) {
+	while (i < j) {
 		(*L).A[i] = (*L).A[i+1];
         i++;
 	}
+	(*L).Count--;
 }
 
 void DeleteLast(List *L) {
-	(*L).A[LastIdx(*L)] = Mark;
+	(*L).Count--;
 }
 
 List Concat(List L1, List L2) {
-	List L3 = MakeList();
+	List L3;
+	MakeList(&L3);
 	int i = FirstIdx(L1);
 	int j = FirstIdx(L2);
 	int idx = 0;
