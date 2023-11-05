@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/User/Documents/GitHub/Tubes-Alstrukdat-2023/src/ADT",
-      "program": "c:/Users/User/Documents/GitHub/Tubes-Alstrukdat-2023/src/ADT/build/Debug/outDebug",
+      "cwd": ".",
+      "program": "build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
