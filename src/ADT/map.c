@@ -29,18 +29,22 @@ valuetype Value(Map M, keytype k)
 /* Mengembalikan nilai value dengan key k dari M */
 {
     boolean found = false;
-    addr idx = 0, iterator;
+    addr idx = 0;
 
     while (!found && idx < M.Count) {
-        if (IsWordEq(M.Elements[idx].Key, k)) {
+        if (IsKataEqual(M.Elements[idx].Key, k)) {
             found = true;
         }
         else {
             idx++;
         }
     }
-
-    return M.Elements[idx].Value;
+    if (found) {
+        return M.Elements[idx].Value;
+    }
+    else {
+        return;
+    }
 }
 
 void Insert(Map *M, keytype k, valuetype v)
@@ -49,13 +53,11 @@ void Insert(Map *M, keytype k, valuetype v)
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 {
-    if (IsMemberMap(*M, k)) {
-        return;
+    if (!IsMemberMap(*M, k)) {
+        M->Elements[M->Count].Key = k;
+        M->Elements[M->Count].Value = v;
+        M->Count++;
     }
-
-    M->Elements[M->Count].Key = k;
-    M->Elements[M->Count].Value = v;
-    M->Count++;
 }
 
 void Delete(Map *M, keytype k)
@@ -67,35 +69,31 @@ void Delete(Map *M, keytype k)
     boolean found = false;
     addr idx = 0, iterator;
 
-    if (!IsMemberMap(*M, k)) {
-        return;
-    }
-
-    while (!found && (idx < M->Count)) {
-        if (IsWordEq(M->Elements[idx].Key, k)) {
-            found = true;
+    if (IsMemberMap(*M, k)) {
+        while (!found && (idx < M->Count)) {
+            if (IsKataEqual(M->Elements[idx].Key, k)) {
+                found = true;
+            }
+            else {
+                idx++;
+            }
         }
-        else {
-            idx++;
+        for (iterator = (idx + 1); iterator < M->Count; iterator++) {
+            M->Elements[iterator - 1].Key = M->Elements[iterator].Key;
+            M->Elements[iterator - 1].Value = M->Elements[iterator].Value;
         }
+        M->Count--;
     }
-
-    for (iterator = (idx + 1); iterator < M->Count; iterator++) {
-        M->Elements[iterator - 1].Key = M->Elements[iterator].Key;
-        M->Elements[iterator - 1].Value = M->Elements[iterator].Value;
-    }
-
-    M->Count--;
 }
 
 boolean IsMemberMap(Map M, keytype k)
 /* Mengembalikan true jika k adalah member dari M */
 {
     boolean found = false;
-    addr idx = 0, iterator;
+    addr idx = 0;
 
     while (!found && idx < M.Count) {
-        if (IsWordEq(M.Elements[idx].Key, k)) {
+        if (IsKataEqual(M.Elements[idx].Key, k)) {
             found = true;
         }
         else {
