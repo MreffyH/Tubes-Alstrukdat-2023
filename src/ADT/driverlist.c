@@ -2,9 +2,9 @@
 
 int main(){
     List L1, L2, L3;
-    L1 = MakeList();
-    L2 = MakeList();
-    L3 = MakeList();
+    MakeList(&L1);
+    MakeList(&L2);
+    MakeList(&L3);
     printf("Berikut adalah isi List 1:\n");
     PrintList(&L1);
     printf("Berikut adalah isi List 2:\n");
