@@ -11,6 +11,10 @@ boolean IsEmpty(List L) {
 	return (L.Count == 0);
 }
 
+boolean IsFull(List L) {
+	return (L.Count == MaxEl);
+}
+
 int Length(List L) {
 	return (L.Count);
 }
@@ -24,7 +28,12 @@ void Set(List *L, IdxType i, ElType v) {
 }
 
 IdxType FirstIdx(List L) {
-    return 0;
+    if(!IsEmpty(L)) {
+		return 0;
+	}
+	else {
+		return InvalidIdx;
+	}
 }
 
 IdxType LastIdx(List L) {
@@ -53,75 +62,93 @@ boolean Search(List L, ElType X) {
 }
 
 void InsertFirst(List *L, ElType X) {
-	IdxType i = LastIdx(*L);
-	while (i >= 0) {
-		Set(L, i+1, Get(*L, i));
-		i--;
+	if(!IsFull(*L)) {
+		if(!IsEmpty(*L)) {
+			IdxType i = Length(*L);
+			while (i > 0) {
+				Set(L, i, Get(*L, i-1));
+				i--;
+			}
+		} /* i == 0 */
+		Set(L, 0, X);
+		(*L).Count++;
 	}
-	Set(L, 0, X);
-	(*L).Count++;
 }
 
 void InsertAt(List *L, ElType X, IdxType i) {
-    IdxType j = LastIdx(*L);
-	while (i <= j) {
-		Set(L, j+1, Get(*L, j));
-        j--;
+	if(!IsFull(*L)) {
+		if((IsIdxEff(*L, i-1)) || (i == 0)) { /* Memastikan dimasukan pada array yang rata kiri */
+			IdxType j = LastIdx(*L);
+			while (i <= j) {
+				Set(L, j+1, Get(*L, j));
+				j--;
+			}
+			Set(L, i, X);
+			(*L).Count++;
+		}
 	}
-	Set(L, i, X);
-	(*L).Count++;
 }
 
 void InsertLast(List *L, ElType X) {
-    if (IsEmpty(*L)) {
-        InsertFirst(L, X);
-    } else {
-        (*L).A[LastIdx(*L) + 1] = X;
-    }
-	(*L).Count++;
+	if(!IsFull(*L)) {
+		if (IsEmpty(*L)) {
+			InsertFirst(L, X);
+		} else {
+			(*L).A[Length(*L)] = X;
+			(*L).Count++;
+		}
+	}
 }
 
 void DeleteFirst(List *L) {
-	int i = FirstIdx(*L);
-	while (i < LastIdx(*L)) {
-		(*L).A[i] = (*L).A[i+1];
-        i++;
+	if(!IsEmpty(*L)){
+		int i = FirstIdx(*L);
+		while (i < LastIdx(*L)) {
+			(*L).A[i] = (*L).A[i+1];
+			i++;
+		}
+		(*L).Count--;
 	}
-    (*L).Count--;
 }
 
 void DeleteAt(List *L, IdxType i) {
-	int j = LastIdx(*L);
-	while (i < j) {
-		(*L).A[i] = (*L).A[i+1];
-        i++;
+	if(!IsEmpty(*L)) {
+		if(IsIdxEff(*L, i)) {
+			int j = LastIdx(*L);
+			while (i < j) {
+				(*L).A[i] = (*L).A[i+1];
+				i++;
+			}
+			(*L).Count--;
+		}
 	}
-	(*L).Count--;
 }
 
 void DeleteLast(List *L) {
-	(*L).Count--;
+	if(!IsEmpty(*L)) {
+		(*L).Count--;
+	}
 }
 
-List Concat(List L1, List L2) {
-	List L3;
-	MakeList(&L3);
-	int i = FirstIdx(L1);
-	int j = FirstIdx(L2);
-	int idx = 0;
-	while (i <= LastIdx(L1)) {
-		L3.A[idx] = L1.A[i];
-        idx++;
-        i++;
-	}
-	while (j <= LastIdx(L2)) {
-		L3.A[idx] = L2.A[j];
-        idx++;
-        j++;
-	}
+// List Concat(List L1, List L2) {
+// 	List L3;
+// 	MakeList(&L3);
+// 	int i = FirstIdx(L1);
+// 	int j = FirstIdx(L2);
+// 	int idx = 0;
+// 	while (i <= LastIdx(L1)) {
+// 		L3.A[idx] = L1.A[i];
+//         idx++;
+//         i++;
+// 	}
+// 	while (j <= LastIdx(L2)) {
+// 		L3.A[idx] = L2.A[j];
+//         idx++;
+//         j++;
+// 	}
 
-    return L3;
-}
+//     return L3;
+// }
 
 void PrintList(List *L) {
 	printf("[");

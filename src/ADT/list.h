@@ -106,7 +106,7 @@ void DeleteLast(List *L);
 /* I.S. L terdefinisi, tidak kosong. */
 /* F.S. F diset dengan elemen terakhir L, elemen terakhir L dihapus dari L. */
 
-List Concat(List L1, List L2);
+/* List Concat(List L1, List L2); */
 /* Prekondisi : L1 dan L2 tidak kosong */
 /* Mengirimkan sebuah List yang merupakan gabungan dari L1 dan L2 */
 /* Urutan elemen terisi dari L1, lalu L2 */
