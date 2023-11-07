@@ -5,6 +5,7 @@
 #include "../adt/set.h"
 #include "../adt/map.h"
 #include "../adt/listlinier.h"
+#include "bacaConfig.h"
 
 void start(List *Penyanyi, Map *Album, Set *Lagu);
 /*  Membaca file konfigurasi default yang berisi list lagu yang dapat dimainkan.
