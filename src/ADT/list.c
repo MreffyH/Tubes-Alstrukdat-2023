@@ -23,7 +23,7 @@ ElType Get(List L, IdxType i) {
 	return L.A[i];
 }
 
-void Set(List *L, IdxType i, ElType v) {
+void SetElmt(List *L, IdxType i, ElType v) {
 	(*L).A[i] = v;
 }
 
@@ -62,31 +62,21 @@ boolean Search(List L, ElType X) {
 }
 
 void InsertFirst(List *L, ElType X) {
-	if(!IsFull(*L)) {
-		if(!IsEmpty(*L)) {
-			IdxType i = Length(*L);
-			while (i > 0) {
-				Set(L, i, Get(*L, i-1));
-				i--;
-			}
-		} /* i == 0 */
-		Set(L, 0, X);
-		(*L).Count++;
+	IdxType i = LastIdx(*L);
+	while (i >= 0) {
+		SetElmt(L, i+1, Get(*L, i));
+		i--;
 	}
+	SetElmt(L, 0, X);
 }
 
 void InsertAt(List *L, ElType X, IdxType i) {
-	if(!IsFull(*L)) {
-		if((IsIdxEff(*L, i-1)) || (i == 0)) { /* Memastikan dimasukan pada array yang rata kiri */
-			IdxType j = LastIdx(*L);
-			while (i <= j) {
-				Set(L, j+1, Get(*L, j));
-				j--;
-			}
-			Set(L, i, X);
-			(*L).Count++;
-		}
+    IdxType j = LastIdx(*L);
+	while (i <= j) {
+		SetElmt(L, j+1, Get(*L, j));
+        j--;
 	}
+	SetElmt(L, i, X);
 }
 
 void InsertLast(List *L, ElType X) {

@@ -46,7 +46,7 @@ ElType Get(List L, IdxType i);
 /* Mengirimkan elemen list yang ke-i */
 
 /* *** Selektor SET : Mengubah nilai list dan elemen list *** */
-void Set(List *L, IdxType i, ElType v);
+void SetEmlt(List *L, IdxType i, ElType v);
 /* I.S. T terdefinisi, sembarang */
 /* F.S. Elemen T yang ke-i bernilai v */
 

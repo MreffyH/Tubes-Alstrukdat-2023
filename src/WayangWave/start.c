@@ -6,18 +6,15 @@ boolean stateWayangWave;
 
 void start(List *Penyanyi, Map *Album, Set *Lagu) {
     STARTWORD();
-    while(!isEndWord()) {
-        int singer;
-        singer = strToInteger(currentWord);
-        ADVWORD();
-        int i;
-        while (i <= singer) 
-        {
-            CreateEmpty(Penyanyi);
-            i++;
-        }
+    int singer;
+    for (int i = 0; i <= currentWord.Length; i++) {
+        singer *= 10;
+        singer += currentWord.TabWord[i] - '0';
     }
-    
+    for (int i = 0; i < singer; i++) {
+        ADVWORD();
+        Set;
+    }
 }
 /*  Membaca file konfigurasi default yang berisi list lagu yang dapat dimainkan.
     I.S. StateSPOTIFY bernilai sembarang.
@@ -28,4 +25,16 @@ void start(List *Penyanyi, Map *Album, Set *Lagu) {
 //         stateWayangWave = true;
 //     } else {
 //         stateWayangWave = false;
+//     }
+
+// while(!isEndWord()) {
+//         int singer;
+//         singer = strToInteger(currentWord);
+//         ADVWORD();
+//         int i = 0;
+//         while (i <= singer) 
+//         {
+//             CreateEmpty(Penyanyi);
+//             i++;
+//         }
 //     }
