@@ -1,39 +1,37 @@
 #include "bacaConfig.h"
 
+// Masukin pengyanyi, album dan lagu dalam bentuk apa?
 void BacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
     STARTWORD();
-    int singer = 0;
-    int albumnya = 0;
-    int lagunya = 0;
+    int jumlahPenyanyi = 0;
+    int jumlahAlbum = 0;
+    int jumlahLagu = 0;
+
     for (int i = 0; i <= currentWord.Length; i++) { // Baris pertama
-        singer *= 10;
-        singer += currentWord.TabWord[i] - '0';
+        jumlahPenyanyi *= 10;
+        jumlahPenyanyi += currentWord.TabWord[i] - '0';
     }
 
-    ADVWORD(); // baris kedua angka
-    for (int i = 0; i <= currentWord.Length; i++) {
-        albumnya *= 10;
-        albumnya += currentWord.TabWord[i] - '0';
-    }
-
-    for (int i = 0; i < singer; i++) { // masukin penyanyi-nya
+    for (int j = 0; j < jumlahPenyanyi; j++) { // di dalam penyanyi
+        ADVWORD(); // baris kedua angka
+        for (int i = 0; i <= currentWord.Length; i++) {
+            jumlahAlbum *= 10;
+            jumlahAlbum += currentWord.TabWord[i] - '0';
+        }
         ADVWORD();
-        SetElmt(Penyanyi, i , currentWord);
-    }
-
-    ADVWORD(); // baris ketiga angka
-    for (int i = 0; i <= currentWord.Length; i++) {
-        lagunya *= 10;
-        lagunya += currentWord.TabWord[i] - '0';
-    }
-
-    for (int i = 0; i < albumnya; i++) { // masukin albumnya-nya, kayaknya buat nama albumnya harus list juga?
-        ADVWORD();
-        Insert(Album, Penyanyi, currentWord);
-    }
-
-    for (int i = 0; i < lagunya; i++) {
-        ADVWORD();
-
+        SetElmt(Penyanyi, j , currentWord); // masukin penyanyi
+        for (int j = 0; j < jumlahAlbum; j++) { // di dalam album
+            ADVWORD(); // baris ketiga angka
+            for (int i = 0; i <= currentWord.Length; i++) {
+                jumlahLagu *= 10;
+                jumlahLagu += currentWord.TabWord[i] - '0';
+            }
+            ADVWORD();
+            Insert(Album, currentWord, Lagu); // ini blum ngerti 
+            for (int i = 0; i < jumlahLagu; i++) {
+                ADVWORD();
+                Insert(Album, currentWord, Lagu);
+            }
+        }
     }
 }   
