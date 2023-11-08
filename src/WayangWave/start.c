@@ -5,7 +5,7 @@
 boolean stateWayangWave;
 
 void start(List *Penyanyi, Map *Album, Set *Lagu) {
-    BacaConfig("config.txt", Penyanyi, Album, Lagu);
+    bacaConfig("config.txt", Penyanyi, Album, Lagu);
     if (!IsEmpty(*Penyanyi)) {
         printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
         stateWayangWave = true;
