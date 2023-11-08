@@ -1,7 +1,7 @@
 #include "bacaConfig.h"
 
 // Masukin pengyanyi, album dan lagu dalam bentuk apa?
-void BacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
+void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
     STARTWORD();
     int jumlahPenyanyi = 0;
     int jumlahAlbum = 0;
