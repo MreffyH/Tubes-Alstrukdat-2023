@@ -1,6 +1,6 @@
 #include "bacaConfig.h"
 
-// Masukin pengyanyi, album dan lagu dalam bentuk apa?
+// ADVWORD() diganti ADVSENTENCE()
 void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
     STARTWORD();
     int jumlahPenyanyi = 0;
