@@ -6,6 +6,7 @@
 #include "../adt/set.h"
 #include "../adt/map.h"
 #include "../adt/listlinier.h"
+#include "../ADT/mesinkalimat.h"
 
 void BacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu);
 /* Membaca file .txt dan menyimpan isinya ke dalam array of Word

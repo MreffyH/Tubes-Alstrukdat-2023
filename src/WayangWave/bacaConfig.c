@@ -23,7 +23,7 @@ void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
                 jumlahAlbum *= 10;
                 jumlahAlbum += currentWord.TabWord[i] - '0';
             }
-            ADVWORD();
+            ADVSENTENCE();
             SetElmt(Penyanyi, j , currentWord); // masukin penyanyi
             for (int j = 0; j < jumlahAlbum; j++) { // di dalam album
                 ADVWORD(); // baris ketiga angka
@@ -31,10 +31,10 @@ void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
                     jumlahLagu *= 10;
                     jumlahLagu += currentWord.TabWord[i] - '0';
                 }
-                ADVWORD();
+                ADVSENTENCE();
                 Insert(Album, currentWord, Lagu); // ini blum ngerti 
                 for (int i = 0; i < jumlahLagu; i++) {
-                    ADVWORD();
+                    ADVSENTENCE();
                     Insert(Album, currentWord, Lagu);
                 }
             }
