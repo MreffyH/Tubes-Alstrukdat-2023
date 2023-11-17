@@ -40,7 +40,7 @@ int length(Queue q)
 }
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val)
+void enqueue(Queue *q, ElTypeQ val)
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur". */
@@ -55,7 +55,7 @@ void enqueue(Queue *q, ElType val)
     TAIL(*q) = val;
 }
 
-void dequeue(Queue *q, ElType *val)
+void dequeue(Queue *q, ElTypeQ *val)
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
@@ -83,7 +83,7 @@ void displayQueue(Queue q)
 /* Jika Queue kosong : menulis [] */
 {
     if (!isEmpty(q)) {
-        ElType temp;
+        ElTypeQ temp;
         for (int i = 1; i <= length(q); i++) {
             dequeue(&q, &temp);
             printf("  %d.", i);
@@ -96,11 +96,11 @@ void displayQueue(Queue q)
     }
 }
 
-boolean IsMemberQ (Queue q, ElType v)
+boolean IsMemberQ (Queue q, ElTypeQ v)
 /* Mengembalikan nilai true apabila elemen v ada pada Queue */
 {
     if (!isEmpty(q)) {
-        ElType temp;
+        ElTypeQ temp;
         for (int i = 0; i < length(q); i++) {
             dequeue(&q, &temp);
             if (IsWordEq(temp, v)) return true;
