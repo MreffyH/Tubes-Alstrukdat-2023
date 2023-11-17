@@ -1,6 +1,7 @@
 #ifndef START_BacaConfig_H
 #define START_BacaConfig_H
 
+#include "boolean.h"
 #include "../adt/mesinkata.h"
 #include "../ADT/stack.h"
 #include "../adt/set.h"

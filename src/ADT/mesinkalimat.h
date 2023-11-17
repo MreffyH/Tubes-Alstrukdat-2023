@@ -24,4 +24,5 @@ void AcquireBlanks();
 
 void AcquireSentence();
 
+void PrintSentence();
 #endif
