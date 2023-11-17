@@ -3,7 +3,7 @@
 /* File: mesinkalimat.c */
 /* Implementasi Mesin Karakter */
 
-Sentence sentence;
+
 
 void AcquireBlanks()
 {
@@ -25,7 +25,7 @@ void AcquireBlanks()
 
 void AcquireSentence()
 {
-    sentence.Length = 0;
+    currentKalimat.Length = 0;
     int i = 0;
     while (currentChar != MARKSENTENCE)
     {
@@ -37,23 +37,42 @@ void AcquireSentence()
         {
             CopyWord();
         }
-        sentence.TabSentence[i] = currentWord;
-        sentence.Length++;
+        currentKalimat.TabSentence[i] = currentWord;
+        currentKalimat.Length++;
         ADV();
         i++;
     }
-};
+}
 /* Membaca seluruh pita dan mengakuisisi kalimat
    I.S. : currentChar adalah karakter pertama dari pita
    F.S. : sentence berisi kalimat yang sudah diakuisisi dengan format array of words.
           Contoh: "Saya suka     babi" akan disimpan dengan format ["Saya", " ", "suka", "     ", "babi"]
           currentChar = MARKSENTENCE; */
 
-void PrintSentence()
+void PrintSentence(Sentence currentKalimat)
 {
     int i = 0;
-    for (i = 0; i < sentence.Length; i++)
+    for (i = 0; i < currentKalimat.Length; i++)
     {
-        printWord(sentence.TabSentence[i]);
+        printWord(currentKalimat.TabSentence[i]);
     }
+}
+
+boolean IsKalimatEqual(Sentence s1, Sentence s2)
+/* Mengembalikan true jika dua kalimat s1 dan s2 sama */
+{
+    if (s1.Length != s2.Length)
+    {
+        return false;
+    }
+
+    for (int i = 0; i < s1.Length; i++)
+    {
+        if (!IsWordEqual(s1.TabSentence[i], s2.TabSentence[i]))
+        {
+            return false;
+        }
+    }
+
+    return true;
 }

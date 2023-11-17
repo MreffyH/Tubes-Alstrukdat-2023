@@ -32,19 +32,14 @@ valuetype Value(Map M, keytype k)
     addr idx = 0;
 
     while (!found && idx < M.Count) {
-        if (IsKataEqual(M.Elements[idx].Key, k)) {
+        if (IsKalimatEqual(M.Elements[idx].Key, k)) {
             found = true;
         }
         else {
             idx++;
         }
     }
-    if (found) {
-        return M.Elements[idx].Value;
-    }
-    else {
-        return;
-    }
+    return M.Elements[idx].Value;
 }
 
 void Insert(Map *M, keytype k, valuetype v)
@@ -71,7 +66,7 @@ void Delete(Map *M, keytype k)
 
     if (IsMemberMap(*M, k)) {
         while (!found && (idx < M->Count)) {
-            if (IsKataEqual(M->Elements[idx].Key, k)) {
+            if (IsKalimatEqual(M->Elements[idx].Key, k)) {
                 found = true;
             }
             else {
@@ -93,7 +88,7 @@ boolean IsMemberMap(Map M, keytype k)
     addr idx = 0;
 
     while (!found && idx < M.Count) {
-        if (IsKataEqual(M.Elements[idx].Key, k)) {
+        if (IsKalimatEqual(M.Elements[idx].Key, k)) {
             found = true;
         }
         else {

@@ -1,7 +1,6 @@
 #ifndef START_BacaConfig_H
 #define START_BacaConfig_H
 
-#include "../ADT/mesinkata.h"
 #include "../ADT/stack.h"
 #include "../ADT/set.h"
 #include "../ADT/map.h"

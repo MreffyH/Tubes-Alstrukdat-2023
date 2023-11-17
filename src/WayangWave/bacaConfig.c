@@ -24,7 +24,7 @@ void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
                 jumlahAlbum += currentWord.TabWord[i] - '0';
             }
             AcquireSentence();
-            SetElmt(Penyanyi, j , currentWord); // masukin penyanyi
+            SetElmt(Penyanyi, j , currentKalimat); // masukin penyanyi
             for (int j = 0; j < jumlahAlbum; j++) { // di dalam album
                 ADVWORD(); // baris ketiga angka
                 for (int i = 0; i <= currentWord.Length; i++) {
@@ -32,10 +32,10 @@ void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
                     jumlahLagu += currentWord.TabWord[i] - '0';
                 }
                 AcquireSentence();
-                Insert(Album, currentWord, Lagu); // ini blum ngerti 
+                Sentence namaAlbum = currentKalimat;
                 for (int i = 0; i < jumlahLagu; i++) {
                     AcquireSentence();
-                    Insert(Album, currentWord, Lagu);
+                    Insert(Album, namaAlbum, currentKalimat);
                 }
             }
         }
