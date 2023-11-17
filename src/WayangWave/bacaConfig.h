@@ -1,12 +1,11 @@
 #ifndef START_BacaConfig_H
 #define START_BacaConfig_H
 
-#include "boolean.h"
-#include "../adt/mesinkata.h"
+#include "../ADT/mesinkata.h"
 #include "../ADT/stack.h"
-#include "../adt/set.h"
-#include "../adt/map.h"
-#include "../adt/list.h"
+#include "../ADT/set.h"
+#include "../ADT/map.h"
+#include "../ADT/list.h"
 #include "../ADT/mesinkalimat.h"
 
 void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu);

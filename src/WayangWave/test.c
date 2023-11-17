@@ -23,8 +23,7 @@ void PrintSet(Set S)
     }
 }
 
-#include <stdio.h>
-#include "map.h"
+
 
 void PrintMap(Map M)
 /* Mencetak elemen-elemen Map M ke layar */
