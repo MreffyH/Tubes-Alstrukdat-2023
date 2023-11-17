@@ -115,3 +115,10 @@ Word SalinKata(Word Kata){
     }
     return HasilCopyK;
 }
+
+void printWord(Word Kata){
+    for(int i = 0; i < Kata.Length; i++){
+        printf("%c", Kata.TabWord[i]);
+    }
+    printf("\n");
+}

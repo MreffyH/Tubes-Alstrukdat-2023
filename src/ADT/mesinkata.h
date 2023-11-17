@@ -54,4 +54,6 @@ int strToInteger(Word Kata);
 
 Word SalinKata(Word Kata);
 
+void printWord(Word Kata);
+
 #endif

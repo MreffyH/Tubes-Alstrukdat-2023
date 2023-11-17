@@ -54,7 +54,7 @@ void DeleteSet(Set *S, infotypeSet Elmt)
     }
     while (!found && idx < S->Count)
     {
-        if (IsWordEq(S->Elements[idx], Elmt))
+        if (IsKalimatEqual(S->Elements[idx], Elmt))
         {
             found = true;
         }
@@ -77,7 +77,7 @@ boolean IsMemberSet(Set S, infotypeSet Elmt)
     addrSer idx = 0;
     while (!found && idx < S.Count)
     {
-        if (IsWordEq(S.Elements[idx], Elmt))
+        if (IsKalimatEqual(S.Elements[idx], Elmt))
         {
             found = true;
         }

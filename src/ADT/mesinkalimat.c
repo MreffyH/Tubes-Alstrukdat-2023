@@ -3,7 +3,7 @@
 /* File: mesinkalimat.c */
 /* Implementasi Mesin Karakter */
 
-
+Sentence currentKalimat;
 
 void AcquireBlanks()
 {
@@ -68,7 +68,7 @@ boolean IsKalimatEqual(Sentence s1, Sentence s2)
 
     for (int i = 0; i < s1.Length; i++)
     {
-        if (!IsWordEqual(s1.TabSentence[i], s2.TabSentence[i]))
+        if (!IsKataEqual(s1.TabSentence[i], s2.TabSentence[i]))
         {
             return false;
         }

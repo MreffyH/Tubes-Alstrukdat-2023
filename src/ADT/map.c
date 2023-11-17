@@ -42,20 +42,32 @@ valuetype Value(Map M, keytype k)
     return M.Elements[idx].Value;
 }
 
-void Insert(Map *M, keytype k, valuetype v)
+void InsertMap(Map *M, keytype k, Sentence lagu)
 /* Menambahkan Elmt sebagai elemen Map M. */
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 {
-    if (!IsMemberMap(*M, k)) {
+    // if (!IsMemberMap(*M, k)) {
+    //     M->Elements[M->Count].Key = k;
+    //     M->Elements[M->Count].Value = v;
+    //     M->Count++;
+    // }
+    int i = 0;
+    while (i < M->Count && !IsKalimatEqual(k, M->Elements[i].Key)) {
+        i++;
+    } /* i == M->Count */
+    if (i < M->Count){ /* Key sudah ada alias nama albumnya udah ada */
+        InsertSet(&((*M).Elements[i].Value), lagu);
+    }
+    else{ /* Key belum ada alias nama album baru*/
         M->Elements[M->Count].Key = k;
-        M->Elements[M->Count].Value = v;
+        InsertSet(&((*M).Elements[i].Value), lagu);
         M->Count++;
     }
 }
 
-void Delete(Map *M, keytype k)
+void DeleteMap(Map *M, keytype k)
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
         element dengan key k mungkin anggota / bukan anggota dari M */

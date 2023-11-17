@@ -1,9 +1,19 @@
 #include "bacaConfig.h"
 
 // ADVWORD() diganti ADVSENTENCE()
-void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
+void bacaConfig(List *Penyanyi, Map *Album, Set *Lagu) {
+    printf("Jalan gak?\n");
+    // char dir[50] = "./data/";
+
+    // int i = 0;
+    // while (filesrc[i]) {
+    //     dir[7 + i] = filesrc[i];
+    //     i++;
+    // }
+    // dir[7 + i] = '\0';
+    // FILE* input = fopen(dir, "r")
     FILE* input = fopen("config.txt", "r");
-    
+    printf("Jalan gak?\n");
     if (input == NULL) {
         printf("File tidak ditemukan. ");
     } else {
@@ -24,6 +34,7 @@ void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
                 jumlahAlbum += currentWord.TabWord[i] - '0';
             }
             AcquireSentence();
+            PrintSentence(currentKalimat);
             SetElmt(Penyanyi, j , currentKalimat); // masukin penyanyi
             for (int j = 0; j < jumlahAlbum; j++) { // di dalam album
                 ADVWORD(); // baris ketiga angka
@@ -32,12 +43,15 @@ void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu) {
                     jumlahLagu += currentWord.TabWord[i] - '0';
                 }
                 AcquireSentence();
+                PrintSentence(currentKalimat);
                 Sentence namaAlbum = currentKalimat;
                 for (int i = 0; i < jumlahLagu; i++) {
                     AcquireSentence();
-                    Insert(Album, namaAlbum, currentKalimat);
+                    PrintSentence(currentKalimat);
+                    InsertMap(Album, namaAlbum, currentKalimat);
                 }
             }
         }
     }  
+    fclose(input);
 } 

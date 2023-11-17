@@ -26,5 +26,7 @@ void AcquireBlanks();
 
 void AcquireSentence();
 
-void PrintSentence();
+void PrintSentence(Sentence currentKalimat);
+
+boolean IsKalimatEqual(Sentence s1, Sentence s2);
 #endif

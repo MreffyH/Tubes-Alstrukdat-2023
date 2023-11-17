@@ -2,7 +2,8 @@
 #define map_H
 #include <stdio.h>
 #include "boolean.h"
-#include "mesinkata.h"
+#include "mesinkalimat.h"
+#include "set.h"
 
 /* MODUL Map
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
@@ -14,7 +15,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 
 // typedef int bool;
 typedef Sentence keytype;
-typedef Sentence valuetype;
+typedef Set valuetype;
 typedef int addr;
 
 typedef struct
@@ -54,13 +55,13 @@ boolean IsFullMap(Map M);
 valuetype Value(Map M, keytype k);
 /* Mengembalikan nilai value dengan key k dari M */
 
-void Insert(Map *M, keytype k, valuetype v);
+void InsertMap(Map *M, keytype k, Sentence lagu);
 /* Menambahkan Elmt sebagai elemen Map M. */
 /* I.S. M mungkin kosong, M tidak penuh
         M mungkin sudah beranggotakan v dengan key k */
 /* F.S. v menjadi anggota dari M dengan key k. Jika k sudah ada, operasi tidak dilakukan */
 
-void Delete(Map *M, keytype k);
+void DeleteMap(Map *M, keytype k);
 /* Menghapus Elmt dari Map M. */
 /* I.S. M tidak kosong
         element dengan key k mungkin anggota / bukan anggota dari M */
