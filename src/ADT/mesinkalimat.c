@@ -1,24 +1,59 @@
+#include <stdio.h>
 #include "mesinkalimat.h"
-#include<stdio.h>
+/* File: mesinkalimat.c */
+/* Implementasi Mesin Karakter */
 
-void CopySentence() {
+Sentence sentence;
+
+void AcquireBlanks()
+{
     int i = 0;
-    while (currentChar != MARK && i < 99)
+    currentWord.Length = 0;
+    while (currentChar == BLANK)
     {
-        currentSentence[i] = currentChar;
+        currentWord.TabWord[i] = currentChar;
+        currentWord.Length++;
+        ADV();
         i++;
-        currentChar = getchar();
     }
-    currentSentence[i] = '\0';
 }
+/*  Membaca blank spaces
+    I.S :   currentChar adalah blank pertama
+    F.S :   currentWord adalah kumpulan blank
+            currentChar adalah sebuah character atau MARK
+    */
 
-void ADVSENTENCE() {
-    IgnoreBlanks();
-    if (currentChar == MARK) {
-        endSentence = true;
-    } else {
-        endSentence = false;
-        CopySentence();
-        IgnoreBlanks();
+void AcquireSentence()
+{
+    sentence.Length = 0;
+    int i = 0;
+    while (currentChar != MARKSENTENCE)
+    {
+        if (currentChar == BLANK)
+        {
+            AcquireBlanks();
+        }
+        else
+        {
+            CopyWord();
+        }
+        sentence.TabSentence[i] = currentWord;
+        sentence.Length++;
+        ADV();
+        i++;
+    }
+};
+/* Membaca seluruh pita dan mengakuisisi kalimat
+   I.S. : currentChar adalah karakter pertama dari pita
+   F.S. : sentence berisi kalimat yang sudah diakuisisi dengan format array of words.
+          Contoh: "Saya suka     babi" akan disimpan dengan format ["Saya", " ", "suka", "     ", "babi"]
+          currentChar = MARKSENTENCE; */
+
+void PrintSentence()
+{
+    int i = 0;
+    for (i = 0; i < sentence.Length; i++)
+    {
+        printWord(sentence.TabSentence[i]);
     }
 }

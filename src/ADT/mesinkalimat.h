@@ -1,17 +1,27 @@
-#ifndef __MESINKATA_H__
-#define __MESINKATA_H__
+/* File: mesinkalimat.h */
+
+#ifndef _MESINKALIMAT_H_
+#define _MESINKALIMAT_H_
 
 #include "boolean.h"
 #include "mesinkata.h"
-#include "mesinkarakter.h"
 
-#define MARK '\n'
+#define NMax 10
+#define MARKSENTENCE '\n'
+#define BLANK ' '
 
-char currentSentence[100];
-boolean endSentence;
+typedef struct
+{
+   Word TabSentence[280]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
+   int Length;
+} Sentence;
 
-void CopySentence();
+/* State Mesin Word */
+extern boolean EndWord;
+extern Word currentWord;
 
-void ADVSENTENCE();
+void AcquireBlanks();
+
+void AcquireSentence();
 
 #endif

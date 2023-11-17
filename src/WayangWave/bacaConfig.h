@@ -8,7 +8,7 @@
 #include "../adt/listlinier.h"
 #include "../ADT/mesinkalimat.h"
 
-void BacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu);
+void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu);
 /* Membaca file .txt dan menyimpan isinya ke dalam array of Word
 I.S. list terdefinisi mungkin kosong tetapi tidak penuh
 F.S. Isi listGame bertambah dari isi file .txt
