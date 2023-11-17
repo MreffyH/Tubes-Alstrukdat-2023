@@ -11,9 +11,9 @@
 #define CAPACITY 100
 
 /* Definisi elemen dan address */
-typedef int ElType;
+typedef Sentence ElTypeQ;
 typedef struct {
-	ElType buffer[CAPACITY]; 
+	ElTypeQ buffer[CAPACITY]; 
 	int idxHead;
 	int idxTail;
 } Queue;
@@ -45,12 +45,12 @@ int length(Queue q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElType val);
+void enqueue(Queue *q, ElTypeQ val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeue(Queue *q, ElType *val);
+void dequeue(Queue *q, ElTypeQ *val);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
@@ -62,7 +62,7 @@ void displayQueue(Queue q);
    I.S. Q sembarang, mungkin kosong
    F.S. Isi Q ditampilkan ke layar */
 
-boolean IsMemberQ (Queue q, ElType v);
+boolean IsMemberQ (Queue q, ElTypeQ v);
 /* Mengembalikan nilai true apabila elemen v ada pada Queue */
 
 #endif
