@@ -3,7 +3,7 @@
 #include "stack.h"
 
 /* *** Konstruktor/Kreator *** */
-void CreateEmpty (Stack *S)
+void CreateEmptyStack (Stack *S)
 /* I.S. sembarang; */
 /* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
 /* jadi indeksnya antara 0.. MaxEl */

@@ -6,7 +6,6 @@
 #include "boolean.h"
 #include "mesinkata.h"
 
-#define NMax 10
 #define MARKSENTENCE '\n'
 #define BLANK ' '
 
