@@ -5,7 +5,7 @@
 #include "../ADT/stack.h"
 #include "../adt/set.h"
 #include "../adt/map.h"
-#include "../adt/listlinier.h"
+#include "../adt/list.h"
 #include "../ADT/mesinkalimat.h"
 
 void bacaConfig(char *filesrc, List *Penyanyi, Map *Album, Set *Lagu);
