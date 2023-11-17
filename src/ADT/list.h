@@ -6,6 +6,7 @@
 #define ADTList1
 
 #include "boolean.h"
+#include "mesinkalimat.h"
 
 /* Kamus Umum */
 #define MaxEl 100
@@ -13,7 +14,7 @@
 
 /* Definisi elemen dan koleksi objek */
 #define IdxType int
-#define ElType int
+#define ElType Sentence
 
 typedef struct {
 	ElType A[MaxEl];  /* Memori tempat penyimpanan elemen (container) */

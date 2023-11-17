@@ -1,5 +1,10 @@
 #include <stdio.h>
 #include "bacaConfig.h"
+#include "bacaConfig.c"
+#include "../ADT/map.c"
+#include "../ADT/mesinkalimat.c"
+#include "../ADT/set.c"
+#include "../ADT/list.c"
 
 void PrintSet(Set S)
 /* Mencetak elemen-elemen Set S ke layar */
@@ -54,8 +59,8 @@ int main() {
     Map Album;
     Set Lagu;
 
-    CreateEmpty(&Penyanyi);
-    CreateMap(&Album);
+    MakeList(&Penyanyi);
+    CreateEmptyMap(&Album);
     CreateEmptySet(&Lagu);
 
     bacaConfig("bacaConfig.txt", &Penyanyi, &Album, &Lagu);

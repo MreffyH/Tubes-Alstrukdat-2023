@@ -13,8 +13,8 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 #define MaxElMap 10
 
 // typedef int bool;
-typedef Word keytype;
-typedef int valuetype;
+typedef Sentence keytype;
+typedef Sentence valuetype;
 typedef int addr;
 
 typedef struct

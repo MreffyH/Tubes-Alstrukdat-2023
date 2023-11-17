@@ -15,9 +15,12 @@ typedef struct
    int Length;
 } Sentence;
 
+
 /* State Mesin Word */
 extern boolean EndWord;
 extern Word currentWord;
+extern Sentence currentKalimat;
+
 
 void AcquireBlanks();
 
