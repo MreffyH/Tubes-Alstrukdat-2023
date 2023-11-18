@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "mesinkalimat.h"
 /* File: mesinkalimat.c */
-/* Implementasi Mesin Karakter */
+/* Implementasi Mesin Kalimat */
 
 Sentence currentKalimat;
 
@@ -26,7 +26,7 @@ void AcquireBlanks()
 void AcquireSentence()
 {
     currentKalimat.Length = 0;
-    int i = 0;
+    int idx = 0;
     while (currentChar != MARKSENTENCE)
     {
         if (currentChar == BLANK)
@@ -37,10 +37,13 @@ void AcquireSentence()
         {
             CopyWord();
         }
-        currentKalimat.TabSentence[i] = currentWord;
-        currentKalimat.Length++;
+        
+        for (int i = 0; i < currentWord.Length; i++){
+            currentKalimat.TabSentence[idx+i] = currentWord.TabWord[i];
+            currentKalimat.Length++;
+        }
+        idx = idx + currentWord.Length;
         ADV();
-        i++;
     }
 }
 /* Membaca seluruh pita dan mengakuisisi kalimat
@@ -54,25 +57,32 @@ void PrintSentence(Sentence currentKalimat)
     int i = 0;
     for (i = 0; i < currentKalimat.Length; i++)
     {
-        printWord(currentKalimat.TabSentence[i]);
+        printf("%c", currentKalimat.TabSentence[i]);
     }
+    print("\n");
 }
 
 boolean IsKalimatEqual(Sentence s1, Sentence s2)
 /* Mengembalikan true jika dua kalimat s1 dan s2 sama */
 {
-    if (s1.Length != s2.Length)
+    boolean sama = true;
+    if (s1.Length == s2.Length)
     {
-        return false;
-    }
-
-    for (int i = 0; i < s1.Length; i++)
-    {
-        if (!IsKataEqual(s1.TabSentence[i], s2.TabSentence[i]))
+        int i = 0;
+        while ((i < s1.Length) && (sama))
         {
-            return false;
+            if (s1.TabSentence[i] != s2.TabSentence[i])
+            {
+                sama = false;
+            }
+            else{
+                i++;
+            }
         }
     }
-
-    return true;
+    else{
+        sama = false;
+    }
+    
+    return sama;
 }
