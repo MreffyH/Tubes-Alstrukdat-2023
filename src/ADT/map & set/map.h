@@ -1,8 +1,7 @@
 #ifndef map_H
 #define map_H
-#include <stdio.h>
-#include "boolean.h"
-#include "mesinkalimat.h"
+// #include "../ADT/boolean.h"
+#include "../ADT/mesin/mesinkalimat.h"
 #include "set.h"
 
 /* MODUL Map
@@ -15,7 +14,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 
 // typedef int bool;
 typedef Sentence keytype;
-typedef Set valuetype;
+typedef Sentence valuetype;
 typedef int addr;
 
 typedef struct
