@@ -27,8 +27,11 @@ void ADV() {
 /* Pita dimajukan satu karakter.
    I.S. : Karakter pada jendela = currentChar, currentChar != MARK
    F.S. : currentChar adalah karakter berikutnya dari currentChar yang lama,
-          currentChar mungkin = MARK
-          Jika  currentChar = MARK maka EOP akan menyala (true) */
+          currentChar mungkin = MARK */
+    retval = fscanf (pita, "%c", &currentChar);
+}
+
+void ADVFILE() {
     retval = fscanf (pita, "%c", &currentChar);
     if (feof(pita)) {
         fclose(pita);
