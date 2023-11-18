@@ -15,13 +15,13 @@ void IgnoreBlanks()
     }
 }
 
-void STARTWORD(FILE* input)
+void STARTWORD()
 {
     /* I.S. : currentChar sembarang
        F.S. : endWord = true, dan currentChar = MARK;
               atau endWord = false, currentWord adalah kata yang sudah diakuisisi,
               currentChar karakter pertama sesudah karakter terakhir kata */
-    START(input);
+    START();
     IgnoreBlanks();
     if (currentChar == MARK)
     {

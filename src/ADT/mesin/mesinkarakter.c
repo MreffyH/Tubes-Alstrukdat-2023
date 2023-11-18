@@ -1,12 +1,17 @@
 #include "mesinkarakter.h"
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 char currentChar;
-boolean EOP;
 static FILE *pita;
 static int retval;
 
-void START(FILE *input) {
+void STARTFILE(char *input){
+    pita = fopen(input,"r");
+    ADV();
+}
+
+void START() {
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
    Pita baca diambil dari stdin.
@@ -14,7 +19,7 @@ void START(FILE *input) {
    F.S. : currentChar adalah karakter pertama pada pita
           Jika currentChar != MARK maka EOP akan padam (false)
           Jika currentChar = MARK maka EOP akan menyala (true) */
-    pita = input;
+    pita = stdin;
     ADV();
 }
 
@@ -25,8 +30,7 @@ void ADV() {
           currentChar mungkin = MARK
           Jika  currentChar = MARK maka EOP akan menyala (true) */
     retval = fscanf (pita, "%c", &currentChar);
-    EOP = (currentChar == MARK);
-    if (EOP) {
+    if (feof(pita)) {
         fclose(pita);
     } 
 }

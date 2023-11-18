@@ -11,20 +11,21 @@
 
 typedef struct
 {
-   Word TabSentence[280]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
+   char TabSentence[280]; /* container penyimpan kata, indeks yang dipakai [0..NMax-1] */
    int Length;
 } Sentence;
 
 
 /* State Mesin Word */
-extern boolean EndWord;
-extern Word currentWord;
+extern boolean EndSentence;
 extern Sentence currentKalimat;
 
 
 void AcquireBlanks();
 
-void AcquireSentence();
+void CopySentence();
+
+void NewSentence();
 
 void PrintSentence(Sentence currentKalimat);
 

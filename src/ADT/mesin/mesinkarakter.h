@@ -11,6 +11,11 @@
 extern char currentChar;
 extern boolean EOP;
 
+void STARTFILE(char *input);
+/* Digunakan untuk menginisiasi program utama 
+   I.S. : sembarang
+   F.S. : File terbaca */
+
 void START();
 /* Mesin siap dioperasikan. Pita disiapkan untuk dibaca.
    Karakter pertama yang ada pada pita posisinya adalah pada jendela.
