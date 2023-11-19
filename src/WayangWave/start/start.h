@@ -2,7 +2,7 @@
 #define START_WayangWave_H
 
 
-#include "../ADT/listmapset/listmapset.h"
+#include "../../ADT/listmapset/listmapset.h"
 // #include "../ADT/mesin/mesinkalimat.h"
 
 void start(char *input, List *Penyanyi, Map *Album, Set *Lagu);
