@@ -1,14 +1,14 @@
 #include <stdio.h>
 
 void helpBefore(){
-    printf("===============[ Menu Help WayangWave ]===============\n");
+    printf("============================================================[ Menu Help WayangWave ]============================================================\n");
     printf("1. START -> Untuk masuk sesi baru\n");
     printf("2. LOAD -> Untuk memulai sesi berdasarkan file konfigurasi\n");
-    printf("======================================================\n");
+    printf("================================================================================================================================================\n");
 }
 
 void helpAfter(){
-    printf("===============[ Menu Help WayangWave ]===============\n");
+    printf("============================================================[ Menu Help WayangWave ]============================================================\n");
     printf("1. LIST -> Untuk menampilkan list playlist yang ada, list penyanyi, list album dari penyanyi, dan list lagu yang ada di album\n");
     printf("   -----Jenis command-----\n");
     printf("   1.a. LIST DEFAULT -> untuk melihat list penyanyi yang ada\n");
@@ -38,7 +38,6 @@ void helpAfter(){
     printf("6. STATUS -> untuk menampilkan lagu yang sedang dimainkan beserta Queue song yang ada dan dari playlist mana lagu itu diputar\n");
     printf("7. SAVE -> untuk menyimpan state aplikasi terbaru ke dalam suatu file\n");
     printf("8. QUIT -> untuk keluar dari sesi aplikasi WayangWave\n");
-    printf("======================================================\n");   
+    printf("================================================================================================================================================\n");   
 
 }
-
