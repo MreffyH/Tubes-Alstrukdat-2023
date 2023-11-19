@@ -31,6 +31,8 @@
 
 CFLAGS = -Wno-implicit-function-declaration
 
+all: final
+
 final: test.o start.o listmapset.o list.o set.o mesinkalimat.o mesinkata.o mesinkarakter.o
 
 test.o: test.c
@@ -59,4 +61,7 @@ mesinkata.o: mesinkata.c
 
 mesinkarakter.o: mesinkarakter.c
 	gcc $(CFLAGS) -c ../ADT/mesin/mesinkarakter.c
+
+clean:
+	rm test.o start.o listmapset.o list.o set.o mesinkalimat.o mesinkata.o mesinkarakter.o final
 
