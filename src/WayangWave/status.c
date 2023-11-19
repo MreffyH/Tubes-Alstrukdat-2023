@@ -1,41 +1,82 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-void stat(List *song, List *queue, List *playlist)
-{
-    if(song.count == Nil) 
-    {   // tidak ada lagu yang diputar
-        printf("Now Playing:\n");
+// Definisi struktur lagu
+typedef struct {
+    char title[100];
+    char album[100];
+    char artist[100];
+} Song;
+
+// Definisi struktur node untuk queue
+typedef struct QueueNode {
+    Song song;
+    struct QueueNode* next;
+} QueueNode;
+
+// Definisi struktur untuk queue
+typedef struct {
+    QueueNode* front;
+    QueueNode* rear;
+} Queue;
+
+// Definisi struktur untuk playlist
+typedef struct {
+    char name[100];
+    Queue songs; // Misalnya, playlist menggunakan queue juga untuk menyimpan lagu
+} Playlist;
+
+// Global variables untuk Now Playing dan Playlist saat ini
+Song nowPlaying;
+Playlist currentPlaylist;
+int isPlaylistActive = 0;
+
+// Fungsi untuk menampilkan status
+void printStatus(Queue* queue) {
+    printf("Now Playing:\n");
+    if (strlen(nowPlaying.title) == 0) {
         printf("No songs have been played yet. Please search for a song to begin playback.\n");
-        printf("\n");
-        printf("Queue:\n");
-        printf("Your queue is empty.\n");
+    } else {
+        printf("%s - %s - %s\n", nowPlaying.artist, nowPlaying.title, nowPlaying.album);
     }
-    else
-    {
-        if(queue.count == Nil)
-        {   // ada lagu, queue kosong
-            printf("Now Playing:\n");
-            printf("%d\n", lagu);
-            printf("Queue:\n");
-            printf("Your queue is empty.\n");          
+
+    printf("\nQueue:\n");
+    if (queue->front == NULL) {
+        printf("Your queue is empty.\n");
+    } else {
+        QueueNode* temp = queue->front;
+        int count = 1;
+        while (temp != NULL) {
+            printf("%d. %s - %s - %s\n", count, temp->song.artist, temp->song.title, temp->song.album);
+            temp = temp->next;
+            count++;
         }
-        else
-        {   
-            if(playlist.count == 1)
-            {   // ada lagu, ada queue, ada 1 playlist
-                printf("Current Playlist: %d", playlist);
-                printf("Now Playing:\n");
-                printf("%d\n", lagu);
-                printf("Queue:\n");
-                printf("%d\n", queue);     
-            }
-            else
-            {   // ada lagu, ada queue
-                printf("Now Playing:\n");
-                printf("%d\n", lagu);
-                printf("Queue:\n");
-                printf("%d\n", queue);   
-            }            
-        }
-    }       
+    }
+
+    if (isPlaylistActive) {
+        printf("\nCurrent Playlist: %s\n", currentPlaylist.name);
+    }
+}
+
+// Fungsi utama
+int main() {
+    Queue queue = {NULL, NULL}; // Inisialisasi queue kosong
+
+    // Contoh penggunaan
+    strcpy(nowPlaying.title, "Up&Up");
+    strcpy(nowPlaying.artist, "Coldplay");
+    strcpy(nowPlaying.album, "A Head Full of Dreams");
+
+    // Contoh menambahkan lagu ke queue
+    // ... (kode untuk menambahkan lagu ke queue)
+
+    // Contoh menetapkan playlist aktif
+    isPlaylistActive = 1;
+    strcpy(currentPlaylist.name, "Copium");
+
+    // Menampilkan status
+    printStatus(&queue);
+
+    return 0;
 }
