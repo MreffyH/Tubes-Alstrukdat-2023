@@ -37,6 +37,6 @@
 # CFLAGS = -Wno-implicit-function-declaration
 
 run:
-	gcc ../src/WayangWave/test.c ../src/WayangWave/start/start.c ../src/ADT/listmapset/listmapset.c ../src/ADT/list/list.c ../src/ADT/mapset/set.c ../src/ADT/mesin/mesinkalimat.c ../src/ADT/mesin/mesinkata.c ../src/ADT/mesin/mesinkarakter.c -o final
+	gcc test.c WayangWave/start/start.c ADT/listmapset/listmapset.c ADT/list/list.c ADT/mapset/set.c ADT/mesin/mesinkalimat.c ADT/mesin/mesinkata.c ADT/mesin/mesinkarakter.c -o main
 	./final
 
