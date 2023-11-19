@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../ADT/mesin/mesinkalimat.h"
-#include "arraydin.h"
-#define MAX_LENGTH 50 // Asumsikan panjang maksimum dari nama
+
+#define MAX_LENGTH 50
 
 typedef struct
 {
@@ -16,7 +16,6 @@ typedef struct
     Data *data;
     int size;
 } List;
-
 int arrayfirst()
 {
     FILE *f = fopen("../../save/config.txt", "r");
@@ -37,7 +36,16 @@ int arrayfirst()
         return i;
     }
 }
+int customStrCmp(const char *str1, const char *str2)
+{
+    while (*str1 != '\0' && *str2 != '\0' && *str1 == *str2)
+    {
+        str1++;
+        str2++;
+    }
 
+    return (*str1 - *str2);
+}
 void Fullarray(List *L)
 // menjadikan semua data file txt menjadi list
 {
@@ -69,18 +77,6 @@ void Fullarray(List *L)
         }
     }
     fclose(f);
-}
-
-int customStrCmp(const char *str1, const char *str2)
-// mengcompare string
-{
-    while (*str1 != '\0' && *str2 != '\0' && *str1 == *str2)
-    {
-        str1++;
-        str2++;
-    }
-
-    return (*str1 - *str2);
 }
 
 int namatarget(List *L, const char *nama)
@@ -179,41 +175,71 @@ void listdefault(List *s)
         printf("%s\n", (*s).data[i].nama1);
     }
 }
-
-void ListAlbumPenyanyi2(char nama_penyanyi[])
+void ListAlbumPenyanyi2(List *L, const char *penyanyi)
 {
-    struct Penyanyi *penyanyi = GetPenyanyi(nama_penyanyi);
-    if (penyanyi == NULL)
+    Fullarray(L);
+
+    printf("Daftar Album oleh %s :\n", penyanyi);
+
+    int i = 0;
+
+    // Iterasi melalui list dan cari data yang sesuai dengan penyanyi
+    while (i < (*L).size && customStrCmp((*L).data[i].nama1, penyanyi) != 0)
     {
-        printf("Penyanyi tidak ditemukan\n");
-        return;
+        i++;
     }
-    struct Album *curr = penyanyi->daftar_album;
-    while (curr != NULL)
+
+    // Cek apakah penyanyi ditemukan
+    if (i < (*L).size)
     {
-        printf("%s - %s\n", curr->penyanyi, curr->nama_album);
-        curr = curr->next;
+        // Jumlah album penyanyi
+        int jumlahAlbum = atoi((*L).data[i].id);
+
+        // Melompati baris penyanyi
+        i++;
+
+        // Cetak nama album
+        for (int j = 0; j < jumlahAlbum; j++)
+        {
+            printf("%s\n", (*L).data[i + j].nama2);
+        }
+    }
+    else
+    {
+        printf("Penyanyi %s tidak ditemukan.\n", penyanyi);
     }
 }
-
-void ListLaguDariAlbumPenyanyi(char nama_penyanyi[], char nama_album[])
+void ListLaguDariAlbumPenyanyi(List *L, const char *penyanyi, const char *album)
 {
-    struct Penyanyi *penyanyi = GetPenyanyi(nama_penyanyi);
-    if (penyanyi == NULL)
+    Fullarray(L);
+
+    printf("Daftar Lagu Album %s oleh %s :\n", album, penyanyi);
+
+    int i = 0;
+
+    // Iterasi melalui list dan cari data yang sesuai dengan penyanyi dan album
+    while (i < (*L).size && (((*L).data[i].nama1, penyanyi) != 0 || strcmp((*L).data[i].nama2, album) != 0))
     {
-        printf("Penyanyi tidak ditemukan\n");
-        return;
+        i++;
     }
-    struct Album *album = GetAlbum(penyanyi, nama_album);
-    if (album == NULL)
+
+    // Cek apakah album ditemukan
+    if (i < (*L).size)
     {
-        printf("Album tidak ditemukan\n");
-        return;
+        // Jumlah lagu dalam album
+        int jumlahLagu = atoi((*L).data[i].id);
+
+        // Melompati baris album
+        i++;
+
+        // Cetak nama lagu
+        for (int j = 0; j < jumlahLagu; j++)
+        {
+            printf("%s\n", (*L).data[i + j].nama1);
+        }
     }
-    struct ListLagu *curr = album->daftar_lagu;
-    while (curr != NULL)
+    else
     {
-        printf("%s\n", curr->nama_lagu);
-        curr = curr->next;
+        printf("Album %s tidak ditemukan untuk %s.\n", album, penyanyi);
     }
 }
