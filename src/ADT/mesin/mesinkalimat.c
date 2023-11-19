@@ -59,7 +59,7 @@ void PrintSentence(Sentence currentKalimat)
     {
         printf("%c", currentKalimat.TabSentence[i]);
     }
-    print("\n");
+    printf("\n");
 }
 
 boolean IsKalimatEqual(Sentence s1, Sentence s2)
