@@ -10,19 +10,18 @@ void listDefault(List *s, char name_penyanyi, char name_album, char name_lagu)
     Fullarray(s);
     printf(">> LIST DEFAULT;\n");
     int i;
-    char *b = arrayfirst();
     MakeList(s);
     listdefault(s);
 
     char choice;
     if (choice == 'Y' || choice == 'y')
     {
-        if (Search(s, name_penyanyi))
+        if (Search(&s, &name_penyanyi))
         {
             printf("Pilih penyanyi untuk melihat album mereka: \n%s", name_penyanyi);
             printf("Daftar Album oleh %s:\n", name_penyanyi);
             ListAlbumPenyanyi(s, name_penyanyi);
-            if (Search(*s, name_album))
+            if (Search(&s, &name_album))
             {
                 printf("Masukkan Nama Album yang dipilih : \n%s\n", name_album);
                 char choice2;

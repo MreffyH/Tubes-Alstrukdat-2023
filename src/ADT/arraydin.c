@@ -111,7 +111,7 @@ void ListAlbumPenyanyi(List *L, const char *penyanyi)
         printf("%d. %s\n", i + 1, (*L).data[i].nama2);
 
         // Jumlah lagu dalam album
-        jumlahLagu = atoi((*L).data[i + 1].id);
+        jumlahLagu = (*L).data[i + 1].id;
 
         // Melompati baris album
         i += 2;
@@ -148,7 +148,7 @@ void lagudanalbum(List *L, const char *penyanyi, const char *album)
     if (i < (*L).size)
     {
         // Jumlah lagu dalam album
-        jumlahlagu = atoi((*L).data[i + 1].id);
+        jumlahlagu = (*L).data[i + 1].id;
 
         // Melompati baris album
         i += 2;
@@ -156,7 +156,7 @@ void lagudanalbum(List *L, const char *penyanyi, const char *album)
         // Cetak nama lagu
         for (int j = 0; j < jumlahlagu; j++)
         {
-            printf("   %s\n", (*L).data[i].nama1);
+            printf("%d. %s\n", j + 1, (*L).data[i].nama1);
             i++;
         }
     }
@@ -169,10 +169,11 @@ void lagudanalbum(List *L, const char *penyanyi, const char *album)
 void listdefault(List *s)
 {
     Fullarray(s);
+    int j = 0;
     printf("Daftar Penyanyi :\n");
     for (int i = 0; i < (*s).size; i++)
     {
-        printf("%s\n", (*s).data[i].nama1);
+        printf("%d. %s\n", j + 1, (*s).data[i].nama1);
     }
 }
 void ListAlbumPenyanyi2(List *L, const char *penyanyi)
@@ -193,7 +194,7 @@ void ListAlbumPenyanyi2(List *L, const char *penyanyi)
     if (i < (*L).size)
     {
         // Jumlah album penyanyi
-        int jumlahAlbum = atoi((*L).data[i].id);
+        int jumlahAlbum = (*L).data[i].id;
 
         // Melompati baris penyanyi
         i++;
@@ -201,7 +202,7 @@ void ListAlbumPenyanyi2(List *L, const char *penyanyi)
         // Cetak nama album
         for (int j = 0; j < jumlahAlbum; j++)
         {
-            printf("%s\n", (*L).data[i + j].nama2);
+            printf("%d. %s\n", j + 1, (*L).data[i + j].nama2);
         }
     }
     else
@@ -227,7 +228,7 @@ void ListLaguDariAlbumPenyanyi(List *L, const char *penyanyi, const char *album)
     if (i < (*L).size)
     {
         // Jumlah lagu dalam album
-        int jumlahLagu = atoi((*L).data[i].id);
+        int jumlahLagu = (*L).data[i].id;
 
         // Melompati baris album
         i++;

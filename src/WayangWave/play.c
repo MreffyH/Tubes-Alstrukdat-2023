@@ -1,70 +1,69 @@
 #include "list.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include "list.c"
+#include "start.h"
+#include "load.h"
+#include "arraydin.c"
 #include "listadt.c"
-#include "queue.c"
 
-void playSong(List *s, List *artistChoice, List *albumChoice, List *songChoice)
+void playsong(List *L, const char *penyanyi, const char *album, const char *lagu, int idLagu)
 {
-    printf(">> PLAY SONG;\n");
+    Fullarray(L);
+    // Gunakan fungsi playsong untuk memutar lagu dari playlist
+    ListLaguDariAlbumPenyanyi(L, penyanyi, album, lagu, idLagu);
+    printf("Memutar playlist \"%s\".\n", lagu);
 
-    int i;
-    printf("Daftar Penyanyi:\n");
-    for (i = 0; i < Length(*s); i++)
-    {
-        printf("%d. %s\n", i + 1, currentWord);
-    }
-    char name;
-    printf("Masukkan Nama Penyanyi yang dipilih : \n%s", name);
+    int i = 0;
 
-    if (strcmp(artistChoice, album) == 0)
+    // Iterasi melalui list dan cari data yang sesuai dengan penyanyi, album, dan ID lagu
+    while (i < (*L).size && (strcmp((*L).data[i].nama1, penyanyi) != 0 || strcmp((*L).data[i].nama2, album) != 0 || atoi((*L).data[i].id) != idLagu))
     {
-        printf("\nDaftar Album oleh %s:\n", artistChoice);
-        for (i = 0; i < length(); i++)
-        {
-            printf("%d. %s\n", i + 1, album);
-        }
+        i++;
     }
-    char name2;
-    printf("\nMasukkan Nama Penyanyi yang dipilih : \n%s", name2);
 
-    if (strcmp(albumChoice, song) == 0)
+    // Cek apakah lagu ditemukan
+    if (i < (*L).size)
     {
-        printf("\nDaftar Lagu Album %s oleh %s:\n", albumChoice, artistChoice);
-        for (i = 0; i < length(); i++)
-        {
-            printf("%d. %s\n", i + 1, ());
-        }
+        printf("Memutar lagu \"%s\" oleh \"%s\".\n", (*L).data[i].nama1, penyanyi);
     }
-    for (i = 0; i < length(); i++)
+    else
     {
-        int sum;
-        printf("Masukkan ID Lagu yang dipilih : %d;", sum);
-        if (sum == i)
-        {
-            printf("\nMemutar lagu \"%s\" oleh \"%s\".\n", songChoice, artistChoice);
-        }
+        printf("Lagu dengan ID %d tidak ditemukan pada album %s oleh %s.\n", idLagu, album, penyanyi);
     }
 }
 
-void playPlaylist(Playlist playlists[], int numPlaylists, int playlistID, Queue *queue)
+void playPlaylist(List *L, const char *penyanyi, const char *album, const char *lagu, int idLagu)
 {
-    if (playlistID >= 0 && playlistID < numPlaylists)
+    Fullarray(L);
+    playsong(L, penyanyi, album, lagu, idLagu);
+
+    int i = 0;
+    // Iterasi melalui list dan cari lagu berdasarkan penyanyi, album, dan ID lagu
+    while (i < (*L).size && (customStrCmp((*L).data[i].nama1, penyanyi) != 0 || customStrCmp((*L).data[i].nama2, album) != 0 || atoi((*L).data[i].id) != idLagu))
     {
-        printf("Memutar playlist \"%s\".\n", playlists[playlistID].name);
-
-        Playlist playlist = playlists[playlistID];
-
-        // Reverse the songs in the playlist
-        for (int i = playlist.numSongs - 1; i >= 0; i--)
-        {
-            enqueue(queue, playlist.songs[i]);
-        }
-
-        // Play the songs from the queue
-        while (queue->front != -1)
-        {
-            Song currentSong = dequeue(queue);
-            printf("Memutar lagu \"%s\" oleh \"%s\".\n", currentSong.name, currentSong.artist);
-        }
+        i++;
     }
+
+    // Cek apakah lagu ditemukan
+    if (i < (*L).size)
+    {
+        // Mengisi ulang queue dengan lagu dari playlist
+        // (Misalnya, menambahkan semua lagu dalam playlist ke dalam queue dengan urutan yang di-reverse)
+        int playlistSize = getPlaylistSize(&myPlaylist); // Ganti dengan fungsi yang sesuai di program Anda
+        for (int j = 0; j < playlistSize; j++)
+        {
+            // enqueue(&myQueue, getPlaylistSong(&myPlaylist, j)); // Ganti dengan fungsi yang sesuai di program Anda
+        }
+
+        // Output untuk menunjukkan bahwa playlist dimainkan
+        printf("Memutar playlist \"%s\".\n", lagu);
+    }
+    else
+    {
+        printf("Playlist dengan ID %d tidak ditemukan.\n", idlagu);
+    }
+
+    // Pastikan untuk membebaskan memori jika diperlukan
+    // freePlaylist(&myPlaylist); // Ganti dengan fungsi yang sesuai di program Anda
 }
