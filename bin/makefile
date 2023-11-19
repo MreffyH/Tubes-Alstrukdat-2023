@@ -46,10 +46,10 @@ list.o: list.c
 	gcc $(CFLAGS) -c ../ADT/list/list.c
 
 map.o: map.o
-	gcc $(CFLAGS) -c ../ADT/map & set/map.c
+	gcc $(CFLAGS) -c ../ADT/mapset/map.c
 
 set.o: set.c
-	gcc $(CFLAGS) -c ../ADT/map & set/set.c
+	gcc $(CFLAGS) -c ../ADT/mapset/set.c
 
 mesinkalimat.o: mesinkalimat.c
 	gcc $(CFLAGS) -c ../ADT/mesin/mesinkalimat.c
