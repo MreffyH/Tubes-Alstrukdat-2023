@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include "mesinkata.h"
-#include "mesinkalimat.h"
-#include "mesinkarakter.h"
+#include "../ADT/mesin/mesinkalimat.h"
 
 #define MAX_LENGTH 50 // Asumsikan panjang maksimum dari nama
 
