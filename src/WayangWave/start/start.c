@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void start(char *input, List *Penyanyi, Map *Album, Set *Lagu) {
+void start(char *input, ListPenyanyi *Penyanyi) {
     STARTFILE(input);
     int jumlahPenyanyi = 0;
     int jumlahAlbum = 0;
