@@ -86,3 +86,13 @@ boolean IsKalimatEqual(Sentence s1, Sentence s2)
     
     return sama;
 }
+
+Sentence CopyKalimat(Sentence s1) {
+    Sentence HasilKalimat;
+    HasilKalimat.Length = s1.Length;
+    for (int i = 0; i < s1.Length; i++){
+        HasilKalimat.TabSentence[i] = s1.TabSentence[i];
+    }
+    return HasilKalimat;
+
+}

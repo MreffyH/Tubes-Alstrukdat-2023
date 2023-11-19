@@ -18,7 +18,8 @@ void start(char *input, ListPenyanyi *Penyanyi) {
         jumlahAlbum = strToInteger(currentWord);
         
         AcquireSentence();
-        Sentence PenyanyiNow = currentKalimat;
+        Sentence PenyanyiNow = CopyKalimat(currentKalimat);
+        PrintSentence(PenyanyiNow);
         AddPenyanyi(Penyanyi, currentKalimat); // Input penyanyi ke list
         /* Berdasarkan Jumlah Album... */
         for (int inAlbum = 0; inAlbum < jumlahAlbum; inAlbum++) { // di dalam album
@@ -26,7 +27,8 @@ void start(char *input, ListPenyanyi *Penyanyi) {
             /* Angka Jumlah Lagu */
             jumlahLagu = strToInteger(currentWord);
             AcquireSentence();
-            Sentence AlbumNow = currentKalimat;
+            Sentence AlbumNow = CopyKalimat(currentKalimat);
+            PrintSentence(AlbumNow);
             AddAlbum(Penyanyi, PenyanyiNow, currentKalimat); // input album ke map
             /* Berdasarkan Jumlah Lagu...*/
             for (int i = 0; i < jumlahLagu; i++) { // Input lagu ke set
