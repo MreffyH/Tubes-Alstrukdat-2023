@@ -4,6 +4,7 @@
 
 int main() {
     // Membuat ListPenyanyi
+    printf("CEK\n");
     ListPenyanyi Penyanyi;
     CreateListPenyanyi(&Penyanyi);
 
@@ -16,6 +17,6 @@ int main() {
 
     // Hapus ListPenyanyi setelah selesai digunakan
     // DeleteList(&Penyanyi);
-
+    printf("CEK\n");
     return 0;
 }
