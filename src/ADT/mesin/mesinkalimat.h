@@ -30,4 +30,6 @@ void PrintSentence(Sentence currentKalimat);
 boolean IsKalimatEqual(Sentence s1, Sentence s2);
 
 Sentence CopyKalimat(Sentence s1);
+
+void ResetKalimat(Sentence s1);
 #endif
