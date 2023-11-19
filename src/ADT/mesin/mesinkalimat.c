@@ -96,3 +96,10 @@ Sentence CopyKalimat(Sentence s1) {
     return HasilKalimat;
 
 }
+
+void ResetKalimat(Sentence s1) {
+    for (int i = 0; i < s1.Length; i++){
+        s1.Tabsentence[i] = '\0';
+    }
+    s1.Length = 0;
+}
