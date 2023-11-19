@@ -19,7 +19,7 @@ void start(char *input, List *Penyanyi, Map *Album, Set *Lagu) {
         
         AcquireSentence();
         Sentence PenyanyiNow = currentKalimat;
-        AddPenyanyi(&Penyanyi, currentKalimat); // Input penyanyi ke list
+        AddPenyanyi(Penyanyi, currentKalimat); // Input penyanyi ke list
         /* Berdasarkan Jumlah Album... */
         for (int inAlbum = 0; inAlbum < jumlahAlbum; inAlbum++) { // di dalam album
             ADVWORD(); // baris ketiga angka
@@ -27,11 +27,11 @@ void start(char *input, List *Penyanyi, Map *Album, Set *Lagu) {
             jumlahLagu = strToInteger(currentWord);
             AcquireSentence();
             Sentence AlbumNow = currentKalimat;
-            AddAlbum(&Penyanyi, PenyanyiNow, currentKalimat); // input album ke map
+            AddAlbum(Penyanyi, PenyanyiNow, currentKalimat); // input album ke map
             /* Berdasarkan Jumlah Lagu...*/
             for (int i = 0; i < jumlahLagu; i++) { // Input lagu ke set
                 AcquireSentence();
-                AddLagu(&Penyanyi, PenyanyiNow, AlbumNow, currentKalimat);
+                AddLagu(Penyanyi, PenyanyiNow, AlbumNow, currentKalimat);
             }
         }
     }
