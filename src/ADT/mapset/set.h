@@ -74,4 +74,6 @@ Set SetSubtract(Set s1, Set s2);
 // s1 = [1, 2] s2 = [2, 3]
 // s1 - s2 = [1]
 
+void PrintSet(Set S);
+
 #endif
