@@ -34,6 +34,10 @@ int isPlaylistActive = 0;
 
 // Fungsi untuk menampilkan status
 void printStatus(Queue* queue) {
+    if (isPlaylistActive) {
+        printf("\nCurrent Playlist: %s\n", currentPlaylist.name);
+    }
+
     printf("Now Playing:\n");
     if (strlen(nowPlaying.title) == 0) {
         printf("No songs have been played yet. Please search for a song to begin playback.\n");
@@ -54,9 +58,7 @@ void printStatus(Queue* queue) {
         }
     }
 
-    if (isPlaylistActive) {
-        printf("\nCurrent Playlist: %s\n", currentPlaylist.name);
-    }
+
 }
 
 // Fungsi utama

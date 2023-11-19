@@ -18,6 +18,7 @@ void saveToFile(const char* filename, Song* queue, int queueSize, Song* history,
     }
 
     // Menulis informasi ke file
+    
     // Menulis informasi lagu yang sedang diputar
     fprintf(file, "%s;%s;%s\n", queue[0].artist, queue[0].album, queue[0].title);
 
