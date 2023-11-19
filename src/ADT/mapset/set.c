@@ -145,3 +145,15 @@ Set SetSubtract(Set s1, Set s2)
 	}
 	return s3;
 }
+
+void PrintSet(Set S){
+    for(int i=0; i < S.Count; i++){
+        int len = S.Elements[i].Length;
+        int j = 0;
+        while(j<len){
+            printf("%c", S.Elements[i].TabSentence[j]);
+            j++;
+        }
+        printf("\n");
+    }
+}
