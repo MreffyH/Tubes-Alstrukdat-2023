@@ -1,4 +1,9 @@
-#include "../WayangWave/start/start.h"
+#include "WayangWave/start/start.h"
+#include "ADT/listmapset/listmapset.h"
+#include "ADT/mapset/set.h"
+#include "ADT/mesin/mesinkalimat.h"
+#include "ADT/mesin/mesinkata.h"
+#include "ADT/mesin/mesinkarakter.h"
 #include <stdio.h>
 #include <stdlib.h>
 
