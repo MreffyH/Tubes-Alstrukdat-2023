@@ -3,7 +3,7 @@
 #include "mesinkata.h"
 #include "mesinkarakter.h"
 
-void exit() {
+void quit() {
     printf("Apakah kamu ingin menyimpan data sesi sekarang? (Y/N) :"); 
 
     START(); // Memulai mesin karakter
