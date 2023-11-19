@@ -1,30 +1,42 @@
-run:
-	gcc wayangwave/Start/start.c ADT/list/list.c ADT/queue/queue.c ADT/mesin/mesinkarakter.c ADT/mesin/mesinkata.c ADT/mesin/mesinkalimat.c -o main
-	./main
-tes:
-	echo "Testing"
+# CFLAGS = -Wno-implicit-function-declaration
 
-# belum ni : ADT/Inisialisasi/inisialisasi.c ADT/Playlist/Playlist.c ADT/Play/Play.c ADT/Load/Load.c ADT/Song/Song.c ADT/Save/save.c ADT/Help/help.c ADT/Status/Status.c ADT/Queue/queue.c ADT/Stack/RiwayatLagu.c ADT/LinkedList/linkedlist.c ADT/array/arraydinamis.c ADT/MapSetList/mapsetlist.c main.c
-# IDIR =../src/ADT
-# CC=gcc
-# CFLAGS=-I$(IDIR)
+# all: final
 
-# ODIR=obj
+# final: test.o start.o listmapset.o list.o set.o mesinkalimat.o mesinkata.o mesinkarakter.o
 
-# _DEPS = list.h listlinier.h map.h mesinkarakter.h mesinkata.h queue.h set.h stack.h
-# DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+# test.o: test.c
+# 	echo "Linking and "
+# 	gcc $(CFLAGS) -c ../WayangWave/test.c
 
-# _OBJ = list.o listlinier.o map.o mesinkarakter.o mesinkata.o queue.o set.o stack.o
-# OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+# start.o: start.c
+# 	gcc $(CFLAGS) -c ../WayangWave/start/start.c
 
+# listmapset.o: listmapset.c
+# 	gcc $(CFLAGS) -c ../ADT/listmapset/listmapset.c
 
-# $(ODIR)/%.o: %.c $(DEPS)
-# 	$(CC) -c -o $@ $< $(CFLAGS)
+# list.o: list.c
+# 	gcc $(CFLAGS) -c ../ADT/list/list.c
 
-# wayangwave: $(OBJ)
-# 	$(CC) -o $@ $^ $(CFLAGS)
+# map.o: map.o
+# 	gcc $(CFLAGS) -c ../ADT/mapset/map.c
 
-# .PHONY: clean
+# set.o: set.c
+# 	gcc $(CFLAGS) -c ../ADT/mapset/set.c
+
+# mesinkalimat.o: mesinkalimat.c
+# 	gcc $(CFLAGS) -c ../ADT/mesin/mesinkalimat.c
+
+# mesinkata.o: mesinkata.c
+# 	gcc $(CFLAGS) -c ../ADT/mesin/mesinkata.c
+
+# mesinkarakter.o: mesinkarakter.c
+# 	gcc $(CFLAGS) -c ../ADT/mesin/mesinkarakter.c
 
 # clean:
-# 	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
+# 	rm test.o start.o listmapset.o list.o set.o mesinkalimat.o mesinkata.o mesinkarakter.o final
+# CFLAGS = -Wno-implicit-function-declaration
+
+run:
+	gcc test.c WayangWave/start/start.c ADT/listmapset/listmapset.c ADT/list/list.c ADT/mapset/set.c ADT/mesin/mesinkalimat.c ADT/mesin/mesinkata.c ADT/mesin/mesinkarakter.c -o main
+	./final
+

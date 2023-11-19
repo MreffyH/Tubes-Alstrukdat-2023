@@ -23,9 +23,7 @@ extern Sentence currentKalimat;
 
 void AcquireBlanks();
 
-void CopySentence();
-
-void NewSentence();
+void AcquireSentence();
 
 void PrintSentence(Sentence currentKalimat);
 

@@ -1,7 +1,7 @@
 #include "map.h"
 
 /* *** Konstruktor/Kreator *** */
-void CreateEmptyMap(Map *M)
+void CreateEmptyMap(Map *M) 
 /* I.S. Sembarang */
 /* F.S. Membuat sebuah Map M kosong berkapasitas MaxElMap */
 /* Ciri Map kosong : count bernilai 0 */
