@@ -3,7 +3,7 @@
 #ifndef _MESINKALIMAT_H_
 #define _MESINKALIMAT_H_
 
-#include "boolean.h"
+// #include "../ADT/boolean.h"
 #include "mesinkata.h"
 
 #define MARKSENTENCE '\n'

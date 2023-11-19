@@ -1,7 +1,7 @@
 #ifndef set_H
 #define set_H
-#include "../ADT/boolean.h"
-#include "../ADT/mesin/mesinkalimat.h"
+#include "../mesin/mesinkalimat.h"
+// #include "../ADT/boolean.h"
 
 /* MODUL Set
 Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri

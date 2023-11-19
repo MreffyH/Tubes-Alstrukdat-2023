@@ -1,7 +1,7 @@
 #include "../map & set/map.h"
-#include "../map & set/set.h"
 #include "../list/list.h"
-#include "../mesin/mesinkalimat.h"
+// #include "../map & set/set.h"
+// #include "../mesin/mesinkalimat.h"
 
 #define MaxElAlbum 40
 #define MaxElSinger 50

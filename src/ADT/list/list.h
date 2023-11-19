@@ -5,8 +5,8 @@
 #ifndef ADTList1
 #define ADTList1
 
-#include "boolean.h"
-#include "mesinkalimat.h"
+// #include "../ADT/boolean.h"
+#include "../mesin/mesinkalimat.h"
 
 /* Kamus Umum */
 #define MaxEl 100

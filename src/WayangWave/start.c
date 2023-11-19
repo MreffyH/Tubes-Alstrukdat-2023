@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-boolean stateWayangWave;
-
 void start(char *input, List *Penyanyi, Map *Album, Set *Lagu) {
     STARTFILE(input);
     int jumlahPenyanyi = 0;
