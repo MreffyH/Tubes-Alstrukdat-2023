@@ -46,3 +46,7 @@ boolean IsEOP() {
 /* Mengirimkan true jika currentChar = MARK */
     return (currentChar == MARK);
 }
+
+void TUTUPFILE(){
+    fclose(pita);
+}

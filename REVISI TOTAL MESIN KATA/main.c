@@ -2,39 +2,13 @@
 #include "mesinkata.h"
 
 int main(){
-    STARTFILE("config.txt");
+    STARTFILE("user1.txt");
     ADV();
     ADVWORD();
     int jumlahPenyanyi = strToInteger(currentWord);
     printf("Jumlah penyanyi: %d\n", jumlahPenyanyi);
     ADV();
     IgnoreEnter();
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    /* Mesin karakter AMANNN */
     for (int i = 0; i < jumlahPenyanyi; i++){
         ADVWORD();
         int jumlahalbum = strToInteger(currentWord);
@@ -59,13 +33,25 @@ int main(){
             }
         }
     }
-    // ADVWORD();
-    // printWord(currentWord);
-    // ADVFILE();
-    // printf("%c", currentChar);
-    // ADVWORD();
-    // for(int i = 0; i < currentWord.Length; i++){
-    //     printf("%c", currentWord.TabWord[i]);
-    // }
+    ADVLOAD();
+    if(isNotNone(kalimat)){
+        printf("LAGU YANG SEDANG DIMAINKAN\n");
+        printf("Artis : ");
+        printWord(kalimat);
+        printf("\n");
+        ADVLOAD();
+        printf("Judul Album: ");
+        printWord(kalimat);
+        printf("\n");
+        ADVLOAD();
+        printf("Judul Lagu: ");
+        printWord(kalimat);
+        printf("\n");
+    }
+    else{
+        printf("TIDAK ADA LAGU YANG SEDANG DIMAINKAN\n");
+    }
+    ADVSENTENCE();
+    
     return 0;
 }

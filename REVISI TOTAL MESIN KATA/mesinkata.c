@@ -155,5 +155,45 @@ void ADVSENTENCE(){
     }
     if(currentChar == ENTER){
         IgnoreEnter();
+        if(currentChar == MARK){
+            TUTUPFILE();
+        }
     }
+}
+
+// void ADVPLAYING(){
+//     kalimat.Length = 0;
+//     IgnoreEnter();
+//     if(currentChar != NONE){
+//         ADVLOAD();
+//     }
+//     else{
+        
+//     }
+    
+// }
+
+boolean isNotNone(Word kalimat){
+    boolean none = false;
+    if(kalimat.Length != 0){
+        none = true;
+    }
+    return none;
+}
+
+void ADVLOAD(){
+    kalimat.Length = 0;
+    IgnoreEnter();
+    while((currentChar != SEMICOLON) && (currentChar != ENTER) && (currentChar != NONE)){
+        kalimat.TabWord[kalimat.Length] = currentChar;
+        kalimat.Length++;
+        ADV();
+    }
+    if(currentChar == ENTER){
+        IgnoreEnter();
+    }
+    else if(currentChar == SEMICOLON){ 
+        ADV();
+    }
+    /* ELSE KALO currentChar == NONE gak ngelakuin apa apa */
 }

@@ -40,4 +40,7 @@ char GetCC();
 boolean IsEOP();
 /* Mengirimkan true jika currentChar = MARK */
 
+void TUTUPFILE();
+/* Menutup file jika sudah bertemu feof */
+
 #endif

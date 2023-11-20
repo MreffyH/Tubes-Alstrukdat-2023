@@ -10,6 +10,8 @@
 #define NMax 50
 #define BLANK ' '
 #define ENTER '\n'
+#define SEMICOLON ';'
+#define NONE '-'
 
 typedef struct
 {
@@ -64,5 +66,9 @@ Word DuplicateKata(Word Kata);
 void printWord(Word Kata);
 
 void ADVSENTENCE();
+
+boolean isNotNone(Word kalimat);
+
+void ADVLOAD();
 
 #endif
