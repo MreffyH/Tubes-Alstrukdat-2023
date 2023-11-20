@@ -7,7 +7,7 @@ void CreateMapAlbum(MapAlbum *mapalbum, Set S){
     (*mapalbum).setlagu = S;
 }
 
-void CreateMapPenyanyi(MapPenyanyi *mappenyanyi){
+void CreateMapPenyanyi(MapPenyanyi *mappenyanyi) {
     Jumlahalbum(*mappenyanyi) = 0;
 }
 

@@ -1,13 +1,27 @@
 #ifndef listmapset_H
 #define listmapset_H
 
-#include "../mapset/set.h"
+#include "../src/ADT/mapset/set.h"
 // #include "../map & set/set.h"
 // #include "../mesin/mesinkalimat.h"
+#include <stdlib.h>
 
 #define MaxElAlbum 40
 #define MaxElSinger 50
 #define NOTFOUND -1
+
+
+#define NilSet 0
+#define MaxElSet 100
+
+typedef Word infotypeSet;
+typedef int addrSer;
+
+// typedef struct
+// {
+//     infotypeSet Elements[MaxElSet];
+//     addrSer Count;
+// } Set;
 
 typedef struct{
 	Word namaAlbum;
@@ -39,6 +53,8 @@ void AddPenyanyi(ListPenyanyi *penyanyi, Word nama);
 int SearchPenyanyi_ke(ListPenyanyi penyanyi, Word namaPenyanyi);
 
 void AddAlbum(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum);
+
+int SearchAlbum_ke(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum);
 
 void AddLagu(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum, Word namaLagu);
 

@@ -1,20 +1,87 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "listmapset.h"
+#include "../../../REVISI_TOTAL_MESIN_KATA/listmapset.h"
 
-int main()
-{
-    Set set;
-    CreateEmptySet(&set);
+int main(){
+    Set s1, s2;
+
+    CreateEmptySet(&s1);
+    CreateEmptySet(&s2);
+    Word kalimat;
+    kalimat.TabWord[0] = 'a';
+    kalimat.TabWord[1] = 'p';
+    kalimat.TabWord[2] = 'p';
+    kalimat.TabWord[3] = 'l';
+    kalimat.TabWord[4] = 'e';
+    kalimat.Length = 5;
+    InsertSet(&s1, kalimat);
+    kalimat.TabWord[0] = 'b';
+    kalimat.TabWord[1] = 'a';
+    kalimat.TabWord[2] = 'n';
+    kalimat.TabWord[3] = 'a';
+    kalimat.TabWord[4] = 'n';
+    kalimat.TabWord[5] = 'a';
+    kalimat.Length = 6;
+    InsertSet(&s1, kalimat);
+    kalimat.TabWord[0] = 'o';
+    kalimat.TabWord[1] = 'r';
+    kalimat.TabWord[2] = 'a';
+    kalimat.TabWord[3] = 'n';
+    kalimat.TabWord[4] = 'g';
+    kalimat.TabWord[5] = 'e';
+    kalimat.Length = 6;
+    InsertSet(&s1, kalimat);
+
+    kalimat.TabWord[0] = 'b';
+    kalimat.TabWord[1] = 'a';
+    kalimat.TabWord[2] = 'n';
+    kalimat.TabWord[3] = 'a';
+    kalimat.TabWord[4] = 'n';
+    kalimat.TabWord[5] = 'a';
+    kalimat.Length = 6;
+    InsertSet(&s2, kalimat);
+    kalimat.TabWord[0] = 'g';
+    kalimat.TabWord[1] = 'r';
+    kalimat.TabWord[2] = 'a';
+    kalimat.TabWord[3] = 'p';
+    kalimat.TabWord[4] = 'e';
+    kalimat.Length = 5;
+    InsertSet(&s2, kalimat);
+    kalimat.TabWord[0] = 'k';
+    kalimat.TabWord[1] = 'i';
+    kalimat.TabWord[2] = 'w';
+    kalimat.TabWord[3] = 'i';
+    kalimat.Length = 4;
+    InsertSet(&s2, kalimat);
+
+    kalimat.TabWord[0] = 'b';
+    kalimat.TabWord[1] = 'a';
+    kalimat.TabWord[2] = 'n';
+    kalimat.TabWord[3] = 'a';
+    kalimat.TabWord[4] = 'n';
+    kalimat.TabWord[5] = 'a';
+    kalimat.Length = 6;
+    DeleteSet(&s1, kalimat);
+    PrintSet(s1);
+    printf("0000000\n");
+    PrintSet(s2);
+
 
     MapAlbum mAlbum;
-    // Create Map
+    CreateMapAlbum(&mAlbum, s1);
+    kalimat.TabWord[0] = 'j';
+    kalimat.TabWord[1] = 'k';
+    kalimat.TabWord[2] = 't';
+    kalimat.Length = 3;
+    mAlbum.namaAlbum = DuplicateKata(kalimat);
+    PrintSet(mAlbum.setlagu);
     MapPenyanyi mPenyanyi;
-    // Create Map Penyanyi
-    printf("hello\n");
-    ListPenyanyi L;
-    Word ABC, Q, I;
-    CreateListPenyanyi(&L);
+    CreateMapPenyanyi(&mPenyanyi);
+
+
+    ListPenyanyi LisPenyanyi_;
+    // CreateListPenyanyi(&LisPenyanyi_);
+    printf("MIlestone\n");
     // ABC.TabWord[0] = 'A';
     // ABC.TabWord[1] = 'B';
     // ABC.TabWord[2] = 'C';
