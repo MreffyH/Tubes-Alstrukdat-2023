@@ -2,8 +2,10 @@
 #include "mesinkata.h"
 
 boolean endWord;
+boolean ENDINPUT;
 Word currentWord;
 Word kalimat;
+Word currentInput;
 
 void IgnoreBlanks()
 {
@@ -185,4 +187,74 @@ void ADVLOAD(){
         ADV();
     }
     /* ELSE KALO currentChar == NONE gak ngelakuin apa apa */
+}
+
+void IGNORENEWLINE() {
+    while (currentChar == ' ')
+    {
+        ADV();
+    }
+    
+}
+
+void STARTINPUT() {
+    START();
+    IGNORENEWLINE();
+    if (currentChar == ';')
+    {
+        ENDINPUT = true;
+    } else {
+        ENDINPUT = false;
+        COPYINPUT();
+    }
+    
+}
+
+void COPYINPUT() {
+    RESETINPUT();
+    int i = 0;
+    while ((currentChar != ';') && (currentChar != '\n') && (currentChar != EOF))
+    {
+        currentInput.TabWord[i] = currentChar;
+        i++;
+        ADV();
+    }
+    currentInput.Length = i;
+}
+
+void RESETINPUT() {
+    for (int i = 0; i < sizeof(currentInput); i++)
+    {
+        currentInput.TabWord[i] = '\0';
+        currentInput.Length = 0;
+    }
+}
+
+boolean INPUTEQUAL(Word I, char *K) {
+    boolean sama = true;
+    int i = 0;
+    if (I.Length == FUNGSILENGTH(K)) {
+        while (i < I.Length && sama)
+        {
+            if (I.TabWord[i] != K[i]) {
+                sama = false;
+            } else {
+                i++;
+            }
+        }
+        
+    } else {
+        sama = false;
+    }
+    return sama;
+
+}
+
+int FUNGSILENGTH(char *K) {
+    int i = 0;
+    while (K[i] != '\0')
+    {
+        i++;
+    }
+    return i;
 }

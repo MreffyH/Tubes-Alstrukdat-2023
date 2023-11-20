@@ -21,8 +21,10 @@ typedef struct
 
 /* State Mesin Kata */
 extern boolean EndWord;
+extern boolean ENDINPUT;
 extern Word currentWord;
 extern Word kalimat;
+extern Word currentInput;
 
 void IgnoreBlanks();
 /* Mengabaikan satu atau beberapa BLANK
@@ -70,5 +72,18 @@ void ADVSENTENCE();
 boolean isNotNone(Word kalimat);
 
 void ADVLOAD();
+
+/* Bagian Input */
+void IGNORENEWLINE();
+
+void STARTINPUT();
+
+void COPYINPUT();
+
+void RESETINPUT();
+
+boolean INPUTEQUAL(Word I, char *K);
+
+int FUNGSILENGTH(char *K);
 
 #endif
