@@ -2,7 +2,7 @@
 #include "mesinkata.h"
 
 int main(){
-    STARTFILE("config.txt");
+    STARTFILE("user1.txt");
     ADV();
     ADVWORD();
     int jumlahpenyanyi = strToInteger(currentWord);
@@ -43,7 +43,6 @@ int main(){
             }
         }
     }
-    // ADVFILE();
     // ADVLOAD();
     // if(isNotNone(kalimat)){
     //     printf("LAGU YANG SEDANG DIMAINKAN\n");

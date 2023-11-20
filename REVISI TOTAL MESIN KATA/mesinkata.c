@@ -176,21 +176,13 @@ boolean isNotNone(Word kalimat){
 
 void ADVLOAD(){
     kalimat.Length = 0;
-    IgnoreEnter();
     while((currentChar != SEMICOLON) && (currentChar != ENTER) && (currentChar != NONE) && (currentChar != MARK)){
         kalimat.TabWord[kalimat.Length] = currentChar;
         kalimat.Length++;
         ADV();
     }
-    if(currentChar == ENTER){
-        ADVFILE();
-        IgnoreEnter();
-    }
-    else if(currentChar == SEMICOLON){ 
+    if(currentChar == SEMICOLON){ 
         ADV();
-    }
-    else if(ISENDFILE()){
-        TUTUPFILE();
     }
     /* ELSE KALO currentChar == NONE gak ngelakuin apa apa */
 }
