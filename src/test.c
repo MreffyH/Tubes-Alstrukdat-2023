@@ -1,16 +1,22 @@
 // #include "WayangWave/start/start.h"
 // #include "ADT/listmapset/listmapset.h"
+#include "ADT/listmapset/listmapset.h"
 // #include "ADT/mapset/set.h"
+// #include "ADT/mapset/set.c"
 // #include "ADT/mesin/mesinkalimat.h"
+// #include "ADT/mesin/mesinkalimat.c"
 // #include "ADT/mesin/mesinkata.h"
+// #include "ADT/mesin/mesinkata.c"
 // #include "ADT/mesin/mesinkarakter.h"
+// #include "ADT/mesin/mesinkarakter.c"
+
 #include <stdio.h>
 #include <stdlib.h>
 
 int main() {
     // Membuat ListPenyanyi
     printf("CEK1\n");
-    // ListPenyanyi Penyanyi;
+    ListPenyanyi Penyanyi;
     // CreateListPenyanyi(&Penyanyi);
     printf("CEK2\n");
 

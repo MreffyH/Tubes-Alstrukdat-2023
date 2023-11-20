@@ -1,5 +1,7 @@
+#ifndef listmapset_H
+#define listmapset_H
+
 #include "../mapset/set.h"
-#include "../list/list.h"
 // #include "../map & set/set.h"
 // #include "../mesin/mesinkalimat.h"
 
@@ -35,3 +37,6 @@ int SearchPenyanyi_ke(ListPenyanyi penyanyi, Sentence namaPenyanyi);
 void AddAlbum(ListPenyanyi *penyanyi, Sentence namaPenyanyi, Sentence namaAlbum);
 
 void AddLagu(ListPenyanyi *penyanyi, Sentence namaPenyanyi, Sentence namaAlbum, Sentence namaLagu);
+
+
+#endif

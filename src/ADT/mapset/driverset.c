@@ -1,8 +1,8 @@
 #include "set.h"
-#include "set.c"
-#include "../mesin/mesinkalimat.c"
-#include "../mesin/mesinkata.c"
-#include "../mesin/mesinkarakter.c"
+// #include "set.c"
+// #include "../mesin/mesinkalimat.c"
+// #include "../mesin/mesinkata.c"
+// #include "../mesin/mesinkarakter.c"
 #include <stdio.h>
 
 int main() {
