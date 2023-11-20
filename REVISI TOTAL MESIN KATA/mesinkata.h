@@ -7,7 +7,7 @@
 // #include "boolean.h"
 #include "mesinkarakter.h"
 
-#define NMax 50
+#define NMax 80
 #define BLANK ' '
 #define ENTER '\n'
 #define SEMICOLON ';'

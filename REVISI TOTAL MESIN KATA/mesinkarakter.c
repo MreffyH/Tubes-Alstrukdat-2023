@@ -6,6 +6,8 @@ char currentChar;
 static FILE *pita;
 static int retval;
 
+boolean EOP;
+
 void STARTFILE(char *input){
     pita = fopen(input,"r");
 }
@@ -47,6 +49,22 @@ boolean IsEOP() {
     return (currentChar == MARK);
 }
 
+boolean ISENDFILE(){
+    return feof(pita);
+}
+
 void TUTUPFILE(){
     fclose(pita);
+}
+
+void ADVMARK() {
+    if (pita == NULL) {
+        EOP = true;
+    } else {
+        retval = fscanf (pita, "%c", &currentChar);
+        EOP = feof(pita);
+        if (EOP) {
+            fclose(pita);
+        }
+    }
 }

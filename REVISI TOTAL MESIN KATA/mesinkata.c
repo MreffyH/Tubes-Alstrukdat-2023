@@ -136,7 +136,6 @@ void printWord(Word Kata){
 
 void ADVSENTENCE(){
     kalimat.Length = 0;
-    IgnoreEnter();
     ADVWORD();
     for (int i = 0; i < currentWord.Length; i++){
             kalimat.TabWord[kalimat.Length] = currentWord.TabWord[i];
@@ -151,12 +150,6 @@ void ADVSENTENCE(){
         for (int i = 0; i < currentWord.Length; i++){
             kalimat.TabWord[kalimat.Length] = currentWord.TabWord[i];
             kalimat.Length++;
-        }
-    }
-    if(currentChar == ENTER){
-        IgnoreEnter();
-        if(currentChar == MARK){
-            TUTUPFILE();
         }
     }
 }
@@ -184,16 +177,20 @@ boolean isNotNone(Word kalimat){
 void ADVLOAD(){
     kalimat.Length = 0;
     IgnoreEnter();
-    while((currentChar != SEMICOLON) && (currentChar != ENTER) && (currentChar != NONE)){
+    while((currentChar != SEMICOLON) && (currentChar != ENTER) && (currentChar != NONE) && (currentChar != MARK)){
         kalimat.TabWord[kalimat.Length] = currentChar;
         kalimat.Length++;
         ADV();
     }
     if(currentChar == ENTER){
+        ADVFILE();
         IgnoreEnter();
     }
     else if(currentChar == SEMICOLON){ 
         ADV();
+    }
+    else if(ISENDFILE()){
+        TUTUPFILE();
     }
     /* ELSE KALO currentChar == NONE gak ngelakuin apa apa */
 }

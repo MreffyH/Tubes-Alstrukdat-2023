@@ -40,7 +40,11 @@ char GetCC();
 boolean IsEOP();
 /* Mengirimkan true jika currentChar = MARK */
 
-void TUTUPFILE();
-/* Menutup file jika sudah bertemu feof */
+boolean ISENDFILE();
+/* Mengembalikan boolean apakah file sudah bertemu feof */
 
+void TUTUPFILE();
+/* Menutup file */
+
+void ADVMARK();
 #endif
