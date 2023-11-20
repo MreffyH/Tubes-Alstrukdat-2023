@@ -4,7 +4,7 @@
 
 int main() {
     printf("CEK1\n");
-    // ListPenyanyi penyanyiList;
+    ListPenyanyi penyanyiList;
     Sentence penyanyiName;
     penyanyiName.TabSentence[0] = 'J';
     penyanyiName.TabSentence[1] = 'o';
