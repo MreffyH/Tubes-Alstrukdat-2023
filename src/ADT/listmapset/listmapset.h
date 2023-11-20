@@ -10,12 +10,12 @@
 #define NOTFOUND -1
 
 typedef struct{
-	Sentence namaAlbum;
+	Word namaAlbum;
 	Set setlagu;
 } MapAlbum;
 
 typedef struct{
-	Sentence namaPenyanyi;
+	Word namaPenyanyi;
 	MapAlbum listalbum[MaxElAlbum];
 	int countalbum;
 } MapPenyanyi;
@@ -28,15 +28,19 @@ typedef struct{
 #define Jumlahpenyanyi(L) (L).countpenyanyi
 #define Jumlahalbum(L) (L).countalbum
 
+void CreateMapAlbum(MapAlbum *mapalbum, Set S);
+
+void CreateMapPenyanyi(MapPenyanyi *mappenyanyi);
+
 void CreateListPenyanyi(ListPenyanyi *penyanyi);
 
-void AddPenyanyi(ListPenyanyi *penyanyi, Sentence nama);
+void AddPenyanyi(ListPenyanyi *penyanyi, Word nama);
 
-int SearchPenyanyi_ke(ListPenyanyi penyanyi, Sentence namaPenyanyi);
+int SearchPenyanyi_ke(ListPenyanyi penyanyi, Word namaPenyanyi);
 
-void AddAlbum(ListPenyanyi *penyanyi, Sentence namaPenyanyi, Sentence namaAlbum);
+void AddAlbum(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum);
 
-void AddLagu(ListPenyanyi *penyanyi, Sentence namaPenyanyi, Sentence namaAlbum, Sentence namaLagu);
+void AddLagu(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum, Word namaLagu);
 
 
 #endif

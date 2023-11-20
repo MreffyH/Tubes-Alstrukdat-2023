@@ -1,6 +1,6 @@
 #ifndef set_H
 #define set_H
-#include "../mesin/mesinkalimat.h"
+#include "../mesin/mesinkata.h"
 // #include "../ADT/boolean.h"
 
 /* MODUL Set
@@ -10,7 +10,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 #define NilSet 0
 #define MaxElSet 100
 
-typedef Sentence infotypeSet;
+typedef Word infotypeSet;
 typedef int addrSer;
 
 typedef struct

@@ -3,21 +3,29 @@
 #include <stdlib.h>
 
 
+void CreateMapAlbum(MapAlbum *mapalbum, Set S){
+    (*mapalbum).setlagu = S;
+}
+
+void CreateMapPenyanyi(MapPenyanyi *mappenyanyi){
+    Jumlahalbum(*mappenyanyi) = 0;
+}
+
 void CreateListPenyanyi(ListPenyanyi *penyanyi){
     Jumlahpenyanyi(*penyanyi) = 0;
 }
 
-void AddPenyanyi(ListPenyanyi *penyanyi, Sentence nama){
+void AddPenyanyi(ListPenyanyi *penyanyi, Word nama){
     (*penyanyi).penyanyi_ke[Jumlahpenyanyi(*penyanyi)].namaPenyanyi = nama;
     (*penyanyi).penyanyi_ke[Jumlahpenyanyi(*penyanyi)].countalbum = 0;
     Jumlahpenyanyi(*penyanyi)++;
 }
 
-int SearchPenyanyi_ke(ListPenyanyi penyanyi, Sentence namaPenyanyi){
+int SearchPenyanyi_ke(ListPenyanyi penyanyi, Word namaPenyanyi){
     int i = 0;
     boolean found = false;
     while ((i < Jumlahpenyanyi(penyanyi)) && (!found)){
-        if(IsKalimatEqual((penyanyi).penyanyi_ke[i].namaPenyanyi, namaPenyanyi)){
+        if(IsKataEqual((penyanyi).penyanyi_ke[i].namaPenyanyi, namaPenyanyi)){
             found = true;
         }
         else{
@@ -31,7 +39,7 @@ int SearchPenyanyi_ke(ListPenyanyi penyanyi, Sentence namaPenyanyi){
         return NOTFOUND;
     }
 }
-void AddAlbum(ListPenyanyi *penyanyi, Sentence namaPenyanyi, Sentence namaAlbum){
+void AddAlbum(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum){
     int urutan = SearchPenyanyi_ke(*penyanyi, namaPenyanyi);
     if(urutan != NOTFOUND){
         (*penyanyi).penyanyi_ke[urutan].listalbum[Jumlahalbum((*penyanyi).penyanyi_ke[urutan])].namaAlbum = namaAlbum; 
@@ -39,7 +47,7 @@ void AddAlbum(ListPenyanyi *penyanyi, Sentence namaPenyanyi, Sentence namaAlbum)
     }
 }
 
-void AddLagu(ListPenyanyi *penyanyi, Sentence namaPenyanyi, Sentence namaAlbum, Sentence namaLagu){
+void AddLagu(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum, Word namaLagu){
     /* cari penyanyi */
     int urutan = SearchPenyanyi_ke(*penyanyi, namaPenyanyi);
     if(urutan != NOTFOUND){
@@ -47,7 +55,7 @@ void AddLagu(ListPenyanyi *penyanyi, Sentence namaPenyanyi, Sentence namaAlbum, 
         int i = 0;
         boolean found = false;
         while ((i < (*penyanyi).penyanyi_ke[urutan].countalbum) && (!found)){
-            if (IsKalimatEqual((*penyanyi).penyanyi_ke[urutan].listalbum[i].namaAlbum, namaAlbum)){
+            if (IsKataEqual((*penyanyi).penyanyi_ke[urutan].listalbum[i].namaAlbum, namaAlbum)){
                 found = true;
             }
             else{
