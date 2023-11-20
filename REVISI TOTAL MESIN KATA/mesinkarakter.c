@@ -8,7 +8,6 @@ static int retval;
 
 void STARTFILE(char *input){
     pita = fopen(input,"r");
-    ADVFILE();
 }
 
 void START() {

@@ -20,6 +20,7 @@ typedef struct
 /* State Mesin Kata */
 extern boolean EndWord;
 extern Word currentWord;
+extern Word kalimat;
 
 void IgnoreBlanks();
 /* Mengabaikan satu atau beberapa BLANK
@@ -61,5 +62,7 @@ int strToInteger(Word Kata);
 Word DuplicateKata(Word Kata);
 
 void printWord(Word Kata);
+
+void ADVSENTENCE();
 
 #endif

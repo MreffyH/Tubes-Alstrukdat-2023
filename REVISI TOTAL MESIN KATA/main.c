@@ -3,8 +3,12 @@
 
 int main(){
     STARTFILE("config.txt");
-    printf("Jumlah penyanyi: %c\n", currentChar);
     ADV();
+    ADVWORD();
+    int jumlahPenyanyi = strToInteger(currentWord);
+    printf("Jumlah penyanyi: %d\n", jumlahPenyanyi);
+    ADV();
+    IgnoreEnter();
     // ADVFILE();
     // printf("%c", currentChar);
     // printf("%c", currentChar);
@@ -31,18 +35,30 @@ int main(){
     // ADVFILE();
     // printf("%c", currentChar);
     /* Mesin karakter AMANNN */
-    ADVWORD();
-    printf("Jumlah album penyanyi ke-1: ");
-    printWord(currentWord);
-    ADVWORD();
-    printf("Nama penyanyi ke-1: ");
-    printWord(currentWord);
-    ADVWORD();
-    printf("Jumlah lagu album ke-1: ");
-    printWord(currentWord);
-    ADVWORD();
-    printf("Nama album ke-1: ");
-    printWord(currentWord);
+    for (int i = 0; i < jumlahPenyanyi; i++){
+        ADVWORD();
+        int jumlahalbum = strToInteger(currentWord);
+        printf("Jumlah album penyanyi ke-%d: %d\n", i+1, jumlahalbum);
+        ADVSENTENCE();
+        printf("Nama penyanyi ke-%d: ", i+1);
+        printWord(kalimat);
+        printf("\n");
+        for (int j = 0; j < jumlahalbum; j++){
+            ADVWORD();
+            int jumlahlagu = strToInteger(currentWord);
+            printf("Jumlah lagu album ke-%d: %d\n", j+1, jumlahlagu);
+            ADVSENTENCE();
+            printf("Nama album ke-%d: ", j+1);
+            printWord(kalimat);
+            printf("\n");
+            for(int k = 0; k < jumlahlagu; k++){
+                ADVSENTENCE();
+                printf("Nama lagu ke-%d: ", k+1);
+                printWord(kalimat);
+                printf("\n");
+            }
+        }
+    }
     // ADVWORD();
     // printWord(currentWord);
     // ADVFILE();

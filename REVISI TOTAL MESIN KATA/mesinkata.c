@@ -3,6 +3,7 @@
 
 boolean endWord;
 Word currentWord;
+Word kalimat;
 
 void IgnoreBlanks()
 {
@@ -52,7 +53,6 @@ void ADVWORD()
               Jika currentChar = MARK, endWord = true.
        Proses : Akuisisi kata menggunakan procedure CopyWord */
     
-    IgnoreEnter();
     IgnoreBlanks();
     if (currentChar == MARK)
     {
@@ -131,19 +131,29 @@ void printWord(Word Kata){
     for(int i = 0; i < Kata.Length; i++){
         printf("%c", Kata.TabWord[i]);
     }
-    printf("\n");
 }
 
 
 void ADVSENTENCE(){
+    kalimat.Length = 0;
+    IgnoreEnter();
     ADVWORD();
-    while(currentChar != ENTER){
+    for (int i = 0; i < currentWord.Length; i++){
+            kalimat.TabWord[kalimat.Length] = currentWord.TabWord[i];
+            kalimat.Length++;
+    }
+    while(currentChar != ENTER && currentChar != MARK){
         if(currentChar == BLANK){
-            currentWord.TabWord[currentWord.Length++] = currentChar;
-            ADVWORD();
+            kalimat.TabWord[kalimat.Length] = currentChar;
+            kalimat.Length++;
         }
-        else{
-            break;
+        ADVWORD();
+        for (int i = 0; i < currentWord.Length; i++){
+            kalimat.TabWord[kalimat.Length] = currentWord.TabWord[i];
+            kalimat.Length++;
         }
+    }
+    if(currentChar == ENTER){
+        IgnoreEnter();
     }
 }
