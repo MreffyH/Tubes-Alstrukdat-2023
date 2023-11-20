@@ -1,7 +1,7 @@
 #ifndef listmapset_H
 #define listmapset_H
 
-#include "set.h"
+#include "../mapset/set.h"
 // #include "../map & set/set.h"
 // #include "../mesin/mesinkalimat.h"
 
@@ -28,6 +28,10 @@ typedef struct{
 #define Jumlahpenyanyi(L) (L).countpenyanyi
 #define Jumlahalbum(L) (L).countalbum
 
+void CreateMapAlbum(MapAlbum *mapalbum, Set S);
+
+void CreateMapPenyanyi(MapPenyanyi *mappenyanyi);
+
 void CreateListPenyanyi(ListPenyanyi *penyanyi);
 
 void AddPenyanyi(ListPenyanyi *penyanyi, Word nama);
@@ -35,8 +39,6 @@ void AddPenyanyi(ListPenyanyi *penyanyi, Word nama);
 int SearchPenyanyi_ke(ListPenyanyi penyanyi, Word namaPenyanyi);
 
 void AddAlbum(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum);
-
-int SearchAlbum_ke(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum);
 
 void AddLagu(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum, Word namaLagu);
 

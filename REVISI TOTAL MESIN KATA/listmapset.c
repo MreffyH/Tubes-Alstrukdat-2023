@@ -3,16 +3,16 @@
 #include <stdlib.h>
 
 
+void CreateMapAlbum(MapAlbum *mapalbum, Set S){
+    (*mapalbum).setlagu = S;
+}
+
+void CreateMapPenyanyi(MapPenyanyi *mappenyanyi){
+    Jumlahalbum(*mappenyanyi) = 0;
+}
+
 void CreateListPenyanyi(ListPenyanyi *penyanyi){
     Jumlahpenyanyi(*penyanyi) = 0;
-    for(int i = 0; i < MaxElSinger; i++){
-        Jumlahalbum((*penyanyi).penyanyi_ke[i]) = 0;
-        for(int j = 0; j < MaxElAlbum; j++){
-            (*penyanyi).penyanyi_ke[i].listalbum[j].setlagu.Count = 0;
-        }
-    }
-    
-
 }
 
 void AddPenyanyi(ListPenyanyi *penyanyi, Word nama){
@@ -67,7 +67,7 @@ int SearchAlbum_ke(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum){
                 i++;
             }
         }
-    } /* i == Jumlahpenyanyi(*penyanyi) or found */
+    } /* i == Jumlahalbum(penyanyi.penyanyi_ke[urutan]) or found */
     if (found){
         return i;
     }
