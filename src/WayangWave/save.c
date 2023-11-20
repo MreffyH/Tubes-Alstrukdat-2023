@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "mesinkarakter.h"
+#include "mesinkata.h"
 
 // Struktur untuk menyimpan informasi lagu
 typedef struct {
@@ -13,8 +15,27 @@ typedef struct {
 void saveToFile(const char* filename, Song* queue, int queueSize, Song* history, int historySize, Song** playlists, int* playlistSizes, int numPlaylists) {
     FILE *file = fopen(filename, "w");
     if (file == NULL) {
-        printf("Gagal membuka file.\n");
-        return;
+        // Contoh data lagu
+    
+    START(); // Memulai mesin karakter
+
+    // Membaca karakter hingga bertemu dengan ';'
+    while (currentChar != ';') {
+        // Mengabaikan spasi jika perlu
+        // IgnoreBlanks(); 
+
+        currentWord.Length = 0;
+
+        // Membaca satu kata (sampai bertemu ';')
+        while (currentChar != ';' && !IsEOP()) {
+            currentWord.TabWord[currentWord.Length++] = currentChar;
+            ADV(); // Maju ke karakter selanjutnya
+        }
+
+        // Menambahkan null-terminator pada akhir kata
+        currentWord.TabWord[currentWord.Length] = '\0';
+        
+    }
     }
 
     // Menulis informasi ke file
@@ -48,18 +69,20 @@ void saveToFile(const char* filename, Song* queue, int queueSize, Song* history,
 }
 
 int main() {
-    // Contoh penggunaan fungsi
-    Song queue[] = {/* isi dengan data queue */};
+    Song queue[] = {{"JKT48", "Mahagita Vol.2", "Jiwaru Days"}, {"JKT48", "Mahagita Vol.2", "Ingin Bertemu"}};
     int queueSize = sizeof(queue) / sizeof(queue[0]);
 
-    Song history[] = {/* isi dengan data riwayat */};
+    Song history[] = {{"JKT48", "Mahagita Vol.2", "Seventeen"}, {"JKT48", "Mahagita Vol.2", "Better"}};
     int historySize = sizeof(history) / sizeof(history[0]);
 
-    Song* playlists[] = {/* isi dengan data playlist */};
-    int playlistSizes[] = {/* isi dengan jumlah lagu di tiap playlist */};
-    int numPlaylists = sizeof(playlists) / sizeof(playlists[0]);
+    int numPlaylists = 2;
+    int playlistSizes[] = {3, 2}; // Jumlah lagu dalam setiap playlist
 
-    saveToFile("/save/savefile.txt", queue, queueSize, history, historySize, playlists, playlistSizes, numPlaylists);
+    Song* playlists[2];
+    playlists[0] = (Song[]) {{"JKT48", "Pajama Drive", "Jurus Rahasia Teleport"}, {"JKT48", "Pajama Drive", "Bersepeda Berdua"}, {"JKT48", "Pajama Drive", "Ekor Malaikat"}};
+    playlists[1] = (Song[]) {{"JKT48", "Aturan Anti Cinta", "Jatuh Cinta Setiap Bertemu"}, {"JKT48", "Aturan Anti Cinta", "Virus Tipe Hati"}};
+
+    saveToFile(currentWord.TabWord, queue, queueSize, history, historySize, playlists, playlistSizes, numPlaylists);
 
     return 0;
 }
