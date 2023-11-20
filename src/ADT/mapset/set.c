@@ -54,7 +54,7 @@ void DeleteSet(Set *S, infotypeSet Elmt)
     }
     while (!found && idx < S->Count)
     {
-        if (IsKalimatEqual(S->Elements[idx], Elmt))
+        if (IsKataEqual(S->Elements[idx], Elmt))
         {
             found = true;
         }
@@ -77,7 +77,7 @@ boolean IsMemberSet(Set S, infotypeSet Elmt)
     addrSer idx = 0;
     while (!found && idx < S.Count)
     {
-        if (IsKalimatEqual(S.Elements[idx], Elmt))
+        if (IsKataEqual(S.Elements[idx], Elmt))
         {
             found = true;
         }
@@ -151,7 +151,7 @@ void PrintSet(Set S){
         int len = S.Elements[i].Length;
         int j = 0;
         while(j<len){
-            printf("%c", S.Elements[i].TabSentence[j]);
+            printf("%c", S.Elements[i].TabWord[j]);
             j++;
         }
         printf("\n");
