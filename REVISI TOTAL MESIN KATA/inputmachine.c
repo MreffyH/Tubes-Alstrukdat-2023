@@ -48,3 +48,31 @@ void RESETINPUT() {
     }
 }
 
+boolean INPUTEQUAL(Input I, char *K) {
+    boolean sama = true;
+    int i = 0;
+    if (I.LengthInput == FUNGSILENGTH(K)) {
+        while (i < I.LengthInput && sama)
+        {
+            if (I.TabInput[i] != K[i]) {
+                sama = false;
+            } else {
+                i++;
+            }
+        }
+        
+    } else {
+        sama = false;
+    }
+    return sama;
+
+}
+
+int FUNGSILENGTH(char *K) {
+    int i = 0;
+    while (K[i] != '\0')
+    {
+        i++;
+    }
+    return i;
+}

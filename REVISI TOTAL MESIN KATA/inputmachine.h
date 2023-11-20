@@ -23,4 +23,8 @@ void STARTINPUT();
 void COPYINPUT();
 
 void RESETINPUT();
+
+boolean INPUTEQUAL(Input I, char *K);
+
+int FUNGSILENGTH(char *K);
 #endif
