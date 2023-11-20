@@ -1,6 +1,6 @@
 #ifndef set_H
 #define set_H
-#include "../mesin/mesinkata.h"
+#include "../../../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
 // #include "../ADT/boolean.h"
 
 /* MODUL Set

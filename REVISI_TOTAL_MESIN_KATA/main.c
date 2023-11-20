@@ -13,9 +13,9 @@ int main(){
     {
         STARTINPUT();
         if (INPUTEQUAL(currentInput, "START")) {
+            printf("masuk ke start\n");
             char *file = "user1.txt";
             STARTWAYANGWAVE(file);
-            printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.");
         }
     }
 }
