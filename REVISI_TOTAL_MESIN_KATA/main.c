@@ -46,8 +46,47 @@ int main()
         else if ((INPUTEQUAL(currentInput, "PLAY SONG")) && dalamsesi == true)
         {
             /*masukin fungsi PLAY SONG*/
-            printf("Masuk ke PLAY SONG")
+            printf("Masuk ke PLAY SONG");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAY SONG")) && dalamsesi == false){
+        else if ((INPUTEQUAL(currentInput, "PLAY SONG")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST")) && dalamsesi == true)
+        {
+            /*masukin fungsi PLAY PLAYLIST*/
+            printf("Masuk ke PLAY PLAYLIST");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }
+        else if ((INPUTEQUAL(currentInput, "QUEUE")) && dalamsesi == true)
+        {
+            /*masukin fungsi QUEUE*/
+            printf("Masuk ke QUEUE");
+        }
+        else if ((INPUTEQUAL(currentInput, "QUEUE")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }
+        else if ((INPUTEQUAL(currentInput, "STATUS")) && dalamsesi == true)
+        {
+            /*masukin fungsi STATUS*/
+            printf("Masuk ke STATUS");
+        }
+        else if ((INPUTEQUAL(currentInput, "STATUS")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }
+        else if ((INPUTEQUAL(currentInput, "SAVE")) && dalamsesi == true)
+        {
+            /*masukin fungsi SAVE*/
+            printf("Masuk ke SAVE");
+        }
+        else if ((INPUTEQUAL(currentInput, "SAVE")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }        
     }
 }
