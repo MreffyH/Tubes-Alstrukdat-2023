@@ -94,3 +94,19 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
 //         printf("Kamu tidak memiliki playlist.\n");
 //     }
 // }
+int main()
+{
+    Set S;
+    CreateEmptySet(&S);
+
+    MapAlbum MA;
+    CreateMapAlbum(&MA, S);
+
+    MapPenyanyi MP;
+    CreateMapPenyanyi(&MP, MA);
+
+    ListPenyanyi PL;
+    CreateListPenyanyi(&PL, MP);
+    LISTDEFAULT(PL);
+    return 0;
+}
