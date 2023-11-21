@@ -22,7 +22,7 @@ int main()
     printf("|  `  '  ||  _  ||___, ||  _  ||  |  ||  |_ ||  `  '  ||  _  ||  :  ||   [_      \n");
     printf(" \\      / |  |  ||     ||  |  ||  |  ||     | \\      / |  |  | \\   / |     |  \n");
     printf("  \\_/\\_/  |__|__||____/ |__|__||__|__||___,_|  \\_/\\_/  |__|__|  \\_/  |_____|\n");
-    while (mulaiWayangWave)
+    while (mulaiWayangWave) 
     {
         printf("\n");
         printf(">> ");
@@ -34,7 +34,7 @@ int main()
             char *file = "config.txt";
             STARTWAYANGWAVE(file);
             dalamsesi = true;
-            printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
+            printf("\nFile konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
         }
         else if ((INPUTEQUAL(currentInput, "START")) && dalamsesi == true)
         {
