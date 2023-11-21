@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include "queue.h"
-#include "boolean.h"
 
 /* *** Kreator *** */
-void CreateQueue(Queue *q)
+void CreateEmptyQueue(QueueSong *q)
 /* I.S. sembarang */
 /* F.S. Sebuah q kosong terbentuk dengan kondisi sbb: */
 /* - Index head bernilai IDX_UNDEF */
@@ -15,21 +14,21 @@ void CreateQueue(Queue *q)
 }
 
 /* ********* Prototype ********* */
-boolean isEmpty(Queue q)
+boolean isEmpty(QueueSong q)
 /* Mengirim true jika q kosong: lihat definisi di atas */
 {
     return (IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF);
 }
 
-boolean isFull(Queue q)
+boolean isFull(QueueSong q)
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD*/
 {
-    return (length(q) == CAPACITY);
+    return (length(q) == MaxElQ);
 }
 
 
-int length(Queue q)
+int length(QueueSong q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 {
     if (isEmpty(q)) {
@@ -40,7 +39,7 @@ int length(Queue q)
 }
 
 /* *** Primitif Add/Delete *** */
-void enqueue(Queue *q, ElTypeQ val)
+void enqueue(QueueSong *q, DetailSong val)
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur". */
@@ -55,25 +54,25 @@ void enqueue(Queue *q, ElTypeQ val)
     TAIL(*q) = val;
 }
 
-void dequeue(Queue *q, ElTypeQ *val)
+void dequeue(QueueSong *q, DetailSong *val)
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
         q mungkin kosong */
 {
-    *val = HEAD(*q);
+    (*val) = HEAD(*q);
     if (length(*q) == 1) {
-        CreateQueue(q);
+        CreateEmptyQueue(q);
     } else {
         for (int i = 1; i < length(*q); i++){
-            (*q).buffer[i-1] = (*q).buffer[i];
+            (*q).detil_queue[i-1] = (*q).detil_queue[i];
         }
         IDX_TAIL(*q)--;
     }
 }
 
 /* *** Display Queue *** */
-void displayQueue(Queue q)
+void displayQueue(QueueSong q)
 /* Proses : Menuliskan isi Queue dengan traversal, Queue ditulis di antara kurung 
    siku; antara dua elemen dipisahkan dengan separator "koma", tanpa tambahan 
    karakter di depan, di tengah, atau di belakang, termasuk spasi dan enter */
@@ -83,27 +82,34 @@ void displayQueue(Queue q)
 /* Jika Queue kosong : menulis [] */
 {
     if (!isEmpty(q)) {
-        ElTypeQ temp;
-        for (int i = 1; i <= length(q); i++) {
+        DetailSong temp;
+        for (int i = 0; i < length(q); i++) {
             dequeue(&q, &temp);
-            printf("  %d.", i);
-            TulisWord(temp);
+            printf("%d. ", i+1);
+            printf("Nama Penyanyi: ");
+            printWord(temp.namaPenyanyi);
+            printf("\n");
+            printf("Nama Album: ");
+            printWord(temp.namaAlbum);
+            printf("\n");
+            printf("Nama Lagu: ");
+            printWord(temp.namaLagu);
             printf("\n");
             enqueue(&q, temp);
         }
     } else {
-        printf("  -\n");
+        printf("Queue Kosong \n");
     }
 }
 
-boolean IsMemberQ (Queue q, ElTypeQ v)
+boolean IsMemberQ (QueueSong q, DetailSong v)
 /* Mengembalikan nilai true apabila elemen v ada pada Queue */
 {
     if (!isEmpty(q)) {
-        ElTypeQ temp;
+        DetailSong temp;
         for (int i = 0; i < length(q); i++) {
             dequeue(&q, &temp);
-            if (IsWordEq(temp, v)) return true;
+            if ((IsKataEqual(temp.namaPenyanyi, v.namaPenyanyi)) && (IsKataEqual(temp.namaAlbum, v.namaAlbum)) && (IsKataEqual(temp.namaLagu, v.namaLagu))) return true;
             enqueue(&q, temp);
         }
     }
