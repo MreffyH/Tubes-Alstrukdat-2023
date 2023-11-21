@@ -271,3 +271,16 @@ int FUNGSILENGTH(char *K) {
     }
     return i;
 }
+
+// int main() {
+//     // Word DuplicateKata(Word Kata){
+//     // Word HasilCopyK;
+//     // HasilCopyK.Length = Kata.Length;
+//     // for (int i = 0; i < Kata.Length; i++){
+//     //     HasilCopyK.TabWord[i] = Kata.TabWord[i];
+//     // }
+//     // return HasilCopyK;
+//     STARTINPUT();
+//     Word kata = DuplicateKata(currentInput);
+//     printWord(kata);
+// }

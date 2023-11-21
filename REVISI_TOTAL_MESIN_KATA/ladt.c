@@ -1,9 +1,9 @@
 #include "../src/ADT/list/list.h"
-#include "../REVISI_TOTAL_MESIN_KATA/listmapset.h"
-#include "../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
-#include "../REVISI_TOTAL_MESIN_KATA/start.h"
+#include "listmapset.h"
+#include "mesinkata.h"
+#include "start.h"
 // #include "listdinamis.h"
-// gcc -o listadt listadt.c ../src/ADT/list/list.c ../REVISI_TOTAL_MESIN_KATA/listmapset.c ../REVISI_TOTAL_MESIN_KATA/mesinkata.c ../src/ADT/mapset/set.c ../REVISI_TOTAL_MESIN_KATA/mesinkarakter.c ../REVISI_TOTAL_MESIN_KATA/start.c
+// gcc -o ladt ladt.c ../src/ADT/list/list.c ../src/ADT/mapset/set.c listmapset.c mesinkata.c mesinkarakter.c start.c
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +12,7 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
 {
     printf("Daftar Penyanyi : \n");
     int i;
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < Jumlahpenyanyi(penyanyi); i++)
     {
         Word name;
         name = DuplicateKata(penyanyi.penyanyi_ke[i].namaPenyanyi);
@@ -96,25 +96,26 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
 //         printf("Kamu tidak memiliki playlist.\n");
 //     }
 // }
-int main()
-{
-    Set S;
-    CreateEmptySet(&S);
+// int main()
+// {
+//     Set S;
+//     CreateEmptySet(&S);
 
-    MapAlbum MA;
-    CreateMapAlbum(&MA, S);
+//     MapAlbum MA;
+//     CreateMapAlbum(&MA, S);
+    
+//     MapPenyanyi MP;
+//     CreateMapPenyanyi(&MP, MA);
 
-    MapPenyanyi MP;
-    CreateMapPenyanyi(&MP, MA);
+//     ListPenyanyi PL;
+//     CreateListPenyanyi(&PL, MP);
 
-    ListPenyanyi PL;
-    CreateListPenyanyi(&PL, MP);
+//     char *file = "config.txt";
+//     STARTWAYANGWAVE(&PL, file);
+//     printf("\n");
 
-    char *file = "../save/config.txt";
-    STARTWAYANGWAVE(&PL, file);
+//     DISPLAYPENYANYI(PL);
 
-    DISPLAYPENYANYI(PL);
-
-    // LISTDEFAULT(PL);
-    return 0;
-}
+//     LISTDEFAULT(PL);
+//     return 0;
+// }
