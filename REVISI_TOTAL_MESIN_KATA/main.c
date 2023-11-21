@@ -4,6 +4,8 @@
 #include "mesinkarakter.h"
 #include "mesinkata.h"
 #include "../src/WayangWave/help.h"
+#include "listmapset.h"
+#include "../src/ADT/mapset/set.h"
 
 /* Include WayangWave */
 #include "start.h"
@@ -14,6 +16,19 @@ int main()
 {
     boolean mulaiWayangWave = true;
     boolean dalamsesi = false;
+
+    Set S;
+    CreateEmptySet(&S);
+
+    MapAlbum MA;
+    CreateMapAlbum(&MA, S);
+    
+    MapPenyanyi MP;
+    CreateMapPenyanyi(&MP, MA);
+
+    ListPenyanyi PL;
+    CreateListPenyanyi(&PL, MP);
+
 
     printf("\n-------------------SELAMAT DATANG DI PROGRAM WAYANGWAVE-------------------\n");
     printf(" __    __   ____  __ __   ____  ____    ____  __    __   ____  __ __    ___      \n");
@@ -34,7 +49,14 @@ int main()
         {
             printf("MASUK KE START\n");
             char *file = "config.txt";
-            STARTWAYANGWAVE(file);
+            STARTWAYANGWAVE(&PL, file);
+            printf("\n");
+
+            DISPLAYPENYANYI(PL);
+
+            DISPLAYALBUM(PL);
+
+            DISPLAYLAGU(PL);
             dalamsesi = true;
             printf("\nFile konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
         }
