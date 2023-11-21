@@ -1,8 +1,9 @@
 #include "../src/ADT/list/list.h"
 #include "../REVISI_TOTAL_MESIN_KATA/listmapset.h"
 #include "../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
+#include "../REVISI_TOTAL_MESIN_KATA/start.h"
 // #include "listdinamis.h"
-// gcc -o listadt listadt.c ../src/ADT/list/list.c ../REVISI_TOTAL_MESIN_KATA/listmapset.c ../REVISI_TOTAL_MESIN_KATA/mesinkata.c ../src/ADT/mapset/set.c ../REVISI_TOTAL_MESIN_KATA/mesinkarakter.c
+// gcc -o listadt listadt.c ../src/ADT/list/list.c ../REVISI_TOTAL_MESIN_KATA/listmapset.c ../REVISI_TOTAL_MESIN_KATA/mesinkata.c ../src/ADT/mapset/set.c ../REVISI_TOTAL_MESIN_KATA/mesinkarakter.c ../REVISI_TOTAL_MESIN_KATA/start.c
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,7 +12,7 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
 {
     printf("Daftar Penyanyi : \n");
     int i;
-    for (i = 0; i < (penyanyi).countpenyanyi; i++)
+    for (i = 0; i < 3; i++)
     {
         Word name;
         name = DuplicateKata(penyanyi.penyanyi_ke[i].namaPenyanyi);
@@ -108,6 +109,10 @@ int main()
 
     ListPenyanyi PL;
     CreateListPenyanyi(&PL, MP);
+
+    char *file = "config.txt";
+    STARTWAYANGWAVE(&PL, file);
+
     LISTDEFAULT(PL);
     return 0;
 }
