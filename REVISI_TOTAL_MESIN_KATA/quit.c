@@ -6,29 +6,25 @@
 
 void quit() {
     printf("Apakah kamu ingin menyimpan data sesi sekarang? (Y/N): "); 
+    STARTINPUT();
 
-    START(); // Memulai mesin karakter
-
-    while (currentChar != ';') {
-        IgnoreBlanks(); // Mengabaikan spasi
-
-        currentWord.Length = 0;
-        currentWord.TabWord[currentWord.Length++] = currentChar; // memasukkan currenchar ke tabword
-
-        ADV(); //maju ke karakter selanjutnya
-    }
-
-    if ( currentWord.TabWord[0] == 'Y'){
+    if ( INPUTEQUAL(currentInput,"Y;")){
         // save(); // memanggil save
         printf("save");
     }
-    else{
-        printf("Kamu keluar dari WayangWave\n");
-        printf("Sampai bertemu lagii :)\n");
+    else if (INPUTEQUAL(currentInput,"N;")){
+        printf("================Kamu keluar dari WayangWave================\n");
+        printf("  _____  ____  __ __   ___   ____    ____  ____    ____    \n");
+        printf(" / ___/ /    ||  |  | /   \\ |    \\  /    ||    \\  /    |\n");
+        printf("(   \\_ |  o  ||  |  ||     ||  _  ||  o  ||  D  )|  o  |  \n");
+        printf(" \\__  ||     ||  ~  ||  O  ||  |  ||     ||    / |     |  \n");
+        printf(" /  \\ ||  _  ||___, ||     ||  |  ||  _  ||    \\ |  _  | \n");
+        printf(" \\    ||  |  ||     ||     ||  |  ||  |  ||  .  \\|  |  | \n");
+        printf("  \\___||__|__||____/  \\___/ |__|__||__|__||__|\\_||__|__|\n");
+        printf("\n=========================================================\n");
         exit(0); // keluar dari program
     }
-
+    else{
+        printf("Command tidak diketahui!\n");
+    }
 }
-
-
-
