@@ -73,6 +73,9 @@ boolean isNotNone(Word kalimat);
 
 void ADVLOAD();
 
+/* Bagian File */
+void STARTKATAFILE(char *filestart);
+
 /* Bagian Input */
 void IGNORENEWLINE();
 
