@@ -53,7 +53,7 @@ boolean Search(List L, ElType X) {
 	int j = LastIdx(L);
 	boolean found = false;
 	while ((i <= j) && !found) {
-		if (IsKalimatEqual(L.A[i], X)) {
+		if (IsKataEqual(L.A[i], X)) {
 			found = true;
 		}
 		i += 1;

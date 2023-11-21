@@ -1,0 +1,1 @@
+../REVISI_TOTAL_MESIN_KATA/mesinkata.h

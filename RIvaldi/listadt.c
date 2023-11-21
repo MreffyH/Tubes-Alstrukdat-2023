@@ -1,11 +1,11 @@
-#include "list.h"
+#include "../src/ADT/list/list.h"
+#include "../REVISI_TOTAL_MESIN_KATA/listmapset.h"
+#include "../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
+// #include "listdinamis.h"
+// gcc -o listadt listadt.c ../src/ADT/list/list.c ../REVISI_TOTAL_MESIN_KATA/listmapset.c ../REVISI_TOTAL_MESIN_KATA/mesinkata.c ../src/ADT/mapset/set.c ../REVISI_TOTAL_MESIN_KATA/mesinkarakter.c
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "list.c"
-#include "main.c"
-#include "listmapset.h"
-#include "mesinkata.h"
-#include "listdinamis.h"
 
 void LISTDEFAULT(ListPenyanyi penyanyi)
 {
@@ -42,7 +42,7 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
             {
                 printf("%d. ", i + 1);
                 Word name_album;
-                name_album = penyanyi.penyanyi_ke[urutan].listalbum[i].namaAlbum;
+                name_album = penyanyi.penyanyi_ke[urutan].mapalbum[i].namaAlbum;
                 printWord(name_album);
                 printf("\n");
             }
@@ -57,15 +57,15 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
                 if (search_album != NOTFOUND)
                 {
                     printf(" Daftar Lagu di \n");
-                    printWord(penyanyi.penyanyi_ke[urutan].listalbum[search_album].namaAlbum);
+                    printWord(penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum);
                     printf(":\n");
                     int jum_lagu;
-                    jum_lagu = penyanyi.penyanyi_ke[urutan].listalbum[search_album].setlagu.countSet;
+                    jum_lagu = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Count;
                     for (i = 0; i < jum_album; i++)
                     {
                         printf("%d. ", i + 1);
                         Word name_lagu;
-                        name_lagu = penyanyi.penyanyi_ke[urutan].listalbum[search_album].Elements[i];
+                        name_lagu = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[i];
                         printWord(name_lagu);
                         printf("\n");
                     }
@@ -75,22 +75,22 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
     }
 }
 
-void PLAYLIST(ListDinamis L)
-{
-    printf("\n");
-    printf("Daftar playlist yang kamu miliki:\n");
-    if (ISEMPTYLD(L))
-    {
-        int idx = 0;
-        for (int i = 0; i < LENGTHLD(L); i++)
-        {
-            pritf("\t%d ", idx + 1);
-            idx++;
-            printf("\n");
-        }
-    }
-    else
-    {
-        printf("Kamu tidak memiliki playlist.\n");
-    }
-}
+// void PLAYLIST(ListDinamis L)
+// {
+//     printf("\n");
+//     printf("Daftar playlist yang kamu miliki:\n");
+//     if (ISEMPTYLD(L))
+//     {
+//         int idx = 0;
+//         for (int i = 0; i < LENGTHLD(L); i++)
+//         {
+//             pritf("\t%d ", idx + 1);
+//             idx++;
+//             printf("\n");
+//         }
+//     }
+//     else
+//     {
+//         printf("Kamu tidak memiliki playlist.\n");
+//     }
+// }
