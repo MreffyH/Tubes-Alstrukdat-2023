@@ -8,7 +8,7 @@
 
 int main() {
     printf("masuk ke main\n");
-    char *file = "user1.txt";
+    char *file = "config.txt";
     STARTWAYANGWAVE(file);
     return 0;
 }

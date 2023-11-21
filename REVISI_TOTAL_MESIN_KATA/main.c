@@ -31,7 +31,7 @@ int main()
         if ((INPUTEQUAL(currentInput, "START")) && dalamsesi == false)
         {
             printf("MASUK KE START\n");
-            char *file = "user1.txt";
+            char *file = "config.txt";
             STARTWAYANGWAVE(file);
             dalamsesi = true;
             printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
@@ -42,6 +42,7 @@ int main()
         }
         else if (INPUTEQUAL(currentInput, "LOAD") && dalamsesi == false)
         {
+            printf(">> ");
             STARTINPUT();
             Word file = currentInput;
             LOADWAYANGWAVE(file.TabWord);
