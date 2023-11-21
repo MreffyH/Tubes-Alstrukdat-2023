@@ -4,8 +4,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void STARTWAYANGWAVE(char *file) {
-    STARTFILE(file);
+void STARTWAYANGWAVE(char *filestart) {
+    STARTFILE(filestart);
     ADV();
     ADVWORD();
     int jumlahpenyanyi = strToInteger(currentWord);
