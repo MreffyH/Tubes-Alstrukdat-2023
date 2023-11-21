@@ -8,6 +8,7 @@
 /* Include WayangWave */
 #include "start.h"
 #include "load.h"
+#include "quit.h"
 
 int main()
 {
@@ -201,8 +202,7 @@ int main()
         }      
         else if ((INPUTEQUAL(currentInput, "QUIT;")) && dalamsesi == true)
         {
-            /*masukin fungsi PLAYLIST ADD*/
-            printf("Masuk ke QUIT");
+            quit();
         }
         else if ((INPUTEQUAL(currentInput, "QUIT;")) && dalamsesi == false)
         {
