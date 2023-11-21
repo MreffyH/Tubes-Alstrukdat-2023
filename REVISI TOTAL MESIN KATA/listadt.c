@@ -7,8 +7,9 @@
 #include "mesinkata.h"
 #include "listdinamis.h"
 
-void listdefault(ListPenyanyi penyanyi)
+void LISTDEFAULT(ListPenyanyi penyanyi)
 {
+    printf("Daftar Penyanyi : \n");
     int i;
     for (i = 0; i < (penyanyi).countpenyanyi; i++)
     {
@@ -74,7 +75,7 @@ void listdefault(ListPenyanyi penyanyi)
     }
 }
 
-void playlist(ListDinamis L)
+void PLAYLIST(ListDinamis L)
 {
     printf("\n");
     printf("Daftar playlist yang kamu miliki:\n");
