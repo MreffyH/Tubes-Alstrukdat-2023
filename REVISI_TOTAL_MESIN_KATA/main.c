@@ -11,6 +11,7 @@
 #include "start.h"
 #include "load.h"
 #include "quit.h"
+#include "ladt.h"
 
 int main()
 {
@@ -28,7 +29,6 @@ int main()
 
     ListPenyanyi PL;
     CreateListPenyanyi(&PL, MP);
-
 
     printf("\n======================SELAMAT DATANG DI PROGRAM WAYANGWAVE======================\n");
     printf(" __    __   ____  __ __   ____  ____    ____  __    __   ____  __ __    ___       \n");
@@ -135,8 +135,7 @@ int main()
         }  
         else if ((INPUTEQUAL(currentInput, "LIST DEFAULT;")) && dalamsesi == true)
         {
-            /*masukin fungsi LIST DEFAULT*/
-            printf("Masuk ke LIST DEFAULT");
+            LISTDEFAULT(PL);
         }
         else if ((INPUTEQUAL(currentInput, "LIST DEFAULT;")) && dalamsesi == false)
         {
