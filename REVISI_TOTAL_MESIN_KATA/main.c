@@ -8,6 +8,7 @@
 /* Include WayangWave */
 #include "start.h"
 #include "load.h"
+#include "quit.h"
 
 int main()
 {
@@ -28,7 +29,8 @@ int main()
         printf(">> ");
         STARTINPUT();
         printf("\n");
-        if ((INPUTEQUAL(currentInput, "START")) && dalamsesi == false)
+        
+        if ((INPUTEQUAL(currentInput, "START;")) && dalamsesi == false)
         {
             printf("MASUK KE START\n");
             char *file = "config.txt";
@@ -36,7 +38,7 @@ int main()
             dalamsesi = true;
             printf("\nFile konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
         }
-        else if ((INPUTEQUAL(currentInput, "START")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "START;")) && dalamsesi == true)
         {
             printf("Wayangwave telah berjalan, silahkan masukkan command");
         }
@@ -53,12 +55,12 @@ int main()
         {
             printf("Wayangwave telah berjalan, silahkan masukkan command");
         }
-        else if ((INPUTEQUAL(currentInput, "HELP")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "HELP;")) && dalamsesi == true)
         {
             helpAfter();
             printf("berhasil fungsi help after\n");
         }
-        else if ((INPUTEQUAL(currentInput, "HELP")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "HELP;")) && dalamsesi == false)
         {
             helpBefore();
             printf("berhasil fungsi help before\n");

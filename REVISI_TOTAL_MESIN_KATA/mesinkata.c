@@ -226,7 +226,7 @@ void STARTINPUT() {
 void COPYINPUT() {
     RESETINPUT();
     int i = 0;
-    while ((currentChar != ';') && (currentChar != '\n') && (currentChar != EOF))
+    while ((currentChar != '\n') && (currentChar != EOF))
     {
         currentInput.TabWord[i] = currentChar;
         i++;
