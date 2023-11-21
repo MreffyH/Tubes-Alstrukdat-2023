@@ -5,6 +5,7 @@
 #include "main.c"
 #include "listmapset.h"
 #include "mesinkata.h"
+#include "listdinamis.h"
 
 void listdefault(ListPenyanyi penyanyi)
 {
@@ -20,7 +21,10 @@ void listdefault(ListPenyanyi penyanyi)
     printf("Ingin melihat album yang ada?(Y/N): ");
     STARTINPUT();
     printf("\n");
-    if (IsKataEqual(currentInput, "Y"))
+    Word idx;
+    idx.TabWord[0] = 'Y';
+    idx.Length = 1;
+    if (IsKataEqual(currentInput, idx))
     {
         printf("Pilih penyanyi untuk melihat album mereka: \n");
         STARTINPUT();
@@ -43,7 +47,7 @@ void listdefault(ListPenyanyi penyanyi)
             }
             printf("Ingin melihat lagu yang ada?(Y/N): ");
             STARTINPUT();
-            if (IsKataEqual(currentInput, "Y"))
+            if (IsKataEqual(currentInput, idx))
             {
                 printf("Pilih album untuk melihat lagu yang ada di album : ");
                 STARTINPUT();
@@ -70,21 +74,22 @@ void listdefault(ListPenyanyi penyanyi)
     }
 }
 
-void playlist(List *s)
+void playlist(ListDinamis L)
 {
-    int i;
-    if (is)
+    printf("\n");
+    printf("Daftar playlist yang kamu miliki:\n");
+    if (ISEMPTYLD(L))
     {
-        printf("Daftar playlist yang kamu miliki:\n");
-        printf("Kamu tidak memiliki playlist.\n");
-        return;
+        int idx = 0;
+        for (int i = 0; i < LENGTHLD(L); i++)
+        {
+            pritf("\t%d ", idx + 1);
+            idx++;
+            printf("\n");
+        }
     }
     else
     {
-        printf("Daftar playlist yang kamu miliki:\n");
-        for (i = 0; i < Playlist.A; i++)
-        {
-            printf("%d. %s\n", i + 1, Playlist.A[i]);
-        }
+        printf("Kamu tidak memiliki playlist.\n");
     }
 }
