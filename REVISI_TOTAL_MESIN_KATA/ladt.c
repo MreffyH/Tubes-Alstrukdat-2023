@@ -63,7 +63,7 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
                     printf(":\n");
                     int jum_lagu;
                     jum_lagu = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Count;
-                    for (i = 0; i < jum_album; i++)
+                    for (i = 0; i < jum_lagu; i++)
                     {
                         printf("%d. ", i + 1);
                         Word name_lagu;
@@ -103,7 +103,7 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
 
 //     MapAlbum MA;
 //     CreateMapAlbum(&MA, S);
-    
+
 //     MapPenyanyi MP;
 //     CreateMapPenyanyi(&MP, MA);
 
