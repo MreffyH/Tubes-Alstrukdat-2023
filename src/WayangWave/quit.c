@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "stdlib.h"
-#include "mesinkata.h"
-#include "mesinkarakter.h"
+#include "quit.h"
 
 void quit() {
     printf("Apakah kamu ingin menyimpan data sesi sekarang? (Y/N) :"); 
