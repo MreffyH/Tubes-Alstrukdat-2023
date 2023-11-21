@@ -42,13 +42,13 @@ void CreateEmptyQueue(QueueSong *q);
 /* Proses : Melakukan alokasi, membuat sebuah q kosong */
 
 /* ********* Prototype ********* */
-boolean isEmpty(QueueSong q);
+boolean isEmptyQ(QueueSong q);
 /* Mengirim true jika q kosong: lihat definisi di atas */
-boolean isFull(QueueSong q);
+boolean isFullQ(QueueSong q);
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD dalam buffer melingkar*/
 
-int length(QueueSong q);
+int lengthQ(QueueSong q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */

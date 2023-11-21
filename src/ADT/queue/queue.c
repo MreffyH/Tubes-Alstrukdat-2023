@@ -14,24 +14,24 @@ void CreateEmptyQueue(QueueSong *q)
 }
 
 /* ********* Prototype ********* */
-boolean isEmpty(QueueSong q)
+boolean isEmptyQ(QueueSong q)
 /* Mengirim true jika q kosong: lihat definisi di atas */
 {
     return (IDX_HEAD(q) == IDX_UNDEF) && (IDX_TAIL(q) == IDX_UNDEF);
 }
 
-boolean isFull(QueueSong q)
+boolean isFullQ(QueueSong q)
 /* Mengirim true jika tabel penampung elemen q sudah penuh */
 /* yaitu IDX_TAIL akan selalu di belakang IDX_HEAD*/
 {
-    return (length(q) == MaxElQ);
+    return (lengthQ(q) == MaxElQ);
 }
 
 
-int length(QueueSong q)
+int lengthQ(QueueSong q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 {
-    if (isEmpty(q)) {
+    if (isEmptyQ(q)) {
         return 0;
     } else {
         return (IDX_TAIL(q) - IDX_HEAD(q) + 1);
@@ -44,7 +44,7 @@ void enqueue(QueueSong *q, DetailSongQ val)
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur". */
 {
-    if (isEmpty(*q)) {
+    if (isEmptyQ(*q)) {
         IDX_HEAD(*q) = 0;
         IDX_TAIL(*q) = 0;
     } 
@@ -61,10 +61,10 @@ void dequeue(QueueSong *q, DetailSongQ *val)
         q mungkin kosong */
 {
     (*val) = HEAD(*q);
-    if (length(*q) == 1) {
+    if (lengthQ(*q) == 1) {
         CreateEmptyQueue(q);
     } else {
-        for (int i = 1; i < length(*q); i++){
+        for (int i = 1; i < lengthQ(*q); i++){
             (*q).detil_queue[i-1] = (*q).detil_queue[i];
         }
         IDX_TAIL(*q)--;
@@ -81,9 +81,9 @@ void displayQueue(QueueSong q)
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika Queue kosong : menulis [] */
 {
-    if (!isEmpty(q)) {
+    if (!isEmptyQ(q)) {
         DetailSongQ temp;
-        for (int i = 0; i < length(q); i++) {
+        for (int i = 0; i < lengthQ(q); i++) {
             dequeue(&q, &temp);
             printf("%d. ", i+1);
             printf("Nama Penyanyi: ");
@@ -105,9 +105,9 @@ void displayQueue(QueueSong q)
 boolean IsMemberQ (QueueSong q, DetailSongQ v)
 /* Mengembalikan nilai true apabila elemen v ada pada Queue */
 {
-    if (!isEmpty(q)) {
+    if (!isEmptyQ(q)) {
         DetailSongQ temp;
-        for (int i = 0; i < length(q); i++) {
+        for (int i = 0; i < lengthQ(q); i++) {
             dequeue(&q, &temp);
             if ((IsKataEqual(temp.namaPenyanyiQ, v.namaPenyanyiQ)) && (IsKataEqual(temp.namaAlbumQ, v.namaAlbumQ)) && (IsKataEqual(temp.namaLaguQ, v.namaLaguQ))) return true;
             enqueue(&q, temp);
