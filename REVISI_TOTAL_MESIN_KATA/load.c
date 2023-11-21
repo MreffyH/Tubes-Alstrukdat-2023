@@ -6,44 +6,8 @@
 #include"stdio.h"
 #include"stdlib.h"
 
-void LOADWAYANGWAVE(char *filestart) {
-    STARTKATAFILE(filestart);
-    ADV();
-    ADVWORD();
-    int jumlahpenyanyi = strToInteger(currentWord);
-    printf("%d\n", jumlahpenyanyi);
-    ADV();
-    IgnoreEnter();
-    for (int i = 0; i < jumlahpenyanyi; i++){
-        ADVWORD();
-        int jumlahalbum = strToInteger(currentWord);
-        printf("%d ", jumlahalbum);
-        ADVSENTENCE();
-        IgnoreEnter();
-        printWord(kalimat);
-        printf("\n");
-        for (int j = 0; j < jumlahalbum; j++){
-            ADVWORD();
-            int jumlahlagu = strToInteger(currentWord);
-            printf("%d ", jumlahlagu);
-            ADVSENTENCE();
-            IgnoreEnter();
-            printWord(kalimat);
-            printf("\n");
-            for(int k = 0; k < jumlahlagu; k++){
-                if((i == jumlahpenyanyi-1) && (j == jumlahalbum-1) && (k == jumlahlagu-1)){
-                    ADVSENTENCE();
-                    printWord(kalimat);
-                }
-                else{
-                    ADVSENTENCE();
-                    IgnoreEnter();
-                    printWord(kalimat);
-                    printf("\n");
-                }
-            }
-        }
-    }
+void LOADWAYANGWAVE(ListPenyanyi*PL, char *filestart) {
+    STARTWAYANGWAVE(PL, filestart);
     printf("\n");
     /* MASUK KE BAGIAN LOAD... LAGU YANG SEDANG DIMAINKAN */
     IgnoreEnter();

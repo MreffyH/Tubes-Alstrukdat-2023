@@ -5,7 +5,8 @@
 
 #include"mesinkata.h"
 #include"start.h"
+#include"listmapset.h"
 
-void LOADWAYANGWAVE(char *fileload);
+void LOADWAYANGWAVE(ListPenyanyi *PL, char *fileload);
 
 #endif
