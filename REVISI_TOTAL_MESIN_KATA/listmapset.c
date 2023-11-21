@@ -117,7 +117,8 @@ void DISPLAYPENYANYI(ListPenyanyi penyanyi) {
 void DISPLAYALBUM(ListPenyanyi penyanyi) {
     int choice;
     printf("CHOICE: ");
-    scanf("%d", &choice);
+    STARTWORD();
+    choice = strToInteger(currentWord);
     printf("DISPLAY SEMUA ALBUM DARI ");
     printWord(penyanyi.penyanyi_ke[choice-1].namaPenyanyi);
     printf("\n");
@@ -131,10 +132,12 @@ void DISPLAYALBUM(ListPenyanyi penyanyi) {
 void DISPLAYLAGU(ListPenyanyi penyanyi) {
     int choice;
     printf("PENYANYI KE BERAPA: ");
-    scanf("%d", &choice);
+    STARTWORD();
+    choice = strToInteger(currentWord);
     int choice2;
     printf("ALBUM KE BERAPA: ");
-    scanf("%d", &choice2);
+    STARTWORD();
+    choice2 = strToInteger(currentWord);
     printWord(penyanyi.penyanyi_ke[choice-1].mapalbum[choice2-1].namaAlbum);
     printf(" DARI PENYANYI ");
     printWord(penyanyi.penyanyi_ke[choice-1].namaPenyanyi);
