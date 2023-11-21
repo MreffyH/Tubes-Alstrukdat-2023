@@ -12,7 +12,7 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
 {
     printf("Daftar Penyanyi : \n");
     int i;
-    for (i = 0; i < 3; i++)
+    for (i = 0; i < Jumlahpenyanyi(penyanyi); i++)
     {
         Word name;
         name = DuplicateKata(penyanyi.penyanyi_ke[i].namaPenyanyi);
@@ -77,25 +77,25 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
     }
 }
 
-// void PLAYLIST(ListDinamis L)
-// {
-//     printf("\n");
-//     printf("Daftar playlist yang kamu miliki:\n");
-//     if (ISEMPTYLD(L))
-//     {
-//         int idx = 0;
-//         for (int i = 0; i < LENGTHLD(L); i++)
-//         {
-//             pritf("\t%d ", idx + 1);
-//             idx++;
-//             printf("\n");
-//         }
-//     }
-//     else
-//     {
-//         printf("Kamu tidak memiliki playlist.\n");
-//     }
-// }
+void PLAYLIST(ListPenyanyi penyanyi)
+{
+    printf("\n");
+    printf("Daftar playlist yang kamu miliki:\n");
+    if (ISEMPTYLD(penyanyi))
+    {
+        int idx = 0;
+        for (int i = 0; i < LENGTHLD(penyanyi); i++)
+        {
+            pritf("\t%d ", idx + 1);
+            idx++;
+            printf("\n");
+        }
+    }
+    else
+    {
+        printf("Kamu tidak memiliki playlist.\n");
+    }
+}
 int main()
 {
     Set S;
