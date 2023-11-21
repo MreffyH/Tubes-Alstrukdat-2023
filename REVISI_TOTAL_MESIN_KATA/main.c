@@ -3,7 +3,7 @@
 /* Include ADT */
 #include "mesinkarakter.h"
 #include "mesinkata.h"
-#include "../WayangWave/help.h"
+#include "../src/WayangWave/help.h"
 
 /* Include WayangWave */
 #include "start.h"
@@ -14,14 +14,21 @@ int main()
     boolean mulaiWayangWave = true;
     boolean dalamsesi = false;
 
-    printf("\n-------SELAMAT DATANG DI PROGRAM WAYANGWAVE-------\n");
+    printf("\n-------------------SELAMAT DATANG DI PROGRAM WAYANGWAVE-------------------\n");
+    printf(" __    __   ____  __ __   ____  ____    ____  __    __   ____  __ __    ___      \n");
+    printf("|  |__|  | /    ||  |  | /    ||    \\  /    ||  |__|  | /    ||  |  |  /  _]    \n");
+    printf("|  |  |  ||  o  ||  |  ||  o  ||  _  ||   __||  |  |  ||  o  ||  |  | /  [_      \n");
+    printf("|  |  |  ||     ||  ~  ||     ||  |  ||  |  ||  |  |  ||     ||  |  ||    _]     \n");
+    printf("|  `  '  ||  _  ||___, ||  _  ||  |  ||  |_ ||  `  '  ||  _  ||  :  ||   [_      \n");
+    printf(" \\      / |  |  ||     ||  |  ||  |  ||     | \\      / |  |  | \\   / |     |  \n");
+    printf("  \\_/\\_/  |__|__||____/ |__|__||__|__||___,_|  \\_/\\_/  |__|__|  \\_/  |_____|\n");
     while (mulaiWayangWave)
     {
         printf("\n");
         printf(">> ");
         STARTINPUT();
         printf("\n");
-        if (INPUTEQUAL(currentInput, "START"))
+        if ((INPUTEQUAL(currentInput, "START")) && dalamsesi == false)
         {
             printf("MASUK KE START\n");
             char *file = "user1.txt";
@@ -29,13 +36,21 @@ int main()
             dalamsesi = true;
             printf("File konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
         }
-        else if (INPUTEQUAL(currentInput, "LOAD"))
+        else if ((INPUTEQUAL(currentInput, "START")) && dalamsesi == true)
+        {
+            printf("Wayangwave telah berjalan, silahkan masukkan command");
+        }
+        else if (INPUTEQUAL(currentInput, "LOAD") && dalamsesi == false)
         {
             STARTINPUT();
             Word file = currentInput;
             LOADWAYANGWAVE(file.TabWord);
             printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
             dalamsesi = true;
+        }
+        else if ((INPUTEQUAL(currentInput, "LOAD")) && dalamsesi == true)
+        {
+            printf("Wayangwave telah berjalan, silahkan masukkan command");
         }
         else if ((INPUTEQUAL(currentInput, "HELP")) && dalamsesi == true)
         {
@@ -137,21 +152,57 @@ int main()
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD SONG")) && dalamsesi == true)
         {
             /*masukin fungsi PLAYLIST ADD*/
-            printf("Masuk ke PLAYLIST ADD");
+            printf("Masuk ke PLAYLIST ADD SONG");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD SONG")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST SWAP ")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD ALBUM")) && dalamsesi == true)
+        {
+            /*masukin fungsi PLAYLIST ADD*/
+            printf("Masuk ke PLAYLIST ADD ALBUM");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD ALBUM")) && dalamsesi == false)
+        {
+            printf("Command tidak bisa dieksekusi!\n");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST SWAP")) && dalamsesi == true)
         {
             /*masukin fungsi PLAYLIST ADD*/
             printf("Masuk ke PLAYLIST ADD");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST SWAP")) && dalamsesi == false)
+        {
+            printf("Command tidak bisa dieksekusi!\n");
+        }      
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST REMOVE")) && dalamsesi == true)
+        {
+            /*masukin fungsi PLAYLIST REMOVE*/
+            printf("Masuk ke PLAYLIST REMOVE");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST REMOVE")) && dalamsesi == false)
+        {
+            printf("Command tidak bisa dieksekusi!\n");
+        }      
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST DELETE")) && dalamsesi == true)
+        {
+            /*masukin fungsi PLAYLIST DELETE*/
+            printf("Masuk ke PLAYLIST DELETE");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST DELETE")) && dalamsesi == false)
+        {
+            printf("Command tidak bisa dieksekusi!\n");
+        }      
+        else if ((INPUTEQUAL(currentInput, "QUIT")) && dalamsesi == true)
+        {
+            /*masukin fungsi PLAYLIST ADD*/
+            printf("Masuk ke QUIT");
+        }
+        else if ((INPUTEQUAL(currentInput, "QUIT")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }      
