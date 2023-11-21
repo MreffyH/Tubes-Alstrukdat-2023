@@ -11,13 +11,13 @@
 
 /* Definisi elemen dan address */
 typedef struct{
-	Word namaPenyanyi;
-	Word namaAlbum;
-	Word namaLagu;
-} DetailSong;
+	Word namaPenyanyiQ;
+	Word namaAlbumQ;
+	Word namaLaguQ;
+} DetailSongQ;
 
 typedef struct{
-	DetailSong detil_queue[MaxElQ];
+	DetailSongQ detil_queue[MaxElQ];
 	int idxHead;
 	int idxTail;
 } QueueSong;
@@ -29,6 +29,9 @@ typedef struct{
 #define IDX_TAIL(q) (q).idxTail
 #define     HEAD(q) (q).detil_queue[(q).idxHead]
 #define     TAIL(q) (q).detil_queue[(q).idxTail]
+#define InfoSingerQ(D) D.namaPenyanyiQ
+#define InfoAlbumQ(D) D.namaAlbumQ
+#define InfoJudulQ(D) D.namaLaguQ
 
 /* *** Kreator *** */
 void CreateEmptyQueue(QueueSong *q);
@@ -49,12 +52,12 @@ int length(QueueSong q);
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika q kosong. */
 
 /* *** Primitif Add/Delete *** */
-void enqueue(QueueSong *q, DetailSong val);
+void enqueue(QueueSong *q, DetailSongQ val);
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-void dequeue(QueueSong *q, DetailSong *val);
+void dequeue(QueueSong *q, DetailSongQ *val);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
@@ -66,7 +69,7 @@ void displayQueue(QueueSong q);
    I.S. Q sembarang, mungkin kosong
    F.S. Isi Q ditampilkan ke layar */
 
-boolean IsMemberQ (QueueSong q, DetailSong v);
+boolean IsMemberQ (QueueSong q, DetailSongQ v);
 /* Mengembalikan nilai true apabila elemen v ada pada Queue */
 
 #endif

@@ -39,7 +39,7 @@ int length(QueueSong q)
 }
 
 /* *** Primitif Add/Delete *** */
-void enqueue(QueueSong *q, DetailSong val)
+void enqueue(QueueSong *q, DetailSongQ val)
 /* Proses: Menambahkan val pada q dengan aturan FIFO */
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur". */
@@ -54,7 +54,7 @@ void enqueue(QueueSong *q, DetailSong val)
     TAIL(*q) = val;
 }
 
-void dequeue(QueueSong *q, DetailSong *val)
+void dequeue(QueueSong *q, DetailSongQ *val)
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
@@ -82,18 +82,18 @@ void displayQueue(QueueSong q)
 /* Jika Queue kosong : menulis [] */
 {
     if (!isEmpty(q)) {
-        DetailSong temp;
+        DetailSongQ temp;
         for (int i = 0; i < length(q); i++) {
             dequeue(&q, &temp);
             printf("%d. ", i+1);
             printf("Nama Penyanyi: ");
-            printWord(temp.namaPenyanyi);
+            printWord(InfoSingerQ(temp));
             printf("\n");
             printf("Nama Album: ");
-            printWord(temp.namaAlbum);
+            printWord(InfoAlbumQ(temp));
             printf("\n");
             printf("Nama Lagu: ");
-            printWord(temp.namaLagu);
+            printWord(InfoJudulQ(temp));
             printf("\n");
             enqueue(&q, temp);
         }
@@ -102,14 +102,14 @@ void displayQueue(QueueSong q)
     }
 }
 
-boolean IsMemberQ (QueueSong q, DetailSong v)
+boolean IsMemberQ (QueueSong q, DetailSongQ v)
 /* Mengembalikan nilai true apabila elemen v ada pada Queue */
 {
     if (!isEmpty(q)) {
-        DetailSong temp;
+        DetailSongQ temp;
         for (int i = 0; i < length(q); i++) {
             dequeue(&q, &temp);
-            if ((IsKataEqual(temp.namaPenyanyi, v.namaPenyanyi)) && (IsKataEqual(temp.namaAlbum, v.namaAlbum)) && (IsKataEqual(temp.namaLagu, v.namaLagu))) return true;
+            if ((IsKataEqual(temp.namaPenyanyiQ, v.namaPenyanyiQ)) && (IsKataEqual(temp.namaAlbumQ, v.namaAlbumQ)) && (IsKataEqual(temp.namaLaguQ, v.namaLaguQ))) return true;
             enqueue(&q, temp);
         }
     }
