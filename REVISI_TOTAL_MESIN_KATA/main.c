@@ -7,6 +7,7 @@
 
 /* Include WayangWave */
 #include "start.h"
+#include "load.h"
 
 int main()
 {
@@ -30,7 +31,10 @@ int main()
         }
         else if (INPUTEQUAL(currentInput, "LOAD"))
         {
-            printf("MASUK KE LOAD\n");
+            STARTINPUT();
+            Word file = currentInput;
+            LOADWAYANGWAVE(file.TabWord);
+            printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
             dalamsesi = true;
         }
         else if ((INPUTEQUAL(currentInput, "HELP")) && dalamsesi == true)
@@ -87,6 +91,69 @@ int main()
         else if ((INPUTEQUAL(currentInput, "SAVE")) && dalamsesi == false)
         {
             printf("silahkan input START terlebih dahulu");
-        }        
+        }  
+        else if ((INPUTEQUAL(currentInput, "LIST DEFAULT")) && dalamsesi == true)
+        {
+            /*masukin fungsi LIST DEFAULT*/
+            printf("Masuk ke LIST DEFAULT");
+        }
+        else if ((INPUTEQUAL(currentInput, "LIST DEFAULT")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }
+        else if ((INPUTEQUAL(currentInput, "LIST PLAYLIST")) && dalamsesi == true)
+        {
+            /*masukin fungsi LIST PLAYLIST*/
+            printf("Masuk ke LIST PLAYLIST");
+        }
+        else if ((INPUTEQUAL(currentInput, "LIST PLAYLIST")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }
+        else if ((INPUTEQUAL(currentInput, "SONG NEXT")) && dalamsesi == true)
+        {
+            /*masukin fungsi SONG NEXT*/
+            printf("Masuk ke SONG NEXT");
+        }
+        else if ((INPUTEQUAL(currentInput, "SONG NEXT")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }
+        else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS")) && dalamsesi == true)
+        {
+            /*masukin fungsi SONG PREVIOUS*/
+            printf("Masuk ke SONG PREVIOUS");
+        }
+        else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST CREATE")) && dalamsesi == true)
+        {
+            /*masukin fungsi PLAYLIST CREATE*/
+            printf("Masuk ke PLAYLIST CREATE");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST CREATE")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD")) && dalamsesi == true)
+        {
+            /*masukin fungsi PLAYLIST ADD*/
+            printf("Masuk ke PLAYLIST ADD");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST SWAP ")) && dalamsesi == true)
+        {
+            /*masukin fungsi PLAYLIST ADD*/
+            printf("Masuk ke PLAYLIST ADD");
+        }
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD")) && dalamsesi == false)
+        {
+            printf("silahkan input START terlebih dahulu");
+        }      
     }
 }

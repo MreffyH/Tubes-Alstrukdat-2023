@@ -3,6 +3,9 @@
 #ifndef __LOAD_H_
 #define __LOAD_H_
 
-void load(char *fileload);
+#include"mesinkata.h"
+#include"start.h"
+
+void LOADWAYANGWAVE(char *fileload);
 
 #endif
