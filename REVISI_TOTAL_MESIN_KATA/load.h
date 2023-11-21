@@ -6,7 +6,9 @@
 #include"mesinkata.h"
 #include"start.h"
 #include"listmapset.h"
+#include"../src/ADT/queue/queue.h"
+#include"../src/ADT/stack/stack.h"
 
-void LOADWAYANGWAVE(ListPenyanyi *PL, char *fileload);
+void LOADWAYANGWAVE(ListPenyanyi *PL, char *fileload, QueueSong *QS, HistorySong *HS);
 
 #endif

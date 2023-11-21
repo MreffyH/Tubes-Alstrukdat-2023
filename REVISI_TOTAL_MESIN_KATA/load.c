@@ -6,7 +6,7 @@
 #include"stdio.h"
 #include"stdlib.h"
 
-void LOADWAYANGWAVE(ListPenyanyi*PL, char *filestart) {
+void LOADWAYANGWAVE(ListPenyanyi*PL, char *filestart, QueueSong *QS, HistorySong *HS) {
     STARTWAYANGWAVE(PL, filestart);
     printf("\n");
     /* MASUK KE BAGIAN LOAD... LAGU YANG SEDANG DIMAINKAN */
@@ -42,14 +42,22 @@ void LOADWAYANGWAVE(ListPenyanyi*PL, char *filestart) {
         printf("Artis : ");
         printWord(kalimat);
         printf("\n");
+        Word PenyanyiQ = kalimat;
         ADVLOAD();
         printf("Judul Album: ");
         printWord(kalimat);
         printf("\n");
+        Word AlbumQ = kalimat;
         ADVLOAD();
         printf("Judul Lagu: ");
         printWord(kalimat);
         printf("\n");
+        Word LaguQ = kalimat;
+        DetailSongQ tempQ;
+        tempQ.namaPenyanyiQ = PenyanyiQ;
+        tempQ.namaAlbumQ = AlbumQ;
+        tempQ.namaLaguQ = LaguQ;
+        enqueue(QS, tempQ);
     }
     /* MASUK KE BAGIAN RIWAYAT */
     IgnoreEnter();
@@ -63,14 +71,22 @@ void LOADWAYANGWAVE(ListPenyanyi*PL, char *filestart) {
         printf("Artis : ");
         printWord(kalimat);
         printf("\n");
+        Word PenyanyiS = kalimat;
         ADVLOAD();
         printf("Judul Album: ");
         printWord(kalimat);
         printf("\n");
+        Word AlbumS = kalimat;
         ADVLOAD();
         printf("Judul Lagu: ");
         printWord(kalimat);
         printf("\n");
+        Word LaguS = kalimat;
+        DetailSongS tempS;
+        tempS.namaPenyanyiS = PenyanyiS;
+        tempS.namaAlbumS = AlbumS;
+        tempS.namaLaguS = LaguS;
+        Push(HS, tempS);
     }
     /* MASUK KE BAGIAN PLAYLIST */
     IgnoreEnter();
