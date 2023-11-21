@@ -1,4 +1,5 @@
 /* File: driverstart.c */
+/* gcc -o main driverstart.c start.c mesinkata.c listmapset.c mesinkarakter.c ../src/ADT/mapset/set.c */
 
 #include "start.h"
 #include "mesinkata.h"

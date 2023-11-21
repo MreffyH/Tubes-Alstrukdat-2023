@@ -1,3 +1,4 @@
+/*gcc -o main main.c mesinkarakter.c mesinkata.c ../src/WayangWave/help.c start.c load.c quit.c listmapset.c ../src/ADT/mapset/set.c ladt.c*/
 #include <stdio.h>
 
 /* Include ADT */
@@ -70,7 +71,7 @@ int main()
             printf(">> ");
             STARTINPUT();
             Word file = currentInput;
-            LOADWAYANGWAVE(file.TabWord);
+            LOADWAYANGWAVE(&PL, file.TabWord);
             printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
             dalamsesi = true;
         }
