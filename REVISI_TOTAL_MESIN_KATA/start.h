@@ -5,7 +5,8 @@
 
 #include "boolean.h"
 #include "mesinkata.h"
+#include "listmapset.h"
 
-void STARTWAYANGWAVE(char *file);
+void STARTWAYANGWAVE(ListPenyanyi *PL, char *file);
 
 #endif

@@ -4,7 +4,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void STARTWAYANGWAVE(char *filestart) {
+void STARTWAYANGWAVE(ListPenyanyi *PL, char *filestart) {
     STARTKATAFILE(filestart);
     ADV();
     ADVWORD();
@@ -20,6 +20,8 @@ void STARTWAYANGWAVE(char *filestart) {
         IgnoreEnter();
         printWord(kalimat);
         printf("\n");
+        Word PenyanyiNow = DuplicateKata(kalimat);
+        AddPenyanyi(PL, kalimat);
         for (int j = 0; j < jumlahalbum; j++){
             ADVWORD();
             int jumlahlagu = strToInteger(currentWord);
@@ -28,16 +30,20 @@ void STARTWAYANGWAVE(char *filestart) {
             IgnoreEnter();
             printWord(kalimat);
             printf("\n");
+            Word AlbumNow = DuplicateKata(kalimat);
+            AddAlbum(PL, PenyanyiNow, kalimat);
             for(int k = 0; k < jumlahlagu; k++){
                 if((i == jumlahpenyanyi-1) && (j == jumlahalbum-1) && (k == jumlahlagu-1)){
                     ADVSENTENCE();
                     printWord(kalimat);
+                    AddLagu(PL, PenyanyiNow, AlbumNow, kalimat);
                 }
                 else{
                     ADVSENTENCE();
                     IgnoreEnter();
                     printWord(kalimat);
                     printf("\n");
+                    AddLagu(PL, PenyanyiNow, AlbumNow, kalimat);
                 }
             }
         }
