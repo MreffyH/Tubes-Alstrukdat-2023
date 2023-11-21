@@ -68,4 +68,10 @@ void DisplayHistorySong(HistorySong S);
 /* Menampilkan Stack pada layar
    I.S. S sembarang, mungkin kosong
    F.S. Isi S ditampilkan ke layar */
+
+void INVERSSTACK(HistorySong *S);
+/* Membalik isi dari S
+   I.S. S Sembarang, mungkin kosong
+   F.S. Isi S terbalik
+   Contoh: [2,3,4] menjadi [4,3,2] */
 #endif

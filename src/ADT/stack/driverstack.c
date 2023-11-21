@@ -117,5 +117,8 @@ int main(){
     // printf("TOP: %d\n", Top(history));
     // printf("\n\n");
     DisplayHistorySong(history);
+    printf("\nSEKARANG ISI STACK AKAN DIINVERS:\n");
+    INVERSSTACK(&history);
+    DisplayHistorySong(history);
     return 0;
 }

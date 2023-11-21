@@ -71,3 +71,23 @@ void DisplayHistorySong(HistorySong S)
         Push(&S,detiltemp);
     }
 }
+
+void INVERSSTACK(HistorySong *S){
+    HistorySong temp1, temp2;
+    DetailSongS detil_temp;
+    CreateEmptyHistorySong(&temp1);
+    CreateEmptyHistorySong(&temp2);
+    while(!IsEmptyHistorySong(*S)){
+        Pop(S,&detil_temp);
+        Push(&temp1, detil_temp);
+    }
+    while(!IsEmptyHistorySong(temp1)){
+        Pop(&temp1,&detil_temp);
+        Push(&temp2, detil_temp);
+    }
+    while (!IsEmptyHistorySong(temp2))
+    {
+        Pop(&temp2,&detil_temp);
+        Push(S, detil_temp);
+    }
+}
