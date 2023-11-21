@@ -21,7 +21,6 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
     }
     printf("Ingin melihat album yang ada?(Y/N): ");
     STARTINPUT();
-    printf(";");
     printf("\n");
 
     Word idx;
@@ -31,7 +30,6 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
     {
         printf("Pilih penyanyi untuk melihat album mereka: \n");
         STARTINPUT();
-        printf(";");
         printf("\n");
         Word nama_penyanyi = DuplicateKata(currentInput);
         int urutan = SearchPenyanyi_ke(penyanyi, currentInput);
@@ -52,12 +50,10 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
             }
             printf("Ingin melihat lagu yang ada?(Y/N): ");
             STARTINPUT();
-            printf(";\n");
             if (IsKataEqual(currentInput, idx))
             {
                 printf("Pilih album untuk melihat lagu yang ada di album : \n");
                 STARTINPUT();
-                printf(";\n");
                 int search_album = SearchAlbum_ke(penyanyi, nama_penyanyi, currentInput);
                 if (search_album != NOTFOUND)
                 {
