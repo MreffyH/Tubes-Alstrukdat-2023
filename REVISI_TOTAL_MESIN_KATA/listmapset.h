@@ -6,16 +6,9 @@
 // #include "../mesin/mesinkalimat.h"
 #include <stdlib.h>
 
-#define MaxElAlbum 40
-#define MaxElSinger 50
+#define MaxElAlbum 20
+#define MaxElSinger 20
 #define NOTFOUND -1
-
-
-#define NilSet 0
-#define MaxElSet 100
-
-typedef Word infotypeSet;
-typedef int addrSer;
 
 // typedef struct
 // {
@@ -30,7 +23,7 @@ typedef struct{
 
 typedef struct{
 	Word namaPenyanyi;
-	MapAlbum listalbum[MaxElAlbum];
+	MapAlbum mapalbum[MaxElAlbum];
 	int countalbum;
 } MapPenyanyi;
 
@@ -44,9 +37,9 @@ typedef struct{
 
 void CreateMapAlbum(MapAlbum *mapalbum, Set S);
 
-void CreateMapPenyanyi(MapPenyanyi *mappenyanyi);
+void CreateMapPenyanyi(MapPenyanyi *mappenyanyi, MapAlbum listalbum);
 
-void CreateListPenyanyi(ListPenyanyi *penyanyi);
+void CreateListPenyanyi(ListPenyanyi *penyanyi, MapPenyanyi mappenyanyi);
 
 void AddPenyanyi(ListPenyanyi *penyanyi, Word nama);
 

@@ -63,29 +63,44 @@ int main(){
     kalimat.Length = 6;
     DeleteSet(&s1, kalimat);
     PrintSet(s1);
-    printf("0000000\n");
     PrintSet(s2);
 
 
     MapAlbum mAlbum;
     CreateMapAlbum(&mAlbum, s1);
-    kalimat.TabWord[0] = 'j';
-    kalimat.TabWord[1] = 'k';
-    kalimat.TabWord[2] = 't';
+    kalimat.TabWord[0] = 'S';
+    kalimat.TabWord[1] = 'n';
+    kalimat.TabWord[2] = 'M';
     kalimat.Length = 3;
     mAlbum.namaAlbum = DuplicateKata(kalimat);
     PrintSet(mAlbum.setlagu);
+    printWord(mAlbum.namaAlbum);
+    printf("\n");
     MapPenyanyi mPenyanyi;
-    CreateMapPenyanyi(&mPenyanyi);
-
+    CreateMapPenyanyi(&mPenyanyi, mAlbum);
+    Word kalimat2;
+    kalimat2.TabWord[0] = 'J';
+    kalimat2.TabWord[1] = 'K';
+    kalimat2.TabWord[2] = 'T';
+    kalimat2.TabWord[3] = '4';
+    kalimat2.TabWord[4] = '8';
+    kalimat2.Length = 5;
+    mPenyanyi.namaPenyanyi = DuplicateKata(kalimat2);
+    printWord(mPenyanyi.mapalbum[0].namaAlbum);
+    printf("\n");
 
     ListPenyanyi LisPenyanyi_;
-    // CreateListPenyanyi(&LisPenyanyi_);
-    printf("MIlestone\n");
-    // ABC.TabWord[0] = 'A';
-    // ABC.TabWord[1] = 'B';
-    // ABC.TabWord[2] = 'C';
-    // ABC.Length = 3;
+    CreateListPenyanyi(&LisPenyanyi_, mPenyanyi);
+    printWord(LisPenyanyi_.penyanyi_ke[0].namaPenyanyi);
+    printf("\n");
+    printf("Milestone1\n");
+    Word ABC;
+    ABC.TabWord[0] = 'A';
+    ABC.TabWord[1] = 'B';
+    ABC.TabWord[2] = 'C';
+    ABC.Length = 3;
+    AddLagu(&LisPenyanyi_, kalimat2, kalimat, ABC);
+    printWord(LisPenyanyi_.penyanyi_ke[0].mapalbum[0].setlagu.Elements[1]);
     // Q.TabWord[0] = 'Q';
     // Q.Length = 1;
     // I.TabWord[0] = 'I';

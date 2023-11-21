@@ -7,19 +7,27 @@ void CreateMapAlbum(MapAlbum *mapalbum, Set S){
     (*mapalbum).setlagu = S;
 }
 
-void CreateMapPenyanyi(MapPenyanyi *mappenyanyi) {
+void CreateMapPenyanyi(MapPenyanyi *mappenyanyi, MapAlbum m_album) {
+    (*mappenyanyi).mapalbum[0] = m_album;
     Jumlahalbum(*mappenyanyi) = 0;
 }
 
-void CreateListPenyanyi(ListPenyanyi *penyanyi){
+void CreateListPenyanyi(ListPenyanyi *penyanyi, MapPenyanyi mappenyanyi){
     Jumlahpenyanyi(*penyanyi) = 0;
+    (*penyanyi).penyanyi_ke[0] = mappenyanyi;
 }
 
 void AddPenyanyi(ListPenyanyi *penyanyi, Word nama){
     int urutan = SearchPenyanyi_ke(*penyanyi, nama);
     if(urutan == NOTFOUND){
         (*penyanyi).penyanyi_ke[Jumlahpenyanyi(*penyanyi)].namaPenyanyi = nama;
-        (*penyanyi).penyanyi_ke[Jumlahpenyanyi(*penyanyi)].countalbum = 0;
+        Set S;
+        CreateEmptySet(&S);
+        MapAlbum m_album;
+        CreateMapAlbum(&m_album, S);
+        MapPenyanyi mPenyanyi;
+        CreateMapPenyanyi(&mPenyanyi, m_album);
+        (*penyanyi).penyanyi_ke[Jumlahpenyanyi(*penyanyi)] = mPenyanyi;
         Jumlahpenyanyi(*penyanyi)++;
     }
 }
@@ -48,7 +56,12 @@ void AddAlbum(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum){
     if(urutanpenyanyi != NOTFOUND){
         int urutanalbum = SearchAlbum_ke((*penyanyi), (*penyanyi).penyanyi_ke[urutanpenyanyi].namaPenyanyi, namaAlbum);
         if(urutanalbum == NOTFOUND){
-            (*penyanyi).penyanyi_ke[urutanpenyanyi].listalbum[Jumlahalbum((*penyanyi).penyanyi_ke[urutanpenyanyi])].namaAlbum = namaAlbum; 
+            Set S;
+            CreateEmptySet(&S);
+            MapAlbum m_album;
+            CreateMapAlbum(&m_album, S);
+            m_album.namaAlbum = namaAlbum;
+            (*penyanyi).penyanyi_ke[urutanpenyanyi].mapalbum[Jumlahalbum((*penyanyi).penyanyi_ke[urutanpenyanyi])] = m_album;
             Jumlahalbum((*penyanyi).penyanyi_ke[urutanpenyanyi])++;
         }
     }
@@ -60,7 +73,7 @@ int SearchAlbum_ke(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum){
     int urutan = SearchPenyanyi_ke(penyanyi, namaPenyanyi);
     if(urutan != NOTFOUND){
         while((i < Jumlahalbum(penyanyi.penyanyi_ke[urutan])) && (!found)){
-            if(IsKataEqual(penyanyi.penyanyi_ke[urutan].listalbum[i].namaAlbum, namaAlbum)){
+            if(IsKataEqual(penyanyi.penyanyi_ke[urutan].mapalbum[i].namaAlbum, namaAlbum)){
                 found = true;
             }
             else{
@@ -84,8 +97,8 @@ void AddLagu(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum, Word nam
         int urutanalbum = SearchAlbum_ke((*penyanyi), (*penyanyi).penyanyi_ke[urutanpenyanyi].namaPenyanyi, namaAlbum);
         if(urutanalbum != NOTFOUND){
             /* cari apakah ada lagu yang sama */
-            if(!IsMemberSet((*penyanyi).penyanyi_ke[urutanpenyanyi].listalbum[urutanalbum].setlagu, namaLagu)){
-                InsertSet(&((*penyanyi).penyanyi_ke[urutanpenyanyi].listalbum[urutanalbum].setlagu), namaLagu);
+            if(!IsMemberSet((*penyanyi).penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu, namaLagu)){
+                InsertSet(&((*penyanyi).penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu), namaLagu);
             }
         }
     }
