@@ -104,3 +104,44 @@ void AddLagu(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum, Word nam
         }
     }
 }
+
+void DISPLAYPENYANYI(ListPenyanyi penyanyi) {
+    printf("DISPLAY SEMUA PENYANYI:\n");
+    for(int j = 0; j< Jumlahpenyanyi(penyanyi); j++){
+        printf("%d. ", j+1);
+        printWord(penyanyi.penyanyi_ke[j].namaPenyanyi);
+        printf("\n");
+    }
+}
+
+void DISPLAYALBUM(ListPenyanyi penyanyi) {
+    int choice;
+    printf("CHOICE: ");
+    scanf("%d", &choice);
+    printf("DISPLAY SEMUA ALBUM DARI ");
+    printWord(penyanyi.penyanyi_ke[choice-1].namaPenyanyi);
+    printf("\n");
+    for(int j = 0; j < penyanyi.penyanyi_ke[choice-1].countalbum; j++){
+        printf("%d. ", j+1);
+        printWord(penyanyi.penyanyi_ke[choice-1].mapalbum[j].namaAlbum);
+        printf("\n");
+    }
+}
+
+void DISPLAYLAGU(ListPenyanyi penyanyi) {
+    int choice;
+    printf("PENYANYI KE BERAPA: ");
+    scanf("%d", &choice);
+    int choice2;
+    printf("ALBUM KE BERAPA: ");
+    scanf("%d", &choice2);
+    printWord(penyanyi.penyanyi_ke[choice-1].mapalbum[choice2-1].namaAlbum);
+    printf(" DARI PENYANYI ");
+    printWord(penyanyi.penyanyi_ke[choice-1].namaPenyanyi);
+    printf("\n");
+    for(int j = 0; j < penyanyi.penyanyi_ke[choice-1].mapalbum[choice2-1].setlagu.Count; j++){
+        printf("%d. ", j+1);
+        printWord(penyanyi.penyanyi_ke[choice-1].mapalbum[choice2-1].setlagu.Elements[j]);
+        printf("\n");
+    }
+}
