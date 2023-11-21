@@ -7,6 +7,7 @@
 
 /* Include WayangWave */
 #include "start.h"
+#include "load.h"
 
 int main()
 {
@@ -30,7 +31,10 @@ int main()
         }
         else if (INPUTEQUAL(currentInput, "LOAD"))
         {
-            printf("MASUK KE LOAD\n");
+            STARTINPUT();
+            Word file = currentInput;
+            LOADWAYANGWAVE(file.TabWord);
+            printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
             dalamsesi = true;
         }
         else if ((INPUTEQUAL(currentInput, "HELP")) && dalamsesi == true)
