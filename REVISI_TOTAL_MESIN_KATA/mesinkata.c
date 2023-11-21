@@ -197,6 +197,19 @@ void IGNORENEWLINE() {
     
 }
 
+void STARTKATAFILE(char *filestart) {
+    STARTFILE(filestart);
+    IgnoreBlanks();
+    if (currentChar == '\0') {
+        endWord = true;
+    } else
+    {
+        endWord = false;
+        CopyWord();
+    }
+    
+}
+
 void STARTINPUT() {
     START();
     IGNORENEWLINE();
