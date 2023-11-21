@@ -8,7 +8,7 @@ Deklarasi stack yang dengan implementasi array eksplisit-statik rata kiri
 */
 
 #define NilSet 0
-#define MaxElSet 50
+#define MaxElSet 20
 
 typedef Word infotypeSet;
 typedef int addrSer;

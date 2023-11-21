@@ -108,8 +108,9 @@ int main(){
     ListPenyanyi LisPenyanyi_;
     CreateListPenyanyi(&LisPenyanyi_, mPenyanyi);
     printf("MILESTONE\n");
-    int i;
-    i = SearchPenyanyi_ke(LisPenyanyi_, kalimat2);
+    // int i;
+    // i = SearchPenyanyi_ke(LisPenyanyi_, kalimat2);
+    // printf("%d\n",i);
     // printf("Nama penyanyi pertama dari listpenyanyi:\n");
     // printWord(LisPenyanyi_.penyanyi_ke[0].namaPenyanyi);
     // Word singer1 = DuplicateKata(LisPenyanyi_.penyanyi_ke[0].namaPenyanyi);

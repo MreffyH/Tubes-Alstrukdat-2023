@@ -44,6 +44,9 @@ void CreateListPenyanyi(ListPenyanyi *penyanyi, MapPenyanyi mappenyanyi);
 void AddPenyanyi(ListPenyanyi *penyanyi, Word nama);
 
 int SearchPenyanyi_ke(ListPenyanyi penyanyi, Word namaPenyanyi);
+/*Mencari urutan penyanyi ke- dalam List Penyanyi, mengembalikan nilai urutan penyanyi, jika tidak ditemukan, mengembalikan nilai NOTFOUND */
+
+// Word SEARCHSINGER(ListPenyanyi list, Word nama);
 
 void AddAlbum(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum);
 
