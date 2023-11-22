@@ -1,9 +1,8 @@
-#include "../ADT/queue/queue.h"
-#include "../ADT/stack/stack.h"
+#include "song.h"
 #include <stdio.h>
-//asumsi jika queue/historysong kosong pasti ada current song untu
+// asumsi jika queue/historysong kosong pasti ada current song untu
 
-void songNext(QueueSong *q, HistorySong *s, DetailSongQ * cs)
+void songNext(QueueSong *q, HistorySong *s, DetailSongQ *cs)
 {
     if (isEmptyQ(*q))
     {
@@ -52,12 +51,13 @@ void songPrevious(QueueSong *q, HistorySong *s, DetailSongQ *cs)
         DetailSongS csr;
         DetailSongQ tempSong;
         enqueue(q, *cs);
-        for(int i = 0; i < lengthQ(*q)-1; i++){
+        for (int i = 0; i < lengthQ(*q) - 1; i++)
+        {
             dequeue(q, &tempSong);
             enqueue(q, tempSong);
         }
         Pop(s, &csr);
-        cs->namaLaguQ = DuplicateKata(csr.namaPenyanyiS);
+        cs->namaLaguQ = DuplicateKata(csr.namaLaguS);
         cs->namaAlbumQ = DuplicateKata(csr.namaAlbumS);
         cs->namaPenyanyiQ = DuplicateKata(csr.namaPenyanyiS);
         printf("Memutar lagu sebelumnya");

@@ -1,4 +1,4 @@
-/*gcc -o main main.c mesinkarakter.c mesinkata.c ../src/ADT/queue/queue.c ../src/ADT/stack/stack.c SPESIFIKASI_WAYANGWAVE/HELP/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c ../RIvaldi/arraydin.c ../src/ADT/list/listlinier.c*/
+/*gcc -o main main.c mesinkarakter.c mesinkata.c ../src/ADT/queue/queue.c ../src/ADT/stack/stack.c SPESIFIKASI_WAYANGWAVE/HELP/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c ../RIvaldi/arraydin.c ../src/ADT/list/listlinier.c SPESIFIKASI_WAYANGWAVE/SONG/song.c*/
 #include <stdio.h>
 
 /* Include ADT */
@@ -17,7 +17,7 @@
 #include "SPESIFIKASI_WAYANGWAVE/QUIT/quit.h"
 #include "SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.h"
 #include "SPESIFIKASI_WAYANGWAVE/PLAY/play.h"
-#include "../src/WayangWave/song.h"
+#include "SPESIFIKASI_WAYANGWAVE/SONG/song.h"
 
 int main()
 {
@@ -166,7 +166,7 @@ int main()
         }
         else if ((INPUTEQUAL(currentInput, "SONG NEXT;")) && dalamsesi == true)
         {
-            songNext();
+            songNext(&QS, &HS, &currentSong);
             printf("Masuk ke SONG NEXT\n");
         }
         else if ((INPUTEQUAL(currentInput, "SONG NEXT;")) && dalamsesi == false)
@@ -175,7 +175,7 @@ int main()
         }
         else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS;")) && dalamsesi == true)
         {
-            songPrevious();
+            songPrevious(&QS, &HS, &currentSong);
             printf("Masuk ke SONG PREVIOUS\n");
         }
         else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS;")) && dalamsesi == false)

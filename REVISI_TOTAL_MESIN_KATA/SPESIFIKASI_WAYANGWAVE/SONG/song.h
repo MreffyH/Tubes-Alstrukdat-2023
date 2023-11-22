@@ -1,7 +1,7 @@
 #ifndef song_H
 #define song_H
 
-#include "../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
+#include "../../mesinkata.h"
 #include "../../../src/ADT/stack/stack.h"
 #include "../../../src/ADT/queue/queue.h"
 
