@@ -178,9 +178,13 @@ int main(){
     printf("DeleteLastArrayDin:\n");
     DeleteLastArrayDin(&KumpulanPlaylist);
     PrintArrayDin(KumpulanPlaylist);
+    printf("CAPACITY KUMPULAN PLAYLIST: %d\n", GetCapacity(KumpulanPlaylist));
+    printf("JUMLAH NEFF KUMPULAN PLAYLIST: %d\n", LengthArrayDin(KumpulanPlaylist));
     printf("DeleteFirstArrayDin:\n");
     DeleteFirstArrayDin(&KumpulanPlaylist);
     PrintArrayDin(KumpulanPlaylist);
+    printf("CAPACITY KUMPULAN PLAYLIST: %d\n", GetCapacity(KumpulanPlaylist));
+    printf("JUMLAH NEFF KUMPULAN PLAYLIST: %d\n", LengthArrayDin(KumpulanPlaylist));
     printf("HASIL COPY KE KUMPULAN PLAYLIST2\n");
     PrintArrayDin(KumpulanPlaylist2);
     printf("\nMakeArrayDin, GetCapacity, LengthArrayDin, IsEmptyArrayDin, PrintArrayDin, InsertFirstArrayDin, InsertLastArrayDin, InsertAtArrayDin, SearchIdxPlaylist, ReverseArrayDin, DeleteFirstArrayDin, DeleteAtArrayDin, DeleteLastArrayDin, CopyArrayDin AMANNN\n");
