@@ -24,6 +24,8 @@ int main()
     ListPenyanyi PL;
     CreateListPenyanyi(&PL, MP);
 
+    DetailSongQ currentSong;
+
     QueueSong QS;
     CreateEmptyQueue(&QS);
 
@@ -35,7 +37,7 @@ int main()
     // PrintArrayDin(PLY);
     STARTINPUT();
     Word file = currentInput;
-    LOADWAYANGWAVE(&PL, file.TabWord, &QS, &HS, &PLY);
+    LOADWAYANGWAVE(&PL, file.TabWord, &QS, &HS, &PLY, &currentSong);
 
     // printf("\n");
     // DISPLAYPENYANYI(PL);
@@ -52,7 +54,14 @@ int main()
     // printf("\n");
 
     // DisplayHistorySong(HS);
-    PrintArrayDin(PLY);
+    
+    // PrintArrayDin(PLY);
 
+    printWord(currentSong.namaPenyanyiQ);
+    printf("\n");
+    printWord(currentSong.namaAlbumQ);
+    printf("\n");
+    printWord(currentSong.namaLaguQ);
+    printf("\n");
     return 0;
 }

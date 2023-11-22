@@ -11,6 +11,6 @@
 #include "../../../RIvaldi/arraydin.h"
 #include "../../../src/ADT/list/listlinier.h"
 
-void LOADWAYANGWAVE(ListPenyanyi *PL, char *fileload, QueueSong *QS, HistorySong *HS, ArrayDin *PLY);
+void LOADWAYANGWAVE(ListPenyanyi *PL, char *fileload, QueueSong *QS, HistorySong *HS, ArrayDin *PLY, DetailSongQ *currentSong);
 
 #endif

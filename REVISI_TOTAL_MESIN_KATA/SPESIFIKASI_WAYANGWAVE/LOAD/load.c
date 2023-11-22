@@ -4,23 +4,27 @@
 #include"stdio.h"
 #include"stdlib.h"
 
-void LOADWAYANGWAVE(ListPenyanyi*PL, char *filestart, QueueSong *QS, HistorySong *HS, ArrayDin *PLY) {
+void LOADWAYANGWAVE(ListPenyanyi*PL, char *filestart, QueueSong *QS, HistorySong *HS, ArrayDin *PLY, DetailSongQ *currentSong) {
     STARTWAYANGWAVE(PL, filestart);
     // printf("\n");
     /* MASUK KE BAGIAN LOAD... LAGU YANG SEDANG DIMAINKAN */
     IgnoreEnter();
     ADVLOAD();
     if(isNotNone(kalimat)){
+        (*currentSong).namaPenyanyiQ = kalimat;
+        // printWord((*currentSong).namaPenyanyiQ);
         // printf("LAGU YANG SEDANG DIMAINKAN\n");
         // printf("Artis : ");
         // printWord(kalimat);
         // printf("\n");
         ADVLOAD();
+        (*currentSong).namaAlbumQ = kalimat;
         // printf("Judul Album: ");
         // printWord(kalimat);
         // printf("\n");
         IgnoreEnter();
         ADVLOAD();
+        (*currentSong).namaLaguQ = kalimat;
         // printf("Judul Lagu: ");
         // printWord(kalimat);
         // printf("\n");

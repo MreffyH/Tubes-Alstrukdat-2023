@@ -35,6 +35,8 @@ int main()
     ListPenyanyi PL;
     CreateListPenyanyi(&PL, MP);
 
+    DetailSongQ currentSong;
+
     QueueSong QS;
     CreateEmptyQueue(&QS);
 
@@ -84,7 +86,7 @@ int main()
             printf("LOAD ");
             STARTINPUT();
             Word file = currentInput;
-            LOADWAYANGWAVE(&PL, file.TabWord, &QS, &HS, &PLY);
+            LOADWAYANGWAVE(&PL, file.TabWord, &QS, &HS, &PLY, &currentSong);
             printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
             dalamsesi = true;
         }
