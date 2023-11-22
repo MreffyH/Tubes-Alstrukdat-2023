@@ -1,3 +1,6 @@
+#include "../src/ADT/list/listlinier.h"
+#include "../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
+
 #ifndef __ARRAY_DINAMIK__
 #define __ARRAY_DINAMIK__
 
@@ -11,7 +14,8 @@
 typedef int IdxType;
 typedef int ElType;
 typedef struct {
-    ElType *A;
+    Word nama_PlayList;
+    ListLin *A;
     int Capacity;
     int Neff;
 } ArrayDin;
