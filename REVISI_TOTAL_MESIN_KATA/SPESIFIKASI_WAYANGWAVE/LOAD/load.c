@@ -1,8 +1,6 @@
 /* File: load.c */
-
+/*gcc -o load.c */
 #include"load.h"
-
-
 #include"stdio.h"
 #include"stdlib.h"
 
