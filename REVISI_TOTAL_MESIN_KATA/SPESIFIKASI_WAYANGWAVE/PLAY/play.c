@@ -1,11 +1,7 @@
-#include "list.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "list.c"
-#include "main.c"
-#include "listmapset.h"
-#include "mesinkata.h"
-#include "listdinamis.h"
+// #include "main.c"
+#include "play.h"
 
 void PLAYSONG(ListPenyanyi penyanyi)
 {
@@ -66,10 +62,11 @@ void PLAYSONG(ListPenyanyi penyanyi)
             int hasil = strToInteger(currentInput);
             Word LAGU_PANGGIL;
             LAGU_PANGGIL = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
-            printf("Memutar lagu  ");
+            printf("Memutar lagu |");
             printWord(LAGU_PANGGIL);
-            printf(" oleh ");
+            printf("| oleh |");
             printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
+            printf("|.");
         }
     }
 }

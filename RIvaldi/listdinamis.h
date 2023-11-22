@@ -3,8 +3,8 @@
 #ifndef __LISTDINAMIS_H_
 #define __LISTDINAMIS_H_
 
-#include "boolean.h"
-#include "mesinkata.h"
+#include "../REVISI_TOTAL_MESIN_KATA/boolean.h"
+#include "../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
 
 #define IdxTypeLD int 
 #define MaxElLD 100
