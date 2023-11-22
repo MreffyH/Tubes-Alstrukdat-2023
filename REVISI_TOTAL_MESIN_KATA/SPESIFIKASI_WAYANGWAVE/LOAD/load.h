@@ -8,7 +8,9 @@
 #include "../../listmapset.h"
 #include "../../../src/ADT/queue/queue.h"
 #include "../../../src/ADT/stack/stack.h"
+#include "../../../RIvaldi/arraydin.h"
+#include "../../../src/ADT/list/listlinier.h"
 
-void LOADWAYANGWAVE(ListPenyanyi *PL, char *fileload, QueueSong *QS, HistorySong *HS);
+void LOADWAYANGWAVE(ListPenyanyi *PL, char *fileload, QueueSong *QS, HistorySong *HS, ArrayDin *PLY);
 
 #endif
