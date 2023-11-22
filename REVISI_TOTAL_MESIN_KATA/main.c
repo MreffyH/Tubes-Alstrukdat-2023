@@ -9,8 +9,8 @@
 #include "../src/ADT/mapset/set.h"
 
 /* Include WayangWave */
-#include "start.h"
-#include "load.h"
+#include "START/start.h"
+#include "LOAD/load.h"
 #include "quit.h"
 #include "ladt.h"
 
