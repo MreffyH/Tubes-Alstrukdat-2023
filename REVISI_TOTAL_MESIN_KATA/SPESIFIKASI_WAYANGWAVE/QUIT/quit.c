@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "stdlib.h"
-#include "mesinkata.h"
-#include "mesinkarakter.h"
+#include "quit.h"
 // #include "save.c"
 
 void quit() {

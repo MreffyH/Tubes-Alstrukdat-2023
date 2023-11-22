@@ -1,4 +1,4 @@
-/*gcc -o main main.c mesinkarakter.c mesinkata.c ../src/ADT/queue/queue.c ../src/ADT/stack/stack.c ../src/WayangWave/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c*/
+/*gcc -o main main.c mesinkarakter.c mesinkata.c ../src/ADT/queue/queue.c ../src/ADT/stack/stack.c ../src/WayangWave/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c*/
 #include <stdio.h>
 
 /* Include ADT */
@@ -13,7 +13,7 @@
 #include "SPESIFIKASI_WAYANGWAVE/START/start.h"
 #include "SPESIFIKASI_WAYANGWAVE/LOAD/load.h"
 #include "../src/WayangWave/help.h"
-#include "quit.h"
+#include "SPESIFIKASI_WAYANGWAVE/QUIT/quit.h"
 #include "SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.h"
 #include "SPESIFIKASI_WAYANGWAVE/PLAY/play.h"
 
