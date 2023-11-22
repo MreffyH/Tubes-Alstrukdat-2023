@@ -165,7 +165,7 @@ int main()
         }
         else if ((INPUTEQUAL(currentInput, "SONG NEXT;")) && dalamsesi == true)
         {
-            /*masukin fungsi SONG NEXT*/
+            songNext();
             printf("Masuk ke SONG NEXT\n");
         }
         else if ((INPUTEQUAL(currentInput, "SONG NEXT;")) && dalamsesi == false)
@@ -174,7 +174,7 @@ int main()
         }
         else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS;")) && dalamsesi == true)
         {
-            /*masukin fungsi SONG PREVIOUS*/
+            songPrevious();
             printf("Masuk ke SONG PREVIOUS\n");
         }
         else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS;")) && dalamsesi == false)

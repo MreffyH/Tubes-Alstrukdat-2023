@@ -1,43 +1,72 @@
-#include "stack.h"
-#include "queue.h"
+#include "../ADT/queue/queue.h"
+#include "../ADT/stack/stack.h"
 #include <stdio.h>
+//asumsi jika queue/historysong kosong pasti ada current song untu
 
-void songNext(Queue *q, Stack *s, currentsong x)
+void songNext(QueueSong *q, HistorySong *s, DetailSongQ * cs)
 {
-    if (isEmpty(*q))
+    if (isEmptyQ(*q))
     {
         printf("Queue kosong, memutar kembali lagu");
-        printf(/*currentsong*/);
+        printf("\"");
+        printWord((*cs).namaLaguQ);
+        printf("\"");
         printf("oleh");
-        printf(/*currentsong*/);
+        printf("\"");
+        printWord((*cs).namaPenyanyiQ);
     }
     else
     {
-        dequeue(q, &x);
-        Push(s, x);
+        DetailSongS csr;
+        csr.namaLaguS = DuplicateKata(cs->namaLaguQ);
+        csr.namaAlbumS = DuplicateKata(cs->namaAlbumQ);
+        csr.namaPenyanyiS = DuplicateKata(cs->namaPenyanyiQ);
+        Push(s, csr);
+        dequeue(q, cs);
         printf("Memutar lagu selanjutnya");
-        printf(/*currentsong*/);
+        printf("\"");
+        printWord((*cs).namaLaguQ);
+        printf("\"");
         printf("oleh");
-        printf(/*currentsong*/)
+        printf("\"");
+        printWord((*cs).namaPenyanyiQ);
+        printf("\"");
     }
 }
 
-void songPrevious(Queue *q, Stack *s, currentsong x)
+void songPrevious(QueueSong *q, HistorySong *s, DetailSongQ *cs)
 {
-    if (isEmpty(*q))
+    if (IsEmptyHistorySong(*s))
     {
-        printf("Riwayat lagu kosong, memutar kembali lagu");
-        printf(/*current song*/);
+        printf("Queue kosong, memutar kembali lagu");
+        printf("\"");
+        printWord((*cs).namaLaguQ);
+        printf("\"");
         printf("oleh");
-        printf(/*currentsong*/);
+        printf("\"");
+        printWord((*cs).namaPenyanyiQ);
+        printf("\"");
     }
     else
     {
-        Pop(s, &x);
-        Push(s, x);
+        DetailSongS csr;
+        DetailSongQ tempSong;
+        enqueue(q, *cs);
+        for(int i = 0; i < lengthQ(*q)-1; i++){
+            dequeue(q, &tempSong);
+            enqueue(q, tempSong);
+        }
+        Pop(s, &csr);
+        cs->namaLaguQ = DuplicateKata(csr.namaPenyanyiS);
+        cs->namaAlbumQ = DuplicateKata(csr.namaAlbumS);
+        cs->namaPenyanyiQ = DuplicateKata(csr.namaPenyanyiS);
         printf("Memutar lagu sebelumnya");
-        printf(/*currentsong*/);
+        printf("\"");
+        printWord((*cs).namaLaguQ);
+        printf("\"");
         printf("oleh");
-        printf(/*currentsong*/);
+        printf("\"");
+        printWord((*cs).namaPenyanyiQ);
+        printf("\"");
     }
 }

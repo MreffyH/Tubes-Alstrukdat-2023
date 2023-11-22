@@ -57,6 +57,7 @@ void enqueue(QueueSong *q, DetailSongQ val);
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
+
 void dequeue(QueueSong *q, DetailSongQ *val);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
