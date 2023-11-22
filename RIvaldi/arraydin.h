@@ -1,21 +1,18 @@
 #include "../src/ADT/list/listlinier.h"
-#include "../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
 
 #ifndef __ARRAY_DINAMIK__
 #define __ARRAY_DINAMIK__
 
-// Boolean
-#define boolean unsigned char
-#define true 1
-#define false 0
-
 #define InitialSize 10
 
 typedef int IdxType;
-typedef int ElType;
 typedef struct {
     Word nama_PlayList;
-    ListLin *A;
+    ListLin IsiLagu;
+    int countlaguLL;
+} IsiPlaylist;
+typedef struct {
+    IsiPlaylist *detil_playlist;
     int Capacity;
     int Neff;
 } ArrayDin;
@@ -28,29 +25,37 @@ typedef struct {
 ArrayDin MakeArrayDin();
 
 /**
+ * Konstruktor Isi Playlist
+ * I.S. sembarang
+ * F.S. Terbentuk IsiPlaylist kosong dengan countlaguLL sama dengan nbElmtLL(IsiLagu)
+*/
+void CreateIsiPlaylist(IsiPlaylist *detil_playlist);
+
+/**
  * Destruktor
  * I.S. ArrayDin terdefinisi
  * F.S. array->A terdealokasi
  */
+
 void DeallocateArrayDin(ArrayDin *array);
 
 /**
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ArrayDin array);
+boolean IsEmptyArrayDin(ArrayDin array);
 
 /**
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ArrayDin array);
+int LengthArrayDin(ArrayDin array);
 
 /**
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ArrayDin array, IdxType i);
+IsiPlaylist GetPlaylist(ArrayDin array, IdxType i);
 
 /**
  * Fungsi untuk mendapatkan kapasitas yang tersedia.
@@ -62,37 +67,37 @@ int GetCapacity(ArrayDin array);
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i);
+void InsertAtArrayDin(ArrayDin *array, IsiPlaylist el, IdxType i);
 
 /**
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayDin *array, ElType el);
+void InsertLastArrayDin(ArrayDin *array, IsiPlaylist el);
 
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, ElType el);
+void InsertFirstArrayDin(ArrayDin *array, IsiPlaylist el);
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayDin *array, IdxType i);
+void DeleteAtArrayDin(ArrayDin *array, IdxType i);
 
 /**
  * Fungsi untuk menghapus elemen terakhir ArrayDin
  * Prekondisi: array tidak kosong
  */
-void DeleteLast(ArrayDin *array);
+void DeleteLastArrayDin(ArrayDin *array);
 
 /**
  * Fungsi untuk menghapus elemen pertama ArrayDin
  * Prekondisi: array tidak kosong
  */
-void DeleteFirst(ArrayDin *array);
+void DeleteFirstArrayDin(ArrayDin *array);
 
 /**
  * Fungsi untuk melakukan print suatu ArrayDin.
@@ -120,6 +125,6 @@ ArrayDin CopyArrayDin(ArrayDin array);
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, ElType el);
+IdxType SearchIdxPlaylist(ArrayDin array, IsiPlaylist el);
 
 #endif

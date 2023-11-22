@@ -12,10 +12,21 @@ ArrayDin MakeArrayDin() {
     // Local Dictoinary
     ArrayDin arr;
     // Algorithm
-    arr.A = (ElType*) malloc(InitialSize * sizeof(ElType));
+    arr.detil_playlist = (IsiPlaylist*) malloc (InitialSize * sizeof(IsiPlaylist));
     arr.Capacity = InitialSize;
     arr.Neff = 0;
     return arr;
+}
+
+/**
+ * Konstruktor Isi Playlist
+ * I.S. sembarang
+ * F.S. Terbentuk IsiPlaylist kosong dengan countlaguLL sama dengan nbElmtLL(IsiLagu)
+*/
+void CreateIsiPlaylist(IsiPlaylist *detil_playlist) {
+    ListLin IsiLagu;
+    CreateEmptyListLin(&IsiLagu);
+    (*detil_playlist).countlaguLL = NbElmtLL(IsiLagu);
 }
 
 /**
@@ -24,14 +35,14 @@ ArrayDin MakeArrayDin() {
  * F.S. array->A terdealokasi
  */
 void DeallocateArrayDin(ArrayDin *array) {
-    free((*array).A);
+    free((*array).detil_playlist);
 }
 
 /**
  * Fungsi untuk mengetahui apakah suatu array kosong.
  * Prekondisi: array terdefinisi
  */
-boolean IsEmpty(ArrayDin array) {
+boolean IsEmptyArrayDin(ArrayDin array) {
     return(array.Neff == 0);
 }
 
@@ -39,7 +50,7 @@ boolean IsEmpty(ArrayDin array) {
  * Fungsi untuk mendapatkan banyaknya elemen efektif array, 0 jika tabel kosong.
  * Prekondisi: array terdefinisi
  */
-int Length(ArrayDin array) {
+int LengthArrayDin(ArrayDin array) {
     return(array.Neff);
 }
 
@@ -47,8 +58,8 @@ int Length(ArrayDin array) {
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-ElType Get(ArrayDin array, IdxType i) {
-    return (array.A[i]);
+IsiPlaylist GetPlaylist(ArrayDin array, IdxType i) {
+    return (array.detil_playlist[i]);
 }
 
 /**
@@ -63,27 +74,38 @@ int GetCapacity(ArrayDin array) {
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAt(ArrayDin *array, ElType el, IdxType i) {
+void InsertAtArrayDin(ArrayDin *array, IsiPlaylist el, IdxType i) {
     // Dictionary
     
     // Algorithm
-    if (GetCapacity(*array) == Length(*array)) {
+    if (GetCapacity(*array) == LengthArrayDin(*array)) {
         int newCap = GetCapacity(*array) * 2;
-        ElType *newArray = (ElType *) malloc (newCap * sizeof(ElType));
+        IsiPlaylist *newArray = (IsiPlaylist*) malloc (newCap * sizeof(IsiPlaylist));
 
-        for (int j = 0; j < Length(*array); j++) {
-            newArray[j] = Get(*array, j);
+        for (int j = 0; j < LengthArrayDin(*array); j++) {
+            newArray[j] = GetPlaylist(*array, j);
         }
         
-        free((*array).A);
-        (*array).A = newArray;
+        free((*array).detil_playlist);
+        (*array).detil_playlist = newArray;
         (*array).Capacity = newCap;
     }
-    
-    for (int j = Length(*array); i <= j; j--) {
-        (*array).A[j] = (*array).A[j-1]; 
+    else if (LengthArrayDin(*array) <= (GetCapacity(*array)/2)) {
+        int newCap = ((GetCapacity(*array)*3)/4);
+        IsiPlaylist *newArray = (IsiPlaylist*) malloc (newCap * sizeof(IsiPlaylist));
+
+        for (int j = 0; j < LengthArrayDin(*array); j++) {
+            newArray[j] = GetPlaylist(*array, j);
+        }
+        
+        free((*array).detil_playlist);
+        (*array).detil_playlist = newArray;
+        (*array).Capacity = newCap;
     }
-    (*array).A[i] = el;
+    for (int j = LengthArrayDin(*array); i <= j; j--) {
+        (*array).detil_playlist[j] = (*array).detil_playlist[j-1]; 
+    }
+    (*array).detil_playlist[i] = el;
     (*array).Neff += 1;
 }
 
@@ -91,27 +113,39 @@ void InsertAt(ArrayDin *array, ElType el, IdxType i) {
  * Fungsi untuk menambahkan elemen baru di akhir array.
  * Prekondisi: array terdefinisi
  */
-void InsertLast(ArrayDin *array, ElType el) {
-    InsertAt(array, el, (*array).Neff);
+void InsertLastArrayDin(ArrayDin *array, IsiPlaylist el) {
+    InsertAtArrayDin(array, el, (*array).Neff);
 }
 /**
  * Fungsi untuk menambahkan elemen baru di awal array.
  * Prekondisi: array terdefinisi
  */
-void InsertFirst(ArrayDin *array, ElType el) {
-    InsertAt(array, el, 0);
+void InsertFirstArrayDin(ArrayDin *array, IsiPlaylist el) {
+    InsertAtArrayDin(array, el, 0);
 }
 
 /**
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAt(ArrayDin *array, IdxType i) {
+void DeleteAtArrayDin(ArrayDin *array, IdxType i) {
     // Dictionary
 
     // Algorithm
-    for (int j = i; j < Length(*array) - 1; j++) {
-        (*array).A[j] = (*array).A[j+1];    
+    if (LengthArrayDin(*array) <= (GetCapacity(*array)/2)) {
+        int newCap = ((GetCapacity(*array)*3)/4);
+        IsiPlaylist *newArray = (IsiPlaylist*) malloc (newCap * sizeof(IsiPlaylist));
+
+        for (int j = 0; j < LengthArrayDin(*array); j++) {
+            newArray[j] = GetPlaylist(*array, j);
+        }
+        
+        free((*array).detil_playlist);
+        (*array).detil_playlist = newArray;
+        (*array).Capacity = newCap;
+    }
+    for (int j = i; j < LengthArrayDin(*array) - 1; j++) {
+        (*array).detil_playlist[j] = (*array).detil_playlist[j+1];    
     }
     (*array).Neff -= 1;
 }
@@ -120,21 +154,19 @@ void DeleteAt(ArrayDin *array, IdxType i) {
  * Fungsi untuk menghapus elemen terakhir ArrayDin
  * Prekondisi: array tidak kosong
  */
-void DeleteLast(ArrayDin *array) {
+void DeleteLastArrayDin(ArrayDin *array) {
     // Dictionary
 
     // Algorithm
-    int j = Length(*array);
-	(*array).A[j] = '\0';
-	(*array).Neff -= 1;
+    DeleteAtArrayDin(array, (LengthArrayDin(*array)-1));
 }
 
 /**
  * Fungsi untuk menghapus elemen pertama ArrayDin
  * Prekondisi: array tidak kosong
  */
-void DeleteFirst(ArrayDin *array) {
-    DeleteAt(array, 0);
+void DeleteFirstArrayDin(ArrayDin *array) {
+    DeleteAtArrayDin(array, 0);
 }
 
 /**
@@ -147,14 +179,20 @@ void PrintArrayDin(ArrayDin array) {
     // Dictionary
     int i;
     // Algorithm
-    if (IsEmpty(array)) {
+    if (IsEmptyArrayDin(array)) {
         printf("[]\n");
     } else {
         printf("[");
         for (i = 0; i < array.Neff; i++) {
-            printf("%d", array.A[i]);
+            printf("%d.\n{", i+1);
+            printf("NAMA PLAYLIST: ");
+            printWord(array.detil_playlist[i].nama_PlayList);
+            printf("\nISI PLAYLIST: ");
+            PrintInfoLL(array.detil_playlist[i].IsiLagu);
+            printf("JUMLAH LAGU: %d", array.detil_playlist[i].countlaguLL);
+            printf("}");
             if (i < array.Neff - 1) {
-                printf(", ");
+                printf("\n");
             }
         }
         printf("]\n");
@@ -167,15 +205,15 @@ void PrintArrayDin(ArrayDin array) {
  */
 void ReverseArrayDin(ArrayDin *array) {
     // Dictionary 
-    ElType temp;
+    IsiPlaylist temp;
     int length;
     int i;
     // Algorithm
-    length = Length(*array);
+    length = LengthArrayDin(*array);
     for (i = 0; i < length / 2; i++) {
-        temp = array -> A[i];
-        array->A[i] = array->A[length - i -1];
-        array->A[length - i - 1] = temp; 
+        temp = (*array).detil_playlist[i];
+        (*array).detil_playlist[i] = (*array).detil_playlist[length - i -1];
+        (*array).detil_playlist[length - i - 1] = temp; 
     }
 }
 
@@ -190,7 +228,7 @@ ArrayDin CopyArrayDin(ArrayDin array) {
     // Algorithm
     copy = MakeArrayDin();
     for (i = 0; i < array.Neff; i++) {
-        InsertLast(&copy, array.A[i]);
+        InsertLastArrayDin(&copy, array.detil_playlist[i]);
     }
     return copy;
 }
@@ -201,14 +239,25 @@ ArrayDin CopyArrayDin(ArrayDin array) {
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchArrayDin(ArrayDin array, ElType el) {
+IdxType SearchIdxPlaylist(ArrayDin array, IsiPlaylist el) {
     // Dictionary
-    int i;
+    IdxType i = 0;
+    boolean foundPlaylist = false;
     // Algorithm
-    for (i = 0; i < array.Neff; i++) {
-        if (array.A[i] == el) {
-            return i;
+    while((i < LengthArrayDin(array)) && (!foundPlaylist)){
+        if((IsKataEqual(array.detil_playlist[i].nama_PlayList, el.nama_PlayList)) && (array.detil_playlist[i].countlaguLL == el.countlaguLL)){
+            if(isLLsama(array.detil_playlist[i].IsiLagu, el.IsiLagu)){
+                foundPlaylist = true;
+            }
         }
+        else{
+            i++;
+        }
+    } /* i == Length(array) or foundPlaylist */
+    if(foundPlaylist){
+        return i;
     }
-    return -1;
+    else{
+        return -1;
+    }
 }

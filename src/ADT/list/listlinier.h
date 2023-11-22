@@ -42,7 +42,7 @@ typedef struct
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
-boolean IsEmpty(ListLin L);
+boolean IsEmptyLL(ListLin L);
 /* Mengirim true jika list kosong */
 
 /****************** PEMBUATAN LIST KOSONG ******************/
@@ -51,18 +51,18 @@ void CreateEmptyListLin(ListLin *L);
 /* F.S. Terbentuk list kosong */
 
 /****************** Manajemen Memori ******************/
-address Alokasi(DetailSongLL X);
+address AlokasiLL(DetailSongLL X);
 /* Mengirimkan address hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
 /* menghasilkan P, maka info(P)=X, Next(P)=Nil */
 /* Jika alokasi gagal, mengirimkan Nil */
-void Dealokasi(address *P);
+void DealokasiLL(address *P);
 /* I.S. P terdefinisi */
 /* F.S. P dikembalikan ke sistem */
 /* Melakukan dealokasi/pengembalian address P */
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search(ListLin L, DetailSongLL X);
+address SearchLL(ListLin L, DetailSongLL X);
 /* Mencari apakah ada elemen list dengan info(P)= X */
 /* Jika ada, mengirimkan address elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
@@ -91,64 +91,67 @@ void DelVLast(ListLin *L, DetailSongLL *X);
 
 /****************** PRIMITIF BERDASARKAN ALAMAT ******************/
 /*** PENAMBAHAN ELEMEN BERDASARKAN ALAMAT ***/
-void InsertFirst(ListLin *L, address P);
+void InsertFirstLL(ListLin *L, address P);
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. Menambahkan elemen ber-address P sebagai elemen pertama */
-void InsertAfter(ListLin *L, address P, address Prec);
+void InsertAfterLL(ListLin *L, address P, address Prec);
 /* I.S. Prec pastilah elemen list dan bukan elemen terakhir, */
 /*      P sudah dialokasi  */
 /* F.S. Insert P sebagai elemen sesudah elemen beralamat Prec */
-void InsertLast(ListLin *L, address P);
+void InsertLastLL(ListLin *L, address P);
 /* I.S. Sembarang, P sudah dialokasi  */
 /* F.S. P ditambahkan sebagai elemen terakhir yang baru */
 
 /*** PENGHAPUSAN SEBUAH ELEMEN ***/
-void DelFirst(ListLin *L, address *P);
+void DelFirstLL(ListLin *L, address *P);
 /* I.S. ListLin tidak kosong */
 /* F.S. P adalah alamat elemen pertama list sebelum penghapusan */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* First element yg baru adalah suksesor elemen pertama yang lama */
-void DelP(ListLin *L, DetailSongLL X);
+void DelPLL(ListLin *L, DetailSongLL X);
 /* I.S. Sembarang */
 /* F.S. Jika ada elemen list beraddress P, dengan info(P)=X  */
 /* Maka P dihapus dari list dan di-dealokasi */
 /* Jika tidak ada elemen list dengan info(P)=X, maka list tetap */
 /* ListLin mungkin menjadi kosong karena penghapusan */
-void DelLast(ListLin *L, address *P);
+void DelLastLL(ListLin *L, address *P);
 /* I.S. ListLin tidak kosong */
 /* F.S. P adalah alamat elemen terakhir list sebelum penghapusan  */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* Last element baru adalah predesesor elemen terakhir yg lama, */
 /* jika ada */
-void DelAfter(ListLin *L, address *Pdel, address Prec);
+void DelAfterLL(ListLin *L, address *Pdel, address Prec);
 /* I.S. ListLin tidak kosong. Prec adalah anggota list  */
 /* F.S. Menghapus Next(Prec): */
 /*      Pdel adalah alamat elemen list yang dihapus  */
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
-void PrintInfo(ListLin L);
+void PrintInfoLL(ListLin L);
 /* I.S. ListLin mungkin kosong */
 /* F.S. Jika list tidak kosong, iai list dicetak ke kanan: [e1,e2,...,en] */
 /* Contoh : jika ada tiga elemen bernilai 1, 20, 30 akan dicetak: [1,20,30] */
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
-int NbElmt(ListLin L);
+int NbElmtLL(ListLin L);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
 
 /****************** PROSES TERHADAP LIST ******************/
 
-void InversList(ListLin *L);
+void InversListLL(ListLin *L);
 /* I.S. sembarang. */
 /* F.S. elemen list dibalik : */
 /* Elemen terakhir menjadi elemen pertama, dan seterusnya. */
 /* Membalik elemen list, tanpa melakukan alokasi/dealokasi. */
 
-void Konkat1(ListLin *L1, ListLin *L2, ListLin *L3);
+void KonkatLL(ListLin *L1, ListLin *L2, ListLin *L3);
 /* I.S. L1 dan L2 sembarang */
 /* F.S. L1 dan L2 kosong, L3 adalah hasil konkatenasi L1 & L2 */
 /* Konkatenasi dua buah list : L1 dan L2    */
 /* menghasilkan L3 yang baru (dengan elemen list L1 dan L2) */
 /* dan L1 serta L2 menjadi list kosong.*/
 /* Tidak ada alokasi/dealokasi pada prosedur ini */
+
+boolean isLLsama(ListLin L1, ListLin L2);
+/* Menghasilkan boolean apakah isi dari L1 dan L2 sama */
 
 #endif
