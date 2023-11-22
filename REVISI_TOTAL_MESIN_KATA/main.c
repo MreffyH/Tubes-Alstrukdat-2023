@@ -17,6 +17,7 @@
 #include "SPESIFIKASI_WAYANGWAVE/QUIT/quit.h"
 #include "SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.h"
 #include "SPESIFIKASI_WAYANGWAVE/PLAY/play.h"
+#include "../src/WayangWave/song.h"
 
 int main()
 {
