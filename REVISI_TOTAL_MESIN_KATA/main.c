@@ -1,4 +1,4 @@
-/*gcc -o main main.c mesinkarakter.c mesinkata.c ../src/ADT/queue/queue.c ../src/ADT/stack/stack.c SPESIFIKASI_WAYANGWAVE/HELP/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c*/
+/*gcc -o main main.c mesinkarakter.c mesinkata.c ../src/ADT/queue/queue.c ../src/ADT/stack/stack.c SPESIFIKASI_WAYANGWAVE/HELP/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c ../RIvaldi/arraydin.c ../src/ADT/list/listlinier.c*/
 #include <stdio.h>
 
 /* Include ADT */
@@ -8,6 +8,7 @@
 #include "../src/ADT/mapset/set.h"
 #include "../src/ADT/queue/queue.h"
 #include "../src/ADT/stack/stack.h"
+#include "../RIvaldi/arraydin.h"
 
 /* Include WayangWave */
 #include "SPESIFIKASI_WAYANGWAVE/START/start.h"
@@ -39,6 +40,9 @@ int main()
 
     HistorySong HS;
     CreateEmptyHistorySong(&HS);
+
+    ArrayDin PLY;
+    PLY = MakeArrayDin();
 
     printf("\n======================SELAMAT DATANG DI PROGRAM WAYANGWAVE======================\n");
     printf(" __    __   ____  __ __   ____  ____    ____  __    __   ____  __ __    ___       \n");
@@ -80,7 +84,7 @@ int main()
             printf("LOAD ");
             STARTINPUT();
             Word file = currentInput;
-            LOADWAYANGWAVE(&PL, file.TabWord, &QS, &HS);
+            LOADWAYANGWAVE(&PL, file.TabWord, &QS, &HS, &PLY);
             printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
             dalamsesi = true;
         }

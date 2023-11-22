@@ -58,7 +58,7 @@ int LengthArrayDin(ArrayDin array) {
  * Mengembalikan elemen array L yang ke-I (indeks lojik).
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
-IsiPlaylist GetPlaylist(ArrayDin array, IdxType i) {
+IsiPlaylist GetPlaylist(ArrayDin array, IdxTypeAD i) {
     return (array.detil_playlist[i]);
 }
 
@@ -74,7 +74,7 @@ int GetCapacity(ArrayDin array) {
  * Fungsi untuk menambahkan elemen baru di index ke-i
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void InsertAtArrayDin(ArrayDin *array, IsiPlaylist el, IdxType i) {
+void InsertAtArrayDin(ArrayDin *array, IsiPlaylist el, IdxTypeAD i) {
     // Dictionary
     
     // Algorithm
@@ -128,7 +128,7 @@ void InsertFirstArrayDin(ArrayDin *array, IsiPlaylist el) {
  * Fungsi untuk menghapus elemen di index ke-i ArrayDin
  * Prekondisi: array terdefinisi, i di antara 0..Length(array).
  */
-void DeleteAtArrayDin(ArrayDin *array, IdxType i) {
+void DeleteAtArrayDin(ArrayDin *array, IdxTypeAD i) {
     // Dictionary
 
     // Algorithm
@@ -239,9 +239,9 @@ ArrayDin CopyArrayDin(ArrayDin array) {
  * Jika tidak ditemukan, akan mengembalikan -1.
  * Prekondisi: array terdefinisi
  */
-IdxType SearchIdxPlaylist(ArrayDin array, IsiPlaylist el) {
+IdxTypeAD SearchIdxPlaylist(ArrayDin array, IsiPlaylist el) {
     // Dictionary
-    IdxType i = 0;
+    IdxTypeAD i = 0;
     boolean foundPlaylist = false;
     // Algorithm
     while((i < LengthArrayDin(array)) && (!foundPlaylist)){
