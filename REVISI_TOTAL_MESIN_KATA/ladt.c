@@ -1,7 +1,4 @@
-#include "../src/ADT/list/list.h"
-#include "listmapset.h"
-#include "mesinkata.h"
-#include "start.h"
+#include "ladt.h"
 // #include "listdinamis.h"
 // gcc -o ladt ladt.c ../src/ADT/list/list.c ../src/ADT/mapset/set.c listmapset.c mesinkata.c mesinkarakter.c start.c
 
