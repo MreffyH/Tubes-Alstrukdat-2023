@@ -1,4 +1,4 @@
-/*gcc -o main main.c mesinkarakter.c mesinkata.c ../src/ADT/queue/queue.c ../src/ADT/stack/stack.c ../src/WayangWave/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c quit.c listmapset.c ../src/ADT/mapset/set.c ladt.c*/
+/*gcc -o main main.c mesinkarakter.c mesinkata.c ../src/ADT/queue/queue.c ../src/ADT/stack/stack.c ../src/WayangWave/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c*/
 #include <stdio.h>
 
 /* Include ADT */
@@ -14,7 +14,8 @@
 #include "SPESIFIKASI_WAYANGWAVE/LOAD/load.h"
 #include "../src/WayangWave/help.h"
 #include "quit.h"
-#include "ladt.h"
+#include "SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.h"
+#include "SPESIFIKASI_WAYANGWAVE/PLAY/play.h"
 
 int main()
 {
@@ -90,17 +91,14 @@ int main()
         else if ((INPUTEQUAL(currentInput, "HELP;")) && dalamsesi == true)
         {
             helpAfter();
-            printf("berhasil fungsi help after\n");
         }
         else if ((INPUTEQUAL(currentInput, "HELP;")) && dalamsesi == false)
         {
             helpBefore();
-            printf("berhasil fungsi help before\n");
         }
         else if ((INPUTEQUAL(currentInput, "PLAY SONG;")) && dalamsesi == true)
         {
-            /*masukin fungsi PLAY SONG*/
-            printf("Masuk ke PLAY SONG\n");
+            PLAYSONG(PL);
         }
         else if ((INPUTEQUAL(currentInput, "PLAY SONG;")) && dalamsesi == false)
         {
