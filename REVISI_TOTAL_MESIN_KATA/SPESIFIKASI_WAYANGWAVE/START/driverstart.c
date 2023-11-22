@@ -1,9 +1,9 @@
 /* File: driverstart.c */
-/* gcc -o main driverstart.c start.c mesinkata.c listmapset.c mesinkarakter.c ../src/ADT/mapset/set.c */
+/* gcc -o driverstart driverstart.c start.c ../../mesinkata.c ../../listmapset.c ../../mesinkarakter.c ../../../src/ADT/mapset/set.c */
 
 #include "start.h"
-#include "mesinkata.h"
-#include "listmapset.h"
+#include "../../mesinkata.h"
+#include "../../listmapset.h"
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -22,7 +22,7 @@ int main() {
     ListPenyanyi PL;
     CreateListPenyanyi(&PL, MP);
 
-    char *file = "config.txt";
+    char *file = "../../config.txt";
     STARTWAYANGWAVE(&PL, file);
     printf("\n");
 
