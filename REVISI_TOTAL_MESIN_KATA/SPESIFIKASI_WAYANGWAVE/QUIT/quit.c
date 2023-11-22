@@ -9,7 +9,8 @@ void quit() {
 
     if ( INPUTEQUAL(currentInput,"Y;")){
         // save(); // memanggil save
-        printf("save");
+        printf("save");//testing
+        exit(0); // keluar dari program
     }
     else if (INPUTEQUAL(currentInput,"N;")){
         printf("================Kamu keluar dari WayangWave================\n");
