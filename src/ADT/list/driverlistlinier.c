@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "listlinier.h"
+
+int main(){
+    printf("MILESTONE1\n");
+    ListLin playlist;
+    CreateEmptyListLin(&playlist);
+    printf("BERIKUT ADALAH ISI PLAYLIST:\n");
+    PrintInfo(playlist);
+    printf("\n");
+    DetailSongLL X;
+    X.namaPenyanyi.TabWord[0] = 'J';
+    X.namaPenyanyi.TabWord[1] = 'K';
+    X.namaPenyanyi.TabWord[2] = 'T';
+    X.namaPenyanyi.TabWord[3] = '4';
+    X.namaPenyanyi.TabWord[4] = '8';
+    X.namaPenyanyi.Length = 5;
+    X.namaAlbum.TabWord[0] = 'S';
+    X.namaAlbum.TabWord[1] = 'n';
+    X.namaAlbum.TabWord[2] = 'M';
+    X.namaAlbum.Length = 3;
+    X.namaLagu.TabWord[0] = 'T';
+    X.namaLagu.TabWord[1] = 'u';
+    X.namaLagu.TabWord[2] = 'n';
+    X.namaLagu.TabWord[3] = 'a';
+    X.namaLagu.TabWord[4] = 's';
+    X.namaLagu.Length = 5;
+    InsVLast(&playlist, X);
+    printf("BERIKUT ADALAH ISI PLAYLIST:\n");
+    PrintInfo(playlist);
+    printf("\n");
+    printf("MILESTONE2\n\n");
+    X.namaPenyanyi.TabWord[0] = 'V';
+    X.namaPenyanyi.TabWord[1] = 'i';
+    X.namaPenyanyi.TabWord[2] = 'e';
+    X.namaPenyanyi.TabWord[3] = 'r';
+    X.namaPenyanyi.TabWord[4] = 'r';
+    X.namaPenyanyi.TabWord[5] = 'a';
+    X.namaPenyanyi.TabWord[6] = 't';
+    X.namaPenyanyi.TabWord[7] = 'a';
+    X.namaPenyanyi.TabWord[8] = 'l';
+    X.namaPenyanyi.TabWord[9] = 'e';
+    X.namaPenyanyi.Length = 10;
+    X.namaAlbum.TabWord[0] = 'L';
+    X.namaAlbum.TabWord[1] = 'o';
+    X.namaAlbum.TabWord[2] = 'v';
+    X.namaAlbum.TabWord[3] = 'e';
+    X.namaAlbum.Length = 4;
+    X.namaLagu.TabWord[0] = 'P';
+    X.namaLagu.TabWord[1] = 'e';
+    X.namaLagu.TabWord[2] = 'r';
+    X.namaLagu.TabWord[3] = 'i';
+    X.namaLagu.TabWord[4] = 'h';
+    X.namaLagu.Length = 5;
+    InsVFirst(&playlist, X);
+    printf("BERIKUT ADALAH ISI PLAYLIST:\n");
+    PrintInfo(playlist);
+    printf("\n");
+    printf("MILESTONE3\n\n");
+    DelVFirst(&playlist, &X);
+    printf("BERIKUT ADALAH ISI PLAYLIST:\n");
+    PrintInfo(playlist);
+    printf("\n");
+    printf("YANG DIHAPUS DARI PLAYLIST:\n");
+    printf("NAMA PENYANYI: ");
+    printWord(X.namaPenyanyi);
+    printf("\n");
+    printf("NAMA ALBUM: ");
+    printWord(X.namaAlbum);
+    printf("\n");
+    printf("NAMA LAGU: ");
+    printWord(X.namaLagu);
+    printf("\n");
+    return 0;
+}

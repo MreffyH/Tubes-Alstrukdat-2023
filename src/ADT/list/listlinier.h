@@ -1,22 +1,27 @@
 /* File : listlinier.h */
 /* contoh ADT list berkait dengan representasi fisik pointer  */
 /* Representasi address dengan pointer */
-/* infotype adalah integer */
+/* DetailSongLL terdiri dari namaPenyanyi, namaAlbum, dan namaLagu */
 
 #ifndef listlinier_H
 #define listlinier_H
 
-#include "boolean.h"
+#include "../../../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
 #include "stdio.h"
 #include "stdlib.h"
 
-#define Nil NULL
+#define NilLin NULL
 
-typedef int infotype;
 typedef struct tElmtlist *address;
+typedef struct{
+    Word namaPenyanyi;
+    Word namaAlbum;
+    Word namaLagu;
+} DetailSongLL;
+
 typedef struct tElmtlist
 {
-    infotype info;
+    DetailSongLL info;
     address next;
 } ElmtList;
 typedef struct
@@ -28,9 +33,12 @@ typedef struct
 /* ListLin kosong : First(L) = Nil */
 /* Setiap elemen dengan address P dapat diacu Info(P), Next(P) */
 /* Elemen terakhir list : jika addressnya Last, maka Next(Last)=Nil */
-#define Info(P) (P)->info
+#define InfoPenyanyi(P) (P)->info.namaPenyanyi
+#define InfoAlbum(P) (P)->info.namaAlbum
+#define InfoJudul(P) (P)->info.namaLagu
 #define Next(P) (P)->next
 #define First(L) ((L).First)
+
 
 /* PROTOTYPE */
 /****************** TEST LIST KOSONG ******************/
@@ -38,12 +46,12 @@ boolean IsEmpty(ListLin L);
 /* Mengirim true jika list kosong */
 
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmpty(ListLin *L);
+void CreateEmptyListLin(ListLin *L);
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
 
 /****************** Manajemen Memori ******************/
-address Alokasi(infotype X);
+address Alokasi(DetailSongLL X);
 /* Mengirimkan address hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
 /* menghasilkan P, maka info(P)=X, Next(P)=Nil */
@@ -54,29 +62,29 @@ void Dealokasi(address *P);
 /* Melakukan dealokasi/pengembalian address P */
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search(ListLin L, infotype X);
+address Search(ListLin L, DetailSongLL X);
 /* Mencari apakah ada elemen list dengan info(P)= X */
 /* Jika ada, mengirimkan address elemen tersebut. */
 /* Jika tidak ada, mengirimkan Nil */
 
 /****************** PRIMITIF BERDASARKAN NILAI ******************/
 /*** PENAMBAHAN ELEMEN ***/
-void InsVFirst(ListLin *L, infotype X);
+void InsVFirst(ListLin *L, DetailSongLL X);
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
-void InsVLast(ListLin *L, infotype X);
+void InsVLast(ListLin *L, DetailSongLL X);
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
 /* bernilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 
 /*** PENGHAPUSAN ELEMEN ***/
-void DelVFirst(ListLin *L, infotype *X);
+void DelVFirst(ListLin *L, DetailSongLL *X);
 /* I.S. ListLin L tidak kosong  */
 /* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dealokasi */
-void DelVLast(ListLin *L, infotype *X);
+void DelVLast(ListLin *L, DetailSongLL *X);
 /* I.S. list tidak kosong */
 /* F.S. Elemen terakhir list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen terakhir di-dealokasi */
@@ -100,7 +108,7 @@ void DelFirst(ListLin *L, address *P);
 /* F.S. P adalah alamat elemen pertama list sebelum penghapusan */
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* First element yg baru adalah suksesor elemen pertama yang lama */
-void DelP(ListLin *L, infotype X);
+void DelP(ListLin *L, DetailSongLL X);
 /* I.S. Sembarang */
 /* F.S. Jika ada elemen list beraddress P, dengan info(P)=X  */
 /* Maka P dihapus dari list dan di-dealokasi */
@@ -126,18 +134,6 @@ void PrintInfo(ListLin L);
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 int NbElmt(ListLin L);
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
-
-/*** Prekondisi untuk Max/Min/rata-rata : ListLin tidak kosong ***/
-infotype Max(ListLin L);
-/* Mengirimkan nilai info(P) yang maksimum */
-address AdrMax(ListLin L);
-/* Mengirimkan address P, dengan info(P) yang bernilai maksimum */
-infotype Min(ListLin L);
-/* Mengirimkan nilai info(P) yang minimum */
-address AdrMin(ListLin L);
-/* Mengirimkan address P, dengan info(P) yang bernilai minimum */
-float Average(ListLin L);
-/* Mengirimkan nilai rata-rata info(P) */
 
 /****************** PROSES TERHADAP LIST ******************/
 

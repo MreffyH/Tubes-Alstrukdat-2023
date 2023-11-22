@@ -1,7 +1,7 @@
 /* File : listlinier.C */
 /* contoh ADT list berkait dengan representasi fisik pointer  */
 /* Representasi address dengan pointer */
-/* infotype adalah integer */
+/* DetailSongLL adalah integer */
 
 #include "stdio.h"
 #include "stdlib.h"
@@ -12,33 +12,35 @@
 boolean IsEmpty(ListLin L)
 /* Mengirim true jika list kosong */
 {
-    return First(L) == Nil;
+    return (First(L) == NilLin);
 }
 
 /****************** PEMBUATAN LIST KOSONG ******************/
-void CreateEmpty(ListLin *L)
+void CreateEmptyListLin(ListLin *L)
 /* I.S. sembarang             */
 /* F.S. Terbentuk list kosong */
 {
-    First(*L) = Nil;
+    First(*L) = NilLin;
 }
 
 /****************** Manajemen Memori ******************/
-address Alokasi(infotype X)
+address Alokasi(DetailSongLL X)
 /* Mengirimkan address hasil alokasi sebuah elemen */
-/* Jika alokasi berhasil, maka address tidak nil, dan misalnya */
-/* menghasilkan P, maka Info(P)=X, Next(P)=Nil */
-/* Jika alokasi gagal, mengirimkan Nil */
+/* Jika alokasi berhasil, maka address tidak NilLin, dan misalnya */
+/* menghasilkan P, maka Info(P)=X, Next(P)=NilLin */
+/* Jika alokasi gagal, mengirimkan NilLin */
 {
     address P = (address)malloc(1 * sizeof(ElmtList));
-    if (P != Nil)
+    if (P != NilLin)
     {
-        Info(P) = X;
-        Next(P) = Nil;
+        InfoPenyanyi(P) = X.namaPenyanyi;
+        InfoAlbum(P) = X.namaAlbum;
+        InfoJudul(P) = X.namaLagu;
+        Next(P) = NilLin;
         return P;
     }
     {
-        return Nil;
+        return NilLin;
     }
 }
 
@@ -51,105 +53,93 @@ void Dealokasi(address *P)
 }
 
 /****************** PENCARIAN SEBUAH ELEMEN LIST ******************/
-address Search(ListLin L, infotype X)
+address Search(ListLin L, DetailSongLL X)
 /* Mencari apakah ada elemen list dengan Info(P)= X */
 /* Jika ada, mengirimkan address elemen tersebut. */
-/* Jika tidak ada, mengirimkan Nil */
+/* Jika tidak ada, mengirimkan NilLin */
 {
-    address P;
-    boolean bFound = false;
-
-    if (!IsEmpty(L))
-    {
-        P = First(L);
-        while (!bFound && P != Nil)
-        {
-            if (X == Info(P))
-            {
-                bFound = true;
-            }
-            else
-            {
-                P = Next(P);
-            }
+    address p = First(L);
+    boolean found = false;
+    while ((!found) && (p != NilLin)){
+        if ((IsKataEqual(InfoPenyanyi(p), X.namaPenyanyi)) && (IsKataEqual(InfoAlbum(p), X.namaAlbum)) && (IsKataEqual(InfoJudul(p), X.namaLagu))){
+            found = true;
         }
-
-        if (bFound)
-        {
-            return P;
+        else{
+            p = Next(p);
         }
-        else
-        {
-            return Nil;
-        }
+    } /* found || p == Nil */
+    if (found){
+        return p;
     }
-    else
-    {
-        return Nil;
+    else{
+        return NilLin;
     }
 }
 
-/****************** PRIMITIF BERDASARKAN NILAI ******************/
+/****************** PRIMITIF BERDASARKAN nilai ******************/
 /*** PENAMBAHAN ELEMEN ***/
-void InsVFirst(ListLin *L, infotype X)
+void InsVFirst(ListLin *L, DetailSongLL X)
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen pertama dengan nilai X jika alokasi berhasil */
 {
     address P = Alokasi(X);
-    if (P != Nil)
+    if (P != NilLin)
     {
         InsertFirst(L, P);
     }
 }
 
-void InsVLast(ListLin *L, infotype X)
+void InsVLast(ListLin *L, DetailSongLL X)
 /* I.S. L mungkin kosong */
 /* F.S. Melakukan alokasi sebuah elemen dan */
 /* menambahkan elemen list di akhir: elemen terakhir yang baru */
 /* bernilai X jika alokasi berhasil. Jika alokasi gagal: I.S.= F.S. */
 {
     address P = Alokasi(X);
-    if (P != Nil)
+    if (P != NilLin)
     {
         InsertLast(L, P);
     }
 }
 
 /*** PENGHAPUSAN ELEMEN ***/
-void DelVFirst(ListLin *L, infotype *X)
+void DelVFirst(ListLin *L, DetailSongLL *X)
 /* I.S. ListLin L tidak kosong  */
 /* F.S. Elemen pertama list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen pertama di-dtpealokasi */
 {
     address P = First(*L);
-    *X = Info(P);
+    (*X).namaPenyanyi = DuplicateKata(InfoPenyanyi(P));
+    (*X).namaAlbum = DuplicateKata(InfoAlbum(P));
+    (*X).namaLagu = DuplicateKata(InfoJudul(P));
     First(*L) = Next(P);
     Dealokasi(&P);
 }
 
-void DelVLast(ListLin *L, infotype *X)
+void DelVLast(ListLin *L, DetailSongLL *X)
 /* I.S. list tidak kosong */
 /* F.S. Elemen terakhir list dihapus: nilai info disimpan pada X */
 /*      dan alamat elemen terakhir di-dealokasi */
 {
     address P = First(*L);
-    address Prec = Nil;
+    address Prec = NilLin;
 
-    while (Next(P) != Nil)
+    while (Next(P) != NilLin)
     {
         Prec = P;
         P = Next(P);
     }
-
-    *X = Info(P);
-    if (Prec != Nil)
+    (*X).namaPenyanyi = DuplicateKata(InfoPenyanyi(P));
+    (*X).namaAlbum = DuplicateKata(InfoAlbum(P));
+    (*X).namaLagu = DuplicateKata(InfoJudul(P));
+    if (Prec != NilLin)
     {
-        Next(Prec) = Nil;
+        Next(Prec) = NilLin;
     }
     else
     {
-        First(*L) = Nil;
+        First(*L) = NilLin;
     }
     Dealokasi(&P);
 }
@@ -186,7 +176,7 @@ void InsertLast(ListLin *L, address P)
     else
     {
         Last = First(*L);
-        while (Next(Last) != Nil)
+        while (Next(Last) != NilLin)
         {
             Last = Next(Last);
         }
@@ -201,47 +191,38 @@ void DelFirst(ListLin *L, address *P)
 /*      Elemen list berkurang satu (mungkin menjadi kosong) */
 /* First element yg baru adalah suksesor elemen pertama yang lama */
 {
-    *P = First(*L);
+    (*P) = First(*L);
     First(*L) = Next(First(*L));
-    Next(*P) = Nil;
+    Next(*P) = NilLin;
 }
 
-void DelP(ListLin *L, infotype X)
+void DelP(ListLin *L, DetailSongLL X)
 /* I.S. Sembarang */
 /* F.S. Jika ada elemen list beraddress P, dengan Info(P)=X  */
 /* Maka P dihapus dari list dan di-dealokasi */
 /* Jika tidak ada elemen list dengan Info(P)=X, maka list tetap */
 /* ListLin mungkin menjadi kosong karena penghapusan */
 {
-    address Prec;
-    address P;
-    boolean bFound = false;
-
-    if (!IsEmpty(*L))
-    {
-        if (X == Info(First(*L)))
-        {
+    if(!IsEmpty(*L)){
+        address P;
+        address Prec = NilLin;
+        boolean found = false;
+        if ((IsKataEqual(InfoPenyanyi(First(*L)), X.namaPenyanyi)) && (IsKataEqual(InfoAlbum(First(*L)), X.namaAlbum)) && (IsKataEqual(InfoJudul(First(*L)), X.namaLagu))){ /* Ditemukan di elemen pertama */
             DelFirst(L, &P);
             Dealokasi(&P);
         }
-        else
-        {
+        else{
             P = First(*L);
-            while (!bFound && P != Nil)
-            {
-                if (Info(P) == X)
-                {
-                    bFound = true;
+            while ((P != NilLin) && (!found)){
+                if ((IsKataEqual(InfoPenyanyi(P), X.namaPenyanyi)) && (IsKataEqual(InfoAlbum(P), X.namaAlbum)) && (IsKataEqual(InfoJudul(P), X.namaLagu))){
+                    found = true;
                 }
-                else
-                {
+                else{
                     Prec = P;
                     P = Next(P);
                 }
             }
-
-            if (bFound)
-            {
+            if (found){
                 DelAfter(L, &P, Prec);
                 Dealokasi(&P);
             }
@@ -257,22 +238,22 @@ void DelLast(ListLin *L, address *P)
 /* jika ada */
 {
     address Last = First(*L);
-    address PrecLast = Nil;
+    address PrecLast = NilLin;
 
-    while (Next(Last) != Nil)
+    while (Next(Last) != NilLin)
     {
         PrecLast = Last;
         Last = Next(Last);
     }
 
     *P = Last;
-    if (PrecLast == Nil)
+    if (PrecLast == NilLin)
     {
-        First(*L) = Nil;
+        First(*L) = NilLin;
     }
     else
     {
-        Next(PrecLast) = Nil;
+        Next(PrecLast) = NilLin;
     }
 }
 
@@ -283,7 +264,7 @@ void DelAfter(ListLin *L, address *Pdel, address Prec)
 {
     *Pdel = Next(Prec);
     Next(Prec) = Next(Next(Prec));
-    Next(*Pdel) = Nil;
+    Next(*Pdel) = NilLin;
 }
 
 /****************** PROSES SEMUA ELEMEN LIST ******************/
@@ -294,26 +275,20 @@ void PrintInfo(ListLin L)
 /* Jika list kosong : menulis [] */
 /* Tidak ada tambahan karakter apa pun di awal, akhir, atau di tengah */
 {
-    address P;
-    boolean isFirst = true;
-
     printf("[");
-    if (!IsEmpty(L))
-    {
-        P = First(L);
-        while (P != Nil)
-        {
-            if (!isFirst)
-            {
-                printf(",");
-            }
-            printf("%d", Info(P));
-            isFirst = false;
-
-            P = Next(P);
+    address P = First(L);
+    while (P != NilLin){
+        printWord(InfoPenyanyi(P));
+        printf(";");
+        printWord(InfoAlbum(P));
+        printf(";");
+        printWord(InfoJudul(P));
+        P = Next(P);
+        if (P != NilLin){
+            printf("\n");
         }
     }
-    printf("]");
+    printf("]\n");
 }
 int NbElmt(ListLin L)
 /* Mengirimkan banyaknya elemen list; mengirimkan 0 jika list kosong */
@@ -324,7 +299,7 @@ int NbElmt(ListLin L)
     if (!IsEmpty(L))
     {
         P = First(L);
-        while (P != Nil)
+        while (P != NilLin)
         {
             cnt++;
             P = Next(P);
@@ -332,91 +307,6 @@ int NbElmt(ListLin L)
     }
 
     return cnt;
-}
-
-/*** Prekondisi untuk Max/Min/rata-rata : ListLin tidak kosong ***/
-infotype Max(ListLin L)
-/* Mengirimkan nilai Info(P) yang maksimum */
-{
-    infotype max_temp = Info(First(L));
-    address P = Next(First(L));
-    while (P != Nil)
-    {
-        if (Info(P) > max_temp)
-        {
-            max_temp = Info(P);
-        }
-        P = Next(P);
-    }
-
-    return max_temp;
-}
-
-address AdrMax(ListLin L)
-/* Mengirimkan address P, dengan info(P) yang bernilai maksimum */
-{
-    address PMax = First(L);
-    address P = Next(First(L));
-    while (P != Nil)
-    {
-        if (Info(P) > Info(PMax))
-        {
-            PMax = P;
-        }
-        P = Next(P);
-    }
-
-    return PMax;
-}
-
-infotype Min(ListLin L)
-/* Mengirimkan nilai info(P) yang minimum */
-{
-    infotype min_temp = Info(First(L));
-    address P = Next(First(L));
-    while (P != Nil)
-    {
-        if (Info(P) < min_temp)
-        {
-            min_temp = Info(P);
-        }
-        P = Next(P);
-    }
-
-    return min_temp;
-}
-
-address AdrMin(ListLin L)
-/* Mengirimkan address P, dengan info(P) yang bernilai minimum */
-{
-    address PMin = First(L);
-    address P = Next(First(L));
-    while (P != Nil)
-    {
-        if (Info(P) < Info(PMin))
-        {
-            PMin = P;
-        }
-        P = Next(P);
-    }
-
-    return PMin;
-}
-
-float Average(ListLin L)
-/* Mengirimkan nilai rata-rata info(P) */
-{
-    infotype sum = 0;
-    int count = 0;
-    address P = First(L);
-
-    while (P != Nil)
-    {
-        sum += Info(P);
-        count++;
-        P = Next(P);
-    }
-    return sum * 1.0 / count;
 }
 
 /****************** PROSES TERHADAP LIST ******************/
@@ -427,13 +317,13 @@ void InversList(ListLin *L)
 /* Membalik elemen list, tanpa melakukan alokasi/dealokasi. */
 {
     address P;
-    address Prec = Nil;
+    address Prec = NilLin;
     address Succ;
 
     if (!IsEmpty(*L))
     {
         P = First(*L);
-        while (P != Nil)
+        while (P != NilLin)
         {
             Succ = Next(P);
             Next(P) = Prec;
@@ -454,7 +344,7 @@ void Konkat1(ListLin *L1, ListLin *L2, ListLin *L3)
 {
     address Last1;
 
-    CreateEmpty(L3);
+    CreateEmptyListLin(L3);
     if (IsEmpty(*L1))
     {
         First(*L3) = First(*L2);
@@ -463,13 +353,13 @@ void Konkat1(ListLin *L1, ListLin *L2, ListLin *L3)
     {
         First(*L3) = First(*L1);
         Last1 = First(*L1);
-        while (Next(Last1) != Nil)
+        while (Next(Last1) != NilLin)
         {
             Last1 = Next(Last1);
         }
         Next(Last1) = First(*L2);
     }
 
-    First(*L1) = Nil;
-    First(*L2) = Nil;
+    First(*L1) = NilLin;
+    First(*L2) = NilLin;
 }
