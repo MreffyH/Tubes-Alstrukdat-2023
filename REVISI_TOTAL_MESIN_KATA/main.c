@@ -60,13 +60,13 @@ int main()
             printf("MASUK KE START\n");
             char *file = "config.txt";
             STARTWAYANGWAVE(&PL, file);
-            printf("\n");
+            // printf("\n");
 
-            DISPLAYPENYANYI(PL);
+            // DISPLAYPENYANYI(PL);
 
-            DISPLAYALBUM(PL);
+            // DISPLAYALBUM(PL);
 
-            DISPLAYLAGU(PL);
+            // DISPLAYLAGU(PL);
             dalamsesi = true;
             printf("\nFile konfigurasi aplikasi berhasil dibaca. WayangWave berhasil dijalankan.\n");
         }
