@@ -55,7 +55,7 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
                 int search_album = SearchAlbum_ke(penyanyi, nama_penyanyi, currentInput);
                 if (search_album != NOTFOUND)
                 {
-                    printf(" Daftar Lagu di \n");
+                    printf("Daftar Lagu di \n");
                     printWord(penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum);
                     printf(":\n");
                     int jum_lagu;
@@ -93,26 +93,26 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
 //         printf("Kamu tidak memiliki playlist.\n");
 //     }
 // }
-int main()
-{
-    Set S;
-    CreateEmptySet(&S);
+// int main()
+// {
+//     Set S;
+//     CreateEmptySet(&S);
 
-    MapAlbum MA;
-    CreateMapAlbum(&MA, S);
+//     MapAlbum MA;
+//     CreateMapAlbum(&MA, S);
 
-    MapPenyanyi MP;
-    CreateMapPenyanyi(&MP, MA);
+//     MapPenyanyi MP;
+//     CreateMapPenyanyi(&MP, MA);
 
-    ListPenyanyi PL;
-    CreateListPenyanyi(&PL, MP);
+//     ListPenyanyi PL;
+//     CreateListPenyanyi(&PL, MP);
 
-    char *file = "../../config.txt";
-    STARTWAYANGWAVE(&PL, file);
-    printf("\n");
+//     char *file = "../../config.txt";
+//     STARTWAYANGWAVE(&PL, file);
+//     printf("\n");
 
-    DISPLAYPENYANYI(PL);
+//     DISPLAYPENYANYI(PL);
 
-    LISTDEFAULT(PL);
-    return 0;
-}
+//     LISTDEFAULT(PL);
+//     return 0;
+// }
