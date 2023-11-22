@@ -31,28 +31,28 @@ int main()
     CreateEmptyHistorySong(&HS);
 
     ArrayDin PLY;
-    MakeArrayDin(&PLY);
+    PLY = MakeArrayDin();
     // PrintArrayDin(PLY);
     STARTINPUT();
     Word file = currentInput;
     LOADWAYANGWAVE(&PL, file.TabWord, &QS, &HS, &PLY);
 
-    printf("\n");
-    DISPLAYPENYANYI(PL);
-    printf("\n");
+    // printf("\n");
+    // DISPLAYPENYANYI(PL);
+    // printf("\n");
 
-    DISPLAYALBUM(PL);
-    printf("\n");
+    // DISPLAYALBUM(PL);
+    // printf("\n");
 
-    DISPLAYLAGU(PL);
-    printf("\n");
+    // DISPLAYLAGU(PL);
+    // printf("\n");
 
-    printf("INI QUEUENYA\n");
-    displayQueue(QS);
-    printf("\n");
+    // printf("INI QUEUENYA\n");
+    // displayQueue(QS);
+    // printf("\n");
 
-    DisplayHistorySong(HS);
-    // PrintArrayDin(PLY);
+    // DisplayHistorySong(HS);
+    PrintArrayDin(PLY);
 
     return 0;
 }

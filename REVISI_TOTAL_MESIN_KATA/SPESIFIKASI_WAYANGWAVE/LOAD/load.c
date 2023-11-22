@@ -92,31 +92,32 @@ void LOADWAYANGWAVE(ListPenyanyi*PL, char *filestart, QueueSong *QS, HistorySong
     IgnoreEnter();
     ADVSENTENCE();
     int jumlahplaylist = strToInteger(kalimat);
-    printf("Jumlah playlist: %d", jumlahplaylist);
+    // printf("Jumlah playlist: %d", jumlahplaylist);
     if(jumlahplaylist != 0){
-        printf("\n");
+        // printf("\n");
         IgnoreEnter();
     }
     for(int i = 0; i < jumlahplaylist; i++){
         CreateEmptyListLin(&PLAYLIST1LOAD.IsiLagu);
-        printf("LOOP KE-%d\n", i+1);
+        // printf("LOOP KE-%d\n", i+1);
         ADVWORD();
         int jumlahlaguplaylist = strToInteger(currentWord);
         PLAYLIST1LOAD.countlaguLL = jumlahlaguplaylist;
-        printf("Jumlah lagu dalam playlist ke-%d: %d\n", i+1, PLAYLIST1LOAD.countlaguLL);
+        // printf("Jumlah lagu dalam playlist ke-%d: %d\n", i+1, PLAYLIST1LOAD.countlaguLL);
         ADVSENTENCE();
-        printf("Judul playlist ke-%d: ", i+1);
+        // printf("Judul playlist ke-%d: ", i+1);
         PLAYLIST1LOAD.nama_PlayList = kalimat;
-        printWord(PLAYLIST1LOAD.nama_PlayList);
+        // printWord(PLAYLIST1LOAD.nama_PlayList);
         if (jumlahlaguplaylist != 0){
-            printf("\n");
+            // printf("\n");
             IgnoreEnter();
         }
         DetailSongLL BIOPLY;
         for(int j = 0; j < jumlahlaguplaylist; j++){
-            printf("nilai j = %d\n", j);
+            // printf("nilai i = %d\n", i);
+            // printf("nilai j = %d\n", j);
             if((i == jumlahplaylist-1) && (j == jumlahlaguplaylist-1)){
-                printf("CEK IF\n");
+                // printf("CEK IF\n");
                 ADVLOAD();
                 // printf("Artis : ");
                 // printWord(kalimat);
@@ -132,41 +133,42 @@ void LOADWAYANGWAVE(ListPenyanyi*PL, char *filestart, QueueSong *QS, HistorySong
                 // printWord(kalimat);
                 BIOPLY.namaLagu = kalimat;
                 InsVLast(&PLAYLIST1LOAD.IsiLagu, BIOPLY);
+                // printf("\n");
 
             }
             else{
-                printf("CEK ELSE\n");
+                // printf("CEK ELSE\n");
                 ADVLOAD();
                 // printf("Artis : ");
                 // printWord(kalimat);
                 // printf("\n");
                 BIOPLY.namaPenyanyi = kalimat;
-                printWord(BIOPLY.namaPenyanyi);
-                printf("\n");
+                // printWord(BIOPLY.namaPenyanyi);
+                // printf("\n");
                 ADVLOAD();
                 // printf("Judul Album: ");
                 // printWord(kalimat);
                 // printf("\n");
                 BIOPLY.namaAlbum = kalimat;
-                printWord(BIOPLY.namaAlbum);
-                printf("\n");
+                // printWord(BIOPLY.namaAlbum);
+                // printf("\n");
                 ADVLOAD();
                 // printf("Judul Lagu: ");
                 // printWord(kalimat);
                 // printf("\n");
                 BIOPLY.namaLagu = kalimat;
-                printWord(BIOPLY.namaLagu);
-                printf("\n");
-                printf("CEK SEBELUM INSERT: ");
-                PrintInfoLL(PLAYLIST1LOAD.IsiLagu);
+                // printWord(BIOPLY.namaLagu);
+                // printf("\n");
+                // printf("CEK SEBELUM INSERT: ");
+                // PrintInfoLL(PLAYLIST1LOAD.IsiLagu);
                 InsVLast(&PLAYLIST1LOAD.IsiLagu, BIOPLY);
-                printf("CEK ISI PLAYLIST: ");
-                PrintInfoLL(PLAYLIST1LOAD.IsiLagu);
-                printf("\n");
+                // printf("CEK ISI PLAYLIST: ");
+                // PrintInfoLL(PLAYLIST1LOAD.IsiLagu);
+                // printf("\n");
                 IgnoreEnter();
             }
         }
         InsertLastArrayDin(PLY, PLAYLIST1LOAD);
-        PrintArrayDin(*PLY);
+        // PrintArrayDin(*PLY);
     }
 }
