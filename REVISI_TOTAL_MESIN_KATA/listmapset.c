@@ -173,7 +173,7 @@ Word GetLagu(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum, int idx)
         int urutanalbum = SearchAlbum_ke(penyanyi, namaPenyanyi, namaAlbum);
         if (urutanalbum != NOTFOUND)
         {
-            namaLagu = DuplicateKata(penyanyi.penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu.Elements[idx]);
+            namaLagu = DuplicateKata(penyanyi.penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu.Elements[idx - 1]);
         }
     }
     return namaLagu;

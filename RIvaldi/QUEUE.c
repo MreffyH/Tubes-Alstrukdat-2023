@@ -4,7 +4,7 @@
 #include "../REVISI_TOTAL_MESIN_KATA/START/start.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "play.h"
+#include "queue.h"
 
 void QUEUESONG(ListPenyanyi penyanyi, QueueSong *lagu)
 {
@@ -104,13 +104,62 @@ void QUEUEPLAYLIST(QueueSong *laguplaylist, ArrayDin array)
     }
 }
 
-void QUEUESWAP(QueueSong *laguplaylist)
+void QUEUESWAP(QueueSong *laguplaylist, int x, int y)
 {
-    while
+    if ((x < lengthQ(*laguplaylist)) && (y < lengthQ(*laguplaylist)))
+    {
+        DetailSongQ temp = GetDetailSongQ(*laguplaylist, x - 1);
+        (*laguplaylist).detil_queue[x - 1] = GetDetailSongQ(*laguplaylist, y - 1);
+        (*laguplaylist).detil_queue[y - 1] = temp;
+        printf("Lagu “");
+        printWord((*laguplaylist).detil_queue[x - 1].namaLaguQ);
+        printf("” berhasil ditukar dengan “");
+        printWord((*laguplaylist).detil_queue[y - 1].namaLaguQ);
+        printf("”\n");
+    }
+    else
+    {
+        printf("Lagu dengan urutan ke");
+        if (x >= lengthQ(*laguplaylist))
+        {
+            printf(" %d", x);
+        }
+        if (y >= lengthQ(*laguplaylist))
+        {
+            printf(" %d", y);
+        }
+        printf(" tidak terdapat dalam queue!\n");
+    }
 }
 
-void QUEUEREMOVE()
+void QUEUEREMOVE(QueueSong *laguplaylist, int id)
 {
+    if (id < lengthQ(*laguplaylist))
+    {
+        printf("Lagu “");
+        DetailSongQ lagu = (*laguplaylist).detil_queue[id - 1];
+        printWord(lagu);
+        printf("” oleh “");
+        DetailSongQ penyanyi = (*laguplaylist).detil_queue[id - 1].namaPenyanyiQ;
+        printWord(penyanyi);
+        printf("” telah dihapus dari queue!\n");
+        for (int i = id - 1; i < lengthQ(*laguplaylist) - 1; i++)
+        {
+            (*laguplaylist).detil_queue[i] = (*laguplaylist).detil_queue[i + 1];
+        }
+        IDX_TAIL(*laguplaylist)
+        --;
+        if (IDX_TAIL(*laguplaylist) == -1)
+        {
+            IDX_HEAD = IDX_HEAD - 1;
+        }
+    }
+    else
+    {
+        printf("Lagu dengan urutan ke");
+        printf(" %d", id);
+        printf("tidak ada.\n")
+    }
 }
 
 void QUEUECLEAR(QueueSong *urutan)

@@ -10,25 +10,26 @@
 #define MaxElQ 20
 
 /* Definisi elemen dan address */
-typedef struct{
+typedef struct
+{
 	Word namaPenyanyiQ;
 	Word namaAlbumQ;
 	Word namaLaguQ;
 } DetailSongQ;
 
-typedef struct{
+typedef struct
+{
 	DetailSongQ detil_queue[MaxElQ];
 	int idxHead;
 	int idxTail;
 } QueueSong;
 
-
 /* ********* AKSES (Selektor) ********* */
 /* Jika q adalah Queue, maka akses elemen : */
 #define IDX_HEAD(q) (q).idxHead
 #define IDX_TAIL(q) (q).idxTail
-#define     HEAD(q) (q).detil_queue[(q).idxHead]
-#define     TAIL(q) (q).detil_queue[(q).idxTail]
+#define HEAD(q) (q).detil_queue[(q).idxHead]
+#define TAIL(q) (q).detil_queue[(q).idxTail]
 #define InfoSingerQ(D) D.namaPenyanyiQ
 #define InfoAlbumQ(D) D.namaAlbumQ
 #define InfoJudulQ(D) D.namaLaguQ
@@ -57,12 +58,11 @@ void enqueue(QueueSong *q, DetailSongQ val);
 /* I.S. q mungkin kosong, tabel penampung elemen q TIDAK penuh */
 /* F.S. val menjadi TAIL yang baru, IDX_TAIL "mundur" dalam buffer melingkar. */
 
-
 void dequeue(QueueSong *q, DetailSongQ *val);
 /* Proses: Menghapus val pada q dengan aturan FIFO */
 /* I.S. q tidak mungkin kosong */
 /* F.S. val = nilai elemen HEAD pd I.S., IDX_HEAD "mundur";
-        q mungkin kosong */
+		q mungkin kosong */
 
 /* *** Display Queue *** */
 void displayQueue(QueueSong q);
@@ -70,7 +70,11 @@ void displayQueue(QueueSong q);
    I.S. Q sembarang, mungkin kosong
    F.S. Isi Q ditampilkan ke layar */
 
-boolean IsMemberQ (QueueSong q, DetailSongQ v);
+boolean IsMemberQ(QueueSong q, DetailSongQ v);
 /* Mengembalikan nilai true apabila elemen v ada pada Queue */
+
+DetailSongQ GetDetailSongQ(QueueSong q, int idx);
+/* Mengembalikan DetailSongQ dengan urutan ke idx
+   Prekondisi: idx terdefinisi */
 
 #endif
