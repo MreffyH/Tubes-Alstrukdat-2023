@@ -4,15 +4,26 @@
 
 void songNext(QueueSong *q, HistorySong *s, DetailSongQ *cs)
 {
+    Word none;
+    none.TabWord[0] = '-';
+    none.Length = 1;
     if (isEmptyQ(*q))
     {
-        printf("Queue kosong, memutar kembali lagu");
-        printf("\"");
-        printWord((*cs).namaLaguQ);
-        printf("\"");
-        printf("oleh");
-        printf("\"");
-        printWord((*cs).namaPenyanyiQ);
+        if ((IsKataEqual((*cs).namaPenyanyiQ, none)) && (IsKataEqual((*cs).namaAlbumQ, none)) && (IsKataEqual((*cs).namaLaguQ, none)))
+        {
+            printf("Tidak dapat memutar lagu\n");
+        }
+        else
+        {
+            printf("Queue kosong, memutar kembali lagu\n");
+            printf("\"");
+            printWord((*cs).namaLaguQ);
+            printf("\"");
+            printf(" oleh ");
+            printf("\"");
+            printWord((*cs).namaPenyanyiQ);
+            printf("\"");
+        }
     }
     else
     {
@@ -20,13 +31,16 @@ void songNext(QueueSong *q, HistorySong *s, DetailSongQ *cs)
         csr.namaLaguS = DuplicateKata(cs->namaLaguQ);
         csr.namaAlbumS = DuplicateKata(cs->namaAlbumQ);
         csr.namaPenyanyiS = DuplicateKata(cs->namaPenyanyiQ);
-        Push(s, csr);
+        if ((!IsKataEqual((*cs).namaPenyanyiQ, none)) || (!IsKataEqual((*cs).namaAlbumQ, none)) || (!IsKataEqual((*cs).namaLaguQ, none)))
+        {
+            Push(s, csr);
+        }
         dequeue(q, cs);
-        printf("Memutar lagu selanjutnya");
+        printf("Memutar lagu selanjutnya\n");
         printf("\"");
         printWord((*cs).namaLaguQ);
         printf("\"");
-        printf("oleh");
+        printf(" oleh ");
         printf("\"");
         printWord((*cs).namaPenyanyiQ);
         printf("\"");
@@ -35,36 +49,50 @@ void songNext(QueueSong *q, HistorySong *s, DetailSongQ *cs)
 
 void songPrevious(QueueSong *q, HistorySong *s, DetailSongQ *cs)
 {
+    Word none;
+    none.TabWord[0] = '-';
+    none.Length = 1;
+    DetailSongS hs;
+
     if (IsEmptyHistorySong(*s))
     {
-        printf("Queue kosong, memutar kembali lagu");
-        printf("\"");
-        printWord((*cs).namaLaguQ);
-        printf("\"");
-        printf("oleh");
-        printf("\"");
-        printWord((*cs).namaPenyanyiQ);
-        printf("\"");
+        if ((IsKataEqual((*cs).namaPenyanyiQ, none)) && (IsKataEqual((*cs).namaAlbumQ, none)) && (IsKataEqual((*cs).namaLaguQ, none)))
+        {
+            printf("Tidak dapat memutar lagu\n");
+        }
+        else
+        {
+            printf("Queue kosong, memutar kembali lagu\n");
+            printf("\"");
+            printWord((*cs).namaLaguQ);
+            printf("\"");
+            printf(" oleh ");
+            printf("\"");
+            printWord((*cs).namaPenyanyiQ);
+            printf("\"");
+        }
     }
     else
     {
-        DetailSongS csr;
         DetailSongQ tempSong;
-        enqueue(q, *cs);
-        for (int i = 0; i < lengthQ(*q) - 1; i++)
+        if ((!IsKataEqual((*cs).namaPenyanyiQ, none)) || (!IsKataEqual((*cs).namaAlbumQ, none)) || (!IsKataEqual((*cs).namaLaguQ, none)))
         {
-            dequeue(q, &tempSong);
-            enqueue(q, tempSong);
+            enqueue(q, *cs);
+            for (int i = 0; i < lengthQ(*q) - 1; i++)
+            {
+                dequeue(q, &tempSong);
+                enqueue(q, tempSong);
+            }
         }
-        Pop(s, &csr);
-        cs->namaLaguQ = DuplicateKata(csr.namaLaguS);
-        cs->namaAlbumQ = DuplicateKata(csr.namaAlbumS);
-        cs->namaPenyanyiQ = DuplicateKata(csr.namaPenyanyiS);
-        printf("Memutar lagu sebelumnya");
+        Pop(s, &hs);
+        cs->namaLaguQ = DuplicateKata(hs.namaLaguS);
+        cs->namaAlbumQ = DuplicateKata(hs.namaAlbumS);
+        cs->namaPenyanyiQ = DuplicateKata(hs.namaPenyanyiS);
+        printf("Memutar lagu sebelumnya\n");
         printf("\"");
         printWord((*cs).namaLaguQ);
         printf("\"");
-        printf("oleh");
+        printf(" oleh ");
         printf("\"");
         printWord((*cs).namaPenyanyiQ);
         printf("\"");
