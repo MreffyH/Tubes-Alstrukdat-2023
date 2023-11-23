@@ -1,10 +1,10 @@
 #include "ladt.h"
 // #include "listdinamis.h"
-// gcc -o ladt ladt.c ../../../src/ADT/list/list.c ../../../src/ADT/mapset/set.c ../../listmapset.c ../../mesinkata.c ../../mesinkarakter.c ../START/start.c
+// gcc -o ladt ladt.c ../../../src/ADT/list/list.c ../../../src/ADT/mapset/set.c ../../listmapset.c ../../mesinkata.c ../../mesinkarakter.c ../START/start.c ../../../RIvaldi/arraydin.c ../../../src/ADT/list/listlinier.c 
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "arraydin.h"
+
 void LISTDEFAULT(ListPenyanyi penyanyi)
 {
     printf("Daftar Penyanyi : \n");
@@ -74,7 +74,7 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
     }
 }
 
-void PLAYLIST(ArrayDin L)
+void LISTPLAYLIST(ArrayDin L)
 {
     printf("\n");
     printf("Daftar playlist yang kamu miliki:\n");
@@ -82,7 +82,7 @@ void PLAYLIST(ArrayDin L)
     {
         for (int i = 0; i < LengthArrayDin(L); i++)
         {
-            pritf("%d. ", i + 1);
+            printf("%d. ", i + 1);
             printWord(L.detil_playlist[i].nama_PlayList);
             printf("\n");
         }
