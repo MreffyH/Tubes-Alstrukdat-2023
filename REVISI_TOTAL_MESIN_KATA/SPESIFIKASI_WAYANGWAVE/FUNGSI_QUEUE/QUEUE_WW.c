@@ -1,10 +1,6 @@
-#include "../src/ADT/list/list.h"
-#include "../REVISI_TOTAL_MESIN_KATA/listmapset.h"
-#include "../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
-#include "../REVISI_TOTAL_MESIN_KATA/START/start.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "queue.h"
+#include "QUEUE_WW.h"
 
 void QUEUESONG(ListPenyanyi penyanyi, QueueSong *lagu)
 {
@@ -158,7 +154,7 @@ void QUEUEREMOVE(QueueSong *laguplaylist, int id)
     {
         printf("Lagu dengan urutan ke");
         printf(" %d", id);
-        printf("tidak ada.\n")
+        printf("tidak ada.\n");
     }
 }
 
