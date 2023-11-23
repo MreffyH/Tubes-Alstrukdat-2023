@@ -174,6 +174,7 @@ Word GetLagu(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum, int idx)
         if (urutanalbum != NOTFOUND)
         {
             namaLagu = DuplicateKata(penyanyi.penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu.Elements[idx - 1]);
+            printf("%d", namaLagu.Length);
         }
     }
     return namaLagu;

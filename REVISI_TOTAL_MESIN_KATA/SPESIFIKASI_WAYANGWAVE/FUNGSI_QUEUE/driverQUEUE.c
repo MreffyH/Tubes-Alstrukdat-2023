@@ -1,7 +1,10 @@
 #include "QUEUE_WW.h"
 #include "../../ADT_WAYANGWAVE/STACK/stack.h"
+#include "../LOAD/load.h"
+// gcc -o driverQUEUE driverQUEUE.c ../LOAD/load.c ../START/start.c ../../mesinkarakter.c ../../mesinkata.c ../../listmapset.c ../../../src/ADT/mapset/set.c ../../ADT_WAYANGWAVE/QUEUE/queue.c ../../ADT_WAYANGWAVE/STACK/stack.c ../../../src/ADT/list/listlinier.c ../../../RIvaldi/arraydin.c playlist.c
 
-int main(){
+int main()
+{
     // char *file = "user1.txt";
     // STARTWAYANGWAVE(file);
     Set S;
@@ -9,7 +12,7 @@ int main(){
 
     MapAlbum MA;
     CreateMapAlbum(&MA, S);
-    
+
     MapPenyanyi MP;
     CreateMapPenyanyi(&MP, MA);
 
@@ -27,9 +30,6 @@ int main(){
     ArrayDin PLY;
     PLY = MakeArrayDin();
     // PrintArrayDin(PLY);
-    STARTINPUT();
-    Word file = currentInput;
-    LOADWAYANGWAVE(&PL, file.TabWord, &QS, &HS, &PLY, &currentSong);
-
-
+    char *file = "../../user1.txt";
+    LOADWAYANGWAVE(&PL, file, &QS, &HS, &PLY, &currentSong);
 }

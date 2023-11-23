@@ -68,7 +68,9 @@ void QUEUESONG(ListPenyanyi penyanyi, QueueSong *lagu)
             printf("\" ke queue.\n");
             DetailSongQ laguqueue;
             laguqueue.namaPenyanyiQ = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
+
             laguqueue.namaAlbumQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
+
             laguqueue.namaLaguQ = GetLagu(penyanyi, laguqueue.namaPenyanyiQ, laguqueue.namaAlbumQ, hasil);
 
             enqueue(lagu, laguqueue);
