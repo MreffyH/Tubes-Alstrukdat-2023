@@ -66,11 +66,11 @@ void QUEUESONG(ListPenyanyi penyanyi, QueueSong *lagu)
             laguqueue.namaLaguQ = GetLagu(penyanyi, laguqueue.namaPenyanyiQ, laguqueue.namaAlbumQ, hasil);
             Word LAGU_PANGGIL;
             LAGU_PANGGIL = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
-            printf("Berhasil menambahkan lagu  ");
+            printf("Berhasil menambahkan lagu \"");
             printWord(LAGU_PANGGIL);
-            printf(" oleh ");
+            printf("\" oleh \"");
             printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
-            printf("ke queue.\n");
+            printf("\" ke queue.\n");
             enqueue(lagu, laguqueue);
         }
     }
@@ -84,9 +84,9 @@ void QUEUEPLAYLIST(QueueSong *laguplaylist, ArrayDin array)
         STARTINPUT();
         int hasil = strToInteger(currentInput);
         IsiPlaylist nama_playlist = GetPlaylist(array, hasil);
-        printf("Berhasil menambahkan playlist | ");
+        printf("Berhasil menambahkan playlist \"");
         printWord(nama_playlist.nama_PlayList);
-        printf("| ke queue.\n");
+        printf("\" ke queue.\n");
         address P = First(nama_playlist.IsiLagu);
         DetailSongQ laguqueue;
         while (P != NilLin)
@@ -107,9 +107,9 @@ void QUEUESWAP(QueueSong *laguplaylist, int x, int y)
         DetailSongQ temp = GetDetailSongQ(*laguplaylist, x - 1);
         (*laguplaylist).detil_queue[x - 1] = GetDetailSongQ(*laguplaylist, y - 1);
         (*laguplaylist).detil_queue[y - 1] = temp;
-        printf("Lagu “");
+        printf("Lagu \"");
         printWord((*laguplaylist).detil_queue[x - 1].namaLaguQ);
-        printf("” berhasil ditukar dengan |");
+        printf("\" berhasil ditukar dengan \"");
         printWord((*laguplaylist).detil_queue[y - 1].namaLaguQ);
         printf("|\n");
     }
@@ -132,13 +132,13 @@ void QUEUEREMOVE(QueueSong *laguplaylist, int id)
 {
     if (id < lengthQ(*laguplaylist))
     {
-        printf("Lagu “");
+        printf("Lagu \"");
         Word lagu = (*laguplaylist).detil_queue[id - 1].namaLaguQ;
         printWord(lagu);
-        printf("” oleh “");
+        printf("\" oleh \"");
         Word penyanyi = (*laguplaylist).detil_queue[id - 1].namaPenyanyiQ;
         printWord(penyanyi);
-        printf("” telah dihapus dari queue!\n");
+        printf("\" telah dihapus dari queue!\n");
         for (int i = id - 1; i < lengthQ(*laguplaylist) - 1; i++)
         {
             (*laguplaylist).detil_queue[i] = (*laguplaylist).detil_queue[i + 1];
