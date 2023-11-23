@@ -84,9 +84,9 @@ void QUEUEPLAYLIST(QueueSong *laguplaylist, ArrayDin array)
         STARTINPUT();
         int hasil = strToInteger(currentInput);
         IsiPlaylist nama_playlist = GetPlaylist(array, hasil);
-        printf("Berhasil menambahkan playlist “ ");
+        printf("Berhasil menambahkan playlist | ");
         printWord(nama_playlist.nama_PlayList);
-        printf("” ke queue.\n");
+        printf("| ke queue.\n");
         address P = First(nama_playlist.IsiLagu);
         DetailSongQ laguqueue;
         while (P != NilLin)
@@ -109,9 +109,9 @@ void QUEUESWAP(QueueSong *laguplaylist, int x, int y)
         (*laguplaylist).detil_queue[y - 1] = temp;
         printf("Lagu “");
         printWord((*laguplaylist).detil_queue[x - 1].namaLaguQ);
-        printf("” berhasil ditukar dengan “");
+        printf("” berhasil ditukar dengan |");
         printWord((*laguplaylist).detil_queue[y - 1].namaLaguQ);
-        printf("”\n");
+        printf("|\n");
     }
     else
     {
