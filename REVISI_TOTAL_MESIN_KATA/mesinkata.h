@@ -85,6 +85,8 @@ void COPYINPUT();
 
 void RESETINPUT();
 
+void ADVINPUT();
+
 boolean INPUTEQUAL(Word I, char *K);
 
 int FUNGSILENGTH(char *K);
