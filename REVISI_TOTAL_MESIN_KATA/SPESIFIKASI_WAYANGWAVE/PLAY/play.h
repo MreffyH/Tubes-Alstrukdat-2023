@@ -12,6 +12,8 @@
 #include "../LOAD/load.h"
 #include "../../../RIvaldi/arraydin.h"
 #include "../../../src/ADT/list/listlinier.h"
+#include "../../ADT_WAYANGWAVE/STACK/stack.h"
+#include "../../ADT_WAYANGWAVE/QUEUE/queue.h"
 
 void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, HistorySong *history, QueueSong *step);
 

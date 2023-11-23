@@ -76,7 +76,7 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
             }
             while (!IsEmptyHistorySong(*history))
             {
-                pop(history, &trashstack);
+                Pop(history, &trashstack);
             }
         }
     }
@@ -108,7 +108,7 @@ void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong *history
         }
         while (!IsEmptyHistorySong(*history))
         {
-            pop(history, &trashstack);
+            Pop(history, &trashstack);
         }
         P = First(array.detil_playlist[hasil].IsiLagu);
         DetailSongLL timpalagu;
@@ -125,9 +125,9 @@ void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong *history
             trashstack.namaAlbumS = timpalagu.namaAlbum;
             trashstack.namaLaguS = timpalagu.namaLagu;
             enqueue(urutan, trashqueue);
-            push(history, trashstack);
+            Push(history, trashstack);
             P = Next(P);
         }
-        dequeue(urutan, &currentSong);
+        dequeue(urutan, currentSong);
     }
 }
