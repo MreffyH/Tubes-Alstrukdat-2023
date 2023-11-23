@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "arraydin.h"
 void LISTDEFAULT(ListPenyanyi penyanyi)
 {
     printf("Daftar Penyanyi : \n");
@@ -74,25 +74,24 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
     }
 }
 
-// void PLAYLIST(ListDinamis L)
-// {
-//     printf("\n");
-//     printf("Daftar playlist yang kamu miliki:\n");
-//     if (ISEMPTYLD(L))
-//     {
-//         int idx = 0;
-//         for (int i = 0; i < LENGTHLD(L); i++)
-//         {
-//             pritf("\t%d ", idx + 1);
-//             idx++;
-//             printf("\n");
-//         }
-//     }
-//     else
-//     {
-//         printf("Kamu tidak memiliki playlist.\n");
-//     }
-// }
+void PLAYLIST(ArrayDin L)
+{
+    printf("\n");
+    printf("Daftar playlist yang kamu miliki:\n");
+    if (!IsEmptyArrayDin(L))
+    {
+        for (int i = 0; i < LengthArrayDin(L); i++)
+        {
+            pritf("%d. ", i + 1);
+            printWord(L.detil_playlist[i].nama_PlayList);
+            printf("\n");
+        }
+    }
+    else
+    {
+        printf("Kamu tidak memiliki playlist.\n");
+    }
+}
 // int main()
 // {
 //     Set S;
