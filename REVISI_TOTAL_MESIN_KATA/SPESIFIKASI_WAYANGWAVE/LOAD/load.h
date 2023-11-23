@@ -6,8 +6,8 @@
 #include "../../mesinkata.h"
 #include "../START/start.h"
 #include "../../listmapset.h"
-#include "../../../src/ADT/queue/queue.h"
-#include "../../../src/ADT/stack/stack.h"
+#include "../../ADT_WAYANGWAVE/QUEUE/queue.h"
+#include "../../ADT_WAYANGWAVE/STACK/stack.h"
 #include "../../../RIvaldi/arraydin.h"
 #include "../../../src/ADT/list/listlinier.h"
 
