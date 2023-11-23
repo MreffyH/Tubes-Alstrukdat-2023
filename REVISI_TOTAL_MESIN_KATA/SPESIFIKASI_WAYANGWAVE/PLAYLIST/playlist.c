@@ -1,7 +1,3 @@
-#include "../../RIvaldi/arraydin.h"
-#include "../FUNGSI_LIST/ladt.h"
-#include "../../../src/ADT/list/listlinier.h"
-#include "../../REVISI_TOTAL_MESIN_KATA/mesinkata.h"
 #include <stdio.h>
 #include "playlist.h"
 
