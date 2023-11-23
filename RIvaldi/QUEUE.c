@@ -106,7 +106,7 @@ void QUEUEPLAYLIST(QueueSong *laguplaylist, ArrayDin array)
 
 void QUEUESWAP(QueueSong *laguplaylist, int x, int y)
 {
-    if ((x < lengthQ(*laguplaylist)) && (y < lengthQ(*laguplaylist)))
+    if ((x < lengthQ(*laguplaylist)) && (y < lengthQ(*laguplaylist) && x >= 0 && y >= 0))
     {
         DetailSongQ temp = GetDetailSongQ(*laguplaylist, x - 1);
         (*laguplaylist).detil_queue[x - 1] = GetDetailSongQ(*laguplaylist, y - 1);
@@ -120,11 +120,11 @@ void QUEUESWAP(QueueSong *laguplaylist, int x, int y)
     else
     {
         printf("Lagu dengan urutan ke");
-        if (x >= lengthQ(*laguplaylist))
+        if (x >= lengthQ(*laguplaylist) || x < 0)
         {
             printf(" %d", x);
         }
-        if (y >= lengthQ(*laguplaylist))
+        if (y >= lengthQ(*laguplaylist) || y < 0)
         {
             printf(" %d", y);
         }
