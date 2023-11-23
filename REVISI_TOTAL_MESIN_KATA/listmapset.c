@@ -105,6 +105,31 @@ void AddLagu(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum, Word nam
     }
 }
 
+int SearchLagu_ke(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum, Word namaLagu){
+    int i = 0;
+    boolean found = false;
+    int urutanpenyanyi = SearchPenyanyi_ke(penyanyi, namaPenyanyi);
+    if(urutanpenyanyi != NOTFOUND){
+        int urutanalbum = SearchAlbum_ke(penyanyi,namaPenyanyi,namaAlbum);
+        if(urutanalbum != NOTFOUND){
+            while((i < penyanyi.penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu.Count) && (!found)){
+                if(IsKataEqual(penyanyi.penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu.Elements[i], namaLagu)){
+                    found = true;
+                }
+                else{
+                    i++;
+                }
+            }
+        }
+    } /* i == penyanyi.penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu.Count or found */
+    if(found){
+        return i;
+    }
+    else{
+        return NOTFOUND;
+    }
+}
+
 void DISPLAYPENYANYI(ListPenyanyi penyanyi) {
     printf("DISPLAY SEMUA PENYANYI:\n");
     for(int j = 0; j< Jumlahpenyanyi(penyanyi); j++){
