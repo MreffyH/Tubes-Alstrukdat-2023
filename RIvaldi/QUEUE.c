@@ -4,8 +4,9 @@
 #include "../REVISI_TOTAL_MESIN_KATA/START/start.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include "play.h"
 
-void QUEUESONG(ListPenyanyi penyanyi)
+void QUEUESONG(ListPenyanyi penyanyi, QueueSong *lagu)
 {
     printf("Daftar Penyanyi : \n");
     int i;
@@ -62,6 +63,11 @@ void QUEUESONG(ListPenyanyi penyanyi)
             printf("Masukkan ID Lagu yang dipilih : ");
             STARTINPUT();
             int hasil = strToInteger(currentInput);
+
+            DetailSongQ laguqueue;
+            laguqueue.namaPenyanyiQ = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
+            laguqueue.namaAlbumQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
+            laguqueue.namaLaguQ = GetLagu(penyanyi, laguqueue.namaPenyanyiQ, laguqueue.namaAlbumQ, hasil);
             Word LAGU_PANGGIL;
             LAGU_PANGGIL = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
             printf("Berhasil menambahkan lagu  ");
@@ -69,21 +75,49 @@ void QUEUESONG(ListPenyanyi penyanyi)
             printf(" oleh ");
             printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
             printf("ke queue.\n");
+            enqueue(lagu, laguqueue);
         }
     }
 }
-void QUEUEPLAYLIST()
+void QUEUEPLAYLIST(QueueSong *laguplaylist, ArrayDin array)
 {
+    if (!IsEmptyArrayDin(array))
+    {
+
+        printf("Masukkan ID Playlist: ");
+        STARTINPUT();
+        int hasil = strToInteger(currentInput);
+        IsiPlaylist nama_playlist = GetPlaylist(array, hasil);
+        printf("Berhasil menambahkan playlist “ ");
+        printWord(nama_playlist.nama_PlayList);
+        printf("” ke queue.\n");
+        address P = First(nama_playlist.IsiLagu);
+        DetailSongQ laguqueue;
+        while (P != NilLin)
+        {
+            laguqueue.namaPenyanyiQ = InfoPenyanyi(P);
+            laguqueue.namaAlbumQ = InfoAlbum(P);
+            laguqueue.namaLaguQ = InfoJudul(P);
+            enqueue(laguplaylist, laguqueue);
+            P = Next(P);
+        }
+    }
 }
 
-void QUEUESWAP()
+void QUEUESWAP(QueueSong *laguplaylist)
 {
+    while
 }
 
 void QUEUEREMOVE()
 {
 }
 
-void QUEUECLEAR()
+void QUEUECLEAR(QueueSong *urutan)
 {
+    DetailSongQ trashqueue;
+    while (!isEmptyQ(*urutan))
+    {
+        dequeue(urutan, &trashqueue);
+    }
 }
