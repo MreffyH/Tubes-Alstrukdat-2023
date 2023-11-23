@@ -56,6 +56,8 @@ void AddLagu(ListPenyanyi *penyanyi, Word namaPenyanyi, Word namaAlbum, Word nam
 
 int SearchLagu_ke(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum, Word namaLagu);
 
+Word GetLagu(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum, int idx);
+
 void DISPLAYPENYANYI(ListPenyanyi penyanyi);
 
 void DISPLAYALBUM(ListPenyanyi penyanyi);
