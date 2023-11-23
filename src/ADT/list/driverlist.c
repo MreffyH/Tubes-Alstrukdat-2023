@@ -1,7 +1,35 @@
 #include <stdio.h>
 #include "list.h"
+#include "../../../REVISI_TOTAL_MESIN_KATA/SPESIFIKASI_WAYANGWAVE/LOAD/load.h"
+#include "../../../REVISI_TOTAL_MESIN_KATA/listmapset.h"
+
+// gcc -o driverlist driverlist.c ../../../REVISI_TOTAL_MESIN_KATA/mesinkata.c list.c listlinier.c ../../../REVISI_TOTAL_MESIN_KATA/mesinkarakter.c ../../../REVISI_TOTAL_MESIN_KATA/SPESIFIKASI_WAYANGWAVE/LOAD/load.c ../../../REVISI_TOTAL_MESIN_KATA/ADT_WAYANGWAVE/QUEUE/queue.c ../../../REVISI_TOTAL_MESIN_KATA/ADT_WAYANGWAVE/STACK/stack.c ../../../REVISI_TOTAL_MESIN_KATA/listmapset.c ../../../RIvaldi/arraydin.c ../../../REVISI_TOTAL_MESIN_KATA/SPESIFIKASI_WAYANGWAVE/START/start.c ../mapset/set.c
 
 int main(){
+    Set S;
+    CreateEmptySet(&S);
+
+    MapAlbum MA;
+    CreateMapAlbum(&MA, S);
+
+    MapPenyanyi MP;
+    CreateMapPenyanyi(&MP, MA);
+
+    ListPenyanyi PL;
+    CreateListPenyanyi(&PL, MP);
+
+    DetailSongQ currentSong;
+
+    QueueSong QS;
+    CreateEmptyQueue(&QS);
+
+    HistorySong HS;
+    CreateEmptyHistorySong(&HS);
+
+    ArrayDin PLY;
+    PLY = MakeArrayDin();
+    char *file = "../../../REVISI_TOTAL_MESIN_KATA/user1.txt";
+    LOADWAYANGWAVE(&PL, file, &QS, &HS, &PLY, &currentSong);
     List L1, L2;
     MakeList(&L1);
     MakeList(&L2);
