@@ -19,6 +19,16 @@ int main()
     ListPenyanyi PL;
     CreateListPenyanyi(&PL, MP);
 
+    DetailSongQ currentSong;
+    
+    QueueSong QS;
+    CreateEmptyQueue(&QS);
+
+    HistorySong HS;
+    CreateEmptyHistorySong(&HS);
+    ArrayDin PLY;
+    PLY = MakeArrayDin();
+
     char *file = "../../config.txt";
     STARTWAYANGWAVE(&PL, file);
     printf("\n");
@@ -27,6 +37,6 @@ int main()
 
     ArrayDin Plist;
     MakeArrayDin(Plist);
-    playPlaylist(Plist);
+    playPlaylist(PLY, &currentSong, &HS, &QS);
     return 0;
 }
