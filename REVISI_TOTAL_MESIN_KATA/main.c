@@ -106,20 +106,20 @@ int main()
         {
             helpBefore();
         }
-        else if ((INPUTEQUAL(currentInput, "PLAY SONG;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "PLAY SONG")) && dalamsesi == true)
         {
             PLAYSONG(PL, PLY, &currentSong, &HS, &QS);
         }
-        else if ((INPUTEQUAL(currentInput, "PLAY SONG;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "PLAY SONG")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST")) && dalamsesi == true)
         {
             /*masukin fungsi PLAY PLAYLIST*/
             playPlaylist(PLY, &currentSong, &HS, &QS);
         }
-        else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
@@ -132,11 +132,11 @@ int main()
                 QUEUESONG(PL, &QS);
                 printf("Masuk Prints Song.");
             }
-            else if (INPUTEQUAL(currentInput, "PLAYLIST;"))
+            else if (INPUTEQUAL(currentInput, "PLAYLIST"))
             {
                 QUEUEPLAYLIST(&QS, PLY);
             }
-            else if (INPUTEQUAL(currentInput, "CLEAR;"))
+            else if (INPUTEQUAL(currentInput, "CLEAR"))
             {
                 QUEUECLEAR(&QS);
             }
@@ -162,118 +162,118 @@ int main()
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "STATUS;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "STATUS")) && dalamsesi == true)
         {
             /*masukin fungsi STATUS*/
             printf("Masuk ke STATUS\n");
         }
-        else if ((INPUTEQUAL(currentInput, "STATUS;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "STATUS")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "SAVE;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "SAVE")) && dalamsesi == true)
         {
             /*masukin fungsi SAVE*/
             printf("Masuk ke SAVE\n");
         }
-        else if ((INPUTEQUAL(currentInput, "SAVE;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "SAVE")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "LIST DEFAULT;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "LIST DEFAULT")) && dalamsesi == true)
         {
             LISTDEFAULT(PL);
         }
-        else if ((INPUTEQUAL(currentInput, "LIST DEFAULT;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "LIST DEFAULT")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "LIST PLAYLIST;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "LIST PLAYLIST")) && dalamsesi == true)
         {
             /*masukin fungsi LIST PLAYLIST*/
             LISTPLAYLIST(PLY);
         }
-        else if ((INPUTEQUAL(currentInput, "LIST PLAYLIST;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "LIST PLAYLIST")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "SONG NEXT;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "SONG NEXT")) && dalamsesi == true)
         {
             songNext(&QS, &HS, &currentSong);
             printf("Masuk ke SONG NEXT\n");
         }
-        else if ((INPUTEQUAL(currentInput, "SONG NEXT;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "SONG NEXT")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS")) && dalamsesi == true)
         {
             songPrevious(&QS, &HS, &currentSong);
             printf("Masuk ke SONG PREVIOUS\n");
         }
-        else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST CREATE;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST CREATE")) && dalamsesi == true)
         {
             /*masukin fungsi PLAYLIST CREATE*/
             printf("Masuk ke PLAYLIST CREATE\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST CREATE;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST CREATE")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD SONG;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD SONG")) && dalamsesi == true)
         {
             /*masukin fungsi PLAYLIST ADD*/
             printf("Masuk ke PLAYLIST ADD SONG\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD SONG;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD SONG")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD ALBUM;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD ALBUM")) && dalamsesi == true)
         {
             /*masukin fungsi PLAYLIST ADD*/
             printf("Masuk ke PLAYLIST ADD ALBUM\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD ALBUM;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD ALBUM")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST SWAP;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST SWAP")) && dalamsesi == true)
         {
             /*masukin fungsi PLAYLIST ADD*/
             printf("Masuk ke PLAYLIST ADD\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST SWAP;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST SWAP")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST REMOVE;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST REMOVE")) && dalamsesi == true)
         {
             /*masukin fungsi PLAYLIST REMOVE*/
             printf("Masuk ke PLAYLIST REMOVE\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST REMOVE;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST REMOVE")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST DELETE;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST DELETE")) && dalamsesi == true)
         {
             /*masukin fungsi PLAYLIST DELETE*/
             printf("Masuk ke PLAYLIST DELETE\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST DELETE;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "PLAYLIST DELETE")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "QUIT;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "QUIT")) && dalamsesi == true)
         {
             quit();
         }
-        else if ((INPUTEQUAL(currentInput, "QUIT;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "QUIT")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
