@@ -14,4 +14,10 @@ void QUEUESONG(ListPenyanyi penyanyi, QueueSong *lagu);
 
 void QUEUEPLAYLIST(QueueSong *laguplaylist, ArrayDin array);
 
+void QUEUESWAP(QueueSong *laguplaylist, int x, int y);
+
+void QUEUEREMOVE(QueueSong *laguplaylist, int id);
+
+void QUEUECLEAR(QueueSong *urutan);
+
 #endif /* LISTDEFAULT_H */

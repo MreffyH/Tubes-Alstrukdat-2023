@@ -1,4 +1,4 @@
-// gcc -o main main.c mesinkarakter.c mesinkata.c ADT_WAYANGWAVE/QUEUE/queue.c ADT_WAYANGWAVE/STACK/stack.c SPESIFIKASI_WAYANGWAVE/HELP/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c ../RIvaldi/arraydin.c ../src/ADT/list/listlinier.c SPESIFIKASI_WAYANGWAVE/SONG/song.c
+// gcc -o main main.c mesinkarakter.c mesinkata.c ADT_WAYANGWAVE/QUEUE/queue.c ADT_WAYANGWAVE/STACK/stack.c SPESIFIKASI_WAYANGWAVE/HELP/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c ../RIvaldi/arraydin.c ../src/ADT/list/listlinier.c SPESIFIKASI_WAYANGWAVE/SONG/song.c SPESIFIKASI_WAYANGWAVE/FUNGSI_QUEUE/QUEUE_WW.c
 
 #include <stdio.h>
 
@@ -19,6 +19,7 @@
 #include "SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.h"
 #include "SPESIFIKASI_WAYANGWAVE/PLAY/play.h"
 #include "SPESIFIKASI_WAYANGWAVE/SONG/song.h"
+#include "SPESIFIKASI_WAYANGWAVE/FUNGSI_QUEUE/QUEUE_WW.H"
 
 int main()
 {
@@ -121,12 +122,19 @@ int main()
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "QUEUE;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "QUEUE SONG;")) && dalamsesi == true)
         {
-            /*masukin fungsi QUEUE*/
-            printf("Masuk ke QUEUE\n");
+            QUEUESONG(PL, &QS);
         }
-        else if ((INPUTEQUAL(currentInput, "QUEUE;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "QUEUE SONG;")) && dalamsesi == false)
+        {
+            printf("Command tidak bisa dieksekusi!\n");
+        }
+        else if ((INPUTEQUAL(currentInput, "QUEUE PLAYLIST;")) && dalamsesi == true)
+        {
+            QUEUEPLAYLIST(&QS, PLY);
+        }
+        else if ((INPUTEQUAL(currentInput, "QUEUE PLAYLIST;")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
