@@ -65,6 +65,7 @@ int main()
         STARTINPUT();
         printf("\n");
 
+        printWord(currentInput);
         if ((INPUTEQUAL(currentInput, "START;")) && dalamsesi == false)
         {
             printf("MASUK KE START\n");
@@ -89,6 +90,7 @@ int main()
             printf("LOAD ");
             STARTINPUT();
             Word file = currentInput;
+            
             LOADWAYANGWAVE(&PL, file.TabWord, &QS, &HS, &PLY, &currentSong);
             printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
             dalamsesi = true;
@@ -122,19 +124,42 @@ int main()
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "QUEUE SONG;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "QUEUE")) && dalamsesi == true)
         {
-            QUEUESONG(PL, &QS);
+            ADVINPUT();
+            printWord(currentWord);
+            if (INPUTEQUAL(currentInput, "SONG;")) 
+            {
+                QUEUESONG(PL, &QS);
+                printf("Masuk Prints Song.");
+            }
+            else if (INPUTEQUAL(currentInput, "PLAYLIST;"))
+            {
+                QUEUEPLAYLIST(&QS, PLY);
+            }
+            else if (INPUTEQUAL(currentInput, "CLEAR;"))
+            {
+                QUEUECLEAR(&QS);
+            }
+            else if (INPUTEQUAL(currentInput, "REMOVE"))
+            {
+                ADVINPUT();
+                int id;
+                id = currentChar;
+                QUEUEREMOVE(&QS, id);
+            }
+            else if (INPUTEQUAL(currentInput, "SWAP"))
+            {
+                ADVINPUT();
+                int x;
+                int y;
+                x = currentChar;
+                ADVINPUT();
+                y = currentChar;
+                QUEUESWAP(&QS, x, y);
+            }
         }
-        else if ((INPUTEQUAL(currentInput, "QUEUE SONG;")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "QUEUE PLAYLIST;")) && dalamsesi == true)
-        {
-            QUEUEPLAYLIST(&QS, PLY);
-        }
-        else if ((INPUTEQUAL(currentInput, "QUEUE PLAYLIST;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "QUEUE")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }

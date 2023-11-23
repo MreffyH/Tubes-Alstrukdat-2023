@@ -190,7 +190,7 @@ void ADVLOAD(){
 }
 
 void IGNORENEWLINE() {
-    while (currentChar == ' ')
+    while (currentChar == '\n')
     {
         ADV();
     }
@@ -245,6 +245,7 @@ void RESETINPUT() {
 
 void ADVINPUT() {
     IgnoreBlanks();
+    IGNORENEWLINE();
     if (currentChar == ';') {
         ENDINPUT = true;
     } else {
