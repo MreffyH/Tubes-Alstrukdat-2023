@@ -133,10 +133,10 @@ void QUEUEREMOVE(QueueSong *laguplaylist, int id)
     if (id < lengthQ(*laguplaylist))
     {
         printf("Lagu “");
-        DetailSongQ lagu = (*laguplaylist).detil_queue[id - 1];
+        Word lagu = (*laguplaylist).detil_queue[id - 1].namaLaguQ;
         printWord(lagu);
         printf("” oleh “");
-        DetailSongQ penyanyi = (*laguplaylist).detil_queue[id - 1].namaPenyanyiQ;
+        Word penyanyi = (*laguplaylist).detil_queue[id - 1].namaPenyanyiQ;
         printWord(penyanyi);
         printf("” telah dihapus dari queue!\n");
         for (int i = id - 1; i < lengthQ(*laguplaylist) - 1; i++)
@@ -147,7 +147,7 @@ void QUEUEREMOVE(QueueSong *laguplaylist, int id)
         --;
         if (IDX_TAIL(*laguplaylist) == -1)
         {
-            IDX_HEAD = IDX_HEAD - 1;
+            IDX_HEAD(*laguplaylist) = IDX_HEAD(*laguplaylist) - 1;
         }
     }
     else
