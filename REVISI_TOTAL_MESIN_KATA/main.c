@@ -114,7 +114,7 @@ int main()
         else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST;")) && dalamsesi == true)
         {
             /*masukin fungsi PLAY PLAYLIST*/
-            printf("Masuk ke PLAY PLAYLIST\n");
+            playPlaylist(PLY);
         }
         else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST;")) && dalamsesi == false)
         {
@@ -158,7 +158,7 @@ int main()
         else if ((INPUTEQUAL(currentInput, "LIST PLAYLIST;")) && dalamsesi == true)
         {
             /*masukin fungsi LIST PLAYLIST*/
-            printf("Masuk ke LIST PLAYLIST\n");
+            LISTPLAYLIST(PLY);
         }
         else if ((INPUTEQUAL(currentInput, "LIST PLAYLIST;")) && dalamsesi == false)
         {
