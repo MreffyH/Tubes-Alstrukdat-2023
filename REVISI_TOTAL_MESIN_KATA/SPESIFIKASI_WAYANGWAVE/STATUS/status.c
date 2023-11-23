@@ -1,61 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../../listmapset.h"
+#include "status.h"
 
 // gcc -o status status.c ../../listmapset.c
 
 // Definisi struktur lagu
-typedef struct {
-    char *title;
-    char *album;
-    char *artist;
-} Song;
+// typedef struct {
+//     char *title;
+//     char *album;
+//     char *artist;
+// } Song;
 
 // Definisi struktur node untuk queue
 typedef struct QueueNode {
-    Song song;
+    DetailSongLL song;
     struct QueueNode* next;
 } QueueNode;
 
 // Definisi struktur untuk queue
-typedef struct {
-    QueueNode* front;
-    QueueNode* rear;
-} Queue;
+// typedef struct {
+//     QueueNode* front;
+//     QueueNode* rear;
+// } Queue;
 
 // Definisi struktur untuk playlist
-typedef struct {
-    char *name;
-    Queue songs; // Misalnya, playlist menggunakan queue juga untuk menyimpan lagu
-} Playlist;
+// typedef struct {
+//     char *name;
+//     Queue songs; // Misalnya, playlist menggunakan queue juga untuk menyimpan lagu
+// } Playlist;
 
 // Global variables untuk Now Playing dan Playlist saat ini
-Song nowPlaying;
-Playlist currentPlaylist;
-int isPlaylistActive = 0;
+DetailSongQ nowPlaying;
+IsiPlaylist currentPlaylist;
+int isPlaylistActive = 1;
 
 // Fungsi untuk menampilkan status
-void printStatus(Queue* queue) {
-    if (isPlaylistActive = 1 && currentPlaylist.name != NULL) {
-        printf("Current Playlist: %s\n", currentPlaylist.name);
+void printStatus(QueueSong queuestatus) {
+    if (isPlaylistActive = 1) {
+        printf("Current Playlist: %s\n", currentPlaylist.nama_PlayList);
         printf("\n");
     }
 
     printf("Now Playing:\n");
-    if (nowPlaying.title == NULL) {
+    if (!isNotNone(nowPlaying.namaLaguQ)) {
         printf("No songs have been played yet. Please search for a song to begin playback.\n");
     } else {
-        printf("%s - %s - %s\n", nowPlaying.artist, nowPlaying.title, nowPlaying.album);
+        printf("%s - %s - %s\n", nowPlaying.namaPenyanyiQ, nowPlaying.namaLaguQ, nowPlaying.namaAlbumQ);
     }
 
     printf("\nQueue:\n");
-    if (queue->front == NULL) {
+    if (isEmptyQ(queuestatus)) {
         printf("Your queue is empty.\n");
     } else {
-        QueueNode* temp = queue->front;
+        QueueNode* temp = IDX_HEAD(queuestatus);
         int count = 1;
         while (temp != NULL) {
-            printf("%d. %s - %s - %s\n", count, temp->song.artist, temp->song.title, temp->song.album);
+            printf("%d. %s - %s - %s\n", count, temp->song.namaPenyanyi, temp->song.namaLagu, temp->song.namaAlbum);
             temp = temp->next;
             count++;
         }
@@ -63,31 +63,31 @@ void printStatus(Queue* queue) {
 }
 
 // Fungsi untuk membuat lagu baru dengan string baru
-Song createSong(char *title, char *artist, char *album) {
-    Song newSong;
-    newSong.title = title;
-    newSong.artist = artist;
-    newSong.album = album;
-    return newSong;
-}
+// Song createSong(char *title, char *artist, char *album) {
+//     Song newSong;
+//     newSong.title = title;
+//     newSong.artist = artist;
+//     newSong.album = album;
+//     return newSong;
+// }
 
 // Fungsi untuk menambahkan lagu ke dalam queue
-void enqueue(Queue *queue, Song newSong) {
-    QueueNode *newNode = (QueueNode *)malloc(sizeof(QueueNode));
-    if (newNode == NULL) {
-        printf("Memory allocation failed!\n");
-        return;
-    }
-    newNode->song = newSong;
-    newNode->next = NULL;
+// void enqueue(Queue *queue, Song newSong) {
+//     QueueNode *newNode = (QueueNode *)malloc(sizeof(QueueNode));
+//     if (newNode == NULL) {
+//         printf("Memory allocation failed!\n");
+//         return;
+//     }
+//     newNode->song = newSong;
+//     newNode->next = NULL;
 
-    if (queue->rear == NULL) {
-        queue->front = queue->rear = newNode;
-    } else {
-        queue->rear->next = newNode;
-        queue->rear = newNode;
-    }
-}
+//     if (queue->rear == NULL) {
+//         queue->front = queue->rear = newNode;
+//     } else {
+//         queue->rear->next = newNode;
+//         queue->rear = newNode;
+//     }
+// }
 
 // Fungsi utama
 // int main() {
