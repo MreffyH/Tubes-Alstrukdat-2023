@@ -59,7 +59,7 @@ int LengthArrayDin(ArrayDin array) {
  * Prekondisi: array tidak kosong, i di antara 0..Length(array).
  */
 IsiPlaylist GetPlaylist(ArrayDin array, IdxTypeAD i) {
-    return (array.detil_playlist[i-1]);
+    return (array.detil_playlist[i]);
 }
 
 /**
