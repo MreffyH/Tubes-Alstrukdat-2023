@@ -3,7 +3,7 @@
 // #include "main.c"
 #include "play.h"
 
-void PLAYSONG(ListPenyanyi penyanyi)
+void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, HistorySong *history, QueueSong *step)
 {
     printf("Daftar Penyanyi : \n");
     int i;
@@ -67,11 +67,22 @@ void PLAYSONG(ListPenyanyi penyanyi)
             printf("| oleh |");
             printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
             printf("|.");
+            DetailSongQ trashqueue;
+            DetailSongS trashstack;
+            address P;
+            while (!isEmptyQ(*step))
+            {
+                dequeue(step, &trashqueue);
+            }
+            while (!IsEmptyHistorySong(*history))
+            {
+                pop(history, &trashstack);
+            }
         }
     }
 }
 
-void playPlaylist(ArrayDin array)
+void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong *history, QueueSong *urutan)
 {
     if (!IsEmptyArrayDin(array))
     {
@@ -81,13 +92,42 @@ void playPlaylist(ArrayDin array)
             printWord(array.detil_playlist[i].nama_PlayList);
             printf("\n");
         }
+        printf("Masukkan ID Playlist: ");
+        STARTINPUT();
+        int hasil = strToInteger(currentInput);
+        IsiPlaylist nama_playlist = GetPlaylist(array, hasil);
+        printf("Memutar playlist “");
+        printWord(nama_playlist.nama_PlayList);
+        printf("”.\n");
+        DetailSongQ trashqueue;
+        DetailSongS trashstack;
+        address P;
+        while (!isEmptyQ(*urutan))
+        {
+            dequeue(urutan, &trashqueue);
+        }
+        while (!IsEmptyHistorySong(*history))
+        {
+            pop(history, &trashstack);
+        }
+        P = First(array.detil_playlist[hasil].IsiLagu);
+        DetailSongLL timpalagu;
+        int idx = 0;
+        while ((idx < array.detil_playlist[hasil].countlaguLL) && (P != NilLin))
+        {
+            timpalagu.namaPenyanyi = InfoPenyanyi(P);
+            timpalagu.namaAlbum = InfoAlbum(P);
+            timpalagu.namaLagu = InfoJudul(P);
+            trashqueue.namaPenyanyiQ = timpalagu.namaPenyanyi;
+            trashqueue.namaAlbumQ = timpalagu.namaAlbum;
+            trashqueue.namaLaguQ = timpalagu.namaLagu;
+            trashstack.namaPenyanyiS = timpalagu.namaPenyanyi;
+            trashstack.namaAlbumS = timpalagu.namaAlbum;
+            trashstack.namaLaguS = timpalagu.namaLagu;
+            enqueue(urutan, trashqueue);
+            push(history, trashstack);
+            P = Next(P);
+        }
+        dequeue(urutan, &currentSong);
     }
-    printf("Masukkan ID Playlist: ");
-    STARTINPUT();
-    int hasil = strToInteger(currentInput);
-    Word PANGGIL_PLAYLIST;
-    PANGGIL_PLAYLIST = array.detil_playlist[hasil].nama_PlayList;
-    printf("Memutar playlist “");
-    printWord(PANGGIL_PLAYLIST);
-    printf("”.\n");
 }

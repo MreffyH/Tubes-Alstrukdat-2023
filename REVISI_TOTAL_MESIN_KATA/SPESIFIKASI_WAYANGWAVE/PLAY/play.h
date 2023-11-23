@@ -15,7 +15,7 @@
 
 void PLAYSONG(ListPenyanyi penyanyi);
 
-void playPlaylist(ArrayDin array);
+void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong history, QueueSong urutan);
 
 // void playPlaylist(List *L, const char *penyanyi, const char *album, const char *lagu, int idLagu);
 #endif
