@@ -86,6 +86,7 @@ void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong *history
 {
     if (!IsEmptyArrayDin(array))
     {
+
         for (int i = 0; i < LengthArrayDin(array); i++)
         {
             printf("%d. ", i + 1);
@@ -96,9 +97,9 @@ void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong *history
         STARTINPUT();
         int hasil = strToInteger(currentInput);
         IsiPlaylist playlist = GetPlaylist(array, hasil - 1);
-        printf("Memutar playlist “");
+        printf("Memutar playlist \"");
         printWord(playlist.nama_PlayList);
-        printf("”.\n");
+        printf("\".\n");
         DetailSongQ trashqueue;
         DetailSongS trashstack;
         address P;

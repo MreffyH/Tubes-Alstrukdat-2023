@@ -1,5 +1,5 @@
 /* File: driverplay.c */
-// gcc -o driverplay driverplay.c play.c ../../mesinkata.c ../../mesinkarakter.c ../../listmapset.c ../LOAD/load.c ../START/start.c ../../../src/ADT/mapset/set.c  ../../../src/ADT/list/list.c ../../../src/ADT/queue/queue.c ../../../src/ADT/stack/stack.c ../../../RIvaldi/arraydin.c ../../../src/ADT/list/listlinier.c
+// gcc -o driverplay driverplay.c play.c ../../mesinkata.c ../../mesinkarakter.c ../../listmapset.c ../LOAD/load.c ../START/start.c ../../../src/ADT/mapset/set.c  ../../../src/ADT/list/list.c ../../ADT_WAYANGWAVE/QUEUE/queue.c ../../ADT_WAYANGWAVE/STACK/stack.c ../../../RIvaldi/arraydin.c ../../../src/ADT/list/listlinier.c
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -20,23 +20,23 @@ int main()
     CreateListPenyanyi(&PL, MP);
 
     DetailSongQ currentSong;
-    
+
     QueueSong QS;
     CreateEmptyQueue(&QS);
 
     HistorySong HS;
     CreateEmptyHistorySong(&HS);
+
     ArrayDin PLY;
     PLY = MakeArrayDin();
 
-    char *file = "../../config.txt";
-    STARTWAYANGWAVE(&PL, file);
+    char *file = "../../user1.txt";
+    LOADWAYANGWAVE(&PL, file, &QS, &HS, &PLY, &currentSong);
     printf("\n");
 
     // PLAYSONG(PL);
 
-    ArrayDin Plist;
-    MakeArrayDin(Plist);
     playPlaylist(PLY, &currentSong, &HS, &QS);
+
     return 0;
 }
