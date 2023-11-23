@@ -13,9 +13,9 @@
 #include "../../../RIvaldi/arraydin.h"
 #include "../../../src/ADT/list/listlinier.h"
 
-void PLAYSONG(ListPenyanyi penyanyi);
+void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, HistorySong *history, QueueSong *step);
 
-void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong history, QueueSong urutan);
+void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong *history, QueueSong *urutan);
 
 // void playPlaylist(List *L, const char *penyanyi, const char *album, const char *lagu, int idLagu);
 #endif

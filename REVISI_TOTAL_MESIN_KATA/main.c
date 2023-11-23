@@ -105,7 +105,7 @@ int main()
         }
         else if ((INPUTEQUAL(currentInput, "PLAY SONG;")) && dalamsesi == true)
         {
-            PLAYSONG(PL);
+            PLAYSONG(PL, PLY, &currentSong, &HS, &QS);
         }
         else if ((INPUTEQUAL(currentInput, "PLAY SONG;")) && dalamsesi == false)
         {
@@ -114,7 +114,7 @@ int main()
         else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST;")) && dalamsesi == true)
         {
             /*masukin fungsi PLAY PLAYLIST*/
-            playPlaylist(PLY);
+            playPlaylist(PLY, &currentSong, &HS, &QS);
         }
         else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST;")) && dalamsesi == false)
         {
