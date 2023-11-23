@@ -2,7 +2,7 @@
 #include "../../mesinkata.h"
 #include "../../ADT_WAYANGWAVE/QUEUE/queue.h"
 #include "../../ADT_WAYANGWAVE/STACK/stack.h"
-// gcc -o driverload driverload.c load.c ../START/start.c ../../mesinkarakter.c ../../mesinkata.c ../../listmapset.c ../../../src/ADT/mapset/set.c ../../../src/ADT/queue/queue.c ../../../src/ADT/stack/stack.c ../../../src/ADT/list/listlinier.c ../../../RIvaldi/arraydin.c
+// gcc -o driverload driverload.c load.c ../START/start.c ../../mesinkarakter.c ../../mesinkata.c ../../listmapset.c ../../../src/ADT/mapset/set.c ../../ADT_WAYANGWAVE/QUEUE/queue.c ../../ADT_WAYANGWAVE/STACK/stack.c ../../../src/ADT/list/listlinier.c ../../../RIvaldi/arraydin.c
 // terminal ../../user1.txt
 
 #include<stdio.h>
@@ -53,15 +53,15 @@ int main()
     // displayQueue(QS);
     // printf("\n");
 
-    // DisplayHistorySong(HS);
+    DisplayHistorySong(HS);
     
-    // PrintArrayDin(PLY);
+    PrintArrayDin(PLY);
 
-    printWord(currentSong.namaPenyanyiQ);
-    printf("\n");
-    printWord(currentSong.namaAlbumQ);
-    printf("\n");
-    printWord(currentSong.namaLaguQ);
-    printf("\n");
+    // printWord(currentSong.namaPenyanyiQ);
+    // printf("\n");
+    // printWord(currentSong.namaAlbumQ);
+    // printf("\n");
+    // printWord(currentSong.namaLaguQ);
+    // printf("\n");
     return 0;
 }
