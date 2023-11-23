@@ -81,6 +81,10 @@ void IGNORENEWLINE();
 
 void STARTINPUT();
 
+void COPYINPUTLOAD();
+
+void STARTINPUTMAIN();
+
 void COPYINPUT();
 
 void RESETINPUT();

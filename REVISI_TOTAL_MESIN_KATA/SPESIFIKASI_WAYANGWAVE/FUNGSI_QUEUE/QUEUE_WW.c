@@ -36,7 +36,7 @@ void QUEUESONG(ListPenyanyi penyanyi, QueueSong *lagu)
             printf("\n");
         }
 
-        printf("Masukkan Nama Album yang dipilih : : \n");
+        printf("Masukkan Nama Album yang dipilih: \n");
         STARTINPUT();
         int search_album = SearchAlbum_ke(penyanyi, nama_penyanyi, currentInput);
         if (search_album != NOTFOUND)

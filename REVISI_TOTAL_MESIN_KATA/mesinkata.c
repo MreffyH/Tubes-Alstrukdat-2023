@@ -213,44 +213,68 @@ void STARTKATAFILE(char *filestart) {
 void STARTINPUT() {
     START();
     IGNORENEWLINE();
+    IgnoreBlanks();
     if (currentChar == ';')
     {
         ENDINPUT = true;
     } else {
         ENDINPUT = false;
-        COPYINPUT();
+        COPYINPUTLOAD();
     }
     
 }
 
-void COPYINPUT() {
-    RESETINPUT();
+void COPYINPUTLOAD() {
+    RESETINPUT();  // Reset array
     int i = 0;
     while ((currentChar != '\n') && (currentChar != EOF))
     {
         currentInput.TabWord[i] = currentChar;
-        i++;
+        // printf("%c", CC);
+        i+= 1;
+        ADV();
+    }
+    currentInput.Length = i;
+}
+
+void STARTINPUTMAIN() {
+    START();
+    IGNORENEWLINE();
+    if (currentChar == ';'){
+        endWord = true;
+    } else {
+        endWord = false;
+        COPYINPUT();
+    }
+}
+
+void ADVINPUT(){
+    IgnoreBlanks();
+    if (currentChar == ';'){
+        endWord = true;
+    } else {
+        endWord = false;
+        COPYINPUT();
+    }
+}
+
+void COPYINPUT() {
+    RESETINPUT();  // Reset array
+    int i = 0;
+    while ((currentChar != ' ') && (currentChar != ';') && (currentChar != EOF))
+    {
+        currentInput.TabWord[i] = currentChar;
+        // printf("%c", CC);
+        i+= 1;
         ADV();
     }
     currentInput.Length = i;
 }
 
 void RESETINPUT() {
-    for (int i = 0; i < sizeof(currentInput); i++)
-    {
+    for (int i = 0; i < sizeof(currentInput.TabWord); i++) {
         currentInput.TabWord[i] = '\0';
         currentInput.Length = 0;
-    }
-}
-
-void ADVINPUT() {
-    IgnoreBlanks();
-    IGNORENEWLINE();
-    if (currentChar == ';') {
-        ENDINPUT = true;
-    } else {
-        ENDINPUT = false;
-        COPYINPUT();
     }
 }
 
