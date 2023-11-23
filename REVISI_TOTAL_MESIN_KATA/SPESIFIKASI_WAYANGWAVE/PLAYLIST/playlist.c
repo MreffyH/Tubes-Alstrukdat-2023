@@ -11,6 +11,9 @@ void CreatePlaylist(ArrayDin *PLY)
     STARTINPUT();
     detil_playlist.nama_PlayList = currentInput;
     InsertLastArrayDin(PLY, detil_playlist);
+    printf("Playlist ");
+    printWord(detil_playlist.nama_PlayList);
+    printf(" berhasil dibuat! Silakan masukkan lagu - lagu artis terkini kesayangan Anda!\n");
 }
 
 void PlaylistADDSong(ArrayDin *PLY, ListPenyanyi penyanyi)
@@ -52,7 +55,7 @@ void PlaylistADDSong(ArrayDin *PLY, ListPenyanyi penyanyi)
         int search_album = SearchAlbum_ke(penyanyi, nama_penyanyi, currentInput);
         if (search_album != NOTFOUND)
         {
-            printf("Daftar Lagu Album ");
+            printf("\nDaftar Lagu Album");
             printWord(penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum);
             printf(" oleh ");
             printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
@@ -98,7 +101,6 @@ void PlaylistADDSong(ArrayDin *PLY, ListPenyanyi penyanyi)
                 printf("Masukkan ID playlist yang dipilih : ");
                 STARTINPUT();
                 int idPlaylist = strToInteger(currentInput);
-
                 InsVLast(&(*PLY).detil_playlist[idPlaylist].IsiLagu, LL);
                 printf("Lagu dengan judul %s pada album ke dalam playlist %s\n", LAGU_PANGGIL, (*PLY).detil_playlist[idPlaylist].nama_PlayList.TabWord);
             }
@@ -169,7 +171,7 @@ void PlaylistADDAlbum(ArrayDin *PLY, ListPenyanyi penyanyi)
                 printf("Masukkan ID Playlist yang dipilih : ");
                 STARTINPUT();
                 int idPlaylist = strToInteger(currentInput);
-                if ((idPlaylist < (*PLY).Neff) && (idPlaylist >= 0))
+                if ((idPlaylist <= (*PLY).Neff) && (idPlaylist >= 0))
                 {
                     DetailSongLL newSongAdded;
                     int i = 0;
@@ -184,7 +186,7 @@ void PlaylistADDAlbum(ArrayDin *PLY, ListPenyanyi penyanyi)
                     }
                     printf("Album dengan judul ");
                     printWord(penyanyi.penyanyi_ke[urutan].mapalbum[i].namaAlbum);
-                    printf(" berhasil ditambahkan ke dalam pada playlist pengguna");
+                    printf(" berhasil ditambahkan ke dalam pada playlist pengguna ");
                     printWord((*PLY).detil_playlist[idPlaylist - 1].nama_PlayList);
                     printf(".");
                 }
