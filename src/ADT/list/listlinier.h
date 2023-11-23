@@ -36,6 +36,7 @@ typedef struct
 #define InfoPenyanyi(P) (P)->info.namaPenyanyi
 #define InfoAlbum(P) (P)->info.namaAlbum
 #define InfoJudul(P) (P)->info.namaLagu
+#define InfoDetail(P) (P)->info
 #define Next(P) (P)->next
 #define First(L) ((L).First)
 
