@@ -1,4 +1,4 @@
-/*gcc -o main main.c mesinkarakter.c mesinkata.c ../src/ADT/queue/queue.c ../src/ADT/stack/stack.c SPESIFIKASI_WAYANGWAVE/HELP/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c ../RIvaldi/arraydin.c ../src/ADT/list/listlinier.c SPESIFIKASI_WAYANGWAVE/SONG/song.c*/
+// gcc -o main main.c mesinkarakter.c mesinkata.c ../src/ADT/queue/queue.c ../src/ADT/stack/stack.c SPESIFIKASI_WAYANGWAVE/HELP/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c ../RIvaldi/arraydin.c ../src/ADT/list/listlinier.c SPESIFIKASI_WAYANGWAVE/SONG/song.c
 #include <stdio.h>
 
 /* Include ADT */
@@ -6,8 +6,8 @@
 #include "mesinkata.h"
 #include "listmapset.h"
 #include "../src/ADT/mapset/set.h"
-#include "../src/ADT/queue/queue.h"
-#include "../src/ADT/stack/stack.h"
+#include "ADT_WAYANGWAVE/QUEUE/queue.h"
+#include "ADT_WAYANGWAVE/STACK/stack.h"
 #include "../RIvaldi/arraydin.h"
 
 /* Include WayangWave */

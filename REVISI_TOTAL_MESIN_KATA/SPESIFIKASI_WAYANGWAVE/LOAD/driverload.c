@@ -1,7 +1,7 @@
 #include "load.h"
 #include "../../mesinkata.h"
-#include "../../../src/ADT/queue/queue.h"
-#include "../../../src/ADT/stack/stack.h"
+#include "../../ADT_WAYANGWAVE/QUEUE/queue.h"
+#include "../../ADT_WAYANGWAVE/STACK/stack.h"
 // gcc -o driverload driverload.c load.c ../START/start.c ../../mesinkarakter.c ../../mesinkata.c ../../listmapset.c ../../../src/ADT/mapset/set.c ../../../src/ADT/queue/queue.c ../../../src/ADT/stack/stack.c ../../../src/ADT/list/listlinier.c ../../../RIvaldi/arraydin.c
 // terminal ../../user1.txt
 
