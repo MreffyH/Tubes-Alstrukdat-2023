@@ -30,7 +30,14 @@ void LOADWAYANGWAVE(ListPenyanyi*PL, char *filestart, QueueSong *QS, HistorySong
         // printf("\n");
     }
     else{
+        Word cs;
+        cs.TabWord[0] = '-';
+        cs.Length = 1;
+        (*currentSong).namaPenyanyiQ = cs;
+        (*currentSong).namaAlbumQ = cs;
+        (*currentSong).namaLaguQ = cs;
         printf("TIDAK ADA LAGU YANG SEDANG DIMAINKAN\n");
+        ADV();
     }
     /* MASUK KE BAGIAN QUEUE */
     IgnoreEnter();
