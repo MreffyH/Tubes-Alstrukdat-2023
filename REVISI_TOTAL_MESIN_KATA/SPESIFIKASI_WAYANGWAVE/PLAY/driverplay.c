@@ -1,5 +1,5 @@
 /* File: driverplay.c */
-/* gcc -o driverplay driverplay.c play.c ../../mesinkata.c ../../mesinkarakter.c ../../listmapset.c ../LOAD/load.c ../START/start.c ../../../src/ADT/mapset/set.c  ../../../src/ADT/list/list.c ../../../src/ADT/queue/queue.c ../../../src/ADT/stack/stack.c*/
+// gcc -o driverplay driverplay.c play.c ../../mesinkata.c ../../mesinkarakter.c ../../listmapset.c ../LOAD/load.c ../START/start.c ../../../src/ADT/mapset/set.c  ../../../src/ADT/list/list.c ../../../src/ADT/queue/queue.c ../../../src/ADT/stack/stack.c ../../../RIvaldi/arraydin.c ../../../src/ADT/list/listlinier.c
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,6 +23,10 @@ int main()
     STARTWAYANGWAVE(&PL, file);
     printf("\n");
 
-    PLAYSONG(PL);
+    // PLAYSONG(PL);
+
+    ArrayDin Plist;
+    MakeArrayDin(Plist);
+    playPlaylist(Plist);
     return 0;
 }

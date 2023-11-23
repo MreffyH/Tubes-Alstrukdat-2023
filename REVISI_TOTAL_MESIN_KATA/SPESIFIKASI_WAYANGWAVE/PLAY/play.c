@@ -2,7 +2,6 @@
 #include <stdlib.h>
 // #include "main.c"
 #include "play.h"
-#include "arraydin.h"
 
 void PLAYSONG(ListPenyanyi penyanyi)
 {
@@ -78,7 +77,7 @@ void playPlaylist(ArrayDin array)
     {
         for (int i = 0; i < LengthArrayDin(array); i++)
         {
-            pritf("%d. ", i + 1);
+            printf("%d. ", i + 1);
             printWord(array.detil_playlist[i].nama_PlayList);
             printf("\n");
         }
