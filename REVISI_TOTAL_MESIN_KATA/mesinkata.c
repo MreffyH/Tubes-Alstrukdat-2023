@@ -243,6 +243,16 @@ void RESETINPUT() {
     }
 }
 
+void ADVINPUT() {
+    IgnoreBlanks();
+    if (currentChar == ';') {
+        ENDINPUT = true;
+    } else {
+        ENDINPUT = false;
+        COPYINPUT();
+    }
+}
+
 boolean INPUTEQUAL(Word I, char *K) {
     boolean sama = true;
     int i = 0;
