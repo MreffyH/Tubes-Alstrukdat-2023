@@ -95,9 +95,9 @@ void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong *history
         printf("Masukkan ID Playlist: ");
         STARTINPUT();
         int hasil = strToInteger(currentInput);
-        IsiPlaylist nama_playlist = GetPlaylist(array, hasil-1);
+        IsiPlaylist playlist = GetPlaylist(array, hasil - 1);
         printf("Memutar playlist “");
-        printWord(nama_playlist.nama_PlayList);
+        printWord(playlist.nama_PlayList);
         printf("”.\n");
         DetailSongQ trashqueue;
         DetailSongS trashstack;
