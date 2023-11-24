@@ -1,4 +1,4 @@
-// gcc -o main main.c mesinkarakter.c mesinkata.c ADT_WAYANGWAVE/QUEUE/queue.c SPESIFIKASI_WAYANGWAVE/PLAYLIST/playlist.C ADT_WAYANGWAVE/STACK/stack.c SPESIFIKASI_WAYANGWAVE/HELP/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c ../RIvaldi/arraydin.c ../src/ADT/list/listlinier.c SPESIFIKASI_WAYANGWAVE/SONG/song.c SPESIFIKASI_WAYANGWAVE/FUNGSI_QUEUE/QUEUE_WW.c
+// gcc -o main main.c mesinkarakter.c mesinkata.c ADT_WAYANGWAVE/QUEUE/queue.c SPESIFIKASI_WAYANGWAVE/PLAYLIST/playlist.C ADT_WAYANGWAVE/STACK/stack.c SPESIFIKASI_WAYANGWAVE/HELP/help.c SPESIFIKASI_WAYANGWAVE/START/start.c SPESIFIKASI_WAYANGWAVE/LOAD/load.c SPESIFIKASI_WAYANGWAVE/QUIT/quit.c listmapset.c ../src/ADT/mapset/set.c SPESIFIKASI_WAYANGWAVE/FUNGSI_LIST/ladt.c SPESIFIKASI_WAYANGWAVE/PLAY/play.c ../RIvaldi/arraydin.c ../src/ADT/list/listlinier.c SPESIFIKASI_WAYANGWAVE/SONG/song.c SPESIFIKASI_WAYANGWAVE/FUNGSI_QUEUE/QUEUE_WW.c SPESIFIKASI_WAYANGWAVE/STATUS/status.c SPESIFIKASI_WAYANGWAVE/SAVE/saveww.c
 
 #include <stdio.h>
 
@@ -21,6 +21,8 @@
 #include "SPESIFIKASI_WAYANGWAVE/SONG/song.h"
 #include "SPESIFIKASI_WAYANGWAVE/FUNGSI_QUEUE/QUEUE_WW.H"
 #include "SPESIFIKASI_WAYANGWAVE/PLAYLIST/playlist.h"
+#include "SPESIFIKASI_WAYANGWAVE/STATUS/status.h"
+#include "SPESIFIKASI_WAYANGWAVE/SAVE/saveww.h"
 
 int main()
 {
@@ -244,7 +246,7 @@ int main()
         }
         else if ((INPUTEQUAL(currentInput, "START;")) && dalamsesi == true)
         {
-            printf("Wayangwave telah berjalan, silahkan masukkan command\n");
+            printf("Command tidak bisa dieksekusi!\n");
         }
         else if (INPUTEQUAL(Choice, "LOAD") && dalamsesi == false)
         {
@@ -255,7 +257,7 @@ int main()
         }
         else if ((INPUTEQUAL(Choice, "LOAD")) && dalamsesi == true)
         {
-            printf("Wayangwave telah berjalan, silahkan masukkan command\n");
+            printf("Command tidak bisa dieksekusi!\n");
         }
         else if ((INPUTEQUAL(currentInput, "HELP;")) && dalamsesi == true)
         {
@@ -305,8 +307,7 @@ int main()
         
         else if ((INPUTEQUAL(currentInput, "STATUS;")) && dalamsesi == true)
         {
-            /*masukin fungsi STATUS*/
-            printf("Masuk ke STATUS\n");
+            Status(PLY, QS, currentSong);
         }
         else if ((INPUTEQUAL(currentInput, "STATUS;")) && dalamsesi == false)
         {
@@ -314,8 +315,8 @@ int main()
         }
         else if ((INPUTEQUAL(Choice, "SAVE")) && dalamsesi == true)
         {
-            /*masukin fungsi SAVE*/
-            printf("Masuk ke SAVE\n");
+            wordToString(filename, filename.TabWord);
+            SAVEWW(&PL, &filename.TabWord, &PLY, &QS, &HS, &currentSong);
         }
         else if ((INPUTEQUAL(Choice, "SAVE")) && dalamsesi == false)
         {
@@ -324,12 +325,10 @@ int main()
         else if ((INPUTEQUAL(Choice, "LIST")) && dalamsesi == true)
         {
             if(INPUTEQUAL(Choice2, "DEFAULT")){ /* LIST DEFAULT */
-                printf("MELAKUKAN LIST DEFAULT\n");
                 LISTDEFAULT(PL);
             }
             else if(INPUTEQUAL(Choice2, "PLAYLIST")){ /* LIST PLAYLIST */
                 LISTPLAYLIST(PLY);
-                printf("MELAKUKAN LIST PLAYLIST\n");
             }
         }
         else if ((INPUTEQUAL(Choice, "LIST")) && dalamsesi == false)
@@ -340,11 +339,9 @@ int main()
         {
             if(INPUTEQUAL(Choice2, "NEXT")){ /* SONG NEXT */
                 songNext(&QS, &HS, &currentSong);
-                printf("MELAKUKAN SONG NEXT\n");
             }
             else if(INPUTEQUAL(Choice2, "PREVIOUS")){ /* SONG PREVIOUS */
                 songPrevious(&QS, &HS, &currentSong);
-                printf("MELAKUKAN SONG PREVIOUS\n");
             }
         }
         else if ((INPUTEQUAL(Choice, "SONG")) && dalamsesi == false)
@@ -355,29 +352,23 @@ int main()
         {
             if (INPUTEQUAL(Choice2, "CREATE")){ /* PLAYLIST CREATE */
                 CreatePlaylist(&PLY);
-                printf("MELAKUKAN PLAYLIST CREATE\n");
             }
             else if(INPUTEQUAL(Choice2, "ADD")){
                 if(INPUTEQUAL(input1, "SONG")){ /* PLAYLIST ADD SONG */
                     PlaylistADDSong(&PLY, PL);
-                    printf("Masuk ke PLAYLIST ADD SONG\n");
                 }
                 else if(INPUTEQUAL(input1, "ALBUM")){ /* PLAYLIST ADD ALBUM */
                     PlaylistADDAlbum(&PLY, PL);
-                    printf("Masuk ke PLAYLIST ADD ALBUM\n");
                 }
             }
             else if(INPUTEQUAL(Choice2, "SWAP")){ /* PLAYLIST SWAP */
                 PlaylistSwap(&PLY, id, x, y);
-                printf("Masuk ke PLAYLIST SWAP DGN NILAI ID: %d; X: %d; Y: %d\n", id, x, y);
             }
             else if(INPUTEQUAL(Choice2, "REMOVE")){
                 PlaylistRemove(&PLY, id, x);
-                printf("Masuk ke PLAYLIST REMOVE DGN NILAI ID: %d; X: %d\n", id, x);
             }
             else if(INPUTEQUAL(Choice2,"DELETE")){
                 PlaylistDelete(&PLY);
-                printf("Masuk ke PLAYLIST DELETE\n");
             }
         }
         else if ((INPUTEQUAL(Choice, "PLAYLIST")) && dalamsesi == false)

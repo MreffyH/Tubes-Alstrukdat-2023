@@ -1,16 +1,45 @@
 #include <stdio.h>
 #include "stdlib.h"
 #include "quit.h"
-// #include "save.c"
+#include "../SAVE/saveww.h"
 
 void quit() {
     printf("Apakah kamu ingin menyimpan data sesi sekarang? (Y/N): "); 
     STARTINPUT();
+    Word filename;
+    Word Choice;
+    Word Choice2;
+    Word input1;
+    int id;
+    int x;
+    int y;
+
+    Set S;
+    CreateEmptySet(&S);
+
+    MapAlbum MA;
+    CreateMapAlbum(&MA, S);
+
+    MapPenyanyi MP;
+    CreateMapPenyanyi(&MP, MA);
+
+    ListPenyanyi PL;
+    CreateListPenyanyi(&PL, MP);
+
+    DetailSongQ currentSong;
+
+    QueueSong QS;
+    CreateEmptyQueue(&QS);
+
+    HistorySong HS;
+    CreateEmptyHistorySong(&HS);
+
+    ArrayDin PLY;
+    PLY = MakeArrayDin();
 
     if ( INPUTEQUAL(currentInput,"Y;")){
-        // save(); // memanggil save
-        printf("save");//testing
-        exit(0); // keluar dari program
+        wordToString(filename, filename.TabWord);
+        SAVEWW(&PL, &filename.TabWord, &PLY, &QS, &HS, &currentSong);
     }
     else if (INPUTEQUAL(currentInput,"N;")){
         printf("================Kamu keluar dari WayangWave================\n");
