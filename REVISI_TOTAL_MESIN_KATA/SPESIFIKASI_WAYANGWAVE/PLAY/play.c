@@ -78,7 +78,16 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
             {
                 Pop(history, &trashstack);
             }
-        }
+            DetailSongQ laguqueue;
+            laguqueue.namaPenyanyiQ = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
+            
+            laguqueue.namaAlbumQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
+            
+            laguqueue.namaLaguQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil-1];
+            if (laguqueue.namaLaguQ.TabWord[0] != '-'){
+                enqueue(step, laguqueue);
+            
+        }}
     }
 }
 
