@@ -35,8 +35,11 @@ int main()
     printf("\n");
 
     // PLAYSONG(PL);
-
+    printf("QUEUE SEBELUM: \n");
+    displayQueue(QS);
     playPlaylist(PLY, &currentSong, &HS, &QS);
+    printf("QUEUE SETELAH: \n");
+    displayQueue(QS);
 
     return 0;
 }

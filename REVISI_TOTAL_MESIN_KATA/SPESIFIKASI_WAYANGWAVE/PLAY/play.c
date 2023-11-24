@@ -111,10 +111,10 @@ void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong *history
         {
             Pop(history, &trashstack);
         }
-        P = First(array.detil_playlist[hasil].IsiLagu);
+        P = First(array.detil_playlist[hasil-1].IsiLagu);
         DetailSongLL timpalagu;
         int idx = 0;
-        while ((idx < array.detil_playlist[hasil].countlaguLL) && (P != NilLin))
+        while ((idx < array.detil_playlist[hasil-1].countlaguLL) && (P != NilLin))
         {
             timpalagu.namaPenyanyi = InfoPenyanyi(P);
             timpalagu.namaAlbum = InfoAlbum(P);
