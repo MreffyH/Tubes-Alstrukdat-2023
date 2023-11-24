@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "save.h"
 
 // Struktur untuk menyimpan informasi lagu
 // typedef struct {
@@ -10,8 +11,8 @@
 // } Song;
 
 // Fungsi untuk menyimpan file
-void SAVEWAYANGWAVE(const char* filename, Song* queue, int queueSize, Song* history, int historySize, Song** playlists, int* playlistSizes, int numPlaylists) {
-    FILE *file = fopen(filename, "w");
+void SAVEWAYANGWAVE(ListPenyanyi *PL, char *filesave, QueueSong *QS, HistorySong *HS, ArrayDin *PLY, DetailSongQ *currentSong) {
+    FILE *file = fopen(filesave, "w");
     if (file == NULL) {
         // Contoh data lagu
     
@@ -39,26 +40,28 @@ void SAVEWAYANGWAVE(const char* filename, Song* queue, int queueSize, Song* hist
     // Menulis informasi ke file
     
     // Menulis informasi lagu yang sedang diputar
-    fprintf(file, "%s;%s;%s\n", queue[0].artist, queue[0].album, queue[0].title);
+    fprintf(file, "%s;%s;%s\n", currentSong[0].namaPenyanyiQ, currentSong[0].namaAlbumQ, currentSong[0].namaLaguQ);
 
     // Menulis queue
-    fprintf(file, "%d\n", queueSize);
-    for (int i = 0; i < queueSize; i++) {
-        fprintf(file, "%s;%s;%s\n", queue[i].artist, queue[i].album, queue[i].title);
+    fprintf(file, "%d\n", QS);
+    for (int i = 0; i < QS; i++) {
+        fprintf(file, "%s;%s;%s\n", currentSong[i].namaPenyanyiQ, currentSong[i].namaAlbumQ, currentSong[i].namaLaguQ);
     }
 
     // Menulis riwayat pemutaran
-    fprintf(file, "%d\n", historySize);
-    for (int i = 0; i < historySize; i++) {
-        fprintf(file, "%s;%s;%s\n", history[i].artist, history[i].album, history[i].title);
+    fprintf(file, "%d\n", HS);
+    for (int i = 0; i < HS; i++) {
+        fprintf(file, "%s;%s;%s\n", currentSong[i].namaPenyanyiQ, currentSong[i].namaAlbumQ, currentSong[i].namaLaguQ);
     }
 
     // Menulis playlists
-    fprintf(file, "%d\n", numPlaylists);
-    for (int i = 0; i < numPlaylists; i++) {
+    int playlistSizes;
+    playlistSizes = GetCapacity(*PLY);
+    fprintf(file, "%d\n", PLY);
+    for (int i = 0; i < PLY; i++) {
         fprintf(file, "%d Playlist %d\n", playlistSizes[i], i + 1);
         for (int j = 0; j < playlistSizes[i]; j++) {
-            fprintf(file, "%s;%s;%s\n", playlists[i][j].artist, playlists[i][j].album, playlists[i][j].title);
+            fprintf(file, "%s;%s;%s\n", PLY[i][j].artist, playlists[i][j].album, playlists[i][j].title);
         }
     }
 

@@ -10,6 +10,6 @@
 #include "../START/start.h"
 #include "../../ADT_WAYANGWAVE/QUEUE/queue.h"
 
-void printStatus(QueueSong questatus);
+void printStatus(QueueSong queuestatus, DetailSongQ nowPlaying, ArrayDin currentPlaylist);
 
 #endif 

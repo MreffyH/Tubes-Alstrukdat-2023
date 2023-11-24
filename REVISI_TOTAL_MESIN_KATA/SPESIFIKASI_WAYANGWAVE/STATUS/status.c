@@ -17,6 +17,13 @@ typedef struct QueueNode {
     struct QueueNode* next;
 } QueueNode;
 
+typedef struct 
+{
+    DetailSongLL detsong;
+    int statussong;
+    Word namaplaylist;
+}Status; 
+
 // Definisi struktur untuk queue
 // typedef struct {
 //     QueueNode* front;
@@ -30,14 +37,13 @@ typedef struct QueueNode {
 // } Playlist;
 
 // Global variables untuk Now Playing dan Playlist saat ini
-DetailSongQ nowPlaying;
-IsiPlaylist currentPlaylist;
 int isPlaylistActive = 1;
 
 // Fungsi untuk menampilkan status
-void printStatus(QueueSong queuestatus) {
+void printStatus(QueueSong queuestatus, DetailSongQ nowPlaying, ArrayDin playlist) {
+    IsiPlaylist currentplaylist;
     if (isPlaylistActive = 1) {
-        printf("Current Playlist: %s\n", currentPlaylist.nama_PlayList);
+        printf("Current Playlist: %s\n", currentplaylist.nama_PlayList);
         printf("\n");
     }
 
@@ -45,18 +51,18 @@ void printStatus(QueueSong queuestatus) {
     if (!isNotNone(nowPlaying.namaLaguQ)) {
         printf("No songs have been played yet. Please search for a song to begin playback.\n");
     } else {
-        printf("%s - %s - %s\n", nowPlaying.namaPenyanyiQ, nowPlaying.namaLaguQ, nowPlaying.namaAlbumQ);
+        printf("%s - %s - %s\n", nowPlaying.namaPenyanyiQ.TabWord, nowPlaying.namaLaguQ.TabWord, nowPlaying.namaAlbumQ.TabWord);
     }
 
     printf("\nQueue:\n");
     if (isEmptyQ(queuestatus)) {
         printf("Your queue is empty.\n");
     } else {
-        QueueNode* temp = IDX_HEAD(queuestatus);
+        QueueNode *temp = IDX_HEAD(queuestatus);
         int count = 1;
         while (temp != NULL) {
             printf("%d. %s - %s - %s\n", count, temp->song.namaPenyanyi, temp->song.namaLagu, temp->song.namaAlbum);
-            temp = temp->next;
+            temp = Next(temp);
             count++;
         }
     }
