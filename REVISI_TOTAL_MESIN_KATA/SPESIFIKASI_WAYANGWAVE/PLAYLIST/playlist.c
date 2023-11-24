@@ -11,9 +11,9 @@ void CreatePlaylist(ArrayDin *PLY)
     STARTINPUT();
     detil_playlist.nama_PlayList = currentInput;
     InsertLastArrayDin(PLY, detil_playlist);
-    printf("Playlist ");
+    printf("Playlist \"");
     printWord(detil_playlist.nama_PlayList);
-    printf(" berhasil dibuat! Silakan masukkan lagu - lagu artis terkini kesayangan Anda!\n");
+    printf("\" berhasil dibuat! Silakan masukkan lagu - lagu artis terkini kesayangan Anda!\n");
 }
 
 void PlaylistADDSong(ArrayDin *PLY, ListPenyanyi penyanyi)
@@ -35,9 +35,9 @@ void PlaylistADDSong(ArrayDin *PLY, ListPenyanyi penyanyi)
     int urutan = SearchPenyanyi_ke(penyanyi, currentInput);
     if (urutan != NOTFOUND)
     {
-        printf("\nDaftar Album oleh ");
+        printf("\nDaftar Album oleh \"");
         printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
-        printf(" :\n");
+        printf("\" :\n");
         int jum_album;
         jum_album = penyanyi.penyanyi_ke[urutan].countalbum;
         for (i = 0; i < jum_album; i++)
@@ -55,9 +55,9 @@ void PlaylistADDSong(ArrayDin *PLY, ListPenyanyi penyanyi)
         int search_album = SearchAlbum_ke(penyanyi, nama_penyanyi, currentInput);
         if (search_album != NOTFOUND)
         {
-            printf("\nDaftar Lagu Album ");
+            printf("\nDaftar Lagu Album \"");
             printWord(penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum);
-            printf(" oleh ");
+            printf("\" oleh \"");
             printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
             printf(":\n");
             int jum_lagu;
