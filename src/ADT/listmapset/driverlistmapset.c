@@ -273,6 +273,49 @@ int main(){
         printf("\n");
     }
 
+    printf("\nMILESTONE4\n");
+    printf("BERIKUT ADALAH SEMUA PENYANYI YANG ADA: \n");
+    DISPLAYPENYANYI(LisPenyanyi_);
+    printf("\nBERIKUT ADALAH SEMUA ALBUM YANG ADA:\n");
+    DISPLAYALBUM(LisPenyanyi_);
+    printf("\nBERIKUT ADALAH SEMUA LAGU YANG ADA:\n");
+    DISPLAYLAGU(LisPenyanyi_);
+
+    printf("\nMILESTONE5\n");
+    int cek1 = SearchPenyanyi_ke(LisPenyanyi_, ABC);
+    printf("PENYANYI ");
+    printWord(ABC);
+    printf(" ADALAH URUTAN KE-%d\n", cek1);
+
+    int cek2 = SearchAlbum_ke(LisPenyanyi_, ABC, kalimat3);
+    printf("PENYANYI ");
+    printWord(ABC);
+    printf(" MEMILIKI ALBUM BERJUDUL ");
+    printWord(kalimat3);
+    printf(" ADALAH URUTAN ALBUM KE-%d\n", cek2);
+
+    printf("\nMILESTONE6\n");
+
+    int cek3 = SearchLagu_ke(LisPenyanyi_, ABC, kalimat3, kalimat4);
+    printf("PENYANYI ");
+    printWord(ABC);
+    printf(" MEMILIKI ALBUM BERJUDUL ");
+    printWord(kalimat3);
+    printf(" YANG DI DALAMNYA TERDAPAT LAGU BERJUDUL ");
+    printWord(kalimat4);
+    printf(" YANG MERUPAKAN URUTAN LAGU KE-%d\n", cek3);
+
+    printf("\nMILESTONE7\n");
+    int idx = 2;
+    Word cek4 = GetLagu(LisPenyanyi_, kalimat2, kalimat, idx);
+    printf("PENYANYI ");
+    printWord(kalimat2);
+    printf(" MEMILIKI ALBUM BERJUDUL ");
+    printWord(kalimat);
+    printf(" YANG DI DALAMNYA PADA URUTAN KE-%d ADA LAGU BERJUDUL ", idx);
+    printWord(cek4);
+    printf("\n");
+
     return 0;
 }
 

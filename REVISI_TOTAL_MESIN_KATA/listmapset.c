@@ -168,22 +168,19 @@ Word GetLagu(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum, int idx)
     namaLagu.Length = 1;
     boolean found = false;
     int urutanpenyanyi = SearchPenyanyi_ke(penyanyi, namaPenyanyi);
-
     if (urutanpenyanyi != NOTFOUND)
     {
 
         int urutanalbum = SearchAlbum_ke(penyanyi, namaPenyanyi, namaAlbum);
-
         if (urutanalbum != NOTFOUND)
 
         {
-            namaLagu = DuplicateKata(penyanyi.penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu.Elements[idx - 1]);
-
-            //     printf("%d", namaLagu.Length);
+            if(((idx - 1) < penyanyi.penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu.Count) && ((idx - 1) >= 0)){
+                namaLagu = DuplicateKata(penyanyi.penyanyi_ke[urutanpenyanyi].mapalbum[urutanalbum].setlagu.Elements[idx - 1]);
+            }
         }
     }
-    // return namaLagu;
-    // printf("ada");
+    return namaLagu;
 }
 
 void DISPLAYPENYANYI(ListPenyanyi penyanyi)
@@ -203,14 +200,16 @@ void DISPLAYALBUM(ListPenyanyi penyanyi)
     printf("CHOICE: ");
     STARTWORD();
     choice = strToInteger(currentWord);
-    printf("DISPLAY SEMUA ALBUM DARI ");
-    printWord(penyanyi.penyanyi_ke[choice - 1].namaPenyanyi);
-    printf("\n");
-    for (int j = 0; j < penyanyi.penyanyi_ke[choice - 1].countalbum; j++)
-    {
-        printf("%d. ", j + 1);
-        printWord(penyanyi.penyanyi_ke[choice - 1].mapalbum[j].namaAlbum);
+    if(((choice - 1) < penyanyi.countpenyanyi) && ((choice - 1) >= 0)){
+        printf("DISPLAY SEMUA ALBUM DARI ");
+        printWord(penyanyi.penyanyi_ke[choice - 1].namaPenyanyi);
         printf("\n");
+        for (int j = 0; j < penyanyi.penyanyi_ke[choice - 1].countalbum; j++)
+        {
+            printf("%d. ", j + 1);
+            printWord(penyanyi.penyanyi_ke[choice - 1].mapalbum[j].namaAlbum);
+            printf("\n");
+        }
     }
 }
 
@@ -220,18 +219,22 @@ void DISPLAYLAGU(ListPenyanyi penyanyi)
     printf("PENYANYI KE BERAPA: ");
     STARTWORD();
     choice = strToInteger(currentWord);
-    int choice2;
-    printf("ALBUM KE BERAPA: ");
-    STARTWORD();
-    choice2 = strToInteger(currentWord);
-    printWord(penyanyi.penyanyi_ke[choice - 1].mapalbum[choice2 - 1].namaAlbum);
-    printf(" DARI PENYANYI ");
-    printWord(penyanyi.penyanyi_ke[choice - 1].namaPenyanyi);
-    printf("\n");
-    for (int j = 0; j < penyanyi.penyanyi_ke[choice - 1].mapalbum[choice2 - 1].setlagu.Count; j++)
-    {
-        printf("%d. ", j + 1);
-        printWord(penyanyi.penyanyi_ke[choice - 1].mapalbum[choice2 - 1].setlagu.Elements[j]);
-        printf("\n");
+    if(((choice - 1) < penyanyi.countpenyanyi) && ((choice - 1) >= 0)){
+        int choice2;
+        printf("ALBUM KE BERAPA: ");
+        STARTWORD();
+        choice2 = strToInteger(currentWord);
+        if(((choice2 - 1) < penyanyi.penyanyi_ke[choice-1].countalbum) && ((choice2 - 1) >= 0)){
+            printWord(penyanyi.penyanyi_ke[choice - 1].mapalbum[choice2 - 1].namaAlbum);
+            printf(" DARI PENYANYI ");
+            printWord(penyanyi.penyanyi_ke[choice - 1].namaPenyanyi);
+            printf("\n");
+            for (int j = 0; j < penyanyi.penyanyi_ke[choice - 1].mapalbum[choice2 - 1].setlagu.Count; j++)
+            {
+                printf("%d. ", j + 1);
+                printWord(penyanyi.penyanyi_ke[choice - 1].mapalbum[choice2 - 1].setlagu.Elements[j]);
+                printf("\n");
+            }
+        }
     }
 }
