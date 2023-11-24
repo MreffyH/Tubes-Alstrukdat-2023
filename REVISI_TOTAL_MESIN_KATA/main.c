@@ -123,40 +123,35 @@ int main()
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "QUEUE")) && dalamsesi == true)
+        else if ((INPUTEQUAL(currentInput, "QUEUE PLAY;")) && dalamsesi == true)
         {
-            ADVINPUT();
-            printWord(currentWord);
-            if (INPUTEQUAL(currentInput, "SONG")) 
-            {
-                QUEUESONG(PL, &QS);
-                printf("Masuk Prints Song.");
-            }
-            else if (INPUTEQUAL(currentInput, "PLAYLIST"))
-            {
-                QUEUEPLAYLIST(&QS, PLY);
-            }
-            else if (INPUTEQUAL(currentInput, "CLEAR"))
-            {
-                QUEUECLEAR(&QS);
-            }
-            else if (INPUTEQUAL(currentInput, "REMOVE"))
-            {
-                ADVINPUT();
-                int id;
-                id = currentChar;
-                QUEUEREMOVE(&QS, id);
-            }
-            else if (INPUTEQUAL(currentInput, "SWAP"))
-            {
-                ADVINPUT();
-                int x;
-                int y;
-                x = currentChar;
-                ADVINPUT();
-                y = currentChar;
-                QUEUESWAP(&QS, x, y);
-            }
+            QUEUESONG(PL, &QS);
+            printf("Masuk Prints Song.");
+            // if (INPUTEQUAL(currentInput, "PLAYLIST"))
+            // {
+            //     QUEUEPLAYLIST(&QS, PLY);
+            // }
+            // else if (INPUTEQUAL(currentInput, "CLEAR"))
+            // {
+            //     QUEUECLEAR(&QS);
+            // }
+            // else if (INPUTEQUAL(currentInput, "REMOVE"))
+            // {
+            //     ADVINPUT();
+            //     int id;
+            //     id = currentChar;
+            //     QUEUEREMOVE(&QS, id);
+            // }
+            // else if (INPUTEQUAL(currentInput, "SWAP"))
+            // {
+            //     ADVINPUT();
+            //     int x;
+            //     int y;
+            //     x = currentChar;
+            //     ADVINPUT();
+            //     y = currentChar;
+            //     QUEUESWAP(&QS, x, y);
+            // }
         }
         else if ((INPUTEQUAL(currentInput, "QUEUE")) && dalamsesi == false)
         {
