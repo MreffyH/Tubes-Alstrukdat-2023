@@ -170,7 +170,6 @@ Word GetLagu(ListPenyanyi penyanyi, Word namaPenyanyi, Word namaAlbum, int idx)
     int urutanpenyanyi = SearchPenyanyi_ke(penyanyi, namaPenyanyi);
     if (urutanpenyanyi != NOTFOUND)
     {
-
         int urutanalbum = SearchAlbum_ke(penyanyi, namaPenyanyi, namaAlbum);
         if (urutanalbum != NOTFOUND)
 

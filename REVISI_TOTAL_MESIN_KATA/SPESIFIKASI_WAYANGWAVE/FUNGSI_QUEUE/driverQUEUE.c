@@ -32,6 +32,11 @@ int main()
     // PrintArrayDin(PLY);
     char *file = "../../user1.txt";
     LOADWAYANGWAVE(&PL, file, &QS, &HS, &PLY, &currentSong);
-    GetLagu(PL, currentSong.namaPenyanyiQ, currentSong.namaAlbumQ, 3);
+    Word kata = GetLagu(PL, currentSong.namaPenyanyiQ, currentSong.namaAlbumQ, 3);
+    displayQueue(QS);
+    printf("\n");
+    printWord(kata);
+    printf("\n\n");
     QUEUESONG(PL, &QS);
+    displayQueue(QS);
 }

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../../../REVISI_TOTAL_MESIN_KATA/listmapset.h"
-
+// gcc driverlistmapset.c ../mapset/set.c ../../../REVISI_TOTAL_MESIN_KATA/mesinkata.c ../../../REVISI_TOTAL_MESIN_KATA/mesinkarakter.c ../../../REVISI_TOTAL_MESIN_KATA/listmapset.c -o a.exe
 int main(){
     Set s1;
     Set s2;

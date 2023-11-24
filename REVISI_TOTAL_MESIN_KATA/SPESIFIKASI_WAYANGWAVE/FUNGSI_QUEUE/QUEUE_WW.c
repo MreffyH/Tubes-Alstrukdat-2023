@@ -59,6 +59,19 @@ void QUEUESONG(ListPenyanyi penyanyi, QueueSong *lagu)
             printf("Masukkan ID Lagu yang dipilih : ");
             STARTINPUT();
             int hasil = strToInteger(currentInput);
+            printf("hasil: %d\n", hasil);
+
+            DetailSongQ laguqueue;
+            laguqueue.namaPenyanyiQ = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
+            
+            laguqueue.namaAlbumQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
+            
+            laguqueue.namaLaguQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil-1];
+            printWord(laguqueue.namaLaguQ);
+            printf("\n");
+            if (laguqueue.namaLaguQ.TabWord[0] != '-'){
+                enqueue(lagu, laguqueue);
+            }
             Word LAGU_PANGGIL;
             LAGU_PANGGIL = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
             printf("Berhasil menambahkan lagu \"");
@@ -66,14 +79,6 @@ void QUEUESONG(ListPenyanyi penyanyi, QueueSong *lagu)
             printf("\" oleh \"");
             printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
             printf("\" ke queue.\n");
-            DetailSongQ laguqueue;
-            laguqueue.namaPenyanyiQ = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
-
-            laguqueue.namaAlbumQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
-
-            laguqueue.namaLaguQ = GetLagu(penyanyi, laguqueue.namaPenyanyiQ, laguqueue.namaAlbumQ, hasil);
-
-            enqueue(lagu, laguqueue);
         }
     }
 }
