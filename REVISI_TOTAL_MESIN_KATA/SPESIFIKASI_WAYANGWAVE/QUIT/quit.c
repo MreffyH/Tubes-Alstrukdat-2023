@@ -39,7 +39,7 @@ void quit() {
 
     if ( INPUTEQUAL(currentInput,"Y;")){
         wordToString(filename, filename.TabWord);
-        SAVEWW(&PL, &filename.TabWord, &PLY, &QS, &HS, &currentSong);
+        SAVEWW(&PL, filename.TabWord, &PLY, &QS, &HS, &currentSong);
     }
     else if (INPUTEQUAL(currentInput,"N;")){
         printf("================Kamu keluar dari WayangWave================\n");

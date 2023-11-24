@@ -12,33 +12,33 @@ void SAVEWW(ListPenyanyi *PL, char *namafile, ArrayDin *PLY, QueueSong *QS, Hist
         for (int j = 0; j < (*PL).penyanyi_ke[i].countalbum; j++)
         {
             fprintf(file, "%d %s\n", (*PL).penyanyi_ke[i].mapalbum[j].setlagu.Count, (*PL).penyanyi_ke[i].mapalbum[j].namaAlbum); // BACA JUMLAH LAGU DAN NAMA ALBUM
-            for (int z = 0; z < (*PL).penyanyi_ke[i].mapalbum.[j].setlagu.Count; z++)
+            for (int z = 0; z < (*PL).penyanyi_ke[i].mapalbum[j].setlagu.Count; z++)
             {
-                fprintf(file, "%s\n", (*PL).penyanyi_ke[i].mapalbum.[j]setlagu.Elements[z]); // BACA NAMA LAGU 
+                fprintf(file, "%s\n", (*PL).penyanyi_ke[i].mapalbum[j].setlagu.Elements[z]); // BACA NAMA LAGU 
             }
             
         }
         
     }
     /* Current Song */
-    if((*CS).namaPenyanyiQ == NONE) && ((*CS).namaAlbumQ == NONE) && ((*CS).namaLaguQ == NONE){
+    if(((*CS).namaPenyanyiQ.TabWord[0] == NONE) && ((*CS).namaAlbumQ.TabWord[0] == NONE) && ((*CS).namaLaguQ.TabWord[0] == NONE)){
         fprintf(file,"-\n");
     }
-    else{
+    else {
         fprintf(file, "%s", (*CS).namaPenyanyiQ);
         fprintf(file, ";%s", (*CS).namaAlbumQ);
         fprintf(file, ";%s\n", (*CS).namaLaguQ);
     }
     /* QUEUE */
     fprintf(file, "%d\n", lengthQ(*QS));
-    for(int i = 0; i < lengthQ; i++){
+    for(int i = 0; i < lengthQ(*QS); i++){
         fprintf(file, "%s", (*QS).detil_queue[i].namaPenyanyiQ);
         fprintf(file, ";%s", (*QS).detil_queue[i].namaAlbumQ);
         fprintf(file,";%s\n", (*QS).detil_queue[i].namaLaguQ);
     }
     /* HISTORY */
     fprintf(file, "%d\n", lengthS(*HS));
-    for (int i = 0; i < lengthS(*HS), i++) {
+    for (int i = 0; i < lengthS(*HS); i++) {
         fprintf(file, "%s", (*HS).detil_history[i].namaPenyanyiS);
         fprintf(file, ";%s", (*HS).detil_history[i].namaAlbumS);
         fprintf(file, ";%s\n", (*HS).detil_history[i].namaLaguS);
@@ -46,7 +46,7 @@ void SAVEWW(ListPenyanyi *PL, char *namafile, ArrayDin *PLY, QueueSong *QS, Hist
     
     /* PLAYLIST */
     fprintf(file, "%d\n", (*PLY).Neff);
-    for (int i = 0; i < (*PLY).Neff, i++) {
+    for (int i = 0; i < (*PLY).Neff; i++) {
         fprintf(file, "%d ", (*PLY).detil_playlist[i].countlaguLL);
         fprintf(file, "%s\n", (*PLY).detil_playlist[i].nama_PlayList);
         address P = First((*PLY).detil_playlist[i].IsiLagu);
@@ -57,4 +57,5 @@ void SAVEWW(ListPenyanyi *PL, char *namafile, ArrayDin *PLY, QueueSong *QS, Hist
             P = Next(P);
         }
     }
+    fclose(file);
 }

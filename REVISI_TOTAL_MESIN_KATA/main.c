@@ -293,11 +293,9 @@ int main()
             }
             else if(INPUTEQUAL(Choice2,"REMOVE")){ /* QUEUE REMOVE */
                 QUEUEREMOVE(&QS, x);
-                printf("MELAKUKAN QUEUE REMOVE DGN NILAI X: %d\n", x);
             }
             else if(INPUTEQUAL(Choice2,"SWAP")){ /* QUEUE SWAP */
                 QUEUESWAP(&QS, x, y);
-                printf("MELAKUKAN QUEUE SWAP DGN NILAI X: %d; Y: %d\n", x, y);
             }
         }
         else if ((INPUTEQUAL(Choice, "QUEUE")) && dalamsesi == false)
@@ -316,7 +314,7 @@ int main()
         else if ((INPUTEQUAL(Choice, "SAVE")) && dalamsesi == true)
         {
             wordToString(filename, filename.TabWord);
-            SAVEWW(&PL, &filename.TabWord, &PLY, &QS, &HS, &currentSong);
+            SAVEWW(&PL, filename.TabWord, &PLY, &QS, &HS, &currentSong);
         }
         else if ((INPUTEQUAL(Choice, "SAVE")) && dalamsesi == false)
         {
