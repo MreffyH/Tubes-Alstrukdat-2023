@@ -23,11 +23,11 @@ Tugas Besar IF2110 ini merupakan program bernama WayangWave dengan menggunakan b
 
 
 ## Kontributor
-Muhammad Reffy Haykal / 18222103
-Rajendra Farras Rayhan / 18222105
-M. Rivaldi Mahari / 19222119
-M. Kasyfil Aziz / 18222127
-Muhammad Faishal Putra / 18222129
-Yusril Fazri Mahendra / 18222141
+a. Muhammad Reffy Haykal / 18222103
+b. Rajendra Farras Rayhan / 18222105
+c. Rivaldi Mahari / 19222119
+d. Kasyfil Aziz / 18222127
+e. Muhammad Faishal Putra / 18222129
+f. Yusril Fazri Mahendra / 18222141
 
 
