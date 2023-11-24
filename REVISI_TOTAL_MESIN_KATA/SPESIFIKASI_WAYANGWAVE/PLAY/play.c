@@ -16,7 +16,7 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
         printf("\n");
     }
 
-    printf("Masukkan Nama Penyanyi yang dipilih: \n");
+    printf("Masukkan Nama Penyanyi yang dipilih: ");
     STARTINPUT();
     printf("\n");
     Word nama_penyanyi = DuplicateKata(currentInput);
@@ -37,7 +37,7 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
             printf("\n");
         }
 
-        printf("Masukkan Nama Album yang dipilih :\n");
+        printf("Masukkan Nama Album yang dipilih :");
         STARTINPUT();
         int search_album = SearchAlbum_ke(penyanyi, nama_penyanyi, currentInput);
         if (search_album != NOTFOUND)
@@ -78,30 +78,25 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
             {
                 Pop(history, &trashstack);
             }
-            DetailSongQ laguqueue;
-            laguqueue.namaPenyanyiQ = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
+            // DetailSongQ laguqueue;
+            // laguqueue.namaPenyanyiQ = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
+            // laguqueue.namaAlbumQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
+            // laguqueue.namaLaguQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
 
-            laguqueue.namaAlbumQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
+            // DetailSongS lagustack;
+            // lagustack.namaPenyanyiS = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
+            // lagustack.namaAlbumS = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
+            // lagustack.namaLaguS = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
 
-            laguqueue.namaLaguQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
-
-            DetailSongS lagustack;
-            lagustack.namaPenyanyiS = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
-
-            lagustack.namaAlbumS = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
-
-            lagustack.namaLaguS = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
-
-            if (laguqueue.namaLaguQ.TabWord[0] != '-')
-            {
-                enqueue(step, laguqueue);
-            }
-            if (lagustack.namaLaguS.TabWord[0] != '-')
-            {
-                Push(history, lagustack);
-            }
+            // if (laguqueue.namaLaguQ.TabWord[0] != '-')
+            // {
+            //     enqueue(step, laguqueue);
+            // }
+            // if (lagustack.namaLaguS.TabWord[0] != '-')
+            // {
+            //     Push(history, lagustack);
+            // }
         }
-        DisplayHistorySong(*history);
     }
 }
 
