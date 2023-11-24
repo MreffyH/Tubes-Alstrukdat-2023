@@ -29,14 +29,13 @@ void PlaylistADDSong(ArrayDin *PLY, ListPenyanyi penyanyi)
         printf("\n");
     }
 
-    printf("Masukkan Nama Penyanyi yang dipilih: \n");
+    printf("\nMasukkan Nama Penyanyi yang dipilih: ");
     STARTINPUT();
-    printf("\n");
     Word nama_penyanyi = DuplicateKata(currentInput);
     int urutan = SearchPenyanyi_ke(penyanyi, currentInput);
     if (urutan != NOTFOUND)
     {
-        printf("Daftar Album oleh ");
+        printf("\nDaftar Album oleh ");
         printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
         printf(" :\n");
         int jum_album;
@@ -50,12 +49,13 @@ void PlaylistADDSong(ArrayDin *PLY, ListPenyanyi penyanyi)
             printf("\n");
         }
 
-        printf("Masukkan Judul Album yang dipilih : \n");
+        printf("\nMasukkan Judul Album yang dipilih : ");
         STARTINPUT();
+        Word name_Album = DuplicateKata(currentInput);
         int search_album = SearchAlbum_ke(penyanyi, nama_penyanyi, currentInput);
         if (search_album != NOTFOUND)
         {
-            printf("\nDaftar Lagu Album");
+            printf("\nDaftar Lagu Album ");
             printWord(penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum);
             printf(" oleh ");
             printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
@@ -70,7 +70,7 @@ void PlaylistADDSong(ArrayDin *PLY, ListPenyanyi penyanyi)
                 printWord(name_lagu);
                 printf("\n");
             }
-            printf("Masukkan ID Lagu yang dipilih : ");
+            printf("\nMasukkan ID Lagu yang dipilih : ");
             STARTINPUT();
             int hasil = strToInteger(currentInput);
             Word LAGU_PANGGIL;
@@ -98,16 +98,42 @@ void PlaylistADDSong(ArrayDin *PLY, ListPenyanyi penyanyi)
                     printf("\n");
                 }
 
-                printf("Masukkan ID playlist yang dipilih : ");
+                printf("\nMasukkan ID playlist yang dipilih : ");
                 STARTINPUT();
                 int idPlaylist = strToInteger(currentInput);
-                InsVLast(&(*PLY).detil_playlist[idPlaylist].IsiLagu, LL);
-                printf("Lagu dengan judul %s pada album ke dalam playlist %s\n", LAGU_PANGGIL, (*PLY).detil_playlist[idPlaylist].nama_PlayList.TabWord);
+                if ((idPlaylist <= (*PLY).Neff) && (idPlaylist >= 0))
+                {
+                    InsVLast(&(*PLY).detil_playlist[idPlaylist].IsiLagu, LL);
+                    printf("\nLagu dengan judul ");
+                    printf("\"");
+                    printWord(penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1]);
+                    printf("\"");
+                    printf(" pada album ");
+                    printf("\"");
+                    printWord(penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum);
+                    printf("\"");
+                    printf(" oleh penyanyi ");
+                    printf("\"");
+                    printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
+                    printf("\"");
+                    printf(" berhasil ditambahkan ke dalam playlist ");
+                    printWord(PLY->detil_playlist[idPlaylist - 1].nama_PlayList);
+                }
+                else
+                {
+                   printf("ID Playlist tersebut tidak ada dalam daftar playlist."); 
+                }
             }
             else
             {
                 printf("Kamu tidak memiliki playlist.\n");
             }
+        }
+        else
+        {
+            printf("Album ");
+            printWord(name_Album);
+            printf(" tidak ada dalam daftar. Silakan coba lagi.");
         }
     }
     else
@@ -131,14 +157,14 @@ void PlaylistADDAlbum(ArrayDin *PLY, ListPenyanyi penyanyi)
         printf("\n");
     }
 
-    printf("Masukkan Nama Penyanyi yang dipilih: \n");
+    printf("\nMasukkan Nama Penyanyi yang dipilih: ");
     STARTINPUT();
     printf("\n");
     Word nama_penyanyi = DuplicateKata(currentInput);
     int urutan = SearchPenyanyi_ke(penyanyi, currentInput);
     if (urutan != NOTFOUND)
     {
-        printf("Daftar Album oleh ");
+        printf("Daftar Album oleh");
         printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
         printf(" :\n");
         int jum_album;
@@ -152,7 +178,7 @@ void PlaylistADDAlbum(ArrayDin *PLY, ListPenyanyi penyanyi)
             printf("\n");
         }
 
-        printf("Masukkan Judul Album yang dipilih : : \n");
+        printf("\nMasukkan Judul Album yang dipilih : ");
         STARTINPUT();
         Word name_album = DuplicateKata(currentInput);
         int search_album = SearchAlbum_ke(penyanyi, nama_penyanyi, currentInput);
@@ -168,7 +194,7 @@ void PlaylistADDAlbum(ArrayDin *PLY, ListPenyanyi penyanyi)
                     printWord((*PLY).detil_playlist[i].nama_PlayList);
                     printf("\n");
                 }
-                printf("Masukkan ID Playlist yang dipilih : ");
+                printf("\nMasukkan ID Playlist yang dipilih : ");
                 STARTINPUT();
                 int idPlaylist = strToInteger(currentInput);
                 if ((idPlaylist <= (*PLY).Neff) && (idPlaylist >= 0))
@@ -184,10 +210,14 @@ void PlaylistADDAlbum(ArrayDin *PLY, ListPenyanyi penyanyi)
                         InsVLast(&((*PLY).detil_playlist[idPlaylist - 1].IsiLagu), newSongAdded);
                         (*PLY).detil_playlist[idPlaylist - 1].countlaguLL++;
                     }
-                    printf("Album dengan judul ");
-                    printWord(penyanyi.penyanyi_ke[urutan].mapalbum[i].namaAlbum);
+                    printf("\nAlbum dengan judul ");
+                    printf("\"");
+                    printWord(newSongAdded.namaAlbum);
+                    printf("\"");
                     printf(" berhasil ditambahkan ke dalam pada playlist pengguna ");
+                    printf("\"");
                     printWord((*PLY).detil_playlist[idPlaylist - 1].nama_PlayList);
+                    printf("\"");
                     printf(".");
                 }
                 else
@@ -220,10 +250,10 @@ void PlaylistRemove(ArrayDin *PLY, int id, int n)
 {
     if ((id < ((*PLY).Neff)) && (id >= 0))
     {
-        if (n < ((*PLY).detil_playlist[id].countlaguLL) && (n >= 0))
+        if (n < ((*PLY).detil_playlist[id - 1].countlaguLL) && (n >= 0))
         {
-            printf("Lagu");
-            address P = First((*PLY).detil_playlist[id].IsiLagu);
+            printf("Lagu ");
+            address P = First((*PLY).detil_playlist[id - 1].IsiLagu);
             address Prec = NilLin;
             int i = 0;
             while (i < n - 1)
@@ -232,11 +262,17 @@ void PlaylistRemove(ArrayDin *PLY, int id, int n)
                 P = Next(P);
                 i++;
             }
+            printf("\"");
             printWord(InfoJudul(P));
+            printf("\"");
             printf(" oleh ");
+            printf("\"");
             printWord(InfoPenyanyi(P));
-            printf("telah dihapus dari playlist");
-            printWord((*PLY).detil_playlist[id].nama_PlayList);
+            printf("\"");
+            printf(" telah dihapus dari playlist ");
+            printf("\"");
+            printWord((*PLY).detil_playlist[id - 1].nama_PlayList);
+            printf("\"");
             if (Prec == NilLin)
             {
                 DelFirstLL(&((*PLY).detil_playlist[id].IsiLagu), &P);
@@ -263,22 +299,24 @@ void PlaylistRemove(ArrayDin *PLY, int id, int n)
 
 void PlaylistSwap(ArrayDin *PLY, int id, int x, int y)
 {
-    if ((id < ((*PLY).Neff)) && (id >= 0))
+    if ((id <= ((*PLY).Neff)) && (id > 0))
     {
-        if (x < ((*PLY).detil_playlist[id].countlaguLL) && (x >= 0) && (y < ((*PLY).detil_playlist[id].countlaguLL)) && (y >= 0))
+        if (x <= ((*PLY).detil_playlist[id - 1].countlaguLL) && (x > 0) && (y <= ((*PLY).detil_playlist[id - 1].countlaguLL)) && (y > 0))
         {
-            IsiPlaylist swappedPlaylist = GetPlaylist(*PLY, id);
+            IsiPlaylist swappedPlaylist = GetPlaylist(*PLY, id - 1);
             address PX = First(swappedPlaylist.IsiLagu);
             int i = 0;
             while (i < (x - 1))
             {
                 PX = Next(PX);
+                i++;
             }
             address PY = First(swappedPlaylist.IsiLagu);
             i = 0;
             while (i < (y - 1))
             {
                 PY = Next(PY);
+                i++;
             }
             address Ptemp = PX;
             PX = PY;
@@ -299,15 +337,15 @@ void PlaylistSwap(ArrayDin *PLY, int id, int x, int y)
         else
         {
             printf("Tidak ada lagu dengan urutan");
-            if (x < 0 || x >= ((*PLY).detil_playlist[id].countlaguLL))
+            if (x <= 0 || x > ((*PLY).detil_playlist[id - 1].countlaguLL))
                 printf(" %d", x);
-            if (y < 0 || y >= ((*PLY).detil_playlist[id].countlaguLL))
+            if (y <= 0 || y > ((*PLY).detil_playlist[id - 1].countlaguLL))
                 printf(" %d", y);
         }
     }
     else
     {
-        printf("Tidak ada playlist dengan playlist ID %d", id);
+        printf("Tidak ada playlist dengan playlist ID %d", id - 1);
     }
 }
 
@@ -327,8 +365,10 @@ void PlaylistDelete(ArrayDin *PLY)
     printf("Masukkan ID Playlist yang dipilih : ");
     STARTINPUT();
     int idPlaylist = strToInteger(currentInput);
-    printf("Playlist ID %d dengan judul ", idPlaylist);
+    printf("\nPlaylist ID %d dengan judul ", idPlaylist);
+    printf("\"");
     printWord((*PLY).detil_playlist[idPlaylist - 1].nama_PlayList);
-    printf("berhasil dihapus.");
+    printf("\"");
+    printf(" berhasil dihapus.");
     DeleteAtArrayDin(PLY, idPlaylist - 1);
 }

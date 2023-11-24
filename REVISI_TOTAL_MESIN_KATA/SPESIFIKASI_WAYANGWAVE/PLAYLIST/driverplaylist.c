@@ -33,15 +33,15 @@ int main()
     char *file = "../../user1.txt";
     LOADWAYANGWAVE(&PL, file, &QS, &HS, &PLY, &currentSong);
 
-    CreatePlaylist(&PLY);
+    //CreatePlaylist(&PLY);
 
     //PlaylistADDSong(&PLY, PL);
 
-    PlaylistADDAlbum(&PLY, PL);
+    //PlaylistADDAlbum(&PLY, PL);
 
-    // PlaylistRemove(&PLY,  1, 2);
+    //PlaylistRemove(&PLY,  1, 1);
 
-    // PlaylistSwap(&PLY, 1, 0, 1);
+    PlaylistSwap(&PLY, 1, 1, 3);
 
     //PlaylistDelete(&PLY);
 }
