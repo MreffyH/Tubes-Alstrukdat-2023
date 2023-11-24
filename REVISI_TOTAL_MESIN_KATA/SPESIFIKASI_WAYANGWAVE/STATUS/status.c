@@ -8,8 +8,9 @@ void Status(ArrayDin  AD, QueueSong  QS, DetailSongQ currentsong)
 {   
     if(!IsEmptyArrayDin(AD))
     {
-        printf("\nCurrent Playlist: ");
+        printf("Current Playlist: ");
         printWord(AD.detil_playlist->nama_PlayList);
+        printf("\n");
     }
 
     printf("\nNow Playing:\n");
@@ -19,7 +20,6 @@ void Status(ArrayDin  AD, QueueSong  QS, DetailSongQ currentsong)
     }
     else
     {
-        printf("\nNow Playing:\n");
         printWord(currentsong.namaPenyanyiQ);
         printf(" - ");
         printWord(currentsong.namaLaguQ);
