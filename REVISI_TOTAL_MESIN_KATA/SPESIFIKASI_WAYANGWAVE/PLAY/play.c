@@ -80,14 +80,24 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
             }
             DetailSongQ laguqueue;
             laguqueue.namaPenyanyiQ = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
-            
+
             laguqueue.namaAlbumQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
-            
-            laguqueue.namaLaguQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil-1];
-            if (laguqueue.namaLaguQ.TabWord[0] != '-'){
+
+            laguqueue.namaLaguQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
+
+            DetailSongS lagustack;
+            lagustack.namaPenyanyiS = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
+
+            lagustack.namaAlbumS = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
+
+            lagustack.namaLaguS = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
+
+            if (laguqueue.namaLaguQ.TabWord[0] != '-')
+            {
                 enqueue(step, laguqueue);
-            
-        }}
+                Push(history, lagustack);
+            }
+        }
     }
 }
 
@@ -120,10 +130,10 @@ void playPlaylist(ArrayDin array, DetailSongQ *currentSong, HistorySong *history
         {
             Pop(history, &trashstack);
         }
-        P = First(array.detil_playlist[hasil-1].IsiLagu);
+        P = First(array.detil_playlist[hasil - 1].IsiLagu);
         DetailSongLL timpalagu;
         int idx = 0;
-        while ((idx < array.detil_playlist[hasil-1].countlaguLL) && (P != NilLin))
+        while ((idx < array.detil_playlist[hasil - 1].countlaguLL) && (P != NilLin))
         {
             timpalagu.namaPenyanyi = InfoPenyanyi(P);
             timpalagu.namaAlbum = InfoAlbum(P);
