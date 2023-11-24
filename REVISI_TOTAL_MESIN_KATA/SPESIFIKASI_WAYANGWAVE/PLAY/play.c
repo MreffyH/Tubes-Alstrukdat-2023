@@ -95,9 +95,13 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
             if (laguqueue.namaLaguQ.TabWord[0] != '-')
             {
                 enqueue(step, laguqueue);
+            }
+            if (lagustack.namaLaguS.TabWord[0] != '-')
+            {
                 Push(history, lagustack);
             }
         }
+        DisplayHistorySong(*history);
     }
 }
 
