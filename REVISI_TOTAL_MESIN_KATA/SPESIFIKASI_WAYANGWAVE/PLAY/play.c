@@ -67,6 +67,9 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
             printf("\" oleh \"");
             printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
             printf("\".");
+            (*currentSong).namaPenyanyiQ = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
+            (*currentSong).namaAlbumQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].namaAlbum;
+            (*currentSong).namaLaguQ = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
             DetailSongQ trashqueue;
             DetailSongS trashstack;
             address P;
@@ -96,6 +99,7 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
             // {
             //     Push(history, lagustack);
             // }
+            
         }
     }
 }
