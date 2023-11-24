@@ -21,13 +21,14 @@ Tugas Besar IF2110 ini merupakan program bernama WayangWave dengan menggunakan b
 4. Mengatur urutan dimainkannya lagu
 5. Menampilkan status dari aplikasi
 
-
 ## Kontributor
-a. Muhammad Reffy Haykal / 18222103
-b. Rajendra Farras Rayhan / 18222105
-c. Rivaldi Mahari / 19222119
-d. Kasyfil Aziz / 18222127
-e. Muhammad Faishal Putra / 18222129
-f. Yusril Fazri Mahendra / 18222141
+1. Muhammad Reffy Haykal / 18222103
+2. Rajendra Farras Rayhan / 18222105
+3. Rivaldi Mahari / 19222119
+4. M. Kasyfil Aziz / 18222127
+5. Muhammad Faishal Putra / 18222129
+6. Yusril Fazri Mahendra / 18222141
+   
+
 
 
