@@ -9,6 +9,6 @@
 
 static FILE *file;
 
-void SAVEWW(ListPenyanyi *PL, char *namafile);
+void SAVEWW(ListPenyanyi *PL, char *namafile, ArrayDin *PLY, QueueSong *QS, HistorySong *HS, DetailSongQ *CS);
 
 #endif
