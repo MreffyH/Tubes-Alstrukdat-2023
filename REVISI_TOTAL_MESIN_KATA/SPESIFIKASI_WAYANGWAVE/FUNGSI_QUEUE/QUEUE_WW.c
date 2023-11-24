@@ -59,7 +59,6 @@ void QUEUESONG(ListPenyanyi penyanyi, QueueSong *lagu)
             printf("Masukkan ID Lagu yang dipilih : ");
             STARTINPUT();
             int hasil = strToInteger(currentInput);
-            printf("hasil: %d\n", hasil);
 
             DetailSongQ laguqueue;
             laguqueue.namaPenyanyiQ = penyanyi.penyanyi_ke[urutan].namaPenyanyi;
