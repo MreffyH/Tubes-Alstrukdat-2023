@@ -95,4 +95,6 @@ boolean INPUTEQUAL(Word I, char *K);
 
 int FUNGSILENGTH(char *K);
 
+void wordToString(Word kata, char *string);
+
 #endif

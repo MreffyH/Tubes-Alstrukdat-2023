@@ -26,6 +26,13 @@ int main()
 {
     boolean mulaiWayangWave = true;
     boolean dalamsesi = false;
+    Word filename;
+    Word Choice;
+    Word Choice2;
+    Word input1;
+    int id;
+    int x;
+    int y;
 
     Set S;
     CreateEmptySet(&S);
@@ -65,7 +72,161 @@ int main()
         printf(">> ");
         STARTINPUT();
         printf("\n");
+        if((!INPUTEQUAL(currentInput,"START;")) && (!INPUTEQUAL(currentInput,"STATUS;")) && (!INPUTEQUAL(currentInput,"HELP;")) && (!INPUTEQUAL(currentInput,"QUIT;"))){
+            int checkchar = 0;
+            
+            Choice.Length = 0;
+            while ((checkchar < currentInput.Length) && (currentInput.TabWord[checkchar] != ' ')){
+                Choice.Length++;
+                Choice.TabWord[checkchar] = currentInput.TabWord[checkchar];
+                checkchar++;
+            } /* Checkchar sama dengan indeks pada saat blank */
+            checkchar++; /* checkchar sama dengan indeks dari karakter setelah blank */
+            if(INPUTEQUAL(Choice,"LOAD")){
+                filename.Length = 0;
+                int idxfile = 0;
+                while(currentInput.TabWord[checkchar] != ';'){
+                    filename.Length++;
+                    filename.TabWord[idxfile] = currentInput.TabWord[checkchar];
+                    checkchar++;
+                    idxfile++;
+                }
+            }
+            else if(INPUTEQUAL(Choice, "LIST")){
+                Choice2.Length = 0;
+                int idxchoice2 = 0;
+                while (currentInput.TabWord[checkchar] != ';')
+                {
+                    Choice2.Length++;
+                    Choice2.TabWord[idxchoice2] = currentInput.TabWord[checkchar];
+                    checkchar++;
+                    idxchoice2++;
+                }
 
+            }
+            else if(INPUTEQUAL(Choice, "PLAY")){
+                Choice2.Length = 0;
+                int idxchoice2 = 0;
+                while (currentInput.TabWord[checkchar] != ';')
+                {
+                    Choice2.Length++;
+                    Choice2.TabWord[idxchoice2] = currentInput.TabWord[checkchar];
+                    checkchar++;
+                    idxchoice2++;
+                }
+                
+            }
+            else if(INPUTEQUAL(Choice,"QUEUE")){
+                Choice2.Length = 0;
+                int idxchoice2 = 0;
+                while ((currentInput.TabWord[checkchar] != ';') && (currentInput.TabWord[checkchar] != ' '))
+                {
+                    Choice2.Length++;
+                    Choice2.TabWord[idxchoice2] = currentInput.TabWord[checkchar];
+                    checkchar++;
+                    idxchoice2++;
+                }
+                if (currentInput.TabWord[checkchar] == ' '){
+                    Word input1;
+                    input1.Length = 0;
+                    Word input2;
+                    input2.Length = 0;
+                    checkchar++;
+                    idxchoice2 = 0;
+                    while ((currentInput.TabWord[checkchar] != ';') && (currentInput.TabWord[checkchar] != ' ')){
+                        input1.Length++;
+                        input1.TabWord[idxchoice2] = currentInput.TabWord[checkchar];
+                        checkchar++;
+                        idxchoice2++;
+                    }
+                    idxchoice2 = 0;
+                    if(currentInput.TabWord[checkchar] == ' '){
+                        checkchar++;
+                        while (currentInput.TabWord[checkchar] != ';')
+                        {
+                            input2.Length++;
+                            input2.TabWord[idxchoice2] = currentInput.TabWord[checkchar];
+                            checkchar++;
+                            idxchoice2++;
+                        }
+                        y = strToInteger(input2);
+                    }
+                    x = strToInteger(input1);
+                }
+            }
+            else if(INPUTEQUAL(Choice, "SONG")){
+                Choice2.Length = 0;
+                int idxchoice2 = 0;
+                while (currentInput.TabWord[checkchar] != ';')
+                {
+                    Choice2.Length++;
+                    Choice2.TabWord[idxchoice2] = currentInput.TabWord[checkchar];
+                    checkchar++;
+                    idxchoice2++;
+                }
+            }
+            else if(INPUTEQUAL(Choice, "PLAYLIST")){
+                Choice2.Length = 0;
+                int idxchoice2 = 0;
+                while ((currentInput.TabWord[checkchar] != ';') && (currentInput.TabWord[checkchar] != ' '))
+                {
+                    Choice2.Length++;
+                    Choice2.TabWord[idxchoice2] = currentInput.TabWord[checkchar];
+                    checkchar++;
+                    idxchoice2++;
+                }
+                if (currentInput.TabWord[checkchar] == ' '){
+                    input1.Length = 0;
+                    Word input2;
+                    input2.Length = 0;
+                    Word input3;
+                    input3.Length = 0;
+                    checkchar++;
+                    idxchoice2 = 0;
+                    while ((currentInput.TabWord[checkchar] != ';') && (currentInput.TabWord[checkchar] != ' ')){
+                        input1.Length++;
+                        input1.TabWord[idxchoice2] = currentInput.TabWord[checkchar];
+                        checkchar++;
+                        idxchoice2++;
+                    }
+                    idxchoice2 = 0;
+                    if(currentInput.TabWord[checkchar] == ' '){
+                        checkchar++;
+                        while ((currentInput.TabWord[checkchar] != ';') && (currentInput.TabWord[checkchar] != ' '))
+                        {
+                            input2.Length++;
+                            input2.TabWord[idxchoice2] = currentInput.TabWord[checkchar];
+                            checkchar++;
+                            idxchoice2++;
+                        }
+                        x = strToInteger(input2);
+                        idxchoice2 = 0;
+                        if(currentInput.TabWord[checkchar] == ' '){
+                            checkchar++;
+                            while (currentInput.TabWord[checkchar] != ';')
+                            {
+                                input3.Length++;
+                                input3.TabWord[idxchoice2] = currentInput.TabWord[checkchar];
+                                checkchar++;
+                                idxchoice2++;
+                            }
+                            y = strToInteger(input3);
+                        }
+                    }
+                    id = strToInteger(input1);
+                }
+            }
+            else if(INPUTEQUAL(Choice, "SAVE")){
+                filename.Length = 0;
+                int idxfile = 0;
+                while(currentInput.TabWord[checkchar] != ';'){
+                    filename.Length++;
+                    filename.TabWord[idxfile] = currentInput.TabWord[checkchar];
+                    checkchar++;
+                    idxfile++;
+                }
+            }
+        }
         if ((INPUTEQUAL(currentInput, "START;")) && dalamsesi == false)
         {
             printf("MASUK KE START\n");
@@ -85,17 +246,14 @@ int main()
         {
             printf("Wayangwave telah berjalan, silahkan masukkan command\n");
         }
-        else if (INPUTEQUAL(currentInput, "LOAD;") && dalamsesi == false)
+        else if (INPUTEQUAL(Choice, "LOAD") && dalamsesi == false)
         {
-            printf("LOAD ");
-            STARTINPUT();
-            Word file = currentInput;
-            
-            LOADWAYANGWAVE(&PL, file.TabWord, &QS, &HS, &PLY, &currentSong);
+            wordToString(filename, filename.TabWord);
+            LOADWAYANGWAVE(&PL, filename.TabWord, &QS, &HS, &PLY, &currentSong);
             printf("Save file berhasil dibaca. WayangWave berhasil dijalankan.\n");
             dalamsesi = true;
         }
-        else if ((INPUTEQUAL(currentInput, "LOAD;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(Choice, "LOAD")) && dalamsesi == true)
         {
             printf("Wayangwave telah berjalan, silahkan masukkan command\n");
         }
@@ -107,191 +265,126 @@ int main()
         {
             helpBefore();
         }
-        else if ((INPUTEQUAL(currentInput, "PLAY SONG;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(Choice, "PLAY")) && dalamsesi == true)
         {
-            PLAYSONG(PL, PLY, &currentSong, &HS, &QS);
+            if(INPUTEQUAL(Choice2, "SONG")){ /* PLAY SONG */
+                PLAYSONG(PL, PLY, &currentSong, &HS, &QS);
+            }
+            else if (INPUTEQUAL(Choice2, "PLAYLIST")) { /* PLAY PLAYLIST */
+                playPlaylist(PLY, &currentSong, &HS, &QS);
+            }
         }
-        else if ((INPUTEQUAL(currentInput, "PLAY SONG;")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST;")) && dalamsesi == true)
-        {
-            /*masukin fungsi PLAY PLAYLIST*/
-            playPlaylist(PLY, &currentSong, &HS, &QS);
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAY PLAYLIST;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(Choice, "PLAY")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "QUEUE SONG;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(Choice, "QUEUE")) && dalamsesi == true)
         {
-            QUEUESONG(PL, &QS);
-            // printf("Masuk Prints Song.");
+            if(INPUTEQUAL(Choice2, "SONG")){ /* QUEUE SONG */
+                QUEUESONG(PL, &QS);
+            }
+            else if(INPUTEQUAL(Choice2, "PLAYLIST")){ /* QUEUE PLAYLIST */
+                QUEUEPLAYLIST(&QS, PLY);
+            }
+            else if(INPUTEQUAL(Choice2,"CLEAR")){ /* QUEUE CLEAR */
+                QUEUECLEAR(&QS);
+            }
+            else if(INPUTEQUAL(Choice2,"REMOVE")){ /* QUEUE REMOVE */
+                QUEUEREMOVE(&QS, x);
+                printf("MELAKUKAN QUEUE REMOVE DGN NILAI X: %d\n", x);
+            }
+            else if(INPUTEQUAL(Choice2,"SWAP")){ /* QUEUE SWAP */
+                QUEUESWAP(&QS, x, y);
+                printf("MELAKUKAN QUEUE SWAP DGN NILAI X: %d; Y: %d\n", x, y);
+            }
         }
-        else if ((INPUTEQUAL(currentInput, "QUEUE SONG;")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "QUEUE PLAYLIST;")) && dalamsesi == true) 
-        {
-            QUEUEPLAYLIST(&QS, PLY);
-        }
-        else if ((INPUTEQUAL(currentInput, "QUEUE PLAYLIST;")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "QUEUE CLEAR;")) && dalamsesi == true) 
-        {
-            QUEUECLEAR(&QS);
-        }
-        else if ((INPUTEQUAL(currentInput, "QUEUE CLEAR;")) && dalamsesi == false) 
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "QUEUE REMOVE;")) && dalamsesi == true) 
-        {
-            // Perlu diedit lagi
-            int IDX;
-            IDX = strToInteger(currentInput);
-            QUEUEREMOVE(&QS, IDX);
-        }
-        else if ((INPUTEQUAL(currentInput, "QUEUE REMOVE;")) && dalamsesi == false) 
+        else if ((INPUTEQUAL(Choice, "QUEUE")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "QUEUE SWAP;")) && dalamsesi == true)
-        {
-            // Perlu diedit lagi
-            int IDX1Q, IDX2Q;
-            IDX1Q = strToInteger(currentInput);
-            IDX2Q = strToInteger(currentInput);
-            QUEUESWAP(&QS, IDX1Q, IDX2Q);
-        }
-        else if ((INPUTEQUAL(currentInput, "QUEUE SWAP;")) && dalamsesi == false) 
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "STATUS")) && dalamsesi == true)
+        
+        else if ((INPUTEQUAL(currentInput, "STATUS;")) && dalamsesi == true)
         {
             /*masukin fungsi STATUS*/
             printf("Masuk ke STATUS\n");
         }
-        else if ((INPUTEQUAL(currentInput, "STATUS")) && dalamsesi == false)
+        else if ((INPUTEQUAL(currentInput, "STATUS;")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "SAVE")) && dalamsesi == true)
+        else if ((INPUTEQUAL(Choice, "SAVE")) && dalamsesi == true)
         {
             /*masukin fungsi SAVE*/
             printf("Masuk ke SAVE\n");
         }
-        else if ((INPUTEQUAL(currentInput, "SAVE")) && dalamsesi == false)
+        else if ((INPUTEQUAL(Choice, "SAVE")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "LIST DEFAULT;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(Choice, "LIST")) && dalamsesi == true)
         {
-            LISTDEFAULT(PL);
+            if(INPUTEQUAL(Choice2, "DEFAULT")){ /* LIST DEFAULT */
+                printf("MELAKUKAN LIST DEFAULT\n");
+                LISTDEFAULT(PL);
+            }
+            else if(INPUTEQUAL(Choice2, "PLAYLIST")){ /* LIST PLAYLIST */
+                LISTPLAYLIST(PLY);
+                printf("MELAKUKAN LIST PLAYLIST\n");
+            }
         }
-        else if ((INPUTEQUAL(currentInput, "LIST DEFAULT;")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "LIST PLAYLIST;")) && dalamsesi == true)
-        {
-            /*masukin fungsi LIST PLAYLIST*/
-            LISTPLAYLIST(PLY);
-        }
-        else if ((INPUTEQUAL(currentInput, "LIST PLAYLIST;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(Choice, "LIST")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "SONG NEXT;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(Choice, "SONG")) && dalamsesi == true)
         {
-            songNext(&QS, &HS, &currentSong);
-            // printf("Masuk ke SONG NEXT\n");
+            if(INPUTEQUAL(Choice2, "NEXT")){ /* SONG NEXT */
+                songNext(&QS, &HS, &currentSong);
+                printf("MELAKUKAN SONG NEXT\n");
+            }
+            else if(INPUTEQUAL(Choice2, "PREVIOUS")){ /* SONG PREVIOUS */
+                songPrevious(&QS, &HS, &currentSong);
+                printf("MELAKUKAN SONG PREVIOUS\n");
+            }
         }
-        else if ((INPUTEQUAL(currentInput, "SONG NEXT;")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS;")) && dalamsesi == true)
-        {
-            songPrevious(&QS, &HS, &currentSong);
-            // printf("Masuk ke SONG PREVIOUS\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "SONG PREVIOUS;")) && dalamsesi == false)
+        else if ((INPUTEQUAL(Choice, "SONG")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST CREATE;")) && dalamsesi == true)
+        else if ((INPUTEQUAL(Choice, "PLAYLIST")) && dalamsesi == true)
         {
-            /*masukin fungsi PLAYLIST CREATE*/
-            CreatePlaylist(&PLY);
-            // printf("Masuk ke PLAYLIST CREATE\n");
+            if (INPUTEQUAL(Choice2, "CREATE")){ /* PLAYLIST CREATE */
+                CreatePlaylist(&PLY);
+                printf("MELAKUKAN PLAYLIST CREATE\n");
+            }
+            else if(INPUTEQUAL(Choice2, "ADD")){
+                if(INPUTEQUAL(input1, "SONG")){ /* PLAYLIST ADD SONG */
+                    PlaylistADDSong(&PLY, PL);
+                    printf("Masuk ke PLAYLIST ADD SONG\n");
+                }
+                else if(INPUTEQUAL(input1, "ALBUM")){ /* PLAYLIST ADD ALBUM */
+                    PlaylistADDAlbum(&PLY, PL);
+                    printf("Masuk ke PLAYLIST ADD ALBUM\n");
+                }
+            }
+            else if(INPUTEQUAL(Choice2, "SWAP")){ /* PLAYLIST SWAP */
+                PlaylistSwap(&PLY, id, x, y);
+                printf("Masuk ke PLAYLIST SWAP DGN NILAI ID: %d; X: %d; Y: %d\n", id, x, y);
+            }
+            else if(INPUTEQUAL(Choice2, "REMOVE")){
+                PlaylistRemove(&PLY, id, x);
+                printf("Masuk ke PLAYLIST REMOVE DGN NILAI ID: %d; X: %d\n", id, x);
+            }
+            else if(INPUTEQUAL(Choice2,"DELETE")){
+                PlaylistDelete(&PLY);
+                printf("Masuk ke PLAYLIST DELETE\n");
+            }
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST CREATE;")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD SONG;")) && dalamsesi == true)
-        {
-            /*masukin fungsi PLAYLIST ADD*/
-            PlaylistADDSong(&PLY, PL);
-            printf("Masuk ke PLAYLIST ADD SONG\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD SONG;")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD ALBUM")) && dalamsesi == true)
-        {
-            /*masukin fungsi PLAYLIST ADD*/
-            PlaylistADDAlbum(&PLY, PL);
-            printf("Masuk ke PLAYLIST ADD ALBUM\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST ADD ALBUM")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST SWAP")) && dalamsesi == true)
-        {
-            // Perlu diedit lagi
-            int IDXPS, IDX1PS, IDX2PS;
-            IDXPS = strToInteger(currentInput);
-            IDX1PS = strToInteger(currentInput);
-            IDX2PS = strToInteger(currentInput);
-            PlaylistSwap(&PLY, IDXPS, IDX1PS, IDX2PS);
-            // printf("Masuk ke PLAYLIST ADD\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST SWAP")) && dalamsesi == false)
+        else if ((INPUTEQUAL(Choice, "PLAYLIST")) && dalamsesi == false)
         {
             printf("Command tidak bisa dieksekusi!\n");
         }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST REMOVE")) && dalamsesi == true)
-        {
-            /*masukin fungsi PLAYLIST REMOVE*/
-            int IDXPR, N;
-            IDXPR = strToInteger(currentInput);
-            N = strToInteger(currentInput);
-            PlaylistRemove(&PLY, IDXPR, N);
-            // printf("Masuk ke PLAYLIST REMOVE\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST REMOVE")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST DELETE")) && dalamsesi == true)
-        {
-            /*masukin fungsi PLAYLIST DELETE*/
-            PlaylistDelete(&PLY);
-            printf("Masuk ke PLAYLIST DELETE\n");
-        }
-        else if ((INPUTEQUAL(currentInput, "PLAYLIST DELETE")) && dalamsesi == false)
-        {
-            printf("Command tidak bisa dieksekusi!\n");
-        }
+        
         else if ((INPUTEQUAL(currentInput, "QUIT;")) && dalamsesi == true)
         {
             quit();

@@ -307,6 +307,17 @@ int FUNGSILENGTH(char *K) {
     return i;
 }
 
+void wordToString(Word kata, char *string){
+    for(int i = 0; i < kata.Length; i++){
+        string[i] = kata.TabWord[i];
+    }
+    for(int i = kata.Length; i < FUNGSILENGTH(string); i++){
+        if(string[i] != '\0'){
+            string[i] = '\0';
+        }
+    }
+}
+
 // int main() {
 //     // Word DuplicateKata(Word Kata){
 //     // Word HasilCopyK;
