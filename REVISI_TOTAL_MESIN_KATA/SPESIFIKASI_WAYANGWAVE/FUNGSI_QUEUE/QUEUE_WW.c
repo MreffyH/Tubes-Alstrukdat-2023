@@ -137,7 +137,7 @@ void QUEUESWAP(QueueSong *laguplaylist, int x, int y)
 
 void QUEUEREMOVE(QueueSong *laguplaylist, int id)
 {
-    if (id < lengthQ(*laguplaylist))
+    if ((id - 1) < lengthQ(*laguplaylist))
     {
         printf("Lagu \"");
         Word lagu = (*laguplaylist).detil_queue[id - 1].namaLaguQ;
@@ -152,6 +152,7 @@ void QUEUEREMOVE(QueueSong *laguplaylist, int id)
         }
         IDX_TAIL(*laguplaylist)
         --;
+
         if (IDX_TAIL(*laguplaylist) == -1)
         {
             IDX_HEAD(*laguplaylist) = IDX_HEAD(*laguplaylist) - 1;
