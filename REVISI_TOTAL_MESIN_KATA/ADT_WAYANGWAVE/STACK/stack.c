@@ -91,3 +91,19 @@ void INVERSSTACK(HistorySong *S){
         Push(S, detil_temp);
     }
 }
+
+int lengthS(HistorySong S){
+    int i = 0;
+    DetailSongS detil_temp;
+    HistorySong Stack_temp;
+    while(!IsEmptyHistorySong(S)){
+        Pop(&S, &detil_temp);
+        Push(&Stack_temp, detil_temp);
+        i++;
+    }
+    while(!IsEmptyHistorySong(Stack_temp)){
+        Pop(&Stack_temp, &detil_temp);
+        Push(&S, detil_temp);
+    }
+    return i;
+}

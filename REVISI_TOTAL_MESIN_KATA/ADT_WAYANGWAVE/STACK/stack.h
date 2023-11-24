@@ -74,4 +74,6 @@ void INVERSSTACK(HistorySong *S);
    I.S. S Sembarang, mungkin kosong
    F.S. Isi S terbalik
    Contoh: [2,3,4] menjadi [4,3,2] */
+
+int lengthS(HistorySong S);
 #endif
