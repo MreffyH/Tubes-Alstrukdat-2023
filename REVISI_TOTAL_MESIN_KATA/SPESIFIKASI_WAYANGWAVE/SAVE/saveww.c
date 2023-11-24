@@ -4,20 +4,57 @@
 
 static FILE *file;
 
-void SAVEWW(ListPenyanyi *PL, char *namafile) {
+void SAVEWW(ListPenyanyi *PL, char *namafile, ArrayDin *PLY, QueueSong *QS, HistorySong *HS, DetailSongQ *CS) {
     file = fopen(namafile, "w");
-    fprintf(file, "%d\n", (*PL).countpenyanyi);
+    fprintf(file, "%d\n", (*PL).countpenyanyi); // BACA JUMLAH PENYANYI
     for (int i = 0; i < (*PL).countpenyanyi; i++) {
-        fprintf(file, "%d %s\n", (*PL).penyanyi_ke->countalbum ,(*PL).penyanyi_ke[i]);
-        for (int j = 0; j < (*PL).penyanyi_ke->countalbum; j++)
+        fprintf(file, "%d %s\n", (*PL).penyanyi_ke[i].countalbum ,(*PL).penyanyi_ke[i].namaPenyanyi); // BACA JUMLAH ALBUM DAN NAMA PENYANYI
+        for (int j = 0; j < (*PL).penyanyi_ke[i].countalbum; j++)
         {
-            fprintf(file, "%d %s\n", (*PL).penyanyi_ke->mapalbum->setlagu.Count, (*PL).penyanyi_ke->mapalbum->namaAlbum);
-            for (int z = 0; z < (*PL).penyanyi_ke->mapalbum->setlagu.Count; z++)
+            fprintf(file, "%d %s\n", (*PL).penyanyi_ke[i].mapalbum[j].setlagu.Count, (*PL).penyanyi_ke[i].mapalbum[j].namaAlbum); // BACA JUMLAH LAGU DAN NAMA ALBUM
+            for (int z = 0; z < (*PL).penyanyi_ke[i].mapalbum.[j].setlagu.Count; z++)
             {
-                fprintf(file, "%s\n", (*PL).penyanyi_ke->mapalbum->setlagu.Elements[z]);
+                fprintf(file, "%s\n", (*PL).penyanyi_ke[i].mapalbum.[j]setlagu.Elements[z]); // BACA NAMA LAGU 
             }
             
         }
         
+    }
+    /* Current Song */
+    if((*CS).namaPenyanyiQ == NONE) && ((*CS).namaAlbumQ == NONE) && ((*CS).namaLaguQ == NONE){
+        fprintf(file,"-\n");
+    }
+    else{
+        fprintf(file, "%s", (*CS).namaPenyanyiQ);
+        fprintf(file, ";%s", (*CS).namaAlbumQ);
+        fprintf(file, ";%s\n", (*CS).namaLaguQ);
+    }
+    /* QUEUE */
+    fprintf(file, "%d\n", lengthQ(*QS));
+    for(int i = 0; i < lengthQ; i++){
+        fprintf(file, "%s", (*QS).detil_queue[i].namaPenyanyiQ);
+        fprintf(file, ";%s", (*QS).detil_queue[i].namaAlbumQ);
+        fprintf(file,";%s\n", (*QS).detil_queue[i].namaLaguQ);
+    }
+    /* HISTORY */
+    fprintf(file, "%d\n", lengthS(*HS));
+    for (int i = 0; i < lengthS(*HS), i++) {
+        fprintf(file, "%s", (*HS).detil_history[i].namaPenyanyiS);
+        fprintf(file, ";%s", (*HS).detil_history[i].namaAlbumS);
+        fprintf(file, ";%s\n", (*HS).detil_history[i].namaLaguS);
+    }
+    
+    /* PLAYLIST */
+    fprintf(file, "%d\n", (*PLY).Neff);
+    for (int i = 0; i < (*PLY).Neff, i++) {
+        fprintf(file, "%d ", (*PLY).detil_playlist[i].countlaguLL);
+        fprintf(file, "%s\n", (*PLY).detil_playlist[i].nama_PlayList);
+        address P = First((*PLY).detil_playlist[i].IsiLagu);
+        while (P != NilLin){
+            fprintf(file, "%s", InfoPenyanyi(P));
+            fprintf(file, ";%s", InfoAlbum(P));
+            fprintf(file, ";%s\n", InfoJudul(P));
+            P = Next(P);
+        }
     }
 }
