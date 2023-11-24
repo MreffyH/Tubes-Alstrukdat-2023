@@ -160,7 +160,7 @@ void QUEUEREMOVE(QueueSong *laguplaylist, int id)
     else
     {
         printf("Lagu dengan urutan ke");
-        printf(" %d", id);
+        printf(" %d ", id);
         printf("tidak ada.\n");
     }
 }
