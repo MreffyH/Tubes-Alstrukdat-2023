@@ -9,7 +9,8 @@
 #include "../../../src/ADT/list/listlinier.h"
 #include "../START/start.h"
 #include "../../ADT_WAYANGWAVE/QUEUE/queue.h"
+#include "../../ADT_WAYANGWAVE/STACK/stack.h"
 
-void printStatus(QueueSong queuestatus, DetailSongQ nowPlaying, ArrayDin currentPlaylist);
+void Status(ArrayDin AD, QueueSong QS, DetailSongQ currentsong);
 
 #endif 

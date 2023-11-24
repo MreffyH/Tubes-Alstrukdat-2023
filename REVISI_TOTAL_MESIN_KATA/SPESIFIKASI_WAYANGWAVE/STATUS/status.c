@@ -4,118 +4,139 @@
 
 // gcc -o status status.c ../../listmapset.c
 
-// Definisi struktur lagu
-// typedef struct {
-//     char *title;
-//     char *album;
-//     char *artist;
-// } Song;
+void Status(ArrayDin  AD, QueueSong  QS, DetailSongQ currentsong)
+{   
+    if(!IsEmptyArrayDin(AD))
+    {
+        printf("\nCurrent Playlist: ");
+        printWord(AD.detil_playlist->nama_PlayList);
+    }
 
-// Definisi struktur node untuk queue
-typedef struct QueueNode {
-    DetailSongLL song;
-    struct QueueNode* next;
-} QueueNode;
-
-typedef struct 
-{
-    DetailSongLL detsong;
-    int statussong;
-    Word namaplaylist;
-}Status; 
-
-// Definisi struktur untuk queue
-// typedef struct {
-//     QueueNode* front;
-//     QueueNode* rear;
-// } Queue;
-
-// Definisi struktur untuk playlist
-// typedef struct {
-//     char *name;
-//     Queue songs; // Misalnya, playlist menggunakan queue juga untuk menyimpan lagu
-// } Playlist;
-
-// Global variables untuk Now Playing dan Playlist saat ini
-int isPlaylistActive = 1;
-
-// Fungsi untuk menampilkan status
-void printStatus(QueueSong queuestatus, DetailSongQ nowPlaying, ArrayDin playlist) {
-    IsiPlaylist currentplaylist;
-    if (isPlaylistActive = 1) {
-        printf("Current Playlist: %s\n", currentplaylist.nama_PlayList);
+    printf("\nNow Playing:\n");
+    if (isEmptyQ(QS))
+    {
+        printf("No songs have been played yet. Please search for a song to begin playback.\n");
+    }
+    else
+    {
+        printf("\nNow Playing:\n");
+        printWord(currentsong.namaPenyanyiQ);
+        printf(" - ");
+        printWord(currentsong.namaLaguQ);
+        printf(" - ");
+        printWord(currentsong.namaAlbumQ);
         printf("\n");
     }
-
-    printf("Now Playing:\n");
-    if (!isNotNone(nowPlaying.namaLaguQ)) {
-        printf("No songs have been played yet. Please search for a song to begin playback.\n");
-    } else {
-        printf("%s - %s - %s\n", nowPlaying.namaPenyanyiQ.TabWord, nowPlaying.namaLaguQ.TabWord, nowPlaying.namaAlbumQ.TabWord);
-    }
-
+    
     printf("\nQueue:\n");
-    if (isEmptyQ(queuestatus)) {
+    if ((QS).idxHead == IDX_UNDEF || (QS).idxTail == IDX_UNDEF)
+    {
         printf("Your queue is empty.\n");
-    } else {
-        QueueNode *temp = IDX_HEAD(queuestatus);
-        int count = 1;
-        while (temp != NULL) {
-            printf("%d. %s - %s - %s\n", count, temp->song.namaPenyanyi, temp->song.namaLagu, temp->song.namaAlbum);
-            temp = Next(temp);
-            count++;
+    }
+    else
+    {
+        for (int i = (QS).idxHead; i <= (QS).idxTail; i++)
+        {
+            printf("%d. ", i+1);
+            printWord(QS.detil_queue[i].namaPenyanyiQ);
+            printf(" - ");
+            printWord(QS.detil_queue[i].namaLaguQ);
+            printf(" - ");
+            printWord(QS.detil_queue[i].namaAlbumQ);
+            printf("\n");
         }
     }
 }
 
-// Fungsi untuk membuat lagu baru dengan string baru
-// Song createSong(char *title, char *artist, char *album) {
-//     Song newSong;
-//     newSong.title = title;
-//     newSong.artist = artist;
-//     newSong.album = album;
-//     return newSong;
-// }
+    // if ((*AD).status == 0 )
+    // {   
+    //     if (((QS).idxHead != IDX_UNDEF || (QS).idxTail != IDX_UNDEF))
+    //     {   
+    //         if ((AD).statusPL == 1)
+    //         {
+    //             printf("\nCurrent Playlist: ");
+    //             printWord(AD.detil_playlist->nama_PlayList);
+    //         }
+            
+    //         printf("\nNow Playing:\n");
+    //         printf("No songs have been played yet. Please search for a song to begin playback.\n");
 
-// Fungsi untuk menambahkan lagu ke dalam queue
-// void enqueue(Queue *queue, Song newSong) {
-//     QueueNode *newNode = (QueueNode *)malloc(sizeof(QueueNode));
-//     if (newNode == NULL) {
-//         printf("Memory allocation failed!\n");
-//         return;
-//     }
-//     newNode->song = newSong;
-//     newNode->next = NULL;
+    //         printf("\nQueue:\n");
+    //         for (int i = (QS).idxHead; i <= (QS).idxTail; i++)
+    //         {
+    //             printf("%d. ", i+1);
+    //             printWord(QS.detil_queue[i].namaPenyanyiQ);
+    //             printf(" - ");
+    //             printWord(QS.detil_queue[i].namaLaguQ);
+    //             printf(" - ");
+    //             printWord(QS.detil_queue[i].namaAlbumQ);
+    //             printf("\n");
+    //         }
+    //     }
 
-//     if (queue->rear == NULL) {
-//         queue->front = queue->rear = newNode;
-//     } else {
-//         queue->rear->next = newNode;
-//         queue->rear = newNode;
-//     }
-// }
+    //     else if (((QS).idxHead == IDX_UNDEF || (QS).idxTail == IDX_UNDEF))
+    //     {
+    //         printf("\nNow Playing:\n");
+    //         printf("No songs have been played yet. Please search for a song to begin playback.\n");
 
-// Fungsi utama
-// int main() {
-//     Queue queue = {NULL, NULL}; // Inisialisasi queue kosong
+    //         printf("\nQueue:\n");
+    //         printf("Your queue is empty.\n");
+    //     }
 
-    // Contoh penggunaan
-    // nowPlaying = createSong("Up&Up", "Coldplay", "A Head Full of Dreams");
+    // }
+    
+    // else if ((*AD).status == 1)
+    // {   
+    //     if ((QS).idxHead == IDX_UNDEF || (QS).idxTail == IDX_UNDEF)
+    //     {
+    //         printf("\nNow Playing:\n");
+    //         printWord(currentsong.namaPenyanyiQ);
+    //         printf(" - ");
+    //         printWord(currentsong.namaLaguQ);
+    //         printf(" - ");
+    //         printWord(currentsong.namaAlbumQ);
+    //         printf("\n");
 
-    // Contoh menambahkan lagu ke queue
-    // Song newSong1 = createSong("Jiwaru Days", "JKT48", "Mahagita Vol.2");
-    // enqueue(&queue, newSong1);
+    //         printf("\nQueue:\n");
+    //         printf("Your queue is empty.\n");
+    //     }
 
-    // Song newSong2 = createSong("Jurus Rahasia Teleport", "JKT48", "Pajama Drive");
-    // enqueue(&queue, newSong2);
+    //     else if ((*QS).idxHead != IDX_UNDEF || (*QS).idxTail != IDX_UNDEF)
+    //     {   
+    //         if ((*AD).statusPL == 1)
+    //         {
+    //             printf("\nCurrent Playlist: ");
+    //             printWord(AD.detil_playlist->nama_PlayList);
+    //         }
 
-    // Contoh menetapkan playlist aktif
-    // isPlaylistActive = 2;
-    // currentPlaylist.name = "Copium";
-    // currentPlaylist.name = "Pajama Drive";
+    //         printf("\nNow Playing:\n");
+    //         printWord(currentsong.namaPenyanyiQ);
+    //         printf(" - ");
+    //         printWord(currentsong.namaLaguQ);
+    //         printf(" - ");
+    //         printWord(currentsong.namaAlbumQ);
+    //         printf("\n");
 
-    // Menampilkan status
-    // printStatus(&queue);
+    //         printf("\nQueue:\n", );
+    //         for (int i = (QS).idxHead; i <= (QS).idxTail; i++)
+    //         {
+    //             printf("%d. ", i+1);
+    //             printWord(QS.detil_queue[i].namaPenyanyiQ);
+    //             printf(" - ");
+    //             printWord(QS.detil_queue[i].namaLaguQ);
+    //             printf(" - ");
+    //             printWord(QS.detil_queue[i].namaAlbumQ);
+    //             printf("\n");
+    //         }
+    //     }
 
-    // return 0;
+    // if ((*HS).IDXTOP != IDX_UNDEF)
+    // {
+    //     printf("\nHistory:\n", );
+    //     for (int i = 0; i <= (*HS).IDXTOP; i++)
+    //     {
+    //         printf("%s%d. %s - %s - %s\n" i+1, (*HS).NamaPenyanyi[i].TabLine, (*HS).JudulLagu[i].TabLine, (*HS).NamaAlbum[i].TabLine);
+    //     }
+    // }
+    
 // }
