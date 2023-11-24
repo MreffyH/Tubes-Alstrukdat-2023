@@ -37,7 +37,7 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
             printf("\n");
         }
 
-        printf("Masukkan Nama Album yang dipilih : : \n");
+        printf("Masukkan Nama Album yang dipilih :\n");
         STARTINPUT();
         int search_album = SearchAlbum_ke(penyanyi, nama_penyanyi, currentInput);
         if (search_album != NOTFOUND)
@@ -62,11 +62,11 @@ void PLAYSONG(ListPenyanyi penyanyi, ArrayDin array, DetailSongQ *currentSong, H
             int hasil = strToInteger(currentInput);
             Word LAGU_PANGGIL;
             LAGU_PANGGIL = penyanyi.penyanyi_ke[urutan].mapalbum[search_album].setlagu.Elements[hasil - 1];
-            printf("Memutar lagu |");
+            printf("Memutar lagu \"");
             printWord(LAGU_PANGGIL);
-            printf("| oleh |");
+            printf("\" oleh \"");
             printWord(penyanyi.penyanyi_ke[urutan].namaPenyanyi);
-            printf("|.");
+            printf("\".");
             DetailSongQ trashqueue;
             DetailSongS trashstack;
             address P;

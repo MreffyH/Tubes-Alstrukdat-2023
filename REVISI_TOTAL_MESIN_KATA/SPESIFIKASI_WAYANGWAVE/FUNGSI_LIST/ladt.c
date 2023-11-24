@@ -21,10 +21,7 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
     STARTINPUT();
     printf("\n");
 
-    Word idx;
-    idx.TabWord[0] = 'Y';
-    idx.Length = 1;
-    if (IsKataEqual(currentInput, idx))
+    if (INPUTEQUAL(currentInput, "Y;"))
     {
         printf("Pilih penyanyi untuk melihat album mereka: \n");
         STARTINPUT();
@@ -48,7 +45,7 @@ void LISTDEFAULT(ListPenyanyi penyanyi)
             }
             printf("Ingin melihat lagu yang ada?(Y/N): ");
             STARTINPUT();
-            if (IsKataEqual(currentInput, idx))
+            if (INPUTEQUAL(currentInput, "Y;"))
             {
                 printf("Pilih album untuk melihat lagu yang ada di album : \n");
                 STARTINPUT();
